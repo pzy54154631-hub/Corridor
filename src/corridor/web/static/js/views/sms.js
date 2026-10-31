@@ -42,6 +42,11 @@ function draw(payload) {
       payload.banner
         ? h("div", { class: "public-banner", role: "status", "data-testid": "public-banner" }, payload.banner)
         : null,
+      payload.public_disclosure
+        ? h("details", { class: "public-details", "data-testid": "public-details" },
+          h("summary", null, payload.public_details_title),
+          h("p", null, payload.public_disclosure))
+        : null,
       h("div", { class: "sms-status" }, h("span", null, payload.status_bar)),
       h("header", { class: "sms-head" },
         h("span", { class: "sms-head-icon", "aria-hidden": "true" }, named("sms", 18)),

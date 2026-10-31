@@ -110,6 +110,8 @@ def shell_vm(ws, snapshot: dict[str, Any]) -> dict[str, Any]:
         # one after it, in both views and locales; the page draws it where it cannot be
         # closed. The key is absent outside public mode.
         vm["public_banner"] = plain(wtr("web.vm.public.banner"))
+        vm["public_disclosure"] = plain(wtr("web.vm.public.disclosure"))
+        vm["public_details_title"] = plain(wtr("web.vm.public.details_title"))
     if judge():
         vm["judge_strip"] = plain(live.judge_strip(ws))
     badge = live.badge(ws)

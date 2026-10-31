@@ -220,6 +220,7 @@ export function update(root, state, ctx) {
         "data-testid": "live-sheet",
         "data-enabled": vm && vm.enabled ? "true" : "false",
       },
+      line(h, state.shell.public_disclosure, "live-disclosure"),
       vm ? panel(vm, ctx, state) : h("p", { class: "muted" }, t("web.ui.loading")),
     ),
   );

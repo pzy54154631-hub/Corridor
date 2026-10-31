@@ -200,6 +200,8 @@ class ShellVM(TypedDict):
     notices: list[Notice]
     # Public mode only (1.1 public-mode addendum): the demo notice on every page.
     public_banner: NotRequired[str]
+    public_disclosure: NotRequired[str]
+    public_details_title: NotRequired[str]
 
 
 # --- §4.3 cards -------------------------------------------------------------------------
@@ -408,6 +410,7 @@ class ControlsVM(TypedDict):
 
 
 class TaskPanelVM(TypedDict):
+    controls_in_details: NotRequired[bool]
     route_label: str
     tier: TierVM | None
     copy: str
@@ -1000,6 +1003,8 @@ class PhonePayload(TypedDict):
     disclosure: NotRequired[Annotated[str, JUDGE]]
     # Public mode only (1.1 public-mode addendum): the demo notice on the phone page.
     banner: NotRequired[str]
+    public_disclosure: NotRequired[str]
+    public_details_title: NotRequired[str]
 
 
 class EvidenceTechnical(TypedDict):

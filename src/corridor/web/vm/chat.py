@@ -240,7 +240,7 @@ def task_panel_vm(ws, rid: str, capabilities: dict[str, Any], plans: list[dict[s
     }
     if capabilities.get("compensate"):
         controls.update(compensate_vm(ws, plans))
-    return {
+    vm = {
         "route_label": plain(tr("nav." + response["route"])),
         "tier": tier_vm(tier) if tier in {"green", "yellow", "red"} else None,
         "copy": plain(reply_copy(response, completion=True, hint=hint)),
@@ -252,6 +252,23 @@ def task_panel_vm(ws, rid: str, capabilities: dict[str, Any], plans: list[dict[s
         "dag": response_dag(response, plans),
         "controls": controls,
     }
+    # Presentation only: the same controls remain available inside task details.
+    # An unrecognized or mixed task keeps the existing prominent controls.
+    read_kinds = {"balance_query", "transaction_query", "bill_report", "subscription_query"}
+    if (
+        ws.view == "customer"
+        and response.get("status") == "settled"
+        and response.get("intent") in read_kinds
+        and all(
+            node["tool"] in read_kinds
+            and plan.get("nodes", {}).get(node["node_id"], {}).get("status")
+            in {"settled", "succeeded", "completed"}
+            for plan in task_plans(response, plans)
+            for node in plan["plan"]["nodes"]
+        )
+    ):
+        vm["controls_in_details"] = True
+    return vm
 
 
 def node_cards(ws, identity: str | None, nodes: list[dict[str, Any]], prefix: str):

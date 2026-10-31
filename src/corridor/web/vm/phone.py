@@ -43,4 +43,6 @@ def payload(pair: str, *, allowed: bool, public: bool = False) -> dict[str, Any]
         shown["disclosure"] = plain(tr("polish.phone.disclosure"))
     if public:
         shown["banner"] = plain(wtr("web.vm.public.phone_banner"))
+        shown["public_disclosure"] = plain(wtr("web.vm.public.disclosure"))
+        shown["public_details_title"] = plain(wtr("web.vm.public.details_title"))
     return shown

@@ -1353,6 +1353,8 @@ def test_the_demo_notice_is_on_every_public_page_from_the_first_response(real_pu
         client = browser(real_public_app)
         first = client.open(view=view, locale=locale)
         assert first["state"]["shell"]["public_banner"] == notice
+        disclosure = WEB_MESSAGES["web.vm.public.disclosure"][locale]
+        assert first["state"]["shell"]["public_disclosure"] == disclosure
         assert contracts.problems(first) == []
         assert client.json(client.get("/api/state"))["state"]["shell"]["public_banner"] == notice
         # An error answered with the state carries it as well.
@@ -1363,9 +1365,12 @@ def test_the_demo_notice_is_on_every_public_page_from_the_first_response(real_pu
         # So does the reset's response, and the phone page's data.
         reset = client.json(client.post("/api/session/reset", {}))
         assert reset["state"]["shell"]["public_banner"] == notice
+        assert reset["state"]["shell"]["public_disclosure"] == disclosure
         ws = ws_of(real_public_app, client)
         phone = client.json(client.get(f"/api/phone/{ws.pair}?lang={locale}&view={view}"))
-        assert phone["banner"] == phone_notice
+        assert phone["banner"] == phone_notice == notice
+        assert phone["public_disclosure"] == disclosure
+        assert phone["public_details_title"]
         assert contracts.problems(phone, view=view) == []
         for text in (notice, phone_notice):
             assert text.strip()
@@ -1374,7 +1379,7 @@ def test_the_demo_notice_is_on_every_public_page_from_the_first_response(real_pu
 def test_the_demo_notice_says_what_it_must_in_both_locales():
     from corridor.web.catalog import WEB_MESSAGES
 
-    banner = WEB_MESSAGES["web.vm.public.banner"]
+    banner = WEB_MESSAGES["web.vm.public.disclosure"]
     for word in ("合成", "模拟银行", "不是真实银行", "请勿输入", "不调用模型", "口令", "发给模型"):
         assert word in banner["zh-CN"], word
     for word in (
@@ -1388,7 +1393,8 @@ def test_the_demo_notice_says_what_it_must_in_both_locales():
     ):
         assert word in banner["en"], word
     phone = WEB_MESSAGES["web.vm.public.phone_banner"]
-    assert "不是真实银行" in phone["zh-CN"] and "not a real bank" in phone["en"]
+    assert phone["zh-CN"] == "演示环境：合成数据、模拟认证，请勿输入真实信息"
+    assert "simulated authentication" in phone["en"]
 
 
 def test_the_demo_notice_says_what_the_canary_measured():
@@ -1398,7 +1404,7 @@ def test_the_demo_notice_says_what_the_canary_measured():
     it names") claimed less than leaves."""
     from corridor.web.catalog import WEB_MESSAGES
 
-    banner = WEB_MESSAGES["web.vm.public.banner"]
+    banner = WEB_MESSAGES["web.vm.public.disclosure"]
     for word in (
         "11 位以上的号码",
         "邮箱",
@@ -1452,10 +1458,13 @@ def test_the_pages_draw_the_notice_where_it_cannot_be_closed():
     # the phone page: above the status bar. Neither has a control that hides it (the only
     # way it goes away is an empty text, which only the non-public shell sends).
     assert 'class: "public-banner", role: "status"' in stage
-    assert '{ class: "stage" }, banner, header,' in stage
+    assert '{ class: "stage" }, banner, disclosure, header,' in stage
     assert "parts.banner.textContent = state.shell.public_banner" in stage
     assert 'class: "public-banner", role: "status"' in sms and "payload.banner" in sms
     assert ".public-banner:empty" in css
+    assert 'el("details"' in stage and "state.shell.public_disclosure" in stage
+    assert "disclosure.hidden = true" in stage and "hidden: true" not in stage
+    assert 'h("details"' in sms and "payload.public_disclosure" in sms
     assert "public-banner" not in stage[stage.index("function closeOverlays") :].split("\n\n")[0]
 
 

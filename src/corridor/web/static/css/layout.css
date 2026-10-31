@@ -139,6 +139,16 @@ button.planner-badge:hover {
   display: none;
 }
 
+.public-details {
+  padding: var(--sp-2) var(--sp-6);
+  font-size: var(--fs-13);
+  line-height: 1.45;
+}
+
+.public-details summary {
+  cursor: pointer;
+}
+
 /* Columns */
 .stage-main {
   flex: 1;

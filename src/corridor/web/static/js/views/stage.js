@@ -47,14 +47,16 @@ export function mount(root, ctx) {
   // Public mode's demo notice: the first thing on the page, with no way to close it;
   // empty (and hidden) outside public mode.
   const banner = el("div", { class: "public-banner", role: "status", "data-testid": "public-banner" });
+  const disclosure = el("details", { class: "public-details", "data-testid": "public-details" });
+  disclosure.hidden = true;
   const scrim = el("div", {
     class: "scrim",
     "aria-hidden": "true",
     on: { click: () => closeOverlays(ctx) },
   });
-  const shell = el("div", { class: "stage" }, banner, header, strip, main, scrim, overlay, corner);
+  const shell = el("div", { class: "stage" }, banner, disclosure, header, strip, main, scrim, overlay, corner);
   render(root, shell);
-  parts = { root, shell, banner, header, strip, main, phone, dev, aside, sms, overlay, corner, scrim, labHost };
+  parts = { root, shell, banner, disclosure, header, strip, main, phone, dev, aside, sms, overlay, corner, scrim, labHost };
   phoneApp.mount(phone, ctx);
   device.mount(dev, ctx);
   evidence.mount(aside, ctx);
@@ -327,6 +329,11 @@ export function update(root, state, ctx) {
   parts.shell.classList.toggle("has-evidence", Boolean(state.evidence));
   parts.shell.classList.toggle("is-lab", Boolean(store.ui.labOpen));
   parts.banner.textContent = state.shell.public_banner || "";
+  parts.disclosure.hidden = !state.shell.public_disclosure;
+  parts.disclosure.replaceChildren(
+    ctx.h("summary", null, state.shell.public_details_title || ""),
+    ctx.h("p", null, state.shell.public_disclosure || ""),
+  );
   render(parts.header, ...headerView(state, ctx));
   parts.header.setAttribute("aria-label", t("web.ui.stage.title"));
   if (judge && state.shell.judge_strip) {

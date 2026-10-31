@@ -100,9 +100,13 @@ test.describe('24-raw-keys', () => {
     await h.openApp(page);
     const notice = page.locator(T('public-banner')).first();
     await expect(notice).toBeVisible();
-    await expect(notice).toContainText('整张合成通讯录');
+    await expect(notice).toContainText('演示环境：合成数据、模拟认证，请勿输入真实信息');
     const box = await notice.boundingBox();
     expect(box.y).toBeLessThan(5);
+    const details = page.locator(T('public-details')).first();
+    await details.locator('summary').click();
+    await expect(details).toContainText('整张合成通讯录');
+    await details.locator('summary').click();
     await h.screenshot(page, '24-raw-keys', 'public-first-screen');
     await h.login(page);
     const phone = await phonePage(page, bodies);

@@ -111,6 +111,11 @@ function taskPanel(ctx, state, vm, open) {
       : null,
     button(ctx, { label: vm.controls.handoff, kind: "secondary", testid: "handoff", onClick: () => ctx.actions.handoff() }),
   ];
+  const controlRow = el(ctx, "div", { class: "scr-choice-row scr-task-controls" }, controls);
+  const compensationHint = vm.controls.compensate && state.capabilities.compensate
+    ? para(ctx, vm.controls.compensate_hint, "scr-hint")
+    : null;
+  const inDetails = state.view === "customer" && vm.controls_in_details === true;
   return el(
     ctx,
     "section",
@@ -124,12 +129,12 @@ function taskPanel(ctx, state, vm, open) {
         para(ctx, vm.requested_hint, "scr-hint"),
         ctx.components.dag(vm.dag),
         para(ctx, vm.dag.blocked_text, "scr-hint"),
+        inDetails ? controlRow : null,
+        inDetails ? compensationHint : null,
       ].filter(Boolean),
     }),
-    el(ctx, "div", { class: "scr-choice-row scr-task-controls" }, controls),
-    vm.controls.compensate && state.capabilities.compensate
-      ? para(ctx, vm.controls.compensate_hint, "scr-hint")
-      : null,
+    inDetails ? null : controlRow,
+    inDetails ? null : compensationHint,
   );
 }
 

@@ -961,6 +961,13 @@ def test_the_live_panel_says_what_the_notice_says(public_app, hosted):
     """The judge's panel, once the switch is on, reads as measured too (RW-9 item 2)."""
     hosted()
     client = browser(public_app)
+    first = client.open(view="judge")
+    disclosure = first["state"]["shell"]["public_disclosure"]
+    assert "服务器保留请求摘要与模型输出" in disclosure
+    from corridor.web import handlers
+
+    source = (handlers.STATIC / "js/views/live.js").read_text(encoding="utf-8")
+    assert 'line(h, state.shell.public_disclosure, "live-disclosure")' in source
     go_live(client)
     text = panel(client)["reason_text"]
     assert "整张合成通讯录的代号和别名" in text and "类型化句柄" in text and DEEPSEEK in text

@@ -584,12 +584,20 @@
     "en": "On: banking chat requests go to {deployment}. In a message only numbers of 11 or more digits, email addresses, verification codes and keys are replaced by tokens; names, addresses, amounts and all other words go as written, with the previous reply's intent label. A transfer also sends the whole synthetic address book's handles and aliases and typed handles for the account, contact and amount. Words the rules cannot read go to it too, with the handles and aliases of the contacts they name, only to suggest questions; those calls count against the session's call cap."
   },
   "web.vm.public.banner": {
+    "zh-CN": "演示环境：合成数据、模拟认证，请勿输入真实信息",
+    "en": "Demo environment: synthetic data and simulated authentication; do not enter real information."
+  },
+  "web.vm.public.phone_banner": {
+    "zh-CN": "演示环境：合成数据、模拟认证，请勿输入真实信息",
+    "en": "Demo environment: synthetic data and simulated authentication; do not enter real information."
+  },
+  "web.vm.safety.approval_rate": {"en": "Too many approvals in this session; it has been paused. Click “Restart” at the top right to continue the demo.", "zh-CN": "本会话审批过于频繁，已暂停；点右上角“重新开始”可继续演示。"},
+  "web.vm.public.disclosure": {
     "zh-CN": "演示环境：全部为合成数据与模拟银行，不是真实银行；请勿输入任何真实姓名、账号、证件号或密码。默认按固定脚本理解和规划，不调用模型。只有凭评委口令开启真模型后，本会话之后的消息才会发给模型：11 位以上的号码、邮箱、验证码和密钥换成代号，人名、地址、金额等其余文字原样发送，并附上一轮的意图标签；转账还会发送整张合成通讯录的代号和别名，以及账户、联系人、金额的类型化句柄；本地规则读不懂的消息会附上其中提到的联系人代号和称呼。服务器保留请求摘要与模型输出。",
     "en": "Demo environment: everything here is synthetic data and a simulated bank, not a real bank; do not enter any real name, account number, ID number or password. By default the demo understands and plans from a fixed script and calls no model. Only after the judges' access code opens the live model do this session's later messages go to the model: numbers of 11 or more digits, email addresses, verification codes and keys are replaced by tokens, while names, addresses, amounts and all other words go as written, with the previous reply's intent label; a transfer also sends the whole synthetic address book's handles and aliases and typed handles for the account, contact and amount; a message the local rules cannot read also sends the handles and aliases of the contacts it names. The server keeps the request digests and the model's output."
   },
-  "web.vm.public.phone_banner": {
-    "zh-CN": "演示环境：合成数据与模拟短信，不是真实银行；请勿输入任何真实信息。",
-    "en": "Demo environment: synthetic data and simulated SMS, not a real bank; do not enter any real information."
-  },
-  "web.vm.safety.approval_rate": {"en": "Too many approvals in this session; it has been paused. Click “Restart” at the top right to continue the demo.", "zh-CN": "本会话审批过于频繁，已暂停；点右上角“重新开始”可继续演示。"}
+  "web.vm.public.details_title": {
+    "zh-CN": "演示与数据外发说明",
+    "en": "Demo and data sharing details"
+  }
 }
