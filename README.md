@@ -59,7 +59,11 @@ uv run --frozen python -m corridor.web --host 127.0.0.1 --port 8772
 
 Streamlit 为本地备用入口：`uv run --frozen corridor demo --port 8501`，打开启动日志给出的 loopback 地址。它另有模拟 IM 视图、长链一致性面板、审计页与沙箱用例等网页主入口没有的页面。两种界面复用同一产品控制器与冻结安全核心。
 
+先创建 UTF-8 的 `task.json`（以下为未审批预览，不派发）：
+
 ```powershell
+$task = '{"task_id":"DEMO-TRANSFER","task":"给Chen转200元","initial_state":"bank","simulated_device_events":[],"context":[]}'
+[System.IO.File]::WriteAllText((Join-Path $PWD 'task.json'), $task, [System.Text.UTF8Encoding]::new($false))
 uv run --frozen corridor run-task --file task.json --out result.json
 uv run --frozen corridor serve --port 8765
 ```
@@ -76,16 +80,30 @@ uv run --frozen corridor blind-zh --planner live --model gpt-6.1-sol --config A5
 
 ## 5. 测试
 
+### 快速复验
+
+依赖已安装后，先复验随源码包提供的最小证据，再跑脚本场景与静态检查。所有新输出放在 `evidence/reproduced/`；Ruff 禁用缓存，避免在 `evidence-min/` 写入清单外文件。
+
 ```powershell
+python -B evidence-min/verify_all.py
 uv run --offline --frozen corridor judge --planner scripted --suite all --output evidence/reproduced/judge
 uv run --offline --frozen corridor judge --planner scripted --suite wealth --output evidence/reproduced/wealth
 uv run --offline --frozen corridor judge --planner scripted --suite zh --output evidence/reproduced/zh
 uv run --offline --frozen corridor intent-eval --planner scripted --output evidence/reproduced/zh/intent
 uv run --offline --frozen corridor witness --output evidence/reproduced/witness
-uv run --offline --frozen corridor test --rules-coverage
-uv run --offline --frozen ruff check .
+uv run --offline --frozen ruff check --no-cache .
+uv run --offline --frozen ruff format --check --no-cache .
 uv run --offline --frozen mypy
 uv run --offline --frozen lint-imports
+```
+
+### 长时回归
+
+全量 pytest 耗时较长，单独运行；不属于快速复验。需要规则覆盖检查时使用统一测试入口。
+
+```powershell
+uv run --offline --frozen pytest -p no:cacheprovider
+uv run --offline --frozen corridor test --rules-coverage
 ```
 
 scripted 回归、口语集与真实模型实验分别报告，不合并分母。测试入口：corridor test（单元、性质、e2e 与红队回归）、corridor test --rules-coverage（72 条规则 ID 的 golden 覆盖，输出须为空）、corridor judge --planner scripted --suite all|wealth|zh（J01–J24、W01–W12、中文 33 条场景）。`judge --suite zh` 在提交版本源码上预期 32/33，ZH-BD-03 为已知失败：冻结用例显式选用只有母亲生日的 `bank` 夹具，“爱人”关系没有唯一匹配，产品按设计返回澄清（`selection_required`），而冻结期望写的是直接出黄级草稿；同一请求在只加不改的 `family` 夹具下满足冻结期望，单列、不计入 33 条，命令以退出码 1 结束。`intent-eval --output X` 生成的是目录 X，识别结果在 `X/results.json`，录制在 `X/replay/`。完成度按三类分开报告，不相加：
@@ -152,6 +170,7 @@ scripts/       数字绑定与图表构建
 
 已知限制包括模拟认证、无真实核心、PII令牌化边界、宿主信任、规则覆盖、模型依赖、逻辑沙箱、BIAC贪心漏解、不可评估类别和同族作者偏差，以及上文的 AUTH-SCOPE 残余依赖；公开站点不宣称抗拒绝服务或连接耗尽，慢请求体只占住反向代理一侧的连接，共享出口地址下共用额度，在记录的 10 浏览器、每 5 秒一条、150 秒验收中全部完成，后段变慢；超出限流或会话上限可能返回 503，会话按创建来源占位。收益不保证，不声称组合最优。监管与控制映射见安全自评报告附录，只写“支持”或“部分对应”，不是合规认证；《生成式人工智能服务管理暂行办法》是否适用须由合规或法务判断。团队内部审查记录不随源码包分发，其路径与哈希见《证据索引》。完整边界见安全自评与赛题对照。
 
+静态检查使用 `ruff check --no-cache .` 与 `ruff format --check --no-cache .`，避免在最小证据包中生成清单外缓存文件。
 文档与视频的制作脚本、源码包导出工具不随源码包发布；源码包包含运行、测试、数字绑定与图表构建所需的公开脚本。
 盲测语料的生成溯源记录不随源码分发，其 sha256 见清单 `release/BLIND-ZH-PROVENANCE.sha256`。
 冻结版本 domestic-freeze-10 的可信计算基文件 sha256 见 `release/TCB-domestic-freeze-10.sha256`。

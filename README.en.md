@@ -22,12 +22,40 @@ The first command serves the web front end locally at `http://127.0.0.1:8772/`; 
 
 Python 3.11 and uv are required; keep the checkout path short on Windows. The first install downloads the dependencies pinned in `uv.lock` and needs network access. For an offline install, point `UV_CACHE_DIR` at an already populated wheel cache and run `uv sync --frozen --offline --python 3.11`. The scripted demo needs no model credentials. Set `CORRIDOR_LOCALE=en` for the English interface.
 
-## Check it
+For the file interface, first create a UTF-8 request with no device approval (preview only):
+
+```powershell
+$task = '{"task_id":"DEMO-TRANSFER","task":"给Chen转200元","initial_state":"bank","simulated_device_events":[],"context":[]}'
+[System.IO.File]::WriteAllText((Join-Path $PWD 'task.json'), $task, [System.Text.UTF8Encoding]::new($false))
+uv run --frozen corridor run-task --file task.json --out result.json
+```
+
+## Quick verification
+
+With dependencies installed, verify the minimal evidence package supplied in the source archive, then run scripted checks. New evidence goes in `evidence/reproduced/`. Disable Ruff's cache so it cannot add unlisted files to `evidence-min/`.
 
 ```text
-uv run --offline --frozen corridor test
+python -B evidence-min/verify_all.py
 uv run --offline --frozen corridor judge --planner scripted --suite all --output evidence/reproduced/judge
+uv run --offline --frozen corridor judge --planner scripted --suite wealth --output evidence/reproduced/wealth
+uv run --offline --frozen corridor judge --planner scripted --suite zh --output evidence/reproduced/zh
+uv run --offline --frozen corridor intent-eval --planner scripted --output evidence/reproduced/zh/intent
 uv run --offline --frozen corridor witness --output evidence/reproduced/witness
+uv run --offline --frozen ruff check --no-cache .
+uv run --offline --frozen ruff format --check --no-cache .
+uv run --offline --frozen mypy
+uv run --offline --frozen lint-imports
+```
+
+The Chinese suite has one disclosed failure, ZH-BD-03, and exits 1 (32/33): the frozen `bank` fixture has no spouse birthday, so the request needs clarification. Replay preserves recorded failures and is neither a new model call nor a safety pass.
+
+## Long regression
+
+The full pytest suite takes longer and is separate from quick verification. The unified test entry also checks rule coverage.
+
+```text
+uv run --offline --frozen pytest -p no:cacheprovider
+uv run --offline --frozen corridor test --rules-coverage
 ```
 
 The Chinese README has the full description, the evaluation interface and the safety boundaries.

@@ -1,4 +1,6 @@
 {
+  "web.ui.sms.expand": {"en": "Simulated SMS · Expand", "zh-CN": "模拟短信 · 展开"},
+  "web.ui.sms.collapse": {"en": "Simulated SMS · Collapse", "zh-CN": "模拟短信 · 收起"},
   "web.ui.chat.try_these": {"en": "Try these", "zh-CN": "推荐试试"},
   "web.ui.chat.try_wealth": {"en": "Explore investment products", "zh-CN": "看看理财产品"},
   "web.ui.lab.prompt.yellow": {"en": "Transfer 500 yuan to Mom", "zh-CN": "给妈妈转500元"},

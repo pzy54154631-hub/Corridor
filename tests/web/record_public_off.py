@@ -97,6 +97,15 @@ HISTORY = (
             "changes; only /api/i18n and its Content-Length change in this journey."
         ),
     },
+    {
+        "commit": "452bbef6ed3fc293b096010c890f700ddc4830ee",
+        "changed": ["i18n"],
+        "reason": (
+            "C33 A and RW-9 item 7: add the bilingual mobile SMS expand/collapse labels. "
+            "Recorded with C33 working-tree changes; only /api/i18n and its Content-Length "
+            "change in this journey. Desktop layout and task view fields are unchanged."
+        ),
+    },
 )
 
 

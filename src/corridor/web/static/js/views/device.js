@@ -8,6 +8,9 @@ let lastActive = null;
 const FINISHED = new Set(["done", "refused", "withdrawn"]);
 const codeFields = new Map();
 const verifyFailed = new Set();
+const MOBILE = "(max-width: 767px)";
+let mobileSms = false;
+let smsChallenge = null;
 
 export function mount(root, ctx) {
   const { h, icons } = ctx;
@@ -39,11 +42,15 @@ export function mount(root, ctx) {
       h("span", { class: "disclosure-chevron", "aria-hidden": "true" }, icons.named("chevron", 16))),
     h("div", { class: "sms-body" }, smsFrame, h("div", { class: "sms-row" }, smsOpen)));
   sms.open = true;
-  sms.addEventListener("toggle", () => sms.setAttribute("data-open", sms.open ? "true" : "false"));
+  sms.addEventListener("toggle", () => {
+    sms.setAttribute("data-open", sms.open ? "true" : "false");
+    smsLabel(ctx);
+  });
   const slot = h("div", { class: "sms-slot" }, sms);
   const body = h("div", { class: "device-body" }, h("div", { class: "device-unit" }, head, screen, status), queue, slot);
   render(root, body);
   parts = { root, title, screen, status, queue, sms, slot, smsTitle, smsFrame, smsOpen };
+  window.matchMedia(MOBILE).addEventListener("change", () => ctx.store.set({}));
 }
 
 // The stage may dock the SMS window in its own column on wide screens; null puts it back
@@ -262,10 +269,31 @@ function idleView(state, ctx) {
     h("p", { class: "idle-text" }, state.device.idle_text));
 }
 
+function smsLabel(ctx) {
+  if (!parts) return;
+  const sms = ctx.store.state.device.sms;
+  parts.smsTitle.textContent = window.matchMedia(MOBILE).matches
+    ? ctx.t(parts.sms.open ? "web.ui.sms.collapse" : "web.ui.sms.expand")
+    : sms.label || ctx.t("web.ui.sms.title");
+}
+
 function updateSms(state, ctx) {
   const { t } = ctx;
   const sms = state.device.sms;
-  parts.smsTitle.textContent = sms.label || t("web.ui.sms.title");
+  const mobile = window.matchMedia(MOBILE).matches;
+  const task = active(state);
+  // The existing step and gesture identify a pending challenge; the main page never
+  // reads the SMS code. Preserve a manual collapse until a different challenge arrives.
+  const challenge = task && task.step === "mfa_code" && task.gesture && task.gesture.op === "mfa_verify"
+    ? task.key : null;
+  if (mobile) {
+    if (!mobileSms || challenge !== smsChallenge) parts.sms.open = Boolean(challenge);
+  } else if (mobileSms) {
+    parts.sms.open = true;
+  }
+  mobileSms = mobile;
+  smsChallenge = challenge;
+  smsLabel(ctx);
   parts.smsOpen.lastChild.textContent = sms.open_label || t("web.ui.sms.open");
   parts.smsFrame.setAttribute("title", sms.label || t("web.ui.sms.title"));
   if (sms.url && parts.smsFrame.getAttribute("src") !== sms.url && sms.url.startsWith("/") && !sms.url.startsWith("//")) {

@@ -1136,6 +1136,80 @@ button.planner-badge:hover {
 
 /* Below 768: best effort; the app fills the screen without the frame */
 @media (max-width: 767px) {
+  /* One scroll owner for the sheet: the card never shrinks behind the SMS inbox. */
+  .col-device {
+    max-height: calc(100dvh - 12px);
+    padding: var(--sp-2) var(--sp-2) 48px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .device-body,
+  .device-unit {
+    flex: none;
+  }
+
+  .device-body {
+    gap: var(--sp-2);
+  }
+
+  .device-screen,
+  .device-queue-host {
+    flex: none;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .device-actions {
+    position: static;
+  }
+
+  .device-task {
+    gap: var(--sp-2);
+  }
+
+  .device-cards .approval-card {
+    padding: var(--sp-2);
+  }
+
+  .device-screen {
+    padding: var(--sp-3) var(--sp-3) 0;
+  }
+
+  .device-cards .card-amount {
+    font-size: var(--fs-32);
+  }
+
+  .device-cards .card-fact {
+    grid-template-columns: 8em minmax(0, 1fr);
+    gap: var(--sp-2);
+    padding: 4px 0;
+    font-size: var(--fs-12);
+  }
+
+  .device-cards .card-facts {
+    margin-top: var(--sp-2);
+  }
+
+  .device-actions {
+    margin: 0 calc(-1 * var(--sp-3));
+    padding: var(--sp-2) var(--sp-3);
+  }
+
+  .device-actions .btn {
+    min-height: 44px;
+  }
+
+  .device-actions .step-text {
+    font-size: var(--fs-14);
+    line-height: 1.4;
+  }
+
+  .sms-summary {
+    min-height: 44px;
+    white-space: nowrap;
+  }
+
   .brand-sub,
   .header-sep {
     display: none;
