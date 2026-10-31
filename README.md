@@ -128,7 +128,7 @@ uv run --offline --frozen corridor formal-gate --no-blind-access --witness evide
 
 这是不读盲测的局部装置核验，预期跳过项保留 NOT READY 并以 exit 1 退出；它不是正式准入通过。完整 gate 需要匹配冻结源码、见证、探针、部署锁、盲测哈希和外部基准产物，缺少任何项不能冒称 READY。
 
-最小公开证据包 `evidence-min/` 随源码包在仓库根目录提供（已加入导出白名单；两段录像 `split.mp4`、`split.webm` 随提交材料另附，其 sha256 见 `evidence-min/EXTERNAL-ASSETS.sha256`）。在仓库根目录用一条命令复验：
+最小公开证据包 `evidence-min/` 随源码包在仓库根目录提供（已加入导出白名单；两段录像 `split.mp4`、`split.webm` 附在提交的源码压缩包 `evidence-min/flagship/` 中，公开仓库不含录像，其 sha256 见 `evidence-min/EXTERNAL-ASSETS.sha256`）。在仓库根目录用一条命令复验：
 
 ```sh
 uv run --frozen python -B evidence-min/verify_all.py

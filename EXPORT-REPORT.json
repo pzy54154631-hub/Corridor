@@ -66,7 +66,7 @@
     "data/blind-zh/provenance/ (generation records; hashes in the manifest)",
     "internal export tools and their tests",
     "tests importing undistributed modules (listed in release/TESTS-NOT-DISTRIBUTED.txt)",
-    "evidence-min/ recordings (supplied with the submission materials; sha256 in evidence-min/EXTERNAL-ASSETS.sha256)"
+    "evidence-min/ recordings (excluded from this public export; included in the submitted source archive under evidence-min/flagship/; sha256 in evidence-min/EXTERNAL-ASSETS.sha256)"
   ],
   "tests_not_distributed": 19,
   "evidence": {

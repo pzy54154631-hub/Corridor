@@ -32,6 +32,8 @@ uv run --frozen corridor run-task --file task.json --out result.json
 
 ## Quick verification
 
+The submitted source archive includes `split.mp4` and `split.webm` under `evidence-min/flagship/`; the public repository does not include these recordings. Their SHA-256 values are listed in `evidence-min/EXTERNAL-ASSETS.sha256`. `verify_all.py` checks their hashes when present and reports `present; hash matches`; when absent, it reports that they are supplied with the submission materials, not in the repository. Neither case is a verification failure.
+
 With dependencies installed, verify the minimal evidence package supplied in the source archive, then run scripted checks. New evidence goes in `evidence/reproduced/`. Disable Ruff's cache so it cannot add unlisted files to `evidence-min/`.
 
 ```text
