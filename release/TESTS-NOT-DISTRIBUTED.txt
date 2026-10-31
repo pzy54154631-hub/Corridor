@@ -15,4 +15,5 @@ tests/unit/test_docs_batch4_zh.py  imports scripts.figures.rebuild_all_zh, which
 tests/unit/test_docs_batch5_zh.py  reads docs/submission-zh/技术文档.md, docs/submission-zh/证据索引.md, docs/submission-zh/演示视频脚本.md, docs/submission-zh/deck-content.json, scripts/figures/build_deck_zh.py, scripts/demo/narration_zh.json, scripts/demo/README-zh.md, which are not distributed
 tests/unit/test_docs_batch6_zh.py  imports scripts.figures.build_deck_zh, which is not distributed
 tests/unit/test_f10_report_bindings.py  imports scripts.figures.rebuild_all_zh, which is not distributed
+tests/unit/test_first_impression_zh.py  imports scripts.figures.build_deck_zh, which is not distributed
 tests/unit/test_submission_rebuild_zh.py  imports scripts.figures.rebuild_all_zh, which is not distributed

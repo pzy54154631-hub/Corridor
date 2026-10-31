@@ -10,7 +10,12 @@ from corridor.agent.domestic_negation import (
 )
 from corridor.agent.domestic_scam_phrase import scam_phrase
 from corridor.agent.domestic_schedule import aa_candidate, schedule_candidate
-from corridor.agent.domestic_slots import extract_slots, has_date_request, normalized_money
+from corridor.agent.domestic_slots import (
+    extract_slots,
+    has_date_request,
+    normalized_money,
+    spoken_transfer,
+)
 from corridor.agent.domestic_subscription import cancel_negation
 from corridor.agent.domestic_wealth import wealth_action
 from corridor.schemas.base import Model
@@ -66,7 +71,7 @@ SCENARIOS = {
 
 def normalized_transfer(text: str) -> str:
     """Render unsigned exact candidates for later explicit device review."""
-    return normalized_money(text)
+    return normalized_money(spoken_transfer(text))
 
 
 # Natural interruption: the whole utterance must consist of stop phrases plus filler, so a
@@ -314,6 +319,7 @@ def scam_phrase_hold(text: str, context: dict | None = None) -> dict[str, list[s
 def _route(value: str, context: dict) -> tuple[str, tuple[str, ...], dict[str, list[str]] | None]:
     """The lexical intent, the negation words that held a money-moving one (S5), and the
     phrase-gate labels that held one (S6 R7)."""
+    value = spoken_transfer(value)
     lower = value.casefold()
     # S5: a transfer, split-bill, birthday-plan or refund request carrying a negation,
     # cancel or stop word is held at clarification; it never becomes a new card.

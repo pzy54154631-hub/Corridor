@@ -88,6 +88,15 @@ HISTORY = (
             "Content-Length change in this journey."
         ),
     },
+    {
+        "commit": "298f280157bde4941cd28f82a3f698aed892b24a",
+        "changed": ["i18n"],
+        "reason": (
+            "C26 and RW-9 item 7: add the bilingual recommended-shortcuts heading "
+            "and investment-page navigation label in the web view. Recorded with C26 working-tree "
+            "changes; only /api/i18n and its Content-Length change in this journey."
+        ),
+    },
 )
 
 

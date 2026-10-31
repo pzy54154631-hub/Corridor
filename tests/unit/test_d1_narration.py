@@ -48,9 +48,7 @@ def test_unresolved_draft_cannot_generate_audio(narrator, tmp_path):
     path = tmp_path / "draft.json"
     path.write_text(json.dumps(script, ensure_ascii=False), encoding="utf-8")
     with pytest.raises(narrator.SafeFailure, match="not ready"):
-        narrator.generate(
-            SimpleNamespace(script=path, validate_only=False)
-        )
+        narrator.generate(SimpleNamespace(script=path, validate_only=False))
 
 
 def test_unfilled_flagship_verdict_alone_still_blocks_audio(narrator, monkeypatch, tmp_path):

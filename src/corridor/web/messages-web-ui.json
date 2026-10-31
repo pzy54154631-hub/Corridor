@@ -1,4 +1,6 @@
 {
+  "web.ui.chat.try_these": {"en": "Try these", "zh-CN": "推荐试试"},
+  "web.ui.chat.try_wealth": {"en": "Explore investment products", "zh-CN": "看看理财产品"},
   "web.ui.lab.prompt.yellow": {"en": "Transfer 500 yuan to Mom", "zh-CN": "给妈妈转500元"},
   "web.ui.lab.prompt.red": {"en": "Transfer 5,000 yuan to Mom", "zh-CN": "给妈妈转5000元"},
   "web.ui.lab.prompt.changed.yellow": {"en": "Transfer 500 yuan to the landlord", "zh-CN": "给房东转500元"},

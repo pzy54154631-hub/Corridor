@@ -15,6 +15,17 @@ function signature(ctx, state, value) {
 
 function shortcutButtons(ctx, chat, compact, onPick) {
   const regular = chat.shortcuts.filter((s) => s.key !== "scam_drill");
+  const wealth = (ctx.store.state?.capabilities.tabs || []).includes("wealth")
+    ? button(ctx, {
+        label: ctx.t("web.ui.chat.try_wealth"),
+        kind: "secondary",
+        testid: "shortcut-wealth",
+        onClick: () => {
+          ctx.store.set({ ui: { tab: "wealth" } });
+          ctx.actions.loadTab("wealth");
+        },
+      })
+    : null;
   const drill = chat.shortcuts.find((s) => s.key === "scam_drill");
   const make = (s) =>
     button(ctx, {
@@ -27,7 +38,8 @@ function shortcutButtons(ctx, chat, compact, onPick) {
     ctx,
     "div",
     { class: compact ? "scr-shortcuts scr-shortcuts-compact" : "scr-shortcuts" },
-    regular.length ? el(ctx, "div", { class: "scr-shortcut-grid" }, regular.map(make)) : null,
+    regular.length ? el(ctx, "h3", { "data-testid": "try-these" }, ctx.t("web.ui.chat.try_these")) : null,
+    regular.length ? el(ctx, "div", { class: "scr-shortcut-grid" }, regular.map(make), wealth) : null,
     drill
       ? el(
           ctx,
@@ -324,7 +336,7 @@ export function update(root, state, ctx) {
 
   const empty = chat.turns.length === 0;
   const pick = (key) => runShortcut(ctx, refs, key);
-  const greetSig = signature(ctx, state, [empty, chat.greeting, chat.shortcuts, chat.drill_caption]);
+  const greetSig = signature(ctx, state, [empty, chat.greeting, chat.shortcuts, chat.drill_caption, state.capabilities.tabs]);
   if (refs.greetSig !== greetSig) {
     refs.greetSig = greetSig;
     refs.greeting.replaceChildren();

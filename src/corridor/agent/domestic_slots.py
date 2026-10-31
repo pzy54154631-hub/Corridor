@@ -19,6 +19,29 @@ _MONEY_TOKEN = re.compile(rf"{_NUMBER}(?:[元块](?:{_NUMBER}[角毛](?:{_NUMBER
 _APPROXIMATE = re.compile(r"大概|大约|大致|约莫|差不多|左右")
 
 
+def _spoken_transfer(text: str):
+    """Only complete outgoing forms; names still require trusted contact resolution."""
+    name = r"[\u4e00-\u9fffA-Za-z_]+?"
+    amount = rf"(?P<amount>{_NUMBER})(?:元|块钱|块)?"
+    for form in (
+        rf"给(?P<name>{name})(?:转账|转|打){amount}",
+        rf"(?:转账给|转给)(?P<name>{name}){amount}",
+        rf"(?:转账|转){amount}给(?P<name>{name})",
+    ):
+        match = re.fullmatch(rf"(?:帮我|请|麻烦)?{form}(?:吧|啊|呀)?[。！!]?", text)
+        if match:
+            return match
+    return None
+
+
+def spoken_transfer(text: str) -> str:
+    """Normalize a whole request, without supplying a recipient or amount."""
+    match = _spoken_transfer(text)
+    if match is None:
+        return text
+    return f"给{match.group('name')}转{match.group('amount')}元"
+
+
 def chinese_number(text: str) -> Fraction | None:
     """Accept conventional descending units, including 三千二 = 3200."""
     if len(text) > 32:
@@ -64,8 +87,11 @@ def chinese_number(text: str) -> Fraction | None:
 
 
 def _money_match(text):
-    if _APPROXIMATE.search(text):
+    if _APPROXIMATE.search(text) or re.search(r"分笔|分批", text):
         return None
+    spoken = _spoken_transfer(text)
+    if spoken is not None:
+        return _MONEY_TOKEN.match(text, spoken.start("amount"))
     candidates = []
     for match in _MONEY_TOKEN.finditer(text):
         before, after = text[: match.start()], text[match.end() :]
@@ -299,6 +325,7 @@ def recipient_candidates(text, labels, previous=None):
     """Resolve complete recipient phrases; modifiers and plural referents abstain."""
     if re.search(r"其他|其它|他们|她们|别人|另外|另一个", text):
         return [], False
+    text = spoken_transfer(text)
     # C20: only complete single-object forms share the existing object-first path.
     # Anchoring preserves incoming, plural, modified and otherwise unresolved phrases.
     for names in labels.values():
