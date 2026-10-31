@@ -85,7 +85,7 @@ uv run --frozen corridor blind-zh --planner live --model gpt-6.1-sol --config A5
 依赖已安装后，先复验随源码包提供的最小证据，再跑脚本场景与静态检查。所有新输出放在 `evidence/reproduced/`；Ruff 禁用缓存，避免在 `evidence-min/` 写入清单外文件。
 
 ```powershell
-python -B evidence-min/verify_all.py
+uv run --frozen python -B evidence-min/verify_all.py
 uv run --offline --frozen corridor judge --planner scripted --suite all --output evidence/reproduced/judge
 uv run --offline --frozen corridor judge --planner scripted --suite wealth --output evidence/reproduced/wealth
 uv run --offline --frozen corridor judge --planner scripted --suite zh --output evidence/reproduced/zh
@@ -131,7 +131,7 @@ uv run --offline --frozen corridor formal-gate --no-blind-access --witness evide
 最小公开证据包 `evidence-min/` 随源码包在仓库根目录提供（已加入导出白名单；两段录像 `split.mp4`、`split.webm` 随提交材料另附，其 sha256 见 `evidence-min/EXTERNAL-ASSETS.sha256`）。在仓库根目录用一条命令复验：
 
 ```sh
-python -B evidence-min/verify_all.py
+uv run --frozen python -B evidence-min/verify_all.py
 ```
 
 它校验包内全部文件 SHA-256、从配对行复算 F9 与机制数字、调用仓库产品代码断网严格重放六部署的六场景录制；模型调用全程禁网，任何缺文件、哈希不符、结果偏差或提供商调用都会失败；在回放基线 1ab4a3b 与历史导出树 r2 上均已跑通（ALL CHECKS PASS，0 次提供商调用，36 个结果、14 个保留的失败、34 个输出哈希），不需要环境文件或服务密钥。回放不是重新调用模型，也不是安全通过；缺少单列的外部视频不属于 verify_all.py 的失败条件。只复算数字可运行 `python -B evidence-min/f9/recompute.py` 与 `python -B evidence-min/mechanism/recompute.py`。包内不含盲测用例原文。
@@ -170,6 +170,7 @@ scripts/       数字绑定与图表构建
 
 已知限制包括模拟认证、无真实核心、PII令牌化边界、宿主信任、规则覆盖、模型依赖、逻辑沙箱、BIAC贪心漏解、不可评估类别和同族作者偏差，以及上文的 AUTH-SCOPE 残余依赖；公开站点不宣称抗拒绝服务或连接耗尽，慢请求体只占住反向代理一侧的连接，共享出口地址下共用额度，在记录的 10 浏览器、每 5 秒一条、150 秒验收中全部完成，后段变慢；超出限流或会话上限可能返回 503，会话按创建来源占位。收益不保证，不声称组合最优。监管与控制映射见安全自评报告附录，只写“支持”或“部分对应”，不是合规认证；《生成式人工智能服务管理暂行办法》是否适用须由合规或法务判断。团队内部审查记录不随源码包分发，其路径与哈希见《证据索引》。完整边界见安全自评与赛题对照。
 
+证据复核使用 `uv run --frozen python -B evidence-min/verify_all.py`，由项目环境加载产品代码，且不在证据包内生成字节码文件。
 静态检查使用 `ruff check --no-cache .` 与 `ruff format --check --no-cache .`，避免在最小证据包中生成清单外缓存文件。
 文档与视频的制作脚本、源码包导出工具不随源码包发布；源码包包含运行、测试、数字绑定与图表构建所需的公开脚本。
 盲测语料的生成溯源记录不随源码分发，其 sha256 见清单 `release/BLIND-ZH-PROVENANCE.sha256`。

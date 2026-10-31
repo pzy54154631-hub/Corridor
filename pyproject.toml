@@ -25,6 +25,7 @@ corridor = "corridor.cli:app"
 packages = ["src/corridor"]
 
 [tool.ruff]
+extend-exclude = [".tmp"]
 preview = true
 target-version = "py311"
 line-length = 100

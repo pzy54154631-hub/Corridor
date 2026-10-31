@@ -79,7 +79,7 @@
   "evidence_min": {
     "files": 90,
     "external_assets": "evidence-min/EXTERNAL-ASSETS.sha256",
-    "verify": "python -B evidence-min/verify_all.py"
+    "verify": "uv run --frozen python -B evidence-min/verify_all.py"
   },
   "results_status": "in-submission-documents",
   "scope": "source, frozen synthetic inputs, minimal scripted reproduction evidence and the minimal public evidence package (evidence-min/)",

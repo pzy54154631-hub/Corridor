@@ -14,15 +14,15 @@
     {
       "path": "docs/submission-zh/README.md",
       "source_path": "docs/submission-zh/README.md",
-      "original_sha256": "e74147cd4ffc04bc7c5c2e6eae15e456403e3c1d087b1fccb52d2b0b889a53bb",
-      "distributed_sha256": "43238cec5cdf046002045537c2f068b869c9648d452624b4f185ef029773296c",
+      "original_sha256": "f8ae50ebc7e4dd7b9149e8f1361869517c8db8818d5e66765571d524de94986f",
+      "distributed_sha256": "ee57b76340103437dd22df9c191b09b1d7b23143ca5048b000aec7a5f46a117d",
       "change": "Public package scope, install note and portable README links only"
     },
     {
       "path": "README.md",
       "source_path": "docs/submission-zh/README.md",
-      "original_sha256": "e74147cd4ffc04bc7c5c2e6eae15e456403e3c1d087b1fccb52d2b0b889a53bb",
-      "distributed_sha256": "30a6e98fa27e795f29e36c228ea571b124e237d95135eebafb7ca433a4c841b9",
+      "original_sha256": "f8ae50ebc7e4dd7b9149e8f1361869517c8db8818d5e66765571d524de94986f",
+      "distributed_sha256": "42dc62458f396f48ffca3e3c6595a9d2e0070d56c8a560c977b0b9064c80f140",
       "change": "Public package scope, install note and portable README links only"
     },
     {
@@ -35,8 +35,8 @@
     {
       "path": "pyproject.toml",
       "source_path": "pyproject.toml",
-      "original_sha256": "5f3c3f97a4985b09f4f01c83464e6b65ca47ed06bbd7db699bdc507577fc7ffb",
-      "distributed_sha256": "4598eeb1f97bb9cb57ded6c621490006630f149c6b8a80c750c214450627fd92",
+      "original_sha256": "e3c08bb5f7eeada638c2a16ce123fdd4baaae6c0f3631009ec7240f01127ae5d",
+      "distributed_sha256": "56e2730baf604552412fbff5df33cc5f51434cbd4ad611e8f44169cde51e5118",
       "change": "Development uv cache directory dropped; installs use the default uv cache or UV_CACHE_DIR. Dependencies and uv.lock are unchanged"
     }
   ],

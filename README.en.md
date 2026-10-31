@@ -35,7 +35,7 @@ uv run --frozen corridor run-task --file task.json --out result.json
 With dependencies installed, verify the minimal evidence package supplied in the source archive, then run scripted checks. New evidence goes in `evidence/reproduced/`. Disable Ruff's cache so it cannot add unlisted files to `evidence-min/`.
 
 ```text
-python -B evidence-min/verify_all.py
+uv run --frozen python -B evidence-min/verify_all.py
 uv run --offline --frozen corridor judge --planner scripted --suite all --output evidence/reproduced/judge
 uv run --offline --frozen corridor judge --planner scripted --suite wealth --output evidence/reproduced/wealth
 uv run --offline --frozen corridor judge --planner scripted --suite zh --output evidence/reproduced/zh
