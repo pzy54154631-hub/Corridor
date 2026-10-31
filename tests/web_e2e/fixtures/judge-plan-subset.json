@@ -1,0 +1,596 @@
+{
+ "ok": true,
+ "generation": "q3Lw9xYp0aZk",
+ "revision": 9,
+ "state": {
+  "schema": 1,
+  "contract": "web-contract/1.1",
+  "generation": "q3Lw9xYp0aZk",
+  "revision": 9,
+  "view": "judge",
+  "locale": "zh-CN",
+  "capabilities": {
+   "tabs": [
+    "plans"
+   ],
+   "shortcuts": [
+    "transfer",
+    "cards",
+    "birthday",
+    "scam_drill"
+   ],
+   "live": false,
+   "plan_select": true,
+   "compensate": false,
+   "aa": false,
+   "lab": false
+  },
+  "session": {
+   "logged_in": true,
+   "clock_text": "2026-09-15 10:30（北京时间）",
+   "bank_name": "演示银行",
+   "assistant_name": "智能助手",
+   "phone_url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=zh-CN&view=judge"
+  },
+  "shell": {
+   "corner": "合成数据 · 模拟认证 · 无真实资金",
+   "judge_strip": "评委视图：显示内核裁决、哈希与审计证据；视图只是展示偏好，不是访问控制",
+   "badge": {
+    "kind": "demo",
+    "text": "脚本演示"
+   },
+   "safety": {
+    "locked": false,
+    "text": null,
+    "hint": null,
+    "state": "Normal",
+    "reason": null,
+    "unlock_after_text": null,
+    "rule_ids": []
+   },
+   "paused_banner": null,
+   "notices": []
+  },
+  "chat": {
+   "shortcuts": [
+    {
+     "key": "transfer",
+     "label": "给妈妈转 800 元"
+    },
+    {
+     "key": "cards",
+     "label": "我的卡丢了"
+    },
+    {
+     "key": "birthday",
+     "label": "帮我准备老婆的生日"
+    },
+    {
+     "key": "scam_drill",
+     "label": "诈骗演练"
+    }
+   ],
+   "drill_caption": "演练：模拟一段“工作人员让您立即转账”的话术，看系统如何回应 （评委）演练句命中话术闸门：不出卡，派发 0",
+   "greeting": null,
+   "turns": [
+    {
+     "id": "u4",
+     "role": "user",
+     "rkey": "R4",
+     "text": "帮我准备老婆的生日"
+    },
+    {
+     "id": "a4",
+     "role": "assistant",
+     "rkey": "R4",
+     "text": "请从第一项起连续勾选；未勾选的项不会执行"
+    }
+   ],
+   "responses": {
+    "R4": {
+     "rkey": "R4",
+     "current": true,
+     "status": "awaiting_selection",
+     "status_text": "等待勾选",
+     "copy_lines": [
+      "请从第一项起连续勾选；未勾选的项不会执行"
+     ],
+     "tier": {
+      "code": "yellow",
+      "label": "黄 · 需设备确认",
+      "glyph": "diamond"
+     },
+     "requested_tier": null,
+     "redisplay_notice": null,
+     "cards": [
+      {
+       "key": "R4-0",
+       "title": "供设备核对的事实 · 尚未授权",
+       "purpose": "生日计划",
+       "amount_text": "¥268.00",
+       "tier": {
+        "code": "yellow",
+        "label": "黄 · 需设备确认",
+        "glyph": "diamond"
+       },
+       "tier_reason": "向新收款人转账",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "收款人",
+         "value": "订蛋糕 ¥268.00"
+        },
+        {
+         "key": "fees",
+         "label": "手续费",
+         "value": "¥0.00（无手续费）"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "不属于签名内容",
+       "why": {
+        "lines": [
+         "原因：金额超过红档阈值，需要独立模拟验证"
+        ]
+       },
+       "position": "1/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "268.00"
+        },
+        "amount_raw": "268.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "收款人",
+         "lines": [
+          "订蛋糕 ¥268.00"
+         ]
+        }
+       ]
+      },
+      {
+       "key": "R4-1",
+       "title": "供设备核对的事实 · 尚未授权",
+       "purpose": "生日计划",
+       "amount_text": "¥199.00",
+       "tier": {
+        "code": "yellow",
+        "label": "黄 · 需设备确认",
+        "glyph": "diamond"
+       },
+       "tier_reason": "向新收款人转账",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "收款人",
+         "value": "订花 ¥199.00"
+        },
+        {
+         "key": "fees",
+         "label": "手续费",
+         "value": "¥0.00（无手续费）"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "不属于签名内容",
+       "why": {
+        "lines": [
+         "原因：金额超过红档阈值，需要独立模拟验证"
+        ]
+       },
+       "position": "2/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "199.00"
+        },
+        "amount_raw": "199.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "收款人",
+         "lines": [
+          "订花 ¥199.00"
+         ]
+        }
+       ]
+      },
+      {
+       "key": "R4-2",
+       "title": "供设备核对的事实 · 尚未授权",
+       "purpose": "生日计划",
+       "amount_text": "¥500.00",
+       "tier": {
+        "code": "yellow",
+        "label": "黄 · 需设备确认",
+        "glyph": "diamond"
+       },
+       "tier_reason": "向新收款人转账",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "收款人",
+         "value": "餐厅定金 ¥500.00"
+        },
+        {
+         "key": "fees",
+         "label": "手续费",
+         "value": "¥0.00（无手续费）"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "不属于签名内容",
+       "why": {
+        "lines": [
+         "原因：金额超过红档阈值，需要独立模拟验证"
+        ]
+       },
+       "position": "3/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "500.00"
+        },
+        "amount_raw": "500.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "收款人",
+         "lines": [
+          "餐厅定金 ¥500.00"
+         ]
+        }
+       ]
+      },
+      {
+       "key": "R4-3",
+       "title": "供设备核对的事实 · 尚未授权",
+       "purpose": "生日计划",
+       "amount_text": "¥1,299.00",
+       "tier": {
+        "code": "yellow",
+        "label": "黄 · 需设备确认",
+        "glyph": "diamond"
+       },
+       "tier_reason": "向新收款人转账",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "收款人",
+         "value": "礼物 ¥1,299.00"
+        },
+        {
+         "key": "fees",
+         "label": "手续费",
+         "value": "¥0.00（无手续费）"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "不属于签名内容",
+       "why": {
+        "lines": [
+         "原因：金额超过红档阈值，需要独立模拟验证"
+        ]
+       },
+       "position": "4/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "1299.00"
+        },
+        "amount_raw": "1299.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "收款人",
+         "lines": [
+          "礼物 ¥1,299.00"
+         ]
+        }
+       ]
+      }
+     ],
+     "gate": null,
+     "result": null,
+     "failure": null,
+     "live_notes": [],
+     "device_task": "TR4",
+     "route_hint": null,
+     "fallback_shortcuts": false,
+     "cancel": {
+      "label": "取消",
+      "hint": "取消会撤回本会话所有待确认提案；已结算的不变"
+     },
+     "plan_select": {
+      "tkey": "TR4",
+      "rule_text": "请从第一项起连续勾选；未勾选的项不会执行",
+      "nodes": [
+       {
+        "key": "n0",
+        "label": "订蛋糕 ¥268.00",
+        "checked": true
+       },
+       {
+        "key": "n1",
+        "label": "订花 ¥199.00",
+        "checked": true
+       },
+       {
+        "key": "n2",
+        "label": "餐厅定金 ¥500.00",
+        "checked": false
+       },
+       {
+        "key": "n3",
+        "label": "礼物 ¥1,299.00",
+        "checked": false
+       }
+      ],
+      "mode": "subset",
+      "count": 2,
+      "total": 4,
+      "error_text": null
+     },
+     "card_source": "authoritative",
+     "technical_url": "/api/evidence/responses/R4"
+    }
+   },
+   "current": "R4",
+   "gated_elsewhere": [],
+   "task_panel": null,
+   "composer": {
+    "placeholder": "说说您要办理什么，例如：给妈妈转500元",
+    "max_chars": 4000,
+    "attach_label": "附上对方发来的文件（模拟）",
+    "attach_note": "附件开关由您自报，系统不读取任何文件",
+    "contacts_note": "演示联系人：妈妈、房东、同学、邻居、新联系人、爱人",
+    "disabled": false
+   }
+  },
+  "device": {
+   "title": "模拟签名设备（软件模拟）",
+   "idle_text": "当前没有需要在设备上确认的操作",
+   "queue_text": null,
+   "tasks": [
+    {
+     "key": "TR4",
+     "source": "chat",
+     "source_label": "对话",
+     "rkey": "R4",
+     "current": true,
+     "cards": [
+      {
+       "key": "TR4-0",
+       "title": "供设备核对的事实 · 尚未授权",
+       "purpose": "生日计划",
+       "amount_text": "¥268.00",
+       "tier": {
+        "code": "yellow",
+        "label": "黄 · 需设备确认",
+        "glyph": "diamond"
+       },
+       "tier_reason": "向新收款人转账",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "收款人",
+         "value": "订蛋糕 ¥268.00"
+        },
+        {
+         "key": "fees",
+         "label": "手续费",
+         "value": "¥0.00（无手续费）"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "不属于签名内容",
+       "why": {
+        "lines": [
+         "原因：金额超过红档阈值，需要独立模拟验证"
+        ]
+       },
+       "position": "1/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "268.00"
+        },
+        "amount_raw": "268.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "收款人",
+         "lines": [
+          "订蛋糕 ¥268.00"
+         ]
+        }
+       ]
+      },
+      {
+       "key": "TR4-1",
+       "title": "供设备核对的事实 · 尚未授权",
+       "purpose": "生日计划",
+       "amount_text": "¥199.00",
+       "tier": {
+        "code": "yellow",
+        "label": "黄 · 需设备确认",
+        "glyph": "diamond"
+       },
+       "tier_reason": "向新收款人转账",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "收款人",
+         "value": "订花 ¥199.00"
+        },
+        {
+         "key": "fees",
+         "label": "手续费",
+         "value": "¥0.00（无手续费）"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "不属于签名内容",
+       "why": {
+        "lines": [
+         "原因：金额超过红档阈值，需要独立模拟验证"
+        ]
+       },
+       "position": "2/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "199.00"
+        },
+        "amount_raw": "199.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "收款人",
+         "lines": [
+          "订花 ¥199.00"
+         ]
+        }
+       ]
+      }
+     ],
+     "step": "confirm_subset",
+     "step_text": "将为所选 2 项生成新的待签计划卡，本步不签名",
+     "gesture": {
+      "op": "confirm",
+      "token": "Pq7dLm2xZ0aR5tVb8nC1wE",
+      "card_version": "1a2b3c4d5e6f70811a2b3c4d5e6f7081",
+      "label": "生成新卡"
+     },
+     "cancel": {
+      "label": "取消",
+      "hint": "取消会撤回本会话所有待确认提案；已结算的不变"
+     },
+     "selection": {
+      "count": 2,
+      "total": 4,
+      "text": "已选 2 / 4 项"
+     },
+     "nodes_version": "0f1e2d3c4b5a69780f1e2d3c4b5a6978",
+     "hash": {
+      "algorithm": "SHA-256(JCS)",
+      "short": "3f1c0a9e5b7d2c4e",
+      "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6",
+      "status": "pending",
+      "label": "H(display.card)"
+     }
+    }
+   ],
+   "active": "TR4",
+   "sms": {
+    "url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=zh-CN&view=judge",
+    "label": "模拟短信（合成，不是真实短信）",
+    "open_label": "在新窗口打开",
+    "footer": "合成短信 · 无短信网关 · 无真实手机号"
+   }
+  },
+  "evidence": {
+   "open_by_default": [
+    "kernel",
+    "consistency",
+    "dispatch"
+   ],
+   "planner": {
+    "badge": "脚本规划",
+    "source": "脚本规划（离线）",
+    "counters": []
+   },
+   "dispatch": {
+    "count": 0,
+    "receipts": []
+   },
+   "audit": {
+    "count": 3,
+    "head": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    },
+    "verified": true,
+    "note": "审计校验只说明链未被改写，不证明外部世界发生了什么"
+   },
+   "safety": {
+    "state": "Normal",
+    "reason": null
+   },
+   "intent_log": [
+    {
+     "intent": "transfer",
+     "status": "awaiting_input",
+     "response": "R4",
+     "utterance": ""
+    }
+   ],
+   "intent_log_note": "意图日志不在哈希链内",
+   "planner_log": [
+    {
+     "rkey": "R4",
+     "planner": "scripted",
+     "intent": "transfer",
+     "outcome": "Escalate",
+     "tier": "yellow",
+     "rule_ids": [
+      "APR-NEWPAYEE"
+     ]
+    }
+   ],
+   "footer": "证据只读；视图只是展示偏好，不是访问控制",
+   "response": {
+    "rkey": "R4",
+    "intent": "transfer",
+    "status": "awaiting_input",
+    "rule_ids": [
+     "APR-NEWPAYEE"
+    ],
+    "rule_lines": [
+     "APR-NEWPAYEE：首次收款人需设备确认"
+    ],
+    "audit_hash": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    }
+   },
+   "kernel": {
+    "outcome": "Escalate",
+    "tier": "yellow",
+    "rule_ids": [
+     "APR-NEWPAYEE"
+    ],
+    "rule_lines": [
+     "APR-NEWPAYEE：首次收款人需设备确认"
+    ],
+    "note": null
+   },
+   "consistency": {
+    "display_card": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "3f1c0a9e5b7d2c4e",
+     "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6"
+    },
+    "proposal_card": null,
+    "same_hash": null,
+    "same_business_facts": null,
+    "action": null,
+    "cert": null,
+    "card_core": null,
+    "challenge": "none",
+    "not_yet_text": "尚未产生",
+    "mismatch_text": null
+   }
+  }
+ }
+}

@@ -1,0 +1,244 @@
+{
+  "Contact remarks identify the recipient; a remittance message is not sent with the transfer.": {
+    "en": "Contact remarks identify the recipient; a remittance message is not sent with the transfer.",
+    "zh-CN": "备注用于识别收款人，附言不会随转账发送。"
+  },
+  "Subscriptions and recurring charges": {
+    "en": "Subscriptions and recurring charges",
+    "zh-CN": "订阅与代扣"
+  },
+  "Renewals use this analysis receipt's seven-day reminder field. Cancellation requires a separate approval.": {
+    "en": "Renewals use this analysis receipt's seven-day reminder field. Cancellation requires a separate approval.",
+    "zh-CN": "续费提醒来自本次分析回执的 7 天提醒字段；取消仍需另一次审批。"
+  },
+  "Transaction history · green, no second confirmation": {
+    "en": "Transaction history · green, no second confirmation",
+    "zh-CN": "交易记录查询 · 绿色，无需二次确认"
+  },
+  "Query transaction history": {
+    "en": "Query transaction history",
+    "zh-CN": "交易记录查询"
+  },
+  "Query investment income": {
+    "en": "Query investment income",
+    "zh-CN": "查询收益"
+  },
+  "Green query · income from the signed analysis receipt": {
+    "en": "Green query · income from the signed analysis receipt",
+    "zh-CN": "绿色查询 · 收益来自已签名分析回执"
+  },
+  "Approved query snapshot: ": {
+    "en": "Approved query snapshot: ",
+    "zh-CN": "已批准查询快照："
+  },
+  "No recurring charges were identified in this query.": {
+    "en": "No recurring charges were identified in this query.",
+    "zh-CN": "本次查询没有识别到周期扣款。"
+  },
+  "Rows come only from the verified bank query receipt.": {
+    "en": "Rows come only from the verified bank query receipt.",
+    "zh-CN": "仅展示已核验银行查询回执中的流水。"
+  },
+  "Execution timeline": {
+    "en": "Execution timeline",
+    "zh-CN": "执行时间线"
+  },
+  "Read-only projection in hash-chain sequence; timestamps use the simulated clock.": {
+    "en": "Read-only projection in hash-chain sequence; timestamps use the simulated clock.",
+    "zh-CN": "只读投影 · 按哈希链原始序号排列，时间来自模拟时钟。"
+  },
+  "Session intent log": {
+    "en": "Session intent log",
+    "zh-CN": "会话侧意图日志"
+  },
+  "Intent routing is outside the hash chain. These session observations are not execution or approval evidence.": {
+    "en": "Intent routing is outside the hash chain. These session observations are not execution or approval evidence.",
+    "zh-CN": "意图路由不在哈希链内；右侧是会话观察，不是执行或审批证据。"
+  },
+  "Split-bill collection (simulated)": {
+    "en": "Split-bill collection (simulated)",
+    "zh-CN": "AA 收款（模拟）"
+  },
+  "Create collection requests. No funds are debited and no external messages are sent.": {
+    "en": "Create collection requests. No funds are debited and no external messages are sent.",
+    "zh-CN": "生成收款请求，资金不会自动扣划，也不发送外部消息。"
+  },
+  "Total amount (CNY)": {
+    "en": "Total amount (CNY)",
+    "zh-CN": "AA 总额（元）"
+  },
+  "Choose participants": {
+    "en": "Choose participants",
+    "zh-CN": "选择分摊联系人"
+  },
+  "Preview collection requests": {
+    "en": "Preview collection requests",
+    "zh-CN": "预览 AA 收款"
+  },
+  "Upcoming renewal · ": {
+    "en": "Upcoming renewal · ",
+    "zh-CN": "即将续费 · "
+  },
+  "Field": {
+    "en": "Field",
+    "zh-CN": "字段"
+  },
+  "Amount": {
+    "en": "Amount",
+    "zh-CN": "金额"
+  },
+  "No intent observations in this session yet.": {
+    "en": "No intent observations in this session yet.",
+    "zh-CN": "当前会话还没有意图记录。"
+  },
+  "Confirm simulated collection requests": {
+    "en": "Confirm simulated collection requests",
+    "zh-CN": "确认创建模拟收款请求"
+  },
+  "Simulated collection requests created; no debit occurred.": {
+    "en": "Simulated collection requests created; no debit occurred.",
+    "zh-CN": "模拟收款请求已创建，未扣款。"
+  },
+  "Merchant": {
+    "en": "Merchant",
+    "zh-CN": "商户"
+  },
+  "Authorization": {
+    "en": "Authorization",
+    "zh-CN": "授权"
+  },
+  "Cancellation available": {
+    "en": "Cancellation available",
+    "zh-CN": "可申请取消"
+  },
+  "Next charge (UTC)": {
+    "en": "Next charge (UTC)",
+    "zh-CN": "下次扣款（UTC）"
+  },
+  "Source transactions": {
+    "en": "Source transactions",
+    "zh-CN": "来源流水"
+  },
+  "The query did not complete. Enter the simulated bank first.": {
+    "en": "The query did not complete. Enter the simulated bank first.",
+    "zh-CN": "查询未完成，请先进入模拟银行。"
+  },
+  "Transaction reference": {
+    "en": "Transaction reference",
+    "zh-CN": "流水引用"
+  },
+  "Time (UTC)": {
+    "en": "Time (UTC)",
+    "zh-CN": "时间（UTC）"
+  },
+  "Direction": {
+    "en": "Direction",
+    "zh-CN": "收支"
+  },
+  "Category": {
+    "en": "Category",
+    "zh-CN": "分类"
+  },
+  "Counterparty reference": {
+    "en": "Counterparty reference",
+    "zh-CN": "对象引用"
+  },
+  "The income query did not complete. Check the current position.": {
+    "en": "The income query did not complete. Check the current position.",
+    "zh-CN": "收益查询未完成，请检查当前持仓。"
+  },
+  "Request references: ": {
+    "en": "Request references: ",
+    "zh-CN": "请求引用："
+  },
+  "Detected recurring charge only": {
+    "en": "Detected recurring charge only",
+    "zh-CN": "仅识别为周期扣款"
+  },
+  "Yes": {
+    "en": "Yes",
+    "zh-CN": "是"
+  },
+  "No": {
+    "en": "No",
+    "zh-CN": "否"
+  },
+  "Debit": {
+    "en": "Debit",
+    "zh-CN": "支出"
+  },
+  "Credit": {
+    "en": "Credit",
+    "zh-CN": "收入"
+  },
+  "Realized income": {
+    "en": "Realized income",
+    "zh-CN": "已实现收益"
+  },
+  "Projected income (not guaranteed)": {
+    "en": "Projected income (not guaranteed)",
+    "zh-CN": "测算收益（不保证）"
+  },
+  "Position principal": {
+    "en": "Position principal",
+    "zh-CN": "持仓本金"
+  },
+  "Choose contacts and a positive whole-cent total.": {
+    "en": "Choose contacts and a positive whole-cent total.",
+    "zh-CN": "请选择联系人并填写正数、整分总额。"
+  },
+  "Participant": {
+    "en": "Participant",
+    "zh-CN": "联系人"
+  },
+  "Share": {
+    "en": "Share",
+    "zh-CN": "分摊金额"
+  },
+  "Enter the code shown by the simulated device. Face and security-key options are UI placeholders using the same simulated SMS verifier.": {
+    "en": "Enter the code shown by the simulated device. Face and security-key options are UI placeholders using the same simulated SMS verifier.",
+    "zh-CN": "请手动键入模拟设备显示的验证码；人脸、U 盾为界面占位，使用同一模拟短信验证器。"
+  },
+  "Signed analysis receipt: ": {
+    "en": "Signed analysis receipt: ",
+    "zh-CN": "已签名分析回执引用："
+  },
+  "Dataset hash: ": {
+    "en": "Dataset hash: ",
+    "zh-CN": "数据集哈希："
+  },
+  "Face · UI placeholder using the same simulated SMS verifier": {
+    "en": "Face · UI placeholder using the same simulated SMS verifier",
+    "zh-CN": "人脸 · 界面占位，使用同一模拟短信验证器"
+  },
+  "Security key · UI placeholder using the same simulated SMS verifier": {
+    "en": "Security key · UI placeholder using the same simulated SMS verifier",
+    "zh-CN": "U 盾 · 界面占位，使用同一模拟短信验证器"
+  },
+  "Contact remark keyword": {
+    "en": "Contact remark keyword",
+    "zh-CN": "备注"
+  },
+  "Remittance note keyword": {
+    "en": "Remittance note keyword",
+    "zh-CN": "附言"
+  },
+  "Synthetic recurring service": {
+    "en": "Synthetic recurring service",
+    "zh-CN": "合成订阅服务"
+  },
+  "u1.category.dining": {"en": "Dining", "zh-CN": "餐饮"},
+  "u1.category.transport": {"en": "Transport", "zh-CN": "交通"},
+  "u1.category.shopping": {"en": "Shopping", "zh-CN": "购物"},
+  "u1.category.services": {"en": "Services", "zh-CN": "生活服务"},
+  "u1.category.gifts": {"en": "Gifts", "zh-CN": "礼品"},
+  "u1.category.groceries": {"en": "Groceries", "zh-CN": "日用杂货"},
+  "u1.category.housing": {"en": "Housing", "zh-CN": "住房"},
+  "u1.category.utilities": {"en": "Utilities", "zh-CN": "水电燃气"},
+  "u1.category.healthcare": {"en": "Healthcare", "zh-CN": "医疗健康"},
+  "u1.timeline.seq": {"en": "Seq", "zh-CN": "序号"},
+  "u1.timeline.ts": {"en": "Simulated time (UTC)", "zh-CN": "模拟时间（UTC）"},
+  "u1.timeline.event": {"en": "Audit event", "zh-CN": "审计事件"},
+  "u1.timeline.status": {"en": "Result", "zh-CN": "结果"},
+  "u1.aa.placeholder": {"en": "Choose contacts", "zh-CN": "请选择联系人"}
+}

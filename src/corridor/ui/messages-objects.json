@@ -1,0 +1,46 @@
+{
+  "object.subscription": {
+    "en": "{merchant} · {amount} {period} (authorization {index})",
+    "zh-CN": "{merchant} · {period} {amount}（第 {index} 项授权）"
+  },
+  "object.period.monthly": {
+    "en": "monthly",
+    "zh-CN": "每月"
+  },
+  "object.period.yearly": {
+    "en": "yearly",
+    "zh-CN": "每年"
+  },
+  "object.card.ordinal": {
+    "en": "Card {index} (synthetic)",
+    "zh-CN": "卡片 {index}（合成）"
+  },
+  "object.schedule": {
+    "en": "{contact} · {period} · {amount} (authorization {index})",
+    "zh-CN": "{contact} · {period} · {amount}（第 {index} 项授权）"
+  },
+  "object.schedule.monthly": {
+    "en": "monthly on day {day}",
+    "zh-CN": "每月{day}号"
+  },
+  "object.schedule.once": {
+    "en": "once on {date}",
+    "zh-CN": "单次 {date}"
+  },
+  "Debit authorization": {
+    "en": "Debit authorization",
+    "zh-CN": "代扣授权"
+  },
+  "Card": {
+    "en": "Card",
+    "zh-CN": "卡片"
+  },
+  "Holding": {
+    "en": "Holding",
+    "zh-CN": "持仓"
+  },
+  "Scheduled transfer authorization": {
+    "en": "Scheduled transfer authorization",
+    "zh-CN": "定时转账授权"
+  }
+}

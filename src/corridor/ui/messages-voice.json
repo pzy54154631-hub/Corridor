@@ -1,0 +1,74 @@
+{
+  "customer:Read-only birthday suggestion; no operation authorized. Due: ": {
+    "en": "This is only a reminder; you have not started anything yet. Due: ",
+    "zh-CN": "这只是提醒，您还没有办理任何业务 · 到期时间："
+  },
+  "customer:birthday.reminder_only": {
+    "en": "This is only a reminder: the plan can be previewed once its budget-lock month starts; you have not started anything yet.",
+    "zh-CN": "这只是提醒：锁款月份开始后才能预览计划，您还没有办理任何业务。"
+  },
+  "customer:birthday.not_eligible": {
+    "en": "This birthday is no longer an eligible calendar event. No plan was created and you have not started anything.",
+    "zh-CN": "该生日已不是可安排的日历事件，没有生成计划，您也没有办理任何业务。"
+  },
+  "customer:birthday.outside_lock_month": {
+    "en": "This birthday is outside its budget-lock window (the order day's month, before the order time). No plan was created and you have not started anything.",
+    "zh-CN": "该生日不在锁款窗口内（订购日所在月份、订购时间之前），没有生成计划，您也没有办理任何业务。"
+  },
+  "customer:chat.schedule.unresolved": {
+    "en": "I could not tell exactly when to send it. You can say: every month on day 1-28, tomorrow, next Monday-Sunday, the end of the month, YYYY-MM-DD, a month and a day, or a day this month.",
+    "zh-CN": "还没能唯一确定执行日期。可以这样说：每月N号（1–28日）、明天、下周X、月底、YYYY-MM-DD、M月D号、当月N号。"
+  },
+  "customer:chat.schedule.monthly_day": {
+    "en": "Monthly transfers can run only on days 1-28; please choose another day.",
+    "zh-CN": "每月定时转账目前只支持每月1–28日，请换一个日期。"
+  },
+  "customer:chat.schedule.when": {
+    "en": "When would you like to send it? Please name an exact date, such as tomorrow, next Friday, 20 October or the 5th of every month.",
+    "zh-CN": "您想什么时候转？请说明确的日期，例如“明天”“下周五”“10月20号”或“每月5号”。"
+  },
+  "customer:chat.schedule.number_not_date": {
+    "en": "The day number looks like a room, building or door number, so I did not read it as a date. When would you like to send it? Please name an exact date.",
+    "zh-CN": "句中的“N号”看起来是房号、楼号或门牌，我没有把它当作日期。您想什么时候转？请说明确的日期。"
+  },
+  "customer:chat.aa.unresolved": {
+    "en": "I could not tell who joins the split bill or what the total is. Write 'me and A, B AA total', or choose the participants on the service page.",
+    "zh-CN": "还没能确定AA的参与人或总额。请写成「我和A、B AA 总额」，或在业务页选择参与人。"
+  },
+  "customer:chat.aa.ambiguous": {
+    "en": "One name matches more than one contact; please choose the participants on the service page.",
+    "zh-CN": "同一称呼对应多位联系人，请在业务页选择参与人。"
+  },
+  "customer:chat.aa.complete_prompt": {
+    "en": "Please choose the remaining split-bill participants from your verified contacts below.",
+    "zh-CN": "请在下方从已核验联系人中补全AA参与人。"
+  },
+  "customer:Executed · bank receipt verified": {
+    "en": "Done",
+    "zh-CN": "已办理"
+  },
+  "polish.receipt.line": {
+    "en": "Time: {time} · Receipt number: {receipt} · Status: {status}",
+    "zh-CN": "办理时间：{time} · 回执编号：{receipt} · 状态：{status}"
+  },
+  "customer:polish.receipt.line": {
+    "en": "Time: {time} · Receipt number (last 8 characters): {receipt} · Status: {status}",
+    "zh-CN": "办理时间：{time} · 回执编号（末 8 位）：{receipt} · 状态：{status}"
+  },
+  "polish.receipt.status.settled": {
+    "en": "Completed",
+    "zh-CN": "已完成"
+  },
+  "polish.receipt.status.pending": {
+    "en": "Processing",
+    "zh-CN": "处理中"
+  },
+  "polish.receipt.status.failed": {
+    "en": "Not completed",
+    "zh-CN": "未成功"
+  },
+  "polish.receipt.status.unknown": {
+    "en": "Being reconciled",
+    "zh-CN": "待核对"
+  }
+}

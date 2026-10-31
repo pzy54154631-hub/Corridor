@@ -1,0 +1,374 @@
+{
+  "live.badge.scripted": {
+    "en": "Scripted demo",
+    "zh-CN": "脚本演示"
+  },
+  "live.badge.live": {
+    "en": "Live model: {deployment} (banking chat planner)",
+    "zh-CN": "实时模型：{deployment}（银行对话规划）"
+  },
+  "live.badge.live_exhausted": {
+    "en": "Live model: {deployment} (banking chat planner · cap reached)",
+    "zh-CN": "实时模型：{deployment}（银行对话规划 · 已达上限）"
+  },
+  "live.badge.live_revoked": {
+    "en": "Live model: {deployment} (stopped: new requests are no longer sent to the model)",
+    "zh-CN": "实时模型：{deployment}（已停用：新的请求不再发给模型）"
+  },
+  "live.off_hint": {
+    "en": "Live model off (CORRIDOR_LIVE is not 1): every proposal comes from the scripted planner; no model request is sent.",
+    "zh-CN": "实时模型未启用（CORRIDOR_LIVE 不为 1）：所有提案来自脚本规划器，不发出模型请求。"
+  },
+  "live.config_invalid": {
+    "en": "Live model configuration is invalid; the scripted demo continues.",
+    "zh-CN": "实时模型配置无效，仍为脚本演示。"
+  },
+  "live.config_invalid_live": {
+    "en": "Live model configuration is invalid: new requests are no longer sent to the model; the scripted demo returns once the current action is completed or withdrawn.",
+    "zh-CN": "实时模型配置无效：新的请求不再发给模型；当前这笔办理完成或撤回后回到脚本演示。"
+  },
+  "live.expander": {
+    "en": "Live model (access code required)",
+    "zh-CN": "实时模型（需访问码）"
+  },
+  "live.expander_on": {
+    "en": "Live model: on · {deployment}",
+    "zh-CN": "实时模型：已开启 · {deployment}"
+  },
+  "live.intro": {
+    "zh-CN": "三个条件同时满足才会开启：进程开关 CORRIDOR_LIVE=1、按路径读取的凭据文件、评委访问码；另须设置运行日志目录 LIVE_JOURNAL_DIR。默认关闭；关闭且本会话从未开启时，控制器使用原脚本规划器对象，页面多一枚徽标。从开启状态关闭时，新的请求立即不再发给模型，进行中的办理到交易边界才换回脚本。访问码在浏览器内与一次性挑战做哈希，组件只把这一证明发给服务器（须在 HTTPS 或本机地址打开页面）。",
+    "en": "Three conditions at once: the process switch CORRIDOR_LIVE=1, a credential file read by path, and the judges' access code; a journal directory (LIVE_JOURNAL_DIR) must be set too. Off by default; when off and never switched on in this session, the controller keeps the original scripted planner object and the page adds a badge. When switched off after being on, new requests stop going to the model at once, and an open transaction returns to the scripted planner at its boundary. The access code is hashed in your browser with a single-use challenge; the field sends only that proof to the server (open the page over HTTPS or on this machine)."
+  },
+  "live.customer.intro": {
+    "en": "The real AI model needs the judges' access code; the scripted demo is used by default.",
+    "zh-CN": "真实 AI 模型需要评委访问码才能开启；默认使用脚本演示。"
+  },
+  "live.judge_strip": {
+    "en": "Judge view: rule IDs, hashes, tokens and audit evidence are shown. Banking chat planning in this session currently uses the live model {deployment} (record mode; replays strictly offline); the wealth advisor, demo scenarios and isolated evaluations do not use it and stay scripted. This is a single demonstration, not a cross-model result; cross-model results were measured on the frozen version; see the evidence index.",
+    "zh-CN": "评委视图：显示规则编号、哈希、令牌与审计证据。本会话的银行对话规划当前使用实时模型 {deployment}（录制模式，可断网严格回放）；理财顾问、演示场景与隔离评测不经实时模型，仍为脚本演示。这是单次演示，不是跨模型实验结论；跨模型实验结果在冻结版本上测得，见证据索引。"
+  },
+  "live.judge_strip_revoked": {
+    "en": "Judge view: rule IDs, hashes, tokens and audit evidence are shown. Banking chat planning in this session used the live model {deployment} and has been stopped: new chat requests are not sent to the model (they show as failures); once the current action is completed or withdrawn the page returns to the scripted demo. This is a single demonstration, not a cross-model result; the cross-model results were measured on the frozen version; see the evidence index.",
+    "zh-CN": "评委视图：显示规则编号、哈希、令牌与审计证据。本会话的银行对话规划曾使用实时模型 {deployment}，现已停用：新的对话请求不会发给模型（显示为失败）；当前这笔办理完成或撤回后回到脚本演示。这是单次演示，不是跨模型实验结论；跨模型实验结果在冻结版本上测得，见证据索引。"
+  },
+  "live.corner": {
+    "en": "Live model: {deployment}",
+    "zh-CN": "实时模型：{deployment}"
+  },
+  "live.scope.wealth": {
+    "en": "This page is handled by the wealth advisor, which is not connected to the live model (scripted demo); banking chat planning still uses the live model {deployment}.",
+    "zh-CN": "本页由理财顾问处理：理财顾问未接实时模型，为脚本演示；银行对话规划仍为实时模型 {deployment}。"
+  },
+  "live.scope.preset": {
+    "en": "A demo scenario is open: it runs its own scripted controller (scripted demo); after closing it, banking chat planning still uses the live model {deployment}.",
+    "zh-CN": "当前是演示场景：它使用独立的脚本控制器（脚本演示）；关闭演示场景后，银行对话规划仍为实时模型 {deployment}。"
+  },
+  "live.deployment": {
+    "en": "Deployment",
+    "zh-CN": "部署"
+  },
+  "live.credential.ok": {
+    "en": "credential file found",
+    "zh-CN": "凭据文件已找到"
+  },
+  "live.credential.missing_dir": {
+    "en": "credential directory not set",
+    "zh-CN": "未设置凭据目录"
+  },
+  "live.credential.missing_file": {
+    "en": "credential file missing",
+    "zh-CN": "凭据文件缺失"
+  },
+  "live.credential.no_key": {
+    "en": "credential file has no key",
+    "zh-CN": "凭据文件没有密钥"
+  },
+  "live.credential.endpoint_mismatch": {
+    "en": "credential file endpoint differs from the registry; refused",
+    "zh-CN": "凭据文件端点与部署清单不一致，拒绝使用"
+  },
+  "live.credential.disabled": {
+    "en": "switch off",
+    "zh-CN": "开关关闭"
+  },
+  "live.price": {
+    "en": "{model} · assumed price {price_in} / {price_out} {currency} per million tokens (in / out) · {note}",
+    "zh-CN": "{model} · 假设单价 {price_in} / {price_out} {currency} 每百万 token（入 / 出）· {note}"
+  },
+  "live.price_note.openai-gpt-6.1-sol": {
+    "en": "no official unit price: an assumed budget parameter from docs/MODELS.md (not an official price, not verified)",
+    "zh-CN": "无官方单价：按 docs/MODELS.md 的假设价记账（不是官方价格，未经核验）"
+  },
+  "live.price_note.openai-gpt-5.4-mini": {
+    "en": "an assumed budget parameter documented in the evidence index (not an official price, not verified)",
+    "zh-CN": "按证据索引所列的假设价记账（不是官方价格，未经核验）"
+  },
+  "live.price_note.deepseek-flash": {
+    "en": "the official uncached peak rate listed in the evidence index (including price source, UTC time and hash); a budget parameter, not an invoice",
+    "zh-CN": "按证据索引所列的官方峰时未缓存价（含价格来源、UTC 时间与哈希）；是预算参数，不是账单"
+  },
+  "live.price_note.zhipu-glm-5.3": {
+    "en": "an unverified budget parameter (no official price page for this model is archived in this repository)",
+    "zh-CN": "未经核验的预算参数（本仓库没有归档该型号的官方价格页）"
+  },
+  "live.price_note.zhipu-glm-5.3-flash": {
+    "en": "an unverified budget parameter (no official price page for this model is archived in this repository)",
+    "zh-CN": "未经核验的预算参数（本仓库没有归档该型号的官方价格页）"
+  },
+  "live.price_note.zhipu-glm-4.7-flash": {
+    "en": "an unverified budget parameter: reported as a free tier, which this repository has not verified; the budget guard needs a positive price and reserves at a nominal CNY 1 / 1, so if the tier is indeed free the ledger overstates the cost",
+    "zh-CN": "未经核验的预算参数：据称为免费档，本仓库未核验；预算守卫要求正价，按名义价 CNY 1 / 1 预留，若确为免费档则账面高于实际"
+  },
+  "live.access_code": {
+    "en": "Access code",
+    "zh-CN": "访问码"
+  },
+  "live.unlock": {
+    "en": "Unlock the live model",
+    "zh-CN": "解锁实时模型"
+  },
+  "live.unlocked": {
+    "en": "Live model unlocked for this session.",
+    "zh-CN": "本会话已解锁实时模型。"
+  },
+  "live.denied": {
+    "en": "Access code invalid.",
+    "zh-CN": "访问码无效。"
+  },
+  "live.locked_out": {
+    "en": "Too many wrong access codes; this session is locked.",
+    "zh-CN": "访问码连续错误次数过多，本会话已锁定。"
+  },
+  "live.locked_out_all": {
+    "zh-CN": "访问码错误次数过多，新的解锁已对所有会话停止。",
+    "en": "Too many wrong access codes; new unlocks are stopped for every session."
+  },
+  "live.unlock_unavailable": {
+    "en": "Live access cannot be unlocked: the switch, the journal directory, the credential file or the access code is missing, or the process environment carries LLM_* variables that are not allowed.",
+    "zh-CN": "无法解锁：进程开关、运行日志目录、凭据文件或访问码缺失，或进程环境里有不允许的 LLM_* 变量。"
+  },
+  "live.revoked.credentials": {
+    "en": "The credential file or the access code changed: the earlier unlock was revoked; enter the access code again.",
+    "zh-CN": "凭据文件或访问码已变更：原有授权已撤销，请重新输入访问码。"
+  },
+  "live.toggle": {
+    "en": "Use the live model",
+    "zh-CN": "使用实时模型"
+  },
+  "live.reason.disabled": {
+    "en": "Live model off: CORRIDOR_LIVE is not 1.",
+    "zh-CN": "实时模型未启用：CORRIDOR_LIVE 不为 1。"
+  },
+  "live.reason.missing_journal": {
+    "en": "Live model unavailable: LIVE_JOURNAL_DIR is not set (the recordings and the spend ledger live there, and the spend cap accumulates per directory).",
+    "zh-CN": "实时模型不可用：未设置运行日志目录 LIVE_JOURNAL_DIR（录制文件与花费台账都写在这里，花费上限按目录累计）。"
+  },
+  "live.reason.inherited_env": {
+    "en": "Live model unavailable: the process environment carries variables the frozen client would inherit ({names}), which would change its caps or request settings; start the demo without them.",
+    "zh-CN": "实时模型不可用：进程环境里有冻结客户端会继承的变量（{names}），会改变上限或请求参数；请在不含这些变量的环境里启动。"
+  },
+  "live.reason.missing_credentials": {
+    "en": "Live model unavailable: no usable credential file for this deployment.",
+    "zh-CN": "实时模型不可用：该部署没有可用的凭据文件。"
+  },
+  "live.reason.locked": {
+    "en": "This session is locked: too many wrong access codes in a row; it no longer accepts a code.",
+    "zh-CN": "本会话已锁定：访问码连续错误次数过多，本会话不再接受访问码。"
+  },
+  "live.reason.locked_all": {
+    "zh-CN": "访问码错误次数过多，新的解锁已对所有会话停止（已解锁的会话不受影响）；需托管方换用新的运行日志目录或清理其台账后才能解除。",
+    "en": "Too many wrong access codes: new unlocks are stopped for every session (sessions already unlocked are not affected) until the operator switches to a new journal directory or clears its ledger."
+  },
+  "live.reason.access_required": {
+    "en": "Enter the judges' access code to unlock the live model.",
+    "zh-CN": "请输入评委访问码以解锁实时模型。"
+  },
+  "live.reason.ledger_unavailable": {
+    "en": "The spend ledger or the journal cannot be read or written right now: live calls are stopped (this is not a spent cap); the ledger is checked again before the next request.",
+    "zh-CN": "花费台账或运行日志暂时无法读写：实时调用已停止（这不是额度用尽）；下一次请求前会重新核验台账。"
+  },
+  "live.reason.budget_exhausted": {
+    "en": "The live caps are reached (calls in this session or the cumulative spend of this journal directory); scripted demo only.",
+    "zh-CN": "实时模型已达上限（本会话调用次数或本日志目录的累计花费），只能脚本演示。"
+  },
+  "live.reason.budget_pending": {
+    "en": "Cap reached: the page returns to the scripted demo once the current action completes or is cancelled; until then new chat requests are refused by the cap.",
+    "zh-CN": "已达上限：本笔办理完成或取消后自动退回脚本演示；在此之前，新的对话请求会被上限拒绝。"
+  },
+  "live.reason.revoked_pending": {
+    "en": "The live model has been stopped (switched off, access revoked or credentials changed): new chat requests are not sent to the model and show as failures. Withdraw the current action with Cancel or the Stop button at the top; the scripted demo follows.",
+    "zh-CN": "实时模型已停用（开关已关闭、访问已撤销或凭据已变更）：新的对话请求不会发给模型，会显示为失败；请点「取消」或页面顶部的「中断」撤回当前办理，之后回到脚本演示。"
+  },
+  "live.reason.ready": {
+    "en": "Live model ready; switch it on to send the next request to the model.",
+    "zh-CN": "实时模型就绪；打开开关后，下一条请求发给模型。"
+  },
+  "live.reason.on": {
+    "en": "On: banking chat requests go to {deployment}. Words the rules cannot read are sent to it too, with personal details replaced by tokens, together with the contacts they mention and the previous reply's intent label (a closed label that holds no words), only to suggest questions; those calls count against the session's call cap.",
+    "zh-CN": "已开启：银行对话请求发给 {deployment}。规则听不懂的话也会在隐去个人信息后发给它，连同原话提到的联系人和上一轮回复的意图标签（封闭枚举，不含原话），只用于生成建议问句，这些调用计入本会话的调用上限。"
+  },
+  "live.customer.reason.unavailable": {
+    "en": "The real AI model is not available (the host has not finished setting it up); this is the scripted demo.",
+    "zh-CN": "真实 AI 暂不可用（托管方尚未完成配置），当前为脚本演示。"
+  },
+  "live.boundary_locked": {
+    "en": "An action is still open (awaiting confirmation, verification or a recipient choice): complete it, or withdraw it with Cancel or the Stop button at the top, before the planner can change.",
+    "zh-CN": "有一笔办理尚未完成（待确认、待验证或待选择收款人）：完成它，或点「取消」或页面顶部的「中断」撤回后，才能切换规划来源。"
+  },
+  "live.exhausted_notice": {
+    "en": "Live model cap reached ({reason}); returned to the scripted demo.",
+    "zh-CN": "实时模型已达上限（{reason}），已退回脚本演示。"
+  },
+  "live.exhausted.calls": {
+    "en": "calls in this session",
+    "zh-CN": "本会话调用次数"
+  },
+  "live.exhausted.spend": {
+    "en": "cumulative spend",
+    "zh-CN": "累计花费"
+  },
+  "live.client_failed": {
+    "en": "The live client could not be built (access, budget or configuration); scripted demo continues.",
+    "zh-CN": "实时模型客户端无法建立（访问、额度或配置），仍为脚本演示。"
+  },
+  "live.client_failed_returned": {
+    "en": "The live client could not be built again (access, budget or configuration); the page returned to the scripted demo.",
+    "zh-CN": "实时模型客户端无法重新建立（访问、额度或配置），已退回脚本演示。"
+  },
+  "live.caps": {
+    "zh-CN": "上限：每会话 {calls} 次调用 · 本日志目录累计 {usd} USD 与 {cny} CNY（按假设价计，不分日；换用新的 LIVE_JOURNAL_DIR 或调高上限才会重新计）。这是假设价下的预算守卫，不是提供商账单的硬上限。",
+    "en": "Caps: {calls} calls per session · {usd} USD and {cny} CNY cumulative for this journal directory (assumed prices, no daily reset; only a new LIVE_JOURNAL_DIR or a higher cap starts again). This is a budget guard at assumed prices, not a provider's hard billing limit."
+  },
+  "live.customer.caps": {
+    "en": "At most {calls} real AI calls per session, and spending has an overall cap; after that the page returns to the scripted demo.",
+    "zh-CN": "每个会话最多 {calls} 次真实 AI 调用，花费另有总上限；用完后自动回到脚本演示。"
+  },
+  "live.status": {
+    "en": "Live calls this session: {calls} ({api_calls} provider requests) · budgeted spend {spent} {currency} · {remaining} calls left · {left} {currency} left in this journal directory's cumulative cap",
+    "zh-CN": "本会话实时调用 {calls} 次（实际请求 {api_calls} 次）· 按假设价计花费 {spent} {currency} · 本会话剩余 {remaining} 次 · 本日志目录累计额度剩余 {left} {currency}"
+  },
+  "live.reserve": {
+    "zh-CN": "每次调用先按假设价预留约 {amount} {currency}（{tokens} 个输入 token + 输出上限 {output}）；发送前客户端按整个请求体的字节数另算上界，超过预留即不发送。结算分五种：没有发出，释放预留；有有效用量，按实际结算；已发出但没有用量（超时、网络错误），按发送前上界结算，不按零；无法判断，整笔预留保留；结算失败，预留保留、下一次调用前重新核验台账（若用量又超过预留，台账可能低估，所有会话停止实时调用直到托管方核对）。这是按假设价的预算守卫，不是提供商账单的硬上限；剩余额度不足一次预留即视为已达上限。",
+    "en": "Each call first reserves about {amount} {currency} at the assumed prices ({tokens} input tokens + the {output}-token output cap); before sending, the client bounds the whole request by its bytes and does not send one whose bound exceeds the reservation. Settlement has five outcomes: not sent, the reservation is released; valid usage, settled at the actual cost; sent without usage (a timeout, a network error), settled at its pre-send bound, never at zero; unclear, the whole reservation is kept; settlement failed, the reservation is kept and the ledger is checked again before the next call (if usage also exceeded the reservation the ledger may be too low, and every session stops live calls until the operator reconciles it). This is a budget guard at assumed prices, not a provider's hard billing limit; when less than one reservation is left, the cap counts as reached."
+  },
+  "live.journal": {
+    "en": "Journal directories (relative to LIVE_JOURNAL_DIR): {paths} (record mode; replays strictly offline; each holds manifest.json and the outcome index outcomes.jsonl)",
+    "zh-CN": "运行日志目录（相对 LIVE_JOURNAL_DIR）：{paths}（录制模式，可断网严格回放；每个目录含 manifest.json 与结果索引 outcomes.jsonl）"
+  },
+  "live.kernel_note": {
+    "en": "The model has no authority to execute: only proposals that pass the type and policy checks go on, and invalid output is refused; the same frozen kernel and gateway judge them, and the recipient check and approvals apply as usual.",
+    "zh-CN": "模型没有执行权限；仅通过类型和策略校验的提案可进入后续流程，非法输出会被拒绝；提案经同一冻结内核与网关处理，收款人核实与审批照常生效。"
+  },
+  "live.customer.kernel_note": {
+    "en": "The model can only make suggestions; every action is still checked against the bank's rules and confirmed by you.",
+    "zh-CN": "模型只能提出建议；每笔办理仍按银行规则核验，并由您本人确认。"
+  },
+  "live.no_secret": {
+    "zh-CN": "组件不向服务器发送明文访问码；服务器只收到一次性挑战的证明，核对后即从会话中删除。访问码须为至少 20 位、由密码学随机源生成的串（短码可能被拿到证明的人离线猜出）。密钥按路径从凭据文件读取，每次调用时读入、调用结束即清除；在所测场景下（成功、401、超时、格式失败、录制失败与结算失败，哨兵值逐项扫描），调用之间的会话对象、页面、运行日志、结果索引与台账里没有扫描到密钥或访问码。调用进行中密钥在该次请求的客户端对象里；这不是内存可靠清零的承诺。",
+    "en": "The field never sends the access code itself: the server receives only a proof for a single-use challenge and deletes it from the session once checked. The access code must be a string of at least 20 characters from a cryptographic random source (a short code could be guessed offline by anyone holding a proof). The key is read from the credential file by path for each call and cleared when the call returns; in the tested outcomes (success, 401, timeout, format failure, record failure and settlement failure, scanned for sentinel values) neither the key nor the code was found in the session objects between calls, the page, the journal, the outcome index or the ledger. During a call the key is in that request's client object; this is not a promise that memory is wiped."
+  },
+  "live.customer.no_secret": {
+    "zh-CN": "访问码在您的浏览器里与一次性挑战做哈希，组件不向服务器发送明文访问码，页面与运行记录里也不保存它。",
+    "en": "The access code is hashed in your browser with a single-use challenge; the field never sends the code itself to the server, and neither the page nor the run records keep it."
+  },
+  "live.failure": {
+    "en": "Live model request failed ({source}): {reason}. This request was not completed and did not fall back to the scripted demo.",
+    "zh-CN": "实时模型调用失败（{source}）：{reason}。本次请求未完成，未退回脚本演示。"
+  },
+  "live.customer.failure": {
+    "en": "The live model request failed: {reason}. This request was not completed; no scripted reply was used instead.",
+    "zh-CN": "实时模型调用失败：{reason}。本次请求未完成，未改用脚本回复。"
+  },
+  "live.failure_cancel": {
+    "en": "This card can no longer be confirmed: withdraw it with Cancel, then start again.",
+    "zh-CN": "这张卡片不能再确认：请点「取消」撤回，然后重新发起。"
+  },
+  "live.reason_of.output-rejected": {
+    "en": "the model's reply did not satisfy the output contract",
+    "zh-CN": "模型回复不符合输出格式要求"
+  },
+  "live.reason_of.live-error": {
+    "en": "a provider or network error (including a timeout, failed authentication or rate limiting)",
+    "zh-CN": "提供商或网络错误（含超时、鉴权失败或限流）"
+  },
+  "live.reason_of.budget-rejected": {
+    "en": "refused by the call or spend cap",
+    "zh-CN": "被调用次数或花费上限拒绝"
+  },
+  "live.reason_of.pricing-rejected": {
+    "en": "the usage could not be priced at the assumed prices",
+    "zh-CN": "用量无法按假设价核算，已拒绝"
+  },
+  "live.reason_of.context-rejected": {
+    "en": "the request carried disallowed content and was not sent",
+    "zh-CN": "请求含不允许的内容，未发出"
+  },
+  "live.reason_of.record-exists": {
+    "en": "it repeated a request already recorded in this session and was refused as a duplicate",
+    "zh-CN": "与本会话已有录制相同，作为重复调用被拒绝"
+  },
+  "live.reason_of.replay-corrupt": {
+    "en": "the journal refused to overwrite an existing recording",
+    "zh-CN": "运行日志拒绝覆盖已有录制"
+  },
+  "live.reason_of.replay-miss": {
+    "en": "the replay holds no recording for it",
+    "zh-CN": "回放中没有这条录制"
+  },
+  "live.reason_of.agent-rejected": {
+    "en": "the model's output did not pass the page's format and fact checks and was refused, not acted on",
+    "zh-CN": "模型的输出没有通过页面的格式与信息核对，已拒绝，未按其办理"
+  },
+  "live.reason_of.ledger-unavailable": {
+    "en": "the spend ledger or the journal could not be written, so the request was not sent",
+    "zh-CN": "花费台账或运行日志暂时无法写入，请求未发出"
+  },
+  "live.reason_of.live-revoked": {
+    "en": "the live model was stopped (switched off, access revoked or credentials changed), so the request was not sent",
+    "zh-CN": "实时模型已停用（开关关闭、访问撤销或凭据变更），请求未发出"
+  },
+  "live.reason_of.unknown": {
+    "en": "the call did not complete",
+    "zh-CN": "调用未完成"
+  },
+  "live.note.partly_scripted": {
+    "en": "Live model timed out: {count} step(s) of this reply came from the scripted rules (the client's own timeout fallback), not from the model.",
+    "zh-CN": "实时模型超时：本次回复有 {count} 步由脚本规则代答（客户端既有的超时回退），不全是模型输出。"
+  },
+  "live.note.calls": {
+    "en": "Live calls behind this reply: {calls} (recorded {recorded} · timed out and answered by scripts {timeouts} · refused by the page's checks {rejected})",
+    "zh-CN": "本条回复的实时调用：{calls} 次（录制 {recorded} 次 · 超时由脚本代答 {timeouts} 次 · 输出被页面核对拒绝 {rejected} 次）"
+  },
+  "live.note.settlement_failed": {
+    "en": "Cost settlement failed: this call's cost could not be written to the ledger, which keeps the reservation made before the call (not less than the actual cost at the assumed prices); the ledger is checked again before the next live call.",
+    "zh-CN": "费用结算异常：本次调用的费用未能写入台账，台账保留调用前的预留（不少于按假设价的实际费用）；下一次实时调用前会重新核验台账。"
+  },
+  "live.note.overrun": {
+    "en": "The provider reported more usage than the pre-send bound: the ledger records the actual cost and this session has stopped live calls.",
+    "zh-CN": "提供商报告的用量超过了发送前的上界：台账按实际费用记账，本会话已停止实时调用。"
+  },
+  "live.note.wealth_scripted": {
+    "en": "The wealth goal is parsed by scripted rules: the wealth advisor is not connected to the live model; only the intent classification went to it.",
+    "zh-CN": "理财目标由脚本规则解析：理财顾问未接实时模型，本条只有意图分类经过实时模型。"
+  },
+  "live.note.clarify": {
+    "en": "This reply asks you to clarify: whenever the model's output disagrees with the local trusted parse or details are missing, the page asks instead of acting on the model's output.",
+    "zh-CN": "本条为请您澄清：模型输出与本地可信解析不一致或信息不足时，页面一律改为澄清，不按模型输出办理。"
+  },
+  "live.note.unreconciled": {
+    "zh-CN": "费用待核对：提供商报告的用量超过了调用前的预留，而这次的费用又未能写入台账，台账可能低估实际费用；在托管方核对之前，所有会话都不再发起实时调用。",
+    "en": "Cost to be reconciled: the provider reported more usage than the reservation made before the call, and this call's cost could not be written to the ledger, so the ledger may be lower than the real cost; no session makes live calls until the operator reconciles it."
+  },
+  "live.reason.weak_code": {
+    "zh-CN": "配置的访问码太短或太简单（少于 20 位，或不同字符少于 8 种），实时模型不可用：请托管方用密码学随机源生成访问码（例如 secrets.token_urlsafe(24)）。",
+    "en": "The configured access code is too short or too simple (fewer than 20 characters, or fewer than 8 different ones), so live access is unavailable: the operator should generate it from a cryptographic random source (for example secrets.token_urlsafe(24))."
+  },
+  "live.reason.ledger_unreconciled": {
+    "zh-CN": "花费台账待核对（有一次调用的用量超过预留且费用未能记账），所有会话的实时调用已停止，需托管方核对后清除。",
+    "en": "The spend ledger awaits reconciliation (one call's usage exceeded its reservation and its cost could not be recorded): live calls are stopped for every session until the operator reconciles it."
+  },
+  "live.reason_of.ledger-unreconciled": {
+    "zh-CN": "花费台账待核对，请求未发出",
+    "en": "the spend ledger awaits reconciliation, so the request was not sent"
+  }
+}

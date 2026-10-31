@@ -1,0 +1,290 @@
+{
+  "u1.chain.proposal_check": {
+    "zh-CN": "提案检查（非派发）",
+    "en": "Proposal check (not dispatch)"
+  },
+  "u1.chain.post_dispatch": {
+    "zh-CN": "已派发；派发后历史差异（含本链自身执行效果，不作影响传播）：",
+    "en": "Dispatched; post-dispatch history (includes this chain's own effects; not propagated): "
+  },
+  "u1.chain.at_dispatch": {
+    "zh-CN": "按派发时状态 · ",
+    "en": "At dispatch time · "
+  },
+  "u1.chain.source_title": {
+    "zh-CN": "计划 {index} 的会话来源",
+    "en": "Conversation source for plan {index}"
+  },
+  "u1.chain.00": {
+    "zh-CN": "参考判定 · 研究口径",
+    "en": "Reference judgment · research"
+  },
+  "u1.chain.01": {
+    "zh-CN": "长链一致性面板 · 只读",
+    "en": "Long-chain consistency · read only"
+  },
+  "u1.chain.02": {
+    "zh-CN": "逐项对照签名目标、批准时快照与当前证据。影响传播仅为依赖图提示；参考判定不授予权限，所有派发仍由冻结网关裁决。",
+    "en": "Compare signed goals, approval snapshots and current evidence. Propagation is a dependency-graph hint. Research judgments grant no authority; the frozen gateway still decides every dispatch."
+  },
+  "u1.chain.03": {
+    "zh-CN": "已消费 token 不能再次使用。已结算节点的哈希变化只作历史对照，不表示撤销结算；定时节点执行时使用现有 SPA 路径重新检查。研究口径保留政策、业务日、对象及档位不变，排除财务版本与余额原值相等；缺少批准时证据时明确不判定。",
+    "en": "Consumed tokens cannot be reused. Changes on settled nodes are historical comparisons and do not reverse settlement. Scheduled execution is rechecked through the existing SPA path. This conservative research contract retains policy, business date, object and tier equality, while excluding financial-version and exact-balance equality. Missing approval evidence is not evaluated."
+  },
+  "u1.chain.04": {
+    "zh-CN": "审批预算与链路预检",
+    "en": "Approval budget and chain preflight"
+  },
+  "u1.chain.05": {
+    "zh-CN": "政策上限",
+    "en": "Policy limit"
+  },
+  "u1.chain.06": {
+    "zh-CN": "已用",
+    "en": "Used"
+  },
+  "u1.chain.07": {
+    "zh-CN": "可执行剩余",
+    "en": "Executable remainder"
+  },
+  "u1.chain.08": {
+    "zh-CN": "本链预计需审批",
+    "en": "Expected chain approvals"
+  },
+  "u1.chain.09": {
+    "zh-CN": "第 6 次请求会触发既有安全锁，所以可执行剩余按上限减 1 计算。预检为只读提示，不预留额度、不改变审批或政策；并发操作和后续状态变化仍可能停止本链。",
+    "en": "The sixth request triggers the existing safety lock, so spendable capacity is limit minus one. This read-only preflight reserves no capacity and changes no approval or policy. Concurrent operations and later state changes may still stop the chain."
+  },
+  "u1.chain.10": {
+    "zh-CN": "模拟经过 10 分钟",
+    "en": "Simulate 10 minutes passing"
+  },
+  "u1.chain.11": {
+    "zh-CN": "推进的是现有模拟时钟；待输入验证码在 120 秒后过期，连续按 6 次会让登录过期；到期订阅、已授权定时任务和到期赎回也会由网关处理或结算。",
+    "en": "The existing simulated clock advances. Pending codes expire after 120 seconds; six consecutive clicks expire the login. Due subscriptions, authorized schedules and due redemptions are also processed or settled by the gateway."
+  },
+  "u1.chain.12": {
+    "zh-CN": "未保留批准时状态；不推断许可是否仍成立",
+    "en": "Approval-time state was not retained; no inference about continuing permission."
+  },
+  "u1.chain.13": {
+    "zh-CN": "排除财务版本及余额原值相等；保留政策、业务日、对象、档位和凭证前提",
+    "en": "Exclude financial-version and exact-balance equality; retain policy, business date, objects, tier and credential preconditions."
+  },
+  "u1.chain.14": {
+    "zh-CN": "尚无批准时快照",
+    "en": "No approval snapshot yet"
+  },
+  "u1.chain.15": {
+    "zh-CN": "Token：尚未签发",
+    "en": "Token: not issued"
+  },
+  "u1.chain.16": {
+    "zh-CN": "SPA：不适用 / 尚未签署",
+    "en": "SPA: not applicable / not signed yet"
+  },
+  "u1.chain.17": {
+    "zh-CN": "MFA grant：无（红级仍须验证）",
+    "en": "MFA grant: none (red-tier actions still require verification)"
+  },
+  "u1.chain.18": {
+    "zh-CN": "签名目标摘要",
+    "en": "Signed goal digest"
+  },
+  "u1.chain.19": {
+    "zh-CN": "未签名预览；尚无签名目标",
+    "en": "Unsigned preview; no signed goal yet"
+  },
+  "u1.chain.20": {
+    "zh-CN": "<style>.chain-evidence{{width:100%;table-layout:fixed;border-collapse:collapse;font-size:13px}}.chain-evidence th,.chain-evidence td{{padding:10px;border:1px solid #ddd;vertical-align:top;overflow-wrap:anywhere}}.chain-evidence th{{background:#eee9f4;color:#292437}}.chain-evidence pre{{white-space:pre-wrap;font-size:11px}}.chain-evidence details table{{font-size:10px;table-layout:fixed;width:100%}}</style><table class=\"chain-evidence\"><thead><tr><th>原始意图</th><th>当前证据</th><th>有效授权</th><th>影响传播</th><th>双判断</th></tr></thead><tbody>",
+    "en": "<style>.chain-evidence{{width:100%;table-layout:fixed;border-collapse:collapse;font-size:13px}}.chain-evidence th,.chain-evidence td{{padding:10px;border:1px solid #ddd;vertical-align:top;overflow-wrap:anywhere}}.chain-evidence th{{background:#eee9f4;color:#292437}}.chain-evidence pre{{white-space:pre-wrap;font-size:11px}}.chain-evidence details table{{font-size:10px;table-layout:fixed;width:100%}}</style><table class=\"chain-evidence\"><thead><tr><th>Original intent</th><th>Current evidence</th><th>Effective authority</th><th>Propagation</th><th>Dual judgment</th></tr></thead><tbody>"
+  },
+  "u1.chain.21": {
+    "zh-CN": "先预览生日计划，查看四个节点与逐笔授权；预览不执行交易。",
+    "en": "Preview the birthday plan to inspect its four nodes and individual approvals. Preview does not execute transactions."
+  },
+  "u1.chain.22": {
+    "zh-CN": "用户原话（会话展示，不是授权证据）",
+    "en": "User wording (conversation display, not authorization evidence)"
+  },
+  "u1.chain.23": {
+    "zh-CN": "预设来源（不是用户原话）",
+    "en": "Preset source (not a user quotation)"
+  },
+  "u1.chain.24": {
+    "zh-CN": "生日计划预设：锁定预算，按已签署日期解锁并订购鲜花、蛋糕。",
+    "en": "Birthday preset: lock the budget, then unlock and order flowers and cake on the signed dates."
+  },
+  "u1.chain.25": {
+    "zh-CN": " 秒内 ",
+    "en": " seconds / "
+  },
+  "u1.chain.26": {
+    "zh-CN": " 次",
+    "en": " requests"
+  },
+  "u1.chain.27": {
+    "zh-CN": "账户已安全锁定；等待预算窗口释放不等于解锁，请按既有设备恢复流程操作。",
+    "en": "The account is safety-locked. Waiting for budget release does not unlock it; follow the existing device recovery flow."
+  },
+  "u1.chain.28": {
+    "zh-CN": "缺少可比证据；不推断许可是否仍成立",
+    "en": "Comparable evidence is missing; no inference about continuing permission."
+  },
+  "u1.chain.29": {
+    "zh-CN": "分量一致",
+    "en": "Components unchanged"
+  },
+  "u1.chain.30": {
+    "zh-CN": "所列前提保持",
+    "en": "Listed preconditions hold"
+  },
+  "u1.chain.31": {
+    "zh-CN": "所列前提改变",
+    "en": "Listed preconditions changed"
+  },
+  "u1.chain.32": {
+    "zh-CN": "证据不足，未判定",
+    "en": "Insufficient evidence; not evaluated"
+  },
+  "u1.chain.33": {
+    "zh-CN": "\">查看用户原话 / 预设来源</a><details><summary>目标与签名摘要</summary><pre>",
+    "en": "\">View user wording / preset source</a><details><summary>Goal and signature digest</summary><pre>"
+  },
+  "u1.chain.34": {
+    "zh-CN": "<details><summary>逐项哈希对比</summary><table><thead><tr><th>分量</th><th>批准时</th><th>当前</th><th>变化</th></tr></thead><tbody>",
+    "en": "<details><summary>Component hash comparison</summary><table><thead><tr><th>Component</th><th>At approval</th><th>Current</th><th>Change</th></tr></thead><tbody>"
+  },
+  "u1.chain.35": {
+    "zh-CN": "<br>计划作废：",
+    "en": "<br>Plan voided: "
+  },
+  "u1.chain.36": {
+    "zh-CN": "；阻断：",
+    "en": "; blocked: "
+  },
+  "u1.chain.37": {
+    "zh-CN": "<br>审批预算：已用 ",
+    "en": "<br>Approval budget: used "
+  },
+  "u1.chain.38": {
+    "zh-CN": "，可用 ",
+    "en": ", available "
+  },
+  "u1.chain.39": {
+    "zh-CN": "<br>受影响下游（图推导）：",
+    "en": "<br>Affected downstream nodes (graph projection): "
+  },
+  "u1.chain.40": {
+    "zh-CN": "</td><td><strong>冻结绑定 · 实际结果</strong><br>创建派发：",
+    "en": "</td><td><strong>Frozen binding · actual result</strong><br>Creation dispatch: "
+  },
+  "u1.chain.41": {
+    "zh-CN": " / 内核：",
+    "en": " / kernel: "
+  },
+  "u1.chain.42": {
+    "zh-CN": "<br>运行节点：",
+    "en": "<br>Runtime node: "
+  },
+  "u1.chain.43": {
+    "zh-CN": "</strong><br>旧创建授权当前前提：",
+    "en": "</strong><br>Current preconditions of the old creation approval: "
+  },
+  "u1.chain.44": {
+    "zh-CN": "当前审批额度足够开始本链（只读预检）。",
+    "en": "The current approval budget is sufficient to start this chain (read-only preflight)."
+  },
+  "u1.chain.45": {
+    "zh-CN": "变化：",
+    "en": "Changed: "
+  },
+  "u1.chain.46": {
+    "zh-CN": "时间窗内",
+    "en": "Within time window"
+  },
+  "u1.chain.47": {
+    "zh-CN": "已过期",
+    "en": "Expired"
+  },
+  "u1.chain.48": {
+    "zh-CN": "本链预计需要 ",
+    "en": "This chain expects "
+  },
+  "u1.chain.49": {
+    "zh-CN": " 次审批，当前仅余 ",
+    "en": " approvals; only "
+  },
+  "u1.chain.50": {
+    "zh-CN": " 次。请等待窗口释放（最早 ",
+    "en": " remain. Wait for window release (earliest "
+  },
+  "u1.chain.51": {
+    "zh-CN": "），或推进模拟时间。",
+    "en": "), or advance simulated time."
+  },
+  "u1.chain.52": {
+    "zh-CN": "是",
+    "en": "Yes"
+  },
+  "u1.chain.53": {
+    "zh-CN": "未见作废记录",
+    "en": "No void record"
+  },
+  "u1.chain.54": {
+    "zh-CN": "否",
+    "en": "No"
+  },
+  "u1.chain.55": {
+    "zh-CN": "变化",
+    "en": "Changed"
+  },
+  "u1.chain.56": {
+    "zh-CN": "已消费",
+    "en": "Consumed"
+  },
+  "u1.chain.57": {
+    "zh-CN": "未消费",
+    "en": "Unconsumed"
+  },
+  "u1.chain.58": {
+    "zh-CN": "无",
+    "en": "None"
+  },
+  "u1.chain.59": {
+    "zh-CN": "未记录",
+    "en": "Not recorded"
+  },
+  "u1.chain.60": {
+    "zh-CN": "未派发",
+    "en": "Not dispatched"
+  },
+  "u1.chain.61": {
+    "zh-CN": "缺失",
+    "en": "Missing"
+  },
+  "u1.chain.62": {
+    "zh-CN": "一致",
+    "en": "Unchanged"
+  },
+  "u1.chain.63": {
+    "zh-CN": "未知",
+    "en": "Unknown"
+  },
+  "u1.chain.64": {
+    "zh-CN": "已按原批准派发，token 已正常消费、不可复用；不再判定旧前提",
+    "en": "Dispatched under the original approval; the token was consumed as intended and cannot be reused. Old preconditions are not re-evaluated."
+  },
+  "u1.chain.65": {
+    "zh-CN": "依赖节点：",
+    "en": "Depends on: "
+  },
+  "u1.chain.66": {
+    "zh-CN": "已拒绝",
+    "en": "Rejected"
+  },
+  "u1.chain.scope_runs": {
+    "zh-CN": "最多执行 {count} 次",
+    "en": "Maximum {count} runs"
+  }
+}

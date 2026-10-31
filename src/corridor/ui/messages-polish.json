@@ -1,0 +1,1026 @@
+{
+  "polish.safety.trigger.reject": {
+    "en": "Three money proposals rejected by the kernel (account-level, cumulative; need not be consecutive)",
+    "zh-CN": "动钱提案被内核拒绝三次（账户级累计，不要求连续）"
+  },
+  "polish.safety.reason.kernel_rejections": {
+    "en": "Kernel rejections reached the lock threshold: three account-level rejections (cumulative, need not be consecutive; reset by a settled non-green action or an unlock), or three rejected money proposals in this session since the last money proposal the kernel did not reject. May include benign state changes.",
+    "zh-CN": "内核拒绝达到锁定阈值：账户级累计三次（不要求连续；非绿业务成功结算或解锁后清零），或本会话自上一笔通过内核检查的动钱提案以来，动钱提案被拒三次。可能包含良性状态变化。"
+  },
+  "polish.safety.signal.session_money": {
+    "en": "Rejected money proposals in this session (since the last money proposal the kernel did not reject)",
+    "zh-CN": "本会话动钱提案被拒（自上一笔通过内核检查的动钱提案起计）"
+  },
+  "polish.safety.unlock_after": {
+    "en": "Earliest unlock request (Beijing time): ",
+    "zh-CN": "最早可申请解锁（北京时间）："
+  },
+  "polish.chain.required_label": {
+    "en": "Approvals in this chain (one per item)",
+    "zh-CN": "本链需逐项审批"
+  },
+  "polish.chain.required_value": {
+    "en": "{total} items · {selected} selected",
+    "zh-CN": "共 {total} 项 · 已勾选 {selected}"
+  },
+  "polish.chain.no_draft": {
+    "en": "The approval count appears after a task plan is prepared.",
+    "zh-CN": "生成任务计划后，这里显示本链需审批的项数。"
+  },
+  "polish.chain.unsigned_notice": {
+    "en": "This plan is not authorized yet. Tokens, scheduled authorizations and bank receipts appear here after each item is authorized and executed.",
+    "zh-CN": "计划尚未授权：逐项授权并执行后，这里显示令牌、定时授权与银行回执。"
+  },
+  "polish.chain.unsigned_table": {
+    "en": "View the consistency table of the unsigned draft",
+    "zh-CN": "查看未授权草稿的一致性表"
+  },
+  "polish.with_code": {
+    "en": "{label} ({code})",
+    "zh-CN": "{label}（{code}）"
+  },
+  "polish.outcome.Accept": {
+    "en": "Accept",
+    "zh-CN": "通过"
+  },
+  "polish.outcome.Reject": {
+    "en": "Reject",
+    "zh-CN": "拒绝"
+  },
+  "polish.outcome.Escalate": {
+    "en": "Escalate",
+    "zh-CN": "需升级验证"
+  },
+  "polish.recorded.pending": {
+    "en": "No recorded pair is loaded. Choose a local recording directory, case and seed to verify the strict A0/A5 results offline; this page makes no model request. Cross-model results were measured on domestic-freeze-10; see the submission materials.",
+    "zh-CN": "尚未加载录制对照。选择本地录制目录、用例与 seed 后，可在本页离线核验 A0/A5 的严格结果；本页不发起模型请求。跨模型实验结果在 domestic-freeze-10 上测得，见提交材料。"
+  },
+  "polish.wealth.evidence_mode": {
+    "en": "Evidence mode: scripted demo (no model calls) · synthetic data · simulated authentication. Cross-model recorded results were measured on domestic-freeze-10; see the submission materials.",
+    "zh-CN": "证据模式：scripted 演示（零模型调用）· 合成数据 · 模拟认证。跨模型录制结果在 domestic-freeze-10 上测得，见提交材料。"
+  },
+  "polish.wealth.attack_scope": {
+    "en": "Scripted security demonstrations on isolated synthetic accounts. Cross-model attack experiments were measured on domestic-freeze-10; see the submission materials.",
+    "zh-CN": "本区是独立合成账户上的 scripted 安全机制演示；跨模型攻击实验在 domestic-freeze-10 上测得，见提交材料。"
+  },
+  "customer:polish.wealth.attack_scope": {
+    "en": "Security demonstrations on isolated synthetic accounts, driven by a fixed script without model calls. Cross-model attack results are in the submission materials.",
+    "zh-CN": "本区是独立合成账户上的安全机制演示（固定脚本驱动，不调用模型）；跨模型攻击实验结果见提交材料。"
+  },
+  "polish.wealth.audit_mode": {
+    "en": "scripted · synthetic data · simulated bank. Cross-model recorded results were measured on domestic-freeze-10; see the submission materials.",
+    "zh-CN": "scripted · 合成数据 · 模拟银行。跨模型录制结果在 domestic-freeze-10 上测得，见提交材料。"
+  },
+  "polish.wealth.w_suite": {
+    "en": "The W suite is not run in this UI session. The J results below are separate supporting-bank tests.",
+    "zh-CN": "本界面会话未运行 W 系列；下方 J 系列是独立的银行业务测试。"
+  },
+  "polish.operator.nothing_locked": {
+    "en": "The remaining locked balance is {amount}; the operator check will not create compensation.",
+    "zh-CN": "剩余锁定金额为 {amount}，坐席核查不会生成补偿。"
+  },
+  "polish.operator.check": {
+    "en": "Operator: check whether compensation is still needed (if so, prepare a new card for device review)",
+    "zh-CN": "坐席：核查是否仍需补偿（如需要，生成新卡交设备核对）"
+  },
+  "polish.subscription.row": {
+    "en": "{merchant} · {amount} · cancellable: {cancellable} · next charge: {next_due} (Beijing time)",
+    "zh-CN": "{merchant} · {amount} · 可申请取消：{cancellable} · 下次扣费：{next_due}（北京时间）"
+  },
+  "polish.intentlog.intent": {
+    "en": "Intent",
+    "zh-CN": "意图"
+  },
+  "polish.intentlog.status": {
+    "en": "Status",
+    "zh-CN": "状态"
+  },
+  "polish.intentlog.response": {
+    "en": "Response ID (first 8)",
+    "zh-CN": "响应编号（前 8 位）"
+  },
+  "polish.intentlog.utterance": {
+    "en": "Utterance hash (first 12)",
+    "zh-CN": "原话哈希（前 12 位）"
+  },
+  "polish.audit.scope": {
+    "en": "These evaluations run with the scripted planner (no model calls) on isolated synthetic state; they demonstrate mechanisms and never modify the current demo account. Cross-model results were measured on domestic-freeze-10; see the submission materials. The Recorded model evidence tab verifies a selected recorded pair offline on this machine.",
+    "zh-CN": "以下评测在独立合成状态中用脚本规划器（scripted，零模型调用）运行，只演示机制，不修改当前演示账户。跨模型实验结果在冻结标签 domestic-freeze-10 上测得，见提交材料；「真实录制结果」页签可在本机离线核验所选录制对照。"
+  },
+  "polish.audit.tasks": {
+    "en": "J01–J22: P0 banking tasks. J23–J24: P1 card operations (scripted runs on this page).",
+    "zh-CN": "J01–J22：P0 银行业务；J23–J24：P1 卡片操作（本页为 scripted 运行）。"
+  },
+  "polish.product.r2.h30.d0.m100.y3_100": {
+    "en": "Steady 30-day holding (synthetic)",
+    "zh-CN": "稳健30天持有（合成）"
+  },
+  "polish.product.r2.h10.d1.m100.y7_200": {
+    "en": "Flexible 10-day wealth (synthetic)",
+    "zh-CN": "灵活10天理财（合成）"
+  },
+  "polish.product.r4.h10.d0.m100.y1_25": {
+    "en": "Growth select (synthetic)",
+    "zh-CN": "成长精选（合成）"
+  },
+  "polish.product.r2.h10.d0.m2000.y1_25": {
+    "en": "10-day wealth, CNY 2,000 minimum (synthetic)",
+    "zh-CN": "起投2000元10天理财（合成）"
+  },
+  "polish.product.r2.h400.d5.m100.y1_20": {
+    "en": "Long 400-day holding (synthetic)",
+    "zh-CN": "长期400天持有（合成）"
+  },
+  "polish.product.r1.h30.d0.m100.y3_100": {
+    "en": "Secure 30-day holding (synthetic)",
+    "zh-CN": "安心30天持有（合成）"
+  },
+  "polish.product.r1.h0.d1.m100.y1_50": {
+    "en": "Liquid cash, T+1 redemption (synthetic)",
+    "zh-CN": "活钱T+1赎回（合成）"
+  },
+  "polish.product.r2.h30.d0.m100.y1_25": {
+    "en": "Steady 30-day plus (synthetic)",
+    "zh-CN": "稳健30天增强（合成）"
+  },
+  "polish.product.r2.h0.d1.m100.y3_100": {
+    "en": "Steady liquid, T+1 (synthetic)",
+    "zh-CN": "稳健活钱T+1（合成）"
+  },
+  "polish.product.r3.h0.d0.m100.y9_100": {
+    "en": "Balanced growth (synthetic)",
+    "zh-CN": "平衡增长（合成）"
+  },
+  "polish.product.r1.h0.d0.m20000.y1_100": {
+    "en": "Large-balance cash management (synthetic)",
+    "zh-CN": "大额现金管理（合成）"
+  },
+  "polish.account.A_CURRENT": {
+    "en": "Debit card ••6011 (synthetic)",
+    "zh-CN": "借记卡尾号6011（合成）"
+  },
+  "polish.account.A_LOCKED": {
+    "en": "Locked budget sub-account (synthetic)",
+    "zh-CN": "预算锁定子账户（合成）"
+  },
+  "polish.card.CARD_UI_DEMO": {
+    "en": "Virtual card ••8820 (synthetic)",
+    "zh-CN": "虚拟卡尾号8820（合成）"
+  },
+  "polish.merchant.FLOWERS": {
+    "en": "Flower shop (synthetic merchant)",
+    "zh-CN": "鲜花店（合成商户）"
+  },
+  "polish.merchant.CAKE": {
+    "en": "Cake shop (synthetic merchant)",
+    "zh-CN": "蛋糕店（合成商户）"
+  },
+  "polish.merchant.SUB_A": {
+    "en": "Membership service A (synthetic)",
+    "zh-CN": "会员服务A（合成）"
+  },
+  "polish.merchant.SUB_B": {
+    "en": "Membership service B (synthetic)",
+    "zh-CN": "会员服务B（合成）"
+  },
+  "polish.merchant.SUB_C": {
+    "en": "Membership service C (synthetic)",
+    "zh-CN": "会员服务C（合成）"
+  },
+  "polish.merchant.M_DINING": {
+    "en": "Dining merchant (synthetic)",
+    "zh-CN": "餐饮商户（合成）"
+  },
+  "polish.merchant.M_TRANSPORT": {
+    "en": "Transport merchant (synthetic)",
+    "zh-CN": "出行商户（合成）"
+  },
+  "polish.merchant.M_SHOPPING": {
+    "en": "Shopping merchant (synthetic)",
+    "zh-CN": "购物商户（合成）"
+  },
+  "polish.tail.CONTACT_CHEN": {
+    "en": "3721",
+    "zh-CN": "3721"
+  },
+  "polish.tail.CONTACT_LIN_A": {
+    "en": "5502",
+    "zh-CN": "5502"
+  },
+  "polish.tail.CONTACT_LIN_B": {
+    "en": "8816",
+    "zh-CN": "8816"
+  },
+  "polish.tail.CONTACT_NEW": {
+    "en": "0457",
+    "zh-CN": "0457"
+  },
+  "polish.tail.CONTACT_LANDLORD": {
+    "en": "2290",
+    "zh-CN": "2290"
+  },
+  "polish.tail.CONTACT_SPOUSE": {
+    "en": "6634",
+    "zh-CN": "6634"
+  },
+  "polish.contact.label": {
+    "en": "{name} · ••{tail} (synthetic)",
+    "zh-CN": "{name} · 尾号{tail}（合成）"
+  },
+  "polish.position.label": {
+    "en": "{product} · position {index}",
+    "zh-CN": "{product} · 持仓 {index}"
+  },
+  "polish.time.beijing": {
+    "en": "{time} (Beijing time)",
+    "zh-CN": "{time}（北京时间）"
+  },
+  "polish.ref.suffix": {
+    "en": "{name} · {ref}",
+    "zh-CN": "{name} · {ref}"
+  },
+  "overseas": {
+    "en": "Overseas transactions",
+    "zh-CN": "境外交易"
+  },
+  "online": {
+    "en": "Online transactions",
+    "zh-CN": "线上交易"
+  },
+  "cash": {
+    "en": "Cash transactions",
+    "zh-CN": "现金交易"
+  },
+  "entertainment": {
+    "en": "Entertainment spending",
+    "zh-CN": "娱乐消费"
+  },
+  "polish.event.login": {
+    "en": "Login",
+    "zh-CN": "登录"
+  },
+  "polish.event.input_confirmed": {
+    "en": "Device input confirmed",
+    "zh-CN": "设备确认输入"
+  },
+  "polish.event.authorization_confirmed": {
+    "en": "Device authorization confirmed",
+    "zh-CN": "设备授权确认"
+  },
+  "polish.event.approval_requested": {
+    "en": "Approval requested",
+    "zh-CN": "发起审批请求"
+  },
+  "polish.event.approval_consumed": {
+    "en": "Approval consumed",
+    "zh-CN": "审批已使用"
+  },
+  "polish.event.kernel_verdict": {
+    "en": "Kernel verdict",
+    "zh-CN": "内核裁决"
+  },
+  "polish.event.dispatch_intent": {
+    "en": "Dispatch intent recorded",
+    "zh-CN": "登记派发意图"
+  },
+  "polish.event.dispatch_rejected": {
+    "en": "Dispatch rejected",
+    "zh-CN": "派发被拒"
+  },
+  "polish.event.bank_receipt_verified": {
+    "en": "Bank receipt verified",
+    "zh-CN": "银行回执已核验"
+  },
+  "polish.event.mfa_challenge": {
+    "en": "SMS challenge issued",
+    "zh-CN": "签发短信验证挑战"
+  },
+  "polish.event.mfa_attempt": {
+    "en": "SMS verification attempt",
+    "zh-CN": "短信验证尝试"
+  },
+  "polish.event.mfa_verified": {
+    "en": "SMS verification passed",
+    "zh-CN": "短信验证通过"
+  },
+  "polish.event.safety_signal": {
+    "en": "Safety signal",
+    "zh-CN": "安全信号"
+  },
+  "polish.event.safety_transition": {
+    "en": "Safety state change",
+    "zh-CN": "安全状态变化"
+  },
+  "polish.event.locked": {
+    "en": "Account locked",
+    "zh-CN": "账户锁定"
+  },
+  "polish.event.unlocked": {
+    "en": "Unlocked",
+    "zh-CN": "解除锁定"
+  },
+  "polish.event.controlled": {
+    "en": "Control operation",
+    "zh-CN": "控制操作"
+  },
+  "polish.event.schedule_status": {
+    "en": "Schedule status",
+    "zh-CN": "定时任务状态"
+  },
+  "polish.event.schedule_skipped": {
+    "en": "Schedule skipped",
+    "zh-CN": "定时任务跳过"
+  },
+  "polish.event.schedule_expired": {
+    "en": "Schedule expired",
+    "zh-CN": "定时任务过期"
+  },
+  "polish.event.subscription_debit": {
+    "en": "Subscription debit",
+    "zh-CN": "订阅扣款"
+  },
+  "polish.event.analysis_completed": {
+    "en": "Analysis completed",
+    "zh-CN": "分析完成"
+  },
+  "polish.event.narrative_rendered": {
+    "en": "Narrative rendered",
+    "zh-CN": "生成说明文本"
+  },
+  "polish.event.sandbox_run": {
+    "en": "Sandbox computation",
+    "zh-CN": "沙箱计算"
+  },
+  "polish.event.sandbox_rejected": {
+    "en": "Sandbox rejected",
+    "zh-CN": "沙箱拒绝"
+  },
+  "polish.event.suitability_restriction": {
+    "en": "Suitability restriction",
+    "zh-CN": "适当性限制"
+  },
+  "polish.event.suitability_coaching_refused": {
+    "en": "Suitability coaching refused",
+    "zh-CN": "拒绝适当性诱导"
+  },
+  "polish.event.allocation_registered": {
+    "en": "Allocation registered",
+    "zh-CN": "配置登记"
+  },
+  "polish.event.allocation_control": {
+    "en": "Allocation control",
+    "zh-CN": "配置控制"
+  },
+  "polish.event.allocation_preflight_refused": {
+    "en": "Allocation preflight refused",
+    "zh-CN": "配置预检拒绝"
+  },
+  "polish.event.unknown": {
+    "en": "Outcome unknown (receipt lookup pending)",
+    "zh-CN": "结果未知（待查回执）"
+  },
+  "polish.event.plan_registered": {
+    "en": "Plan registered",
+    "zh-CN": "登记任务计划"
+  },
+  "polish.event.plan_voided": {
+    "en": "Plan voided",
+    "zh-CN": "任务计划作废"
+  },
+  "polish.event.plan_node_status": {
+    "en": "Plan node status",
+    "zh-CN": "计划节点状态"
+  },
+  "polish.event.plan_interrupted": {
+    "en": "Plan interrupted",
+    "zh-CN": "任务计划中断"
+  },
+  "polish.event.plan_handoff": {
+    "en": "Handed off",
+    "zh-CN": "转人工"
+  },
+  "polish.event.plan_resumed": {
+    "en": "Plan resumed",
+    "zh-CN": "恢复自动执行"
+  },
+  "polish.event.compensation_proposed": {
+    "en": "Compensation proposed",
+    "zh-CN": "生成补偿建议"
+  },
+  "polish.event.compensation_settled": {
+    "en": "Compensation settled",
+    "zh-CN": "补偿已结算"
+  },
+  "polish.view.to_judge": {
+    "en": "Judge view · show evidence",
+    "zh-CN": "评委视图 · 展开证据"
+  },
+  "polish.view.to_customer": {
+    "en": "Back to customer view",
+    "zh-CN": "返回客户视图"
+  },
+  "polish.view.judge_strip": {
+    "en": "Judge view: rule IDs, hashes, tokens and audit evidence are shown. This interface is a scripted demo (no model calls); cross-model results were measured on the frozen version; see the evidence index.",
+    "zh-CN": "评委视图：显示规则编号、哈希、令牌与审计证据。本界面为 scripted 演示（零模型调用）；跨模型实验结果在冻结版本上测得，见证据索引。"
+  },
+  "polish.reason.plain_prefix": {
+    "en": "Not executed because: ",
+    "zh-CN": "未执行原因："
+  },
+  "customer:Gateway approval card": {
+    "en": "Please review the details",
+    "zh-CN": "请核对办理信息"
+  },
+  "customer:Facts for device review · not yet authorized": {
+    "en": "For your review · not yet authorized",
+    "zh-CN": "待您核对 · 尚未授权"
+  },
+  "customer:Green · automatic query": {
+    "en": "Green · read-only, no money moves",
+    "zh-CN": "绿色 · 仅查询，不动钱"
+  },
+  "customer:Yellow · device approval required": {
+    "en": "Yellow · your confirmation is needed",
+    "zh-CN": "黄色 · 需您确认"
+  },
+  "customer:Red · independent simulated MFA required": {
+    "en": "Red · simulated SMS code, then confirm",
+    "zh-CN": "红色 · 需短信验证（模拟）后确认"
+  },
+  "customer:Black · execution prohibited": {
+    "en": "Not allowed",
+    "zh-CN": "不允许办理"
+  },
+  "customer:Red-tier action: Complete independent simulated MFA, then approve on the device. Dispatch requires verification.": {
+    "en": "Red tier: this is carried out only after the simulated SMS code is verified and you confirm. Nothing executes without verification.",
+    "zh-CN": "红色级别：须先通过短信验证（模拟）并经您确认才会办理，未通过验证不会执行。"
+  },
+  "customer:Daily total {total} > {limit}; independent simulated MFA is required.": {
+    "en": "Today's transfers would reach {total}, above {limit}; a simulated SMS code is required.",
+    "zh-CN": "今日转账累计将达 {total}，超过 {limit}，需要短信验证（模拟）。"
+  },
+  "customer:Daily total {total} ≤ {limit}; your confirmation is required.": {
+    "en": "Today's transfers total {total}, within {limit}; please confirm.",
+    "zh-CN": "今日转账累计 {total}，未超过 {limit}，请您确认。"
+  },
+  "customer:{operation} {amount} is a sensitive operation; red-tier independent simulated MFA is required.": {
+    "en": "{operation} {amount} is a sensitive operation; a simulated SMS code is required.",
+    "zh-CN": "{operation} {amount} 属于敏感操作，需要短信验证（模拟）。"
+  },
+  "customer:tier_reason.new_recipient": {
+    "en": "Reason: new recipient; the stricter red tier requires a simulated SMS code.",
+    "zh-CN": "判定理由：新收款对象；按更严格规则进入红色，需要短信验证（模拟）。"
+  },
+  "customer:Awaiting MFA · complete simulated verification on the Device page": {
+    "en": "Awaiting SMS code · enter the simulated SMS code",
+    "zh-CN": "待短信验证 · 请输入模拟短信验证码"
+  },
+  "customer:Execution window / due time": {
+    "en": "Execution time",
+    "zh-CN": "执行时间"
+  },
+  "customer:Send simulated verification code": {
+    "en": "Get SMS code (simulated)",
+    "zh-CN": "获取短信验证码（模拟）"
+  },
+  "customer:Type the simulated verification code": {
+    "en": "Enter the 6-digit SMS code",
+    "zh-CN": "输入短信验证码（6 位）"
+  },
+  "customer:Submit simulated verification code": {
+    "en": "Submit code",
+    "zh-CN": "提交验证码"
+  },
+  "customer:Simulated code verified; canonical approval is still required before dispatch.": {
+    "en": "SMS code verified; confirm once more to proceed.",
+    "zh-CN": "短信验证已通过，请再确认一次才会办理。"
+  },
+  "customer:Simulated verification passed. Review and approve the canonical card.": {
+    "en": "SMS code verified. Review the details and confirm.",
+    "zh-CN": "短信验证已通过，请核对信息后确认。"
+  },
+  "customer:Type the code displayed by the simulated device.": {
+    "en": "Enter the code received on the simulated phone.",
+    "zh-CN": "请输入模拟手机收到的验证码。"
+  },
+  "customer:The code is incorrect or expired. The existing verifier and safety lock record failed attempts.": {
+    "en": "The code is incorrect or expired; repeated failures trigger the safety lock.",
+    "zh-CN": "验证码错误或已失效；连续输错会触发安全锁。"
+  },
+  "customer:Send this leg a simulated code": {
+    "en": "Get an SMS code for this leg (simulated)",
+    "zh-CN": "获取本笔短信验证码（模拟）"
+  },
+  "customer:Type the simulated code for this leg": {
+    "en": "Enter the 6-digit SMS code for this leg",
+    "zh-CN": "输入本笔短信验证码（6 位）"
+  },
+  "customer:Submit the simulated code for this leg": {
+    "en": "Submit the code for this leg",
+    "zh-CN": "提交本笔验证码"
+  },
+  "customer:; please retake. BIC-RISK": {
+    "en": "; please retake the questionnaire.",
+    "zh-CN": "；请重新完成风险测评。"
+  },
+  "customer:Review the facts above and approve": {
+    "en": "Details are correct — confirm",
+    "zh-CN": "核对无误，确认办理"
+  },
+  "customer:The purchase has not executed. Open Device to complete simulated MFA and final approval.": {
+    "en": "The purchase has not executed. Open Device confirmation to enter the simulated SMS code and confirm.",
+    "zh-CN": "申购尚未执行。请到「设备确认」页完成短信验证（模拟）与最终确认。"
+  },
+  "customer:Your device confirmed the intent; the operation has not executed. Open Device for MFA and final approval.": {
+    "en": "You confirmed the intent; the operation has not executed. Open Device confirmation to enter the simulated SMS code and confirm.",
+    "zh-CN": "您已确认办理意图，业务尚未执行。请到「设备确认」页完成短信验证（模拟）与最终确认。"
+  },
+  "customer:Confirm this intent, then open Device for independent simulated MFA and approval.": {
+    "en": "Confirm this intent, then open Device confirmation to enter the simulated SMS code and approve.",
+    "zh-CN": "先确认意图，再打开「设备确认」完成短信验证（模拟）和确认。"
+  },
+  "customer:Open Device and use Lookup. Do not repeat the purchase.": {
+    "en": "Open Device confirmation and use Lookup. Do not repeat the purchase.",
+    "zh-CN": "请打开「设备确认」查询结果，请勿重复申购。"
+  },
+  "customer:Open Device to complete or clarify your own risk questionnaire.": {
+    "en": "Open Device confirmation to complete or clarify your own risk questionnaire.",
+    "zh-CN": "请打开「设备确认」由本人完成或澄清风险问卷。"
+  },
+  "customer:Open Device to complete your questionnaire and confirm goals.": {
+    "en": "Open Device confirmation to complete your questionnaire and confirm goals.",
+    "zh-CN": "请打开「设备确认」完成问卷并确认目标。"
+  },
+  "customer:Open Device to review and sign your goals.": {
+    "en": "Open Device confirmation to review and sign your goals.",
+    "zh-CN": "请打开「设备确认」核对并签署目标。"
+  },
+  "customer:Open Device to review each leg, verify MFA, and approve.": {
+    "en": "Open Device confirmation to review each leg, enter its simulated SMS code, and approve.",
+    "zh-CN": "请打开「设备确认」，逐笔核对、完成短信验证（模拟）后确认。"
+  },
+  "customer:Open Device to review your goals before signing a correction.": {
+    "en": "Open Device confirmation to review your goals before signing a correction.",
+    "zh-CN": "请打开「设备确认」核对目标后再签署更正。"
+  },
+  "customer:Open Proposal & Certificate to review your allocation and its status. Open Device for any remaining approvals.": {
+    "en": "Open Proposal & Certificate to review your allocation and its status. Open Device confirmation for any remaining approvals.",
+    "zh-CN": "请在「理财」核对配置方案与状态，在「设备确认」完成剩余确认。"
+  },
+  "customer:nav.device": {
+    "en": "Device confirmation",
+    "zh-CN": "设备确认"
+  },
+  "customer:Time (UTC)": {
+    "en": "Time (Beijing)",
+    "zh-CN": "时间（北京时间）"
+  },
+  "customer:Counterparty reference": {
+    "en": "Counterparty",
+    "zh-CN": "交易对方"
+  },
+  "customer:The kernel detects a recipient/source mismatch (PROV-MISMATCH). The gateway blocks the changed signed plan first (PLAN-SCOPE in the audit).": {
+    "en": "The kernel detected that the recipient or source does not match; the gateway first stopped the changed signed plan.",
+    "zh-CN": "内核检测到收款人或来源不匹配；网关先阻止了被修改的签名计划。"
+  },
+  "polish.phone.open": {
+    "en": "Open simulated phone (new window)",
+    "zh-CN": "打开模拟手机（新窗口）"
+  },
+  "polish.phone.sent": {
+    "en": "The code was sent to the simulated phone (••8866, synthetic). Check the transaction details in the SMS there, then enter it below.",
+    "zh-CN": "验证码已发送到模拟手机（尾号8866，合成）。请在模拟手机上核对短信中的交易信息，再在下方输入。"
+  },
+  "polish.phone.autosubmit_hint": {
+    "en": "Submits automatically after 6 digits",
+    "zh-CN": "输满 6 位自动提交"
+  },
+  "polish.phone.title": {
+    "en": "Simulated phone",
+    "zh-CN": "模拟手机"
+  },
+  "polish.phone.status_bar": {
+    "en": "Simulated device · synthetic SMS only",
+    "zh-CN": "模拟设备 · 只接收合成短信"
+  },
+  "polish.phone.sender": {
+    "en": "Demo Bank (simulated SMS)",
+    "zh-CN": "演示银行（模拟短信）"
+  },
+  "polish.phone.footer": {
+    "en": "Synthetic SMS · no SMS gateway · no real phone number",
+    "zh-CN": "合成短信 · 无短信网关 · 无真实手机号"
+  },
+  "polish.phone.empty": {
+    "en": "No messages yet. After you tap Get SMS code on the banking page, the message appears here.",
+    "zh-CN": "暂无短信。在办理页面点「获取短信验证码」后，短信会出现在这里。"
+  },
+  "polish.phone.unpaired": {
+    "en": "Not paired: open this page from Open simulated phone on the banking page.",
+    "zh-CN": "未配对：请从办理页面的「打开模拟手机」进入。"
+  },
+  "polish.phone.used": {
+    "en": "Used",
+    "zh-CN": "已使用"
+  },
+  "polish.phone.expired": {
+    "en": "Expired; request a new code on the banking page",
+    "zh-CN": "已失效，请回到办理页面重新获取"
+  },
+  "polish.phone.disclosure": {
+    "en": "Simulation note: the gateway verifier derives the code from a challenge scope that includes the hashes of this action and its canonical card, and the gateway checks the grant against the same scope before dispatch. The transaction summary in the SMS text is generated by the display layer from the same canonical card; the gateway does not verify the SMS text. Tail digits are synthetic display aliases, not a verification of the recipient account. This page only reads synthetic SMS copies held in the demo process and never touches the banking session. An independent SMS channel, TOTP and WebAuthn belong to the trusted computing base and are on the post-freeze roadmap.",
+    "zh-CN": "模拟说明：验证码由网关验证器按挑战范围派生，范围包含本笔动作与规范卡的哈希，派发前网关按同一范围核对授权；短信正文中的交易摘要由展示层按同一张规范卡生成，网关不校验短信正文。尾号为展示层合成别名，不代表收款账户核验。手机页只读取进程内的合成短信副本，不接触办理会话。独立短信通道、TOTP 与 WebAuthn 属于可信计算基，列入冻结后路线图。"
+  },
+  "polish.sms.transfer": {
+    "en": "[Demo Bank · simulated SMS] {action} of {amount} to {payee} (••{tail}, synthetic). Code {code}, valid until {expiry} (Beijing time). Never share this code; bank staff will never ask for it.",
+    "zh-CN": "【演示银行·模拟短信】您正在向{payee}（尾号{tail}，合成）{action}{amount}。验证码{code}，{expiry}前有效（北京时间）。请勿向任何人透露验证码，银行工作人员不会向您索要。"
+  },
+  "polish.sms.new_payee": {
+    "en": "This recipient is registered as a new recipient. Verify them through contact details you saved yourself.",
+    "zh-CN": "该收款人登记为新收款人，请用您自己保存的联系方式核实对方身份。"
+  },
+  "polish.sms.purchase": {
+    "en": "[Demo Bank · simulated SMS] Purchase of {product}, amount {amount}. Code {code}, valid until {expiry} (Beijing time). Wealth products are not deposits; never share this code.",
+    "zh-CN": "【演示银行·模拟短信】您正在申购{product}，金额{amount}。验证码{code}，{expiry}前有效（北京时间）。理财非存款；请勿向任何人透露验证码。"
+  },
+  "polish.sms.generic": {
+    "en": "[Demo Bank · simulated SMS] You are performing: {action} {amount}. Code {code}, valid until {expiry} (Beijing time). Never share this code.",
+    "zh-CN": "【演示银行·模拟短信】您正在办理：{action}{amount}。验证码{code}，{expiry}前有效（北京时间）。请勿向任何人透露验证码。"
+  },
+  "polish.sms.unlock": {
+    "en": "[Demo Bank · simulated SMS] You are requesting to remove the account safety lock. Code {code}, valid until {expiry} (Beijing time). If this was not you, do not enter it.",
+    "zh-CN": "【演示银行·模拟短信】您正在申请解除账户安全锁。验证码{code}，{expiry}前有效（北京时间）。如非本人操作，请勿输入。"
+  },
+  "polish.mfa.other_methods": {
+    "en": "Simulated SMS code · other strong verification methods are not connected",
+    "zh-CN": "短信验证码（模拟）· 其他强验证方式未接入"
+  },
+  "polish.suit.title": {
+    "en": "Suitability",
+    "zh-CN": "适当性信息"
+  },
+  "polish.suit.product": {
+    "en": "Product risk level: R{risk} (signed catalogue)",
+    "zh-CN": "产品风险等级：R{risk}（签名产品目录）"
+  },
+  "polish.suit.customer": {
+    "en": "Your risk tolerance: C{level} (synthetic risk assessment, valid until {expires})",
+    "zh-CN": "您的风险承受能力：C{level}（合成风险测评，有效期至 {expires}）"
+  },
+  "polish.suit.match_in": {
+    "en": "Suitability: this product is in your eligible set (per the comparison certificate built by the gateway and re-checked by the kernel; the kernel verdict prevails)",
+    "zh-CN": "适当性匹配：本产品在您的合格产品集合内（依据网关生成、内核复核的比较证书，以内核裁决为准）"
+  },
+  "polish.suit.match_out": {
+    "en": "Suitability: this product is not in your eligible set — {reasons} (the kernel verdict prevails)",
+    "zh-CN": "适当性匹配：本产品不在您的合格产品集合内，原因：{reasons}（以内核裁决为准）"
+  },
+  "polish.suit.liquidity": {
+    "en": "Term and redemption: minimum hold {hold} days, redemption settles T+{delay}; your signed horizon is {horizon} days",
+    "zh-CN": "期限与赎回：最短持有 {hold} 天，赎回 T+{delay} 到账；您签署的计划期限 {horizon} 天"
+  },
+  "polish.suit.returns": {
+    "en": "Risk disclosure: benchmark {rate} a year is a synthetic reference, not an actual return; wealth products are not deposits and carry risk.",
+    "zh-CN": "风险揭示：业绩比较基准年化 {rate}，为合成参考，不代表实际收益；理财非存款，产品有风险，投资须谨慎。"
+  },
+  "polish.suit.incomplete": {
+    "en": "Suitability details are incomplete; the gateway verdict prevails.",
+    "zh-CN": "适当性信息不完整，请以网关裁决为准。"
+  },
+  "polish.suit.footer": {
+    "en": "The questionnaire and products are synthetic; this is not a professional suitability assessment or investment advice.",
+    "zh-CN": "问卷与产品均为合成演示，不是专业适当性测评，不构成投资建议。"
+  },
+  "polish.r4.menu": {
+    "en": "Suitability · C2 customer buys an R4 product (isolated account)",
+    "zh-CN": "适当性 · C2 客户申购 R4 产品（隔离账户）"
+  },
+  "polish.r4.title": {
+    "en": "Purchase refused: the product's risk level exceeds your risk tolerance",
+    "zh-CN": "无法申购：产品风险等级高于您的风险承受能力"
+  },
+  "polish.r4.result": {
+    "en": "The kernel refused it; nothing will be executed (bank dispatches: {count}). This demo did not request an SMS code.",
+    "zh-CN": "内核已拒绝，本笔不会办理（银行派发 {count} 次）。本演示未请求短信验证码。"
+  },
+  "polish.r4.isolation": {
+    "en": "This demo runs on an isolated synthetic account and does not affect the current demo account.",
+    "zh-CN": "本演示在独立合成账户中运行，不影响当前演示账户。"
+  },
+  "polish.r4.judge": {
+    "en": "Rules: {rules} · verdict: {outcome}",
+    "zh-CN": "规则：{rules} · 裁决：{outcome}"
+  },
+  "polish.fraud.title": {
+    "en": "Fraud warning (advisory only; approval requirements unchanged)",
+    "zh-CN": "防骗提醒（仅提醒，不改变本笔审批要求）"
+  },
+  "polish.fraud.new_payee": {
+    "en": "{payee} is registered as a new recipient.",
+    "zh-CN": "「{payee}」登记为新收款人。"
+  },
+  "polish.fraud.authority": {
+    "en": "Banks, police and anti-fraud centres never ask you to move money to a \"safe\" or \"verification\" account, and never ask for your code.",
+    "zh-CN": "银行、公安和反诈中心不会要求您向任何“安全账户”“验证专户”转账，也不会索要验证码。"
+  },
+  "polish.fraud.external": {
+    "en": "If the payment details came from a message or link someone sent you, verify them through contact details you saved yourself.",
+    "zh-CN": "收款信息如果来自对方发来的消息或链接，请先通过您自己保存的联系方式核实。"
+  },
+  "polish.fraud.urgency": {
+    "en": "Pressure to pay quickly or threats to freeze your account are common scam tactics; pause first.",
+    "zh-CN": "对方催促限时付款或威胁冻结账户，是常见诈骗话术，请先停下来。"
+  },
+  "polish.fraud.split": {
+    "en": "Being told to split a payment to stay under a limit is a common scam sign.",
+    "zh-CN": "要求分多笔转账以“避开限额”，是常见诈骗特征。"
+  },
+  "polish.fraud.footer": {
+    "en": "An SMS code only confirms that you are the one acting; it cannot verify who the recipient is. This warning comes from fixed keywords and the recipient's registration status and may miss or misfire; it does not block, delay or change this payment, and the decision is yours. If in doubt, tap Cancel and call the official number on the back of your card.",
+    "zh-CN": "短信验证只能确认是您本人在操作，不能核实对方身份。提醒由固定关键词和收款人登记状态生成，可能漏报或误报；它不会拦截、延迟或改变这笔交易，是否继续由您决定。如有疑问，请点「取消」，并通过银行卡背面的官方客服电话核实。"
+  },
+  "polish.fraud.judge_note": {
+    "en": "Display-layer hint: reads only the canonical card, the trusted contact registry and the user's words; it never affects the kernel verdict, tier or dispatch. Delayed credit for new payees, cooling-off and upgrading externally sourced payees to red are kernel rules (trusted computing base) on the roadmap.",
+    "zh-CN": "展示层提示：只读规范卡、可信通讯录和用户原话，不参与内核裁决、分级或派发。新收款人延时到账、冷静期、外部文本来源收款人升红属于内核规则（可信计算基），列入路线图。"
+  },
+  "polish.fraud.cues.authority": {
+    "en": "anti-fraud centre|anti-fraud center|police|prosecutor|court|bank staff|customer service",
+    "zh-CN": "反诈中心|公安|警察|检察院|法院|工作人员|客服|工号"
+  },
+  "polish.fraud.cues.external": {
+    "en": "safe account|verification account|designated account|they sent|link",
+    "zh-CN": "安全账户|验证专户|专户|指定账户|对方提供|发来的|链接"
+  },
+  "polish.fraud.cues.urgency": {
+    "en": "immediately|right now|urgent|within minutes|frozen|or else",
+    "zh-CN": "马上|立即|立刻|赶紧|尽快|分钟内|冻结|否则|不然"
+  },
+  "polish.fraud.cues.split": {
+    "en": "split|two payments|second payment|avoid the limit",
+    "zh-CN": "分两笔|分笔|拆分|第二笔|第2笔|避开限额"
+  },
+  "polish.fraud.cues.directed": {
+    "en": "told me to|asked me to|wants me to|instructed me to",
+    "zh-CN": "让我|叫我|要我|指导我|教我|逼我|催我|命令我|吩咐我|安排我"
+  },
+  "polish.fraud.cues.directed_action": {
+    "en": "transfer|pay|send",
+    "zh-CN": "转|汇|打钱|付款|付钱"
+  },
+  "polish.fraud.cues.directed_relay": {
+    "en": "pass on|forward|report",
+    "zh-CN": "转告|转发|转达|转述|汇报|汇总"
+  },
+  "polish.fraud.cues.directed_not_after": {
+    "en": "please|you",
+    "zh-CN": "请|您|你|可以|麻烦|需"
+  },
+  "polish.exclusion.access_delay": {
+    "en": "Redemption delay exceeds your access limit",
+    "zh-CN": "赎回到账时间超过您可接受的期限"
+  },
+  "polish.event.user_utterance": {
+    "en": "User request recorded (tokenized)",
+    "zh-CN": "记录用户请求（已脱敏）"
+  },
+  "polish.event.user_utterance_refused": {
+    "en": "Prohibited request refused",
+    "zh-CN": "拒绝禁止类请求"
+  },
+  "polish.event.wealth_utterance_refused": {
+    "en": "Wealth message refused (contained a secret)",
+    "zh-CN": "拒收含敏感信息的理财消息"
+  },
+  "polish.fraud.external_file": {
+    "en": "You attached an external file in this turn. Its content comes from a third party and the bank cannot verify it. If the file asked you to do “{action}” and it is not something you already meant to do, pause and verify first.",
+    "zh-CN": "您在这一轮附上了外部文件。文件内容来自第三方，银行无法核实；如果「{action}」是文件让您办的，而不是您本来就想办的，请先停下来核实。"
+  },
+  "polish.fraud.footer_file": {
+    "en": "This reminder only checks whether this turn carried an external file and whether the action changes something; it does not read the file and may misfire. It does not block, delay or change this action, and the decision is yours. If in doubt, tap Cancel and call the official number on the back of your card.",
+    "zh-CN": "这条提醒只看本轮是否附带外部文件、这项办理是否会改变账户，不读取文件内容，可能误报；它不会拦截、延迟或改变这项办理，是否继续由您决定。如有疑问，请点「取消」，并通过银行卡背面的官方客服电话核实。"
+  },
+  "polish.fraud.judge_note_file": {
+    "en": "R-e condition: this turn carried an external file and the card kind is a write; only the file's presence is read, never its content.",
+    "zh-CN": "R-e 条件：本轮带外部文件且规范卡为写操作；只看附件是否存在，不读附件内容。"
+  },
+  "polish.attach.label": {
+    "en": "Attach an external file (optional, simulated)",
+    "zh-CN": "附上外部文件（可选，模拟）"
+  },
+  "polish.attach.field": {
+    "en": "Text of a third-party file or web page",
+    "zh-CN": "第三方文件或网页的文字"
+  },
+  "polish.attach.placeholder": {
+    "en": "For example, a merchant statement page or a notice you received",
+    "zh-CN": "例如商户对账页、收到的通知"
+  },
+  "polish.attach.help": {
+    "en": "The assistant does not read the attachment and never acts on what it says. If a card appears in this turn, it reminds you to verify.",
+    "zh-CN": "助手不会读取附件，也不会按附件里的要求办理；如果这一轮出现办理卡片，卡片上会提醒您核实。"
+  },
+  "polish.attach.sent": {
+    "en": "External file attached · its content was not sent to the assistant",
+    "zh-CN": "已附外部文件 · 内容未发送给助手"
+  },
+  "polish.token.shared": {
+    "en": "{names} (same name)",
+    "zh-CN": "{names}（同名联系人）"
+  },
+  "polish.token.phone": {
+    "en": "number ending ••{tail} (synthetic)",
+    "zh-CN": "尾号{tail}的号码（合成）"
+  },
+  "polish.token.masked": {
+    "en": "(hidden personal data)",
+    "zh-CN": "（已隐藏的个人信息）"
+  },
+  "polish.subscription.row_no_next": {
+    "en": "{merchant} · {amount} · cancellation available: {cancellable} · no upcoming charge",
+    "zh-CN": "{merchant} · {amount} · 可申请取消：{cancellable} · 暂无下次扣费"
+  },
+  "polish.clarify.choose_first": {
+    "en": "Choose the recipient above first, then tap Review recipient.",
+    "zh-CN": "请先在上方选择收款人，再点「核对收款人」。"
+  },
+  "polish.refusal.title": {
+    "en": "Purchase refused: this purchase did not pass the checks",
+    "zh-CN": "无法申购：本笔申购未通过检查"
+  },
+  "polish.refusal.result": {
+    "en": "The kernel refused it; nothing will be executed (bank dispatches: {count}). A refused purchase needs no SMS code.",
+    "zh-CN": "内核已拒绝，本笔不会办理（银行派发 {count} 次）；被拒绝的申购不需要短信验证码。"
+  },
+  "polish.refusal.next": {
+    "en": "To buy another product, compare again and prepare a new purchase card.",
+    "zh-CN": "如需申购其他产品，请重新比较后生成新的申购卡。"
+  },
+  "customer:## Device approvals": {
+    "en": "## Device confirmation",
+    "zh-CN": "## 设备确认"
+  },
+  "customer:Supporting-bank device approvals": {
+    "en": "Banking device confirmation",
+    "zh-CN": "银行业务设备确认"
+  },
+  "customer:Awaiting device input": {
+    "en": "Awaiting your details, then device confirmation",
+    "zh-CN": "等待补充信息后设备确认"
+  },
+  "customer:Awaiting device approval": {
+    "en": "Awaiting device confirmation",
+    "zh-CN": "等待设备确认"
+  },
+  "customer:Awaiting MFA for this run": {
+    "en": "Awaiting this run's simulated SMS code",
+    "zh-CN": "等待本期短信验证（模拟）"
+  },
+  "customer:Awaiting device approval – no purchase executed": {
+    "en": "Awaiting device confirmation – no purchase executed",
+    "zh-CN": "等待设备确认 · 未执行申购"
+  },
+  "customer:Simulated independent device. Complete MFA here; verification codes stay out of chat, logs and model input.": {
+    "en": "Simulated device. The simulated SMS check happens only here; codes never go to chat, logs or the model.",
+    "zh-CN": "模拟设备。短信验证（模拟）只在这里完成，验证码不会发到聊天、日志或模型。"
+  },
+  "customer:Simulated password changes only increment the credential version; no password is collected. Red-tier MFA and canonical approval are required.": {
+    "en": "A simulated password change only increments the credential version; no password is collected. It needs the red-tier simulated SMS check and your confirmation.",
+    "zh-CN": "模拟修改密码只递增凭据版本，不收集任何密码；须通过红级短信验证（模拟）并经您确认。"
+  },
+  "customer:Cooldown and valid device MFA are required.": {
+    "en": "Wait for the cooldown, then pass the simulated SMS check on your device.",
+    "zh-CN": "须等冷却期结束，并通过设备上的短信验证（模拟）。"
+  },
+  "customer:Unlock requires the cooldown, owner device confirmation and simulated MFA. Old approvals stay void.": {
+    "en": "Unlocking needs the cooldown, your confirmation on your own device and the simulated SMS check. Earlier authorizations stay void.",
+    "zh-CN": "解锁需要等冷却期结束、在本人设备上确认并通过短信验证（模拟）。之前的授权仍然作废。"
+  },
+  "customer:Simulated MFA failed repeatedly.": {
+    "en": "The simulated SMS check failed several times in a row.",
+    "zh-CN": "短信验证（模拟）连续失败。"
+  },
+  "customer:Review and confirm the intent below, then request independent simulated MFA. It is not yet signed or executed.": {
+    "en": "Review and confirm the intent below, then get a simulated SMS code. Nothing is signed or executed yet.",
+    "zh-CN": "请先核对并确认下方办理意图，再获取短信验证码（模拟）；当前尚未签名或执行。"
+  },
+  "customer:Current run MFA valid until": {
+    "en": "This run's SMS check valid until",
+    "zh-CN": "本期短信验证有效期至"
+  },
+  "customer:Confirm intent on device, then verify MFA": {
+    "en": "Confirm the intent on your device, then the simulated SMS check",
+    "zh-CN": "在设备确认意图，再进行短信验证（模拟）"
+  },
+  "customer:Request independent simulated MFA": {
+    "en": "Get a simulated SMS code",
+    "zh-CN": "获取短信验证码（模拟）"
+  },
+  "customer:Verify MFA": {
+    "en": "Simulated SMS check",
+    "zh-CN": "短信验证（模拟）"
+  },
+  "customer:Verify MFA → Approve · separate device grant for this leg": {
+    "en": "Simulated SMS check → confirm · this leg is authorized separately",
+    "zh-CN": "短信验证（模拟）→ 确认 · 本笔单独授权"
+  },
+  "customer:Restricting adds categories; relaxing removes categories and requires independent MFA.": {
+    "en": "Restricting adds categories; relaxing removes categories and needs the simulated SMS check.",
+    "zh-CN": "增加限制只允许新增类别；放宽限制只允许移除类别，且需要短信验证（模拟）。"
+  },
+  "customer:Red-tier operations need independent MFA; an approval cannot bypass it.": {
+    "en": "Red-tier actions need the simulated SMS check; confirming cannot replace it.",
+    "zh-CN": "红级操作必须通过短信验证（模拟），确认不能代替验证。"
+  },
+  "customer:Continue on the device. Each leg requires its own simulated MFA and approval.": {
+    "en": "Continue in Device confirmation. Each leg needs its own simulated SMS check and confirmation.",
+    "zh-CN": "请在「设备确认」继续，每一笔配置都需要单独的短信验证（模拟）和确认。"
+  },
+  "customer:Select each item on your device. Each purchase needs separate simulated MFA and approval.": {
+    "en": "Select each item in Device confirmation. Each purchase needs its own simulated SMS check and confirmation.",
+    "zh-CN": "请在「设备确认」逐项选择，每笔申购都需要单独的短信验证（模拟）和确认。"
+  },
+  "customer:The previous proposal, approvals and MFA are withdrawn. Confirm fresh goals on your device.": {
+    "en": "The previous proposal, confirmations and SMS checks are withdrawn. Confirm fresh goals in Device confirmation.",
+    "zh-CN": "上一份方案、确认和短信验证已撤回，请在「设备确认」重新确认目标。"
+  },
+  "customer:tier_reason.awaiting_run_verification": {
+    "en": "Reason: this occurrence escalated to red and is awaiting the simulated SMS check; a new day does not automatically lower its tier.",
+    "zh-CN": "判定理由：本期已升级为红色，仍等待短信验证（模拟）；跨日累计归零不会自动降级。"
+  },
+  "customer:Independent MFA must be valid and unused for this action.": {
+    "en": "The simulated SMS check for this action must be valid and unused.",
+    "zh-CN": "本次操作的短信验证（模拟）必须有效且尚未使用。"
+  },
+  "customer:This red-tier operation lacks independent MFA.": {
+    "en": "This red-tier action has not passed the simulated SMS check.",
+    "zh-CN": "该笔红级操作尚未完成短信验证（模拟）。"
+  },
+  "customer:Attempted MFA override (prohibited)": {
+    "en": "Attempt to change SMS verification (prohibited)",
+    "zh-CN": "试图篡改短信验证设置（禁止）"
+  },
+  "customer:Cooldown → owner device → simulated MFA → new transfer": {
+    "en": "Cooldown → your device → simulated SMS check → new transfer",
+    "zh-CN": "冷却期 → 本人设备 → 短信验证（模拟） → 重新转账"
+  },
+  "customer: minutes of simulated cooldown, owner confirmation, unlock MFA, and a new red-tier transfer approval with MFA.": {
+    "en": " minutes of simulated cooldown, your confirmation, the unlock SMS check, and a new red-tier transfer with its own SMS check.",
+    "zh-CN": " 分钟模拟冷却、本人确认、解锁短信验证，以及新转账的红级确认与短信验证。"
+  },
+  "customer:2 · Owner confirmation and unlock MFA": {
+    "en": "2 · Your confirmation and unlock SMS check",
+    "zh-CN": "2 · 本人确认并完成解锁短信验证"
+  },
+  "customer:3 · Reissue legitimate transfer with MFA": {
+    "en": "3 · Reissue the legitimate transfer with an SMS check",
+    "zh-CN": "3 · 重新发起合法转账并完成短信验证"
+  },
+  "customer:u1.chain.17": {
+    "en": "SMS verification grant: none (red-tier actions still require verification)",
+    "zh-CN": "短信验证授权：无（红级仍须验证）"
+  },
+  "customer:polish.wealth.evidence_mode": {
+    "en": "Demo mode: a fixed script on synthetic data with simulated sign-in and verification; no real money and no AI model calls on this page. Cross-model results are in the submission materials.",
+    "zh-CN": "演示模式：固定脚本驱动的合成数据演示，登录与验证均为模拟，不涉及真实资金，本页不调用 AI 模型。跨模型实验结果见提交材料。"
+  },
+  "customer:Scheduled payments support the current account. Monthly mode permits up to 3 runs over 90 days, requires red-tier MFA at creation, and is rechecked by the gateway when due.": {
+    "en": "Scheduled payments support the current account. Monthly mode permits up to 3 runs over 90 days, needs the red-tier simulated SMS check at creation, and is rechecked when each run is due.",
+    "zh-CN": "定时付款支持当前活期账户；每月模式最多 3 次，授权窗口 90 天，创建须通过红级短信验证（模拟）。到期仍会重新检查。"
+  },
+  "customer:Authorization covers only the fixed scope, dates and runs shown above. Balance, destination, permissions and cumulative tier are checked at execution. A yellow-to-red change requires independent MFA for this run; without verification within 24 hours, the run expires. Previous codes are never reused.": {
+    "en": "Authorization covers only the fixed scope, dates and runs shown above. Balance, destination, permissions and cumulative tier are checked at execution. If a run turns from yellow to red, it needs its own simulated SMS check; without it within 24 hours the run expires. Previous codes are never reused.",
+    "zh-CN": "仅授权上述固定范围、期限与期次。到期重新核对余额、目标、权限及累计分级；黄级升红时等待本期短信验证（模拟），24 小时未验证则本期过期，不复用旧验证码。"
+  },
+  "customer:For example: transfer CNY 200 to Chen. Review the facts before authorizing payment.": {
+    "en": "For example: transfer CNY 200 to Chen. Review the details, then authorize in Device confirmation.",
+    "zh-CN": "例如：给 Chen 转账 200 元。先核对办理信息，再在「设备确认」授权。"
+  },
+  "customer:If daily cumulative spending raises a yellow-tier scheduled task to red, it waits for MFA for that occurrence. It expires after 24 hours without verification; amounts are not changed to retry.": {
+    "en": "If today's total turns a yellow scheduled run red, that run waits for its own simulated SMS check. It expires after 24 hours without it; amounts are never changed to retry.",
+    "zh-CN": "若日累计金额使黄色定时任务升级为红色，本期将等待短信验证（模拟）；24 小时内未验证则过期，不会修改金额后重试。"
+  },
+  "customer:These isolated scripted examples include explicit simulated device approvals.": {
+    "en": "These isolated scripted examples include explicit simulated device confirmations.",
+    "zh-CN": "这些隔离的脚本演示包含明确的模拟设备确认。"
+  },
+  "chat.aa.complete_prompt": {
+    "en": "Choose the remaining split-bill participants from your verified contacts below. This message executed no operation.",
+    "zh-CN": "请在下方从已核验联系人中补全AA参与人。本条消息没有执行任何操作。"
+  },
+  "chat.negated": {
+    "en": "Your request contains a negation or cancel word (such as not, don't, cancel or stop), so no new card was created. This message executed no operation. To go ahead, restate it without the negation; to interrupt a running plan or withdraw a pending card, say stop.",
+    "zh-CN": "这句话里有否定或取消的说法（如“不”“别”“取消”“停止”），所以没有生成新的卡片。本条消息没有执行任何操作。如需办理，请去掉否定说法后重新说明；如需中断进行中的计划或撤回待确认的卡片，请说“停止”。"
+  },
+  "chat.rejected": {
+    "en": "This request did not pass the checks and was not carried out. See the reasons below.",
+    "zh-CN": "本项办理未通过检查，没有执行。原因见下方。"
+  },
+  "customer:Unlocked; previous approvals remain void.": {
+    "en": "Unlocked; earlier authorizations stay void.",
+    "zh-CN": "已解锁；之前的授权仍然作废。"
+  },
+  "customer:No operations awaiting approval. Prepare a task to see its canonical card here.": {
+    "en": "Nothing is waiting for your confirmation. Start a request and its details appear here.",
+    "zh-CN": "暂无待确认的业务。发起业务后，办理信息会出现在这里。"
+  }
+}

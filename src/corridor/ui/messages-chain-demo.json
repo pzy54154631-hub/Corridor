@@ -1,0 +1,242 @@
+{
+  "**Frozen binding · actual result**": {
+    "en": "**Frozen binding · actual result**",
+    "zh-CN": "**冻结绑定 · 实际结果**"
+  },
+  "**Reference judgment · research convention**": {
+    "en": "**Reference judgment · research convention**",
+    "zh-CN": "**参考判定 · 研究口径**"
+  },
+  "Downstream impact is predicted only through depends_on; undispatched nodes are not labelled as rejected by the kernel.": {
+    "en": "Downstream impact is predicted only through depends_on; undispatched nodes are not labelled as rejected by the kernel.",
+    "zh-CN": "下游仅按 depends_on 预测传播；未实际派发的节点不标为已被内核拒绝。"
+  },
+  "Insufficient balance": {
+    "en": "Insufficient balance",
+    "zh-CN": "余额不足"
+  },
+  "The balance probe injects a synthetic ledger debit before the first lock node. It creates no bank receipt, does not synchronize the mock bank balance, and demonstrates neither an external payment entry point nor payment after reapproval.": {
+    "en": "The balance probe injects a synthetic ledger debit before the first lock node. It creates no bank receipt, does not synchronize the mock bank balance, and demonstrates neither an external payment entry point nor payment after reapproval.",
+    "zh-CN": "余额探针在第一个锁定节点注入合成账本扣减；它不伪造银行回执，未同步模拟银行余额，不表示真实外部可达入口，也不演示重新批准后付款。"
+  },
+  "Frozen gateway actual result": {
+    "en": "Frozen gateway actual result",
+    "zh-CN": "冻结网关实际结果"
+  },
+  "Component": {
+    "en": "Component",
+    "zh-CN": "分量"
+  },
+  "Unlock when due": {
+    "en": "Unlock when due",
+    "zh-CN": "到期解锁"
+  },
+  "Load normal preset and approve each node on the simulated device": {
+    "en": "One click: script four separate canonical-card signatures on the simulated device",
+    "zh-CN": "一次点击，脚本化逐张签署四张规范卡"
+  },
+  "The original approval was signed by the isolated simulated device. The change has not been applied and the target has not been dispatched.": {
+    "en": "The original approval was signed by the isolated simulated device. The change has not been applied and the target has not been dispatched.",
+    "zh-CN": "原批准已在隔离模拟设备上签发；变化尚未施加，目标尚未派发。"
+  },
+  "Reference judgment · research convention": {
+    "en": "Reference judgment · research convention",
+    "zh-CN": "参考判定 · 研究口径"
+  },
+  "The reference contract excludes equality of the original balance; policy, business date, objects, inputs and valid authority must remain unchanged.": {
+    "en": "The reference contract excludes equality of the original balance; policy, business date, objects, inputs and valid authority must remain unchanged.",
+    "zh-CN": "参考契约不要求余额原值不变；政策、业务日、对象、输入和有效授权须保持。"
+  },
+  "Change": {
+    "en": "Change",
+    "zh-CN": "变化"
+  },
+  "The actual chain is incomplete. Review the gateway result; replay and approval are not business completion.": {
+    "en": "The actual chain is incomplete. Review the gateway result; replay and approval are not business completion.",
+    "zh-CN": "实际链路未完成，请查看网关结果；不将复放或批准视作业务完成。"
+  },
+  "CNY 1,000 is locked for the birthday. Separate schedules authorize a CNY 500 release, CNY 300 flowers and CNY 200 cake.": {
+    "en": "CNY 1,000 is locked for the birthday. Separate schedules authorize a CNY 500 release, CNY 300 flowers and CNY 200 cake.",
+    "zh-CN": "已锁定 1000 元生日预算，已分别批准解锁 500 元、鲜花 300 元和蛋糕 200 元的定时授权。"
+  },
+  "Apply the change and verify through frozen gateway dispatch": {
+    "en": "Apply the change and verify through frozen gateway dispatch",
+    "zh-CN": "应用变化并由冻结网关派发验证"
+  },
+  "Current": {
+    "en": "Current",
+    "zh-CN": "当前"
+  },
+  "Current verification phase: ": {
+    "en": "Current verification phase: ",
+    "zh-CN": "当前验证阶段："
+  },
+  "Impact preview (not a system verdict): ": {
+    "en": "Impact preview (not a system verdict): ",
+    "zh-CN": "影响预告（尚非系统裁决）："
+  },
+  "Necessary invalidation (reference)": {
+    "en": "Necessary invalidation (reference)",
+    "zh-CN": "必要失效（参考判定）"
+  },
+  "At approval": {
+    "en": "At approval",
+    "zh-CN": "批准时"
+  },
+  "Technical evidence · real dispatch, approval consumption and audit": {
+    "en": "Technical evidence · real dispatch, approval consumption and audit",
+    "zh-CN": "技术证据 · 实际派发（模拟银行）、批准消耗与审计"
+  },
+  "Advance to two days before the birthday and execute due tasks": {
+    "en": "Advance to two days before the birthday and execute due tasks",
+    "zh-CN": "推进至生日前两天并执行到期任务"
+  },
+  "Recipient destination version change": {
+    "en": "Recipient destination version change",
+    "zh-CN": "收款人目的地版本变更"
+  },
+  "Some benign changes are blocked too (visible cost): this native CNY 49 subscription debit invalidated the original approval.": {
+    "en": "Some benign changes are blocked too (visible cost): this native CNY 49 subscription debit invalidated the original approval.",
+    "zh-CN": "有些良性变化也被拦下（可见的代价）：本次 49 元原生订阅扣款使原批准失效。"
+  },
+  "Some benign changes are blocked too (visible cost): permission prerequisites held after the subscription debit, but the original approval was invalidated.": {
+    "en": "Some benign changes are blocked too (visible cost): permission prerequisites held after the subscription debit, but the original approval was invalidated.",
+    "zh-CN": "有些良性变化也被拦下（可见的代价）：订阅扣款后的许可前提保持，原批准仍失效。"
+  },
+  "Not evaluated": {
+    "en": "Not evaluated",
+    "zh-CN": "未判定"
+  },
+  "Not evaluated (insufficient evidence)": {
+    "en": "Not evaluated (insufficient evidence)",
+    "zh-CN": "未评估（证据不足）"
+  },
+  "Not run": {
+    "en": "Not run",
+    "zh-CN": "未运行"
+  },
+  "Kernel not reached": {
+    "en": "Kernel not reached",
+    "zh-CN": "未进入内核"
+  },
+  "This recipient is the synthetic flower merchant. Changing its SPA-bound merchant version is a trusted-state mechanism probe.": {
+    "en": "This recipient is the synthetic flower merchant. Changing its SPA-bound merchant version is a trusted-state mechanism probe.",
+    "zh-CN": "本分支收款人是合成鲜花商户；变更其 SPA 绑定的商户版本，属于可信状态机制探针。"
+  },
+  "This target required stopping and was stopped before bank execution; this is not proof of complete security.": {
+    "en": "This target required stopping and was stopped before bank execution; this is not proof of complete security.",
+    "zh-CN": "本次应停止的目标已停住，未进入银行执行；这不是安全完备性证明。"
+  },
+  "All three required-invalidation probes on this page were stopped. This applies only to these synthetic changes and does not prove absence of missed invalidation.": {
+    "en": "All three required-invalidation probes on this page were stopped. This applies only to these synthetic changes and does not prove absence of missed invalidation.",
+    "zh-CN": "本页三个应失效探针都已停住；仅适用于这三个合成变化，不证明无漏失效。"
+  },
+  "Normal completion · real receipts and execution evidence": {
+    "en": "Normal completion · real receipts and execution evidence",
+    "zh-CN": "正常完成 · 模拟银行回执与执行证据"
+  },
+  "Normal success": {
+    "en": "Normal success",
+    "zh-CN": "正常成功"
+  },
+  "Each button creates an isolated synthetic gateway and performs the labelled scripted device approvals. The banking session is unaffected. Review the impact preview, then click to verify dispatch.": {
+    "en": "Each button creates an isolated synthetic gateway and performs the labelled scripted device approvals. The banking session is unaffected. Review the impact preview, then click to verify dispatch.",
+    "zh-CN": "每个按钮新建独立合成网关，并脚本化完成所标示的设备批准；当前银行会话不受影响。先看影响预告，再点击派发验证。"
+  },
+  "Missed invalidation (reference)": {
+    "en": "Missed invalidation (reference)",
+    "zh-CN": "漏失效（参考判定）"
+  },
+  "Isolated synthetic preset: explicitly approve four DAG nodes, then execute the existing SPAs when due. Operator mode is unnecessary.": {
+    "en": "Isolated synthetic preset: explicitly approve four DAG nodes, then execute the existing SPAs when due. Operator mode is unnecessary.",
+    "zh-CN": "独立合成预设；点击明确批准四个 DAG 节点，随后按既有 SPA 到期执行，无需操作员模式。"
+  },
+  "Birthday plan · normal completion": {
+    "en": "Birthday plan · normal completion",
+    "zh-CN": "生日计划 · 正常完成"
+  },
+  "Birthday chain completed normally: flowers and cake both have payment receipts, and all four DAG nodes succeeded.": {
+    "en": "Birthday chain completed normally: flowers and cake both have payment receipts, and all four DAG nodes succeeded.",
+    "zh-CN": "生日链正常完成：鲜花与蛋糕均有付款回执，四个 DAG 节点全部成功。"
+  },
+  "Target bank executions": {
+    "en": "Target bank executions",
+    "zh-CN": "目标银行执行次数"
+  },
+  "False invalidation (reference)": {
+    "en": "False invalidation (reference)",
+    "zh-CN": "虚假失效（参考判定）"
+  },
+  "These observations cover synthetic mechanism probes. Necessary stops and benign costs are both retained; not every APR-DRIFT is a blocked attack.": {
+    "en": "These observations cover synthetic mechanism probes. Necessary stops and benign costs are both retained; not every APR-DRIFT is a blocked attack.",
+    "zh-CN": "观察范围是这些合成机制探针；必要停止与良性成本同时保留，不将全部 APR-DRIFT 称为攻击拦截。"
+  },
+  "Subscription debit of CNY 49": {
+    "en": "Subscription debit of CNY 49",
+    "zh-CN": "订阅扣款 49 元"
+  },
+  "Permission prerequisites still hold": {
+    "en": "Permission prerequisites still hold",
+    "zh-CN": "许可前提仍成立"
+  },
+  "Permission prerequisites have not been evaluated": {
+    "en": "Permission prerequisites have not been evaluated",
+    "zh-CN": "许可前提尚未评估"
+  },
+  "Permission prerequisites have changed": {
+    "en": "Permission prerequisites have changed",
+    "zh-CN": "许可前提已改变"
+  },
+  "Cross the business-day boundary": {
+    "en": "Cross the business-day boundary",
+    "zh-CN": "跨业务日"
+  },
+  "Choose a change to inspect the original approval, dependency components and predicted downstream impact.": {
+    "en": "Choose a change to inspect the original approval, dependency components and predicted downstream impact.",
+    "zh-CN": "选择一种变化，查看原批准、依赖分量与下游影响预告。"
+  },
+  "Mid-chain changes · isolated demonstration": {
+    "en": "Mid-chain changes · isolated demonstration",
+    "zh-CN": "链中途变化 · 隔离演示"
+  },
+  "Lock birthday budget": {
+    "en": "Lock birthday budget",
+    "zh-CN": "锁定生日预算"
+  },
+  "Before budget-lock dispatch": {
+    "en": "Before budget-lock dispatch",
+    "zh-CN": "锁定资金派发前"
+  },
+  "Before dispatching flower-schedule creation": {
+    "en": "Before dispatching flower-schedule creation",
+    "zh-CN": "鲜花定时授权创建派发前"
+  },
+  "; components to compare: ": {
+    "en": "; components to compare: ",
+    "zh-CN": "；待核对分量："
+  },
+  "Gateway: {status} · {rules}": {
+    "en": "Gateway: {status} · {rules}",
+    "zh-CN": "网关：{status} · {rules}"
+  },
+  "Kernel: {outcome} · {rules}": {
+    "en": "Kernel: {outcome} · {rules}",
+    "zh-CN": "内核：{outcome} · {rules}"
+  },
+  "Target bank executions: {count}": {
+    "en": "Target bank executions: {count}",
+    "zh-CN": "目标银行执行次数：{count}"
+  },
+  "Account kernel rejection count: {before} → {after}; environmental drift may also count toward the application write lock, so these are not all blocked attacks.": {
+    "en": "Account kernel rejection count: {before} → {after}; environmental drift may also count toward the application write lock, so these are not all blocked attacks.",
+    "zh-CN": "账户内核拒绝计数：{before} → {after}；环境漂移也可能计入拒绝并最终触发应用写操作安全锁，不能把它全部解释成攻击拦截。"
+  },
+  "Paid orders: {count}; audit chain valid: {valid}": {
+    "en": "Paid orders: {count}; {valid}",
+    "zh-CN": "已付款订单：{count}；{valid}"
+  },
+  "Preset approval scope: (1) lock CNY 1,000 from A_CURRENT into A_LOCKED for the birthday; (2) release CNY 500 to A_CURRENT when due; (3) pay synthetic FLOWERS CNY 300; (4) pay synthetic CAKE CNY 200. The three scheduled tasks each run once, from 2026-10-17 16:00 UTC to 2026-10-18 16:00 UTC. The simulated device signs each canonical card separately.": {
+    "en": "Preset approval scope: (1) lock CNY 1,000 from A_CURRENT into A_LOCKED for the birthday; (2) release CNY 500 to A_CURRENT when due; (3) pay synthetic FLOWERS CNY 300; (4) pay synthetic CAKE CNY 200. The three scheduled tasks each run once, from 2026-10-17 16:00 UTC to 2026-10-18 16:00 UTC. The simulated device signs each canonical card separately.",
+    "zh-CN": "预设审批范围：①从 A_CURRENT 锁定 1000 元至 A_LOCKED 用于生日；②到期解锁 500 元回 A_CURRENT；③向合成鲜花商户 FLOWERS 支付 300 元；④向合成蛋糕商户 CAKE 支付 200 元。后三项各执行一次，授权窗口为 2026-10-17 16:00 UTC 至 2026-10-18 16:00 UTC。模拟设备分别签署每一张规范卡。"
+  }
+}

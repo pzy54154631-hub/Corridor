@@ -1,0 +1,158 @@
+{
+  "chat.purchase.review": {
+    "en": "Review the purchase below. Confirm signs the purchase preference on the simulated device and only then prepares the approval card; simulated SMS verification and a final approval follow before anything is done.",
+    "zh-CN": "请核对下面的申购要素。点「确认」后，模拟设备会签署申购偏好，然后才生成审批卡；之后还需短信验证（模拟）与最终确认才会办理。"
+  },
+  "chat.purchase.product": {
+    "en": "Which product would you like to buy? Name it here (options below), or compare and choose on the wealth page.",
+    "zh-CN": "您想申购哪一款？可以直接说产品名称（可选产品见下方），或在理财页比较后选择。"
+  },
+  "chat.purchase.amount": {
+    "en": "How much would you like to buy? Name an exact amount, such as CNY 2,000.",
+    "zh-CN": "您想申购多少金额？请说一个明确的金额，例如“2000元”。"
+  },
+  "chat.purchase.both": {
+    "en": "Which product, and how much? Name both here (options below), or choose on the wealth page.",
+    "zh-CN": "您想申购哪一款、多少金额？可以直接说产品名称和金额（可选产品见下方），或在理财页选择。"
+  },
+  "chat.purchase.deictic": {
+    "en": "'That one' refers to a product seen on the wealth page, which the chat cannot identify. Name the product, or choose it on the wealth page.",
+    "zh-CN": "“那只 / 这款”指的是理财页上看到的产品，对话里无法确定是哪一款。请直接说产品名称，或在理财页选择。"
+  },
+  "chat.purchase.title": {
+    "en": "Purchase to review (awaiting your confirmation on the simulated device; the approval card follows)",
+    "zh-CN": "申购要素（待您在模拟设备上确认，确认后才生成审批卡）"
+  },
+  "chat.purchase.product_line": {
+    "en": "Product: {product}",
+    "zh-CN": "产品：{product}"
+  },
+  "chat.purchase.amount_line": {
+    "en": "Amount: {amount}",
+    "zh-CN": "金额：{amount}"
+  },
+  "chat.purchase.source_line": {
+    "en": "Source account: {account}",
+    "zh-CN": "扣款账户：{account}"
+  },
+  "chat.purchase.objective_line": {
+    "en": "Comparison objective: {objective} (other preferences as on the wealth page)",
+    "zh-CN": "比较目标：{objective}（其余偏好与理财页相同）"
+  },
+  "chat.purchase.candidates": {
+    "en": "Products: {names}",
+    "zh-CN": "可选产品：{names}"
+  },
+  "chat.redeem.none": {
+    "en": "You hold no position that can be redeemed.",
+    "zh-CN": "您目前没有可赎回的持仓。"
+  },
+  "chat.redeem.choose": {
+    "en": "You hold several positions. Say which one to redeem, or choose it on the wealth page.",
+    "zh-CN": "您有多笔持仓，请说明要赎回哪一笔，或在理财页选择。"
+  },
+  "chat.subscription.choose": {
+    "en": "Choose the debit authorization to cancel. A cancellation card follows, and nothing is cancelled until you confirm it on the simulated device.",
+    "zh-CN": "请选择要取消的代扣授权。选中后会生成取消卡片，在模拟设备上确认之前不会取消。"
+  },
+  "chat.subscription.no_match": {
+    "en": "No debit authorization matches the amount or merchant you named. Choose the one to cancel below.",
+    "zh-CN": "没有找到与您说的金额或商户相符的代扣授权。请从下面选择要取消的那一项。"
+  },
+  "chat.subscription.none": {
+    "en": "There is no debit authorization to cancel; nothing was done.",
+    "zh-CN": "当前没有可取消的代扣授权，没有办理任何业务。"
+  },
+  "chat.subscription.choice": {
+    "en": "{merchant} · {amount} monthly",
+    "zh-CN": "{merchant} · 每月 {amount}"
+  },
+  "chat.subscription.choice_yearly": {
+    "en": "{merchant} · {amount} yearly",
+    "zh-CN": "{merchant} · 每年 {amount}"
+  },
+  "chat.subscription.chosen": {
+    "en": "Chose: {merchant}",
+    "zh-CN": "选择：{merchant}"
+  },
+  "chat.schedule_cancel.choose": {
+    "en": "This message started no new payment and created no new card. Existing scheduled transfer authorizations have not been cancelled: choose the one to cancel below. A revocation card follows, and the result is shown after you confirm it on the simulated device.",
+    "zh-CN": "这条消息没有发起新付款，也没有生成新卡片。已有的定时转账授权尚未取消：请从下面选择要取消的那一项，选中后会生成撤销卡片，在模拟设备上确认后显示撤销结果。"
+  },
+  "chat.schedule_cancel.none": {
+    "en": "This message started no new payment and created no new card. You have no active scheduled transfer authorization.",
+    "zh-CN": "这条消息没有发起新付款，也没有生成新卡片。您目前没有进行中的定时转账授权。"
+  },
+  "chat.schedule_cancel.choice": {
+    "en": "{contact} · {period} · {amount} ({runs} run(s) ahead)",
+    "zh-CN": "{contact} · {period} · {amount}（尚余 {runs} 次）"
+  },
+  "chat.schedule_cancel.monthly": {
+    "en": "monthly on day {day}",
+    "zh-CN": "每月{day}号"
+  },
+  "chat.schedule_cancel.once": {
+    "en": "once on {date}",
+    "zh-CN": "单次 {date}"
+  },
+  "chat.schedule_cancel.chosen": {
+    "en": "Revoke: {label}",
+    "zh-CN": "撤销：{label}"
+  },
+  "chat.schedule_cancel.done": {
+    "en": "The remaining runs of this scheduled transfer authorization were revoked; transfers that already ran are not undone.",
+    "zh-CN": "已撤销这项定时转账授权的剩余执行；已经执行的转账不会撤销。"
+  },
+  "chat.redeem.no_match": {
+    "en": "You hold no position in the product you named. Say which holding to redeem, or choose it on the wealth page.",
+    "zh-CN": "没有找到您说的那款产品的持仓。请说明要赎回哪一笔，或在理财页选择。"
+  },
+  "chat.purchase.horizon_line": {
+    "en": "Investment horizon: {days} days",
+    "zh-CN": "投资期限：{days} 天"
+  },
+  "chat.purchase.access_line": {
+    "en": "Access to the money: within {days} days",
+    "zh-CN": "取用等待：不超过 {days} 天"
+  },
+  "chat.purchase.types_line": {
+    "en": "Product types: {types} only",
+    "zh-CN": "产品类型：只投{types}"
+  },
+  "chat.purchase.types.wealth": {
+    "en": "wealth products",
+    "zh-CN": "理财类产品"
+  },
+  "chat.purchase.objective_line_full": {
+    "en": "Comparison objective: {objective} (every term above is signed by the confirm gesture)",
+    "zh-CN": "比较目标：{objective}（以上各项都会在点「确认」时签署）"
+  },
+  "chat.purchase.changed": {
+    "en": "The purchase terms changed after you reviewed them, so nothing was signed. Restate the purchase and review the new terms before confirming.",
+    "zh-CN": "申购要素在您核对之后有变化，没有签署任何内容。请重新说明申购要求，核对新的要素后再确认。"
+  },
+  "chat.mood_hold": {
+    "en": "This reads as a question, a supposition or something that already happened, so nothing was prepared and no card was created. To do it now, say the request directly.",
+    "zh-CN": "这句话是在询问、假设或说明已经发生的事，没有办理这项业务，也没有生成卡片。如需现在办理，请直接说要办理的业务。"
+  },
+  "chat.time_hold.wealth": {
+    "en": "Purchases and redemptions cannot be scheduled in chat: your words named a time, so no purchase review or redemption card was prepared. To do it now, restate it without the time, or use the wealth page.",
+    "zh-CN": "对话里还不能预约申购或赎回：您的话里提到了时间，所以没有生成申购要素或赎回卡片。如需现在办理，请去掉时间后重新说，或到理财页办理。"
+  },
+  "chat.time_hold.subscription": {
+    "en": "A subscription can only be cancelled now in chat: your words named a time, so no cancellation card was prepared. To cancel now, restate it without the time, or use the subscriptions page.",
+    "zh-CN": "取消订阅在对话里只能马上办理：您的话里提到了时间，所以没有生成取消卡片。如需现在取消，请去掉时间后重新说，或到订阅页办理。"
+  },
+  "chat.redeem.quantity": {
+    "en": "Say the amount to redeem, or say 'redeem all'. No redemption card is prepared until the quantity is clear.",
+    "zh-CN": "请说明要赎回的金额，或说“全部赎回”。在说清数量之前不会生成赎回卡片。"
+  },
+  "chat.redeem.quantity_over": {
+    "en": "That amount is more than can be redeemed. Name an amount within it, or say 'redeem all'.",
+    "zh-CN": "您说的金额超过了可赎回的数额。请说一个不超过它的金额，或说“全部赎回”。"
+  },
+  "chat.schedule_cancel.choice_object": {
+    "en": "{object} ({runs} run(s) ahead)",
+    "zh-CN": "{object}（尚余 {runs} 次）"
+  }
+}

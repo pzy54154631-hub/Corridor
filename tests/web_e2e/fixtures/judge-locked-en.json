@@ -1,0 +1,391 @@
+{
+ "ok": true,
+ "generation": "q3Lw9xYp0aZk",
+ "revision": 14,
+ "state": {
+  "schema": 1,
+  "contract": "web-contract/1.1",
+  "generation": "q3Lw9xYp0aZk",
+  "revision": 14,
+  "view": "judge",
+  "locale": "en",
+  "capabilities": {
+   "tabs": [],
+   "shortcuts": [
+    "transfer",
+    "cards",
+    "scam_drill"
+   ],
+   "live": false,
+   "plan_select": false,
+   "compensate": false,
+   "aa": false,
+   "lab": false
+  },
+  "session": {
+   "logged_in": true,
+   "clock_text": "2026-09-15 10:30 (Beijing time)",
+   "bank_name": "Demo Bank",
+   "assistant_name": "Assistant",
+   "phone_url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=en&view=judge"
+  },
+  "shell": {
+   "corner": "Synthetic data · simulated authentication · no real money",
+   "judge_strip": "Judge view: kernel verdicts, hashes and audit evidence; the view is a display preference, not access control",
+   "badge": {
+    "kind": "demo",
+    "text": "Scripted demo"
+   },
+   "safety": {
+    "locked": true,
+    "text": "Locked: yellow and red operations are refused; green queries still work.",
+    "hint": "Unlocking needs a cool-down, your own device confirmation and a simulated SMS code; this page does not offer it yet. Use the fallback UI, or press 'Start over' for a new synthetic session",
+    "state": "Locked",
+    "reason": "breaker_mfa",
+    "unlock_after_text": "2026-09-15 11:02 (Beijing time)",
+    "rule_ids": [
+     "APR-LOCK",
+     "BRK-LOCK"
+    ]
+   },
+   "paused_banner": null,
+   "notices": []
+  },
+  "chat": {
+   "shortcuts": [
+    {
+     "key": "transfer",
+     "label": "Send Mom 800 yuan"
+    },
+    {
+     "key": "cards",
+     "label": "I lost my card"
+    },
+    {
+     "key": "scam_drill",
+     "label": "Scam drill"
+    }
+   ],
+   "drill_caption": "Drill: a rehearsed 'staff told me to transfer now' message, to show how the system answers (Judge) The drill sentence hits the phrase gate: no card, 0 dispatches",
+   "greeting": null,
+   "turns": [
+    {
+     "id": "u2",
+     "role": "user",
+     "rkey": "R2",
+     "text": "给妈妈转5000元"
+    },
+    {
+     "id": "a2",
+     "role": "assistant",
+     "rkey": "R2",
+     "text": "Too many wrong codes; the account is locked."
+    }
+   ],
+   "responses": {
+    "R2": {
+     "rkey": "R2",
+     "current": true,
+     "status": "rejected",
+     "status_text": "Verification failed",
+     "copy_lines": [
+      "Too many wrong codes; the account is locked."
+     ],
+     "tier": {
+      "code": "red",
+      "label": "Red · independent simulated verification",
+      "glyph": "triangle"
+     },
+     "requested_tier": null,
+     "redisplay_notice": null,
+     "cards": [
+      {
+       "key": "R2-0",
+       "title": "Gateway approval card",
+       "purpose": "Transfer",
+       "amount_text": "¥5,000.00",
+       "tier": {
+        "code": "red",
+        "label": "Red · independent simulated verification",
+        "glyph": "triangle"
+       },
+       "tier_reason": "Single transfer above 2,000 yuan",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "Mom · ending 3721 (synthetic)"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [
+        {
+         "kind": "red",
+         "title": null,
+         "lines": [
+          "Red operation: after device confirmation, enter the simulated SMS code"
+         ],
+         "footer": null
+        }
+       ],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       },
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "5000.00"
+        },
+        "amount_raw": "5000.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "Payee",
+         "lines": [
+          "Mom · ending 3721 (synthetic)"
+         ]
+        }
+       ]
+      }
+     ],
+     "gate": null,
+     "result": null,
+     "failure": null,
+     "live_notes": [],
+     "device_task": "TR2",
+     "route_hint": null,
+     "fallback_shortcuts": false,
+     "cancel": {
+      "label": "Cancel",
+      "hint": "Cancel withdraws every pending proposal in this session; settled ones stay"
+     },
+     "card_source": "authoritative",
+     "technical_url": "/api/evidence/responses/R2"
+    }
+   },
+   "current": "R2",
+   "gated_elsewhere": [],
+   "task_panel": null,
+   "composer": {
+    "placeholder": "Tell me what you need, e.g. send Mom 500 yuan",
+    "max_chars": 4000,
+    "attach_label": "Attach a file the other party sent (simulated)",
+    "attach_note": "The attachment switch is self-reported; no file is read",
+    "contacts_note": "Demo contacts: Mom (妈妈), Landlord (房东), Classmate (同学), Neighbor (邻居), New contact (新联系人), Spouse (爱人)",
+    "disabled": false
+   }
+  },
+  "device": {
+   "title": "Simulated signing device (software)",
+   "idle_text": "Nothing needs confirming on the device",
+   "queue_text": null,
+   "tasks": [
+    {
+     "key": "TR2",
+     "source": "chat",
+     "source_label": "Chat",
+     "rkey": "R2",
+     "current": true,
+     "cards": [
+      {
+       "key": "TR2-0",
+       "title": "Gateway approval card",
+       "purpose": "Transfer",
+       "amount_text": "¥5,000.00",
+       "tier": {
+        "code": "red",
+        "label": "Red · independent simulated verification",
+        "glyph": "triangle"
+       },
+       "tier_reason": "Single transfer above 2,000 yuan",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "Mom · ending 3721 (synthetic)"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [
+        {
+         "kind": "red",
+         "title": null,
+         "lines": [
+          "Red operation: after device confirmation, enter the simulated SMS code"
+         ],
+         "footer": null
+        }
+       ],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       },
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "5000.00"
+        },
+        "amount_raw": "5000.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "Payee",
+         "lines": [
+          "Mom · ending 3721 (synthetic)"
+         ]
+        }
+       ]
+      }
+     ],
+     "step": "account_locked",
+     "step_text": "The account is locked; yellow and red operations are unavailable",
+     "gesture": null,
+     "cancel": {
+      "label": "Cancel",
+      "hint": "Cancel withdraws every pending proposal in this session; settled ones stay"
+     },
+     "hash": {
+      "algorithm": "SHA-256(JCS)",
+      "short": "3f1c0a9e5b7d2c4e",
+      "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6",
+      "status": "pending",
+      "label": "H(display.card)"
+     }
+    }
+   ],
+   "active": "TR2",
+   "sms": {
+    "url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=en&view=judge",
+    "label": "Simulated SMS (synthetic, not a real text message)",
+    "open_label": "Open in a new window",
+    "footer": "Synthetic SMS · no SMS gateway · no real phone number"
+   }
+  },
+  "evidence": {
+   "open_by_default": [
+    "kernel",
+    "consistency",
+    "dispatch"
+   ],
+   "planner": {
+    "badge": "Scripted planner",
+    "source": "Scripted planner (offline)",
+    "counters": []
+   },
+   "dispatch": {
+    "count": 0,
+    "receipts": []
+   },
+   "audit": {
+    "count": 3,
+    "head": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    },
+    "verified": true,
+    "note": "Audit verification shows the chain was not rewritten; it does not prove what happened outside"
+   },
+   "safety": {
+    "state": "Locked",
+    "reason": "breaker_mfa"
+   },
+   "intent_log": [
+    {
+     "intent": "transfer",
+     "status": "awaiting_input",
+     "response": "R2",
+     "utterance": ""
+    }
+   ],
+   "intent_log_note": "The intent log is not in the hash chain",
+   "planner_log": [
+    {
+     "rkey": "R2",
+     "planner": "scripted",
+     "intent": "transfer",
+     "outcome": "Escalate",
+     "tier": "red",
+     "rule_ids": [
+      "APR-NEWPAYEE"
+     ]
+    }
+   ],
+   "footer": "Evidence is read-only; the view is a display preference, not access control",
+   "response": {
+    "rkey": "R2",
+    "intent": "transfer",
+    "status": "awaiting_input",
+    "rule_ids": [
+     "APR-NEWPAYEE"
+    ],
+    "rule_lines": [
+     "APR-NEWPAYEE: a first-time payee needs device confirmation"
+    ],
+    "audit_hash": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    }
+   },
+   "kernel": {
+    "outcome": "Escalate",
+    "tier": "red",
+    "rule_ids": [
+     "APR-NEWPAYEE"
+    ],
+    "rule_lines": [
+     "APR-NEWPAYEE: a first-time payee needs device confirmation"
+    ],
+    "note": null
+   },
+   "consistency": {
+    "display_card": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "3f1c0a9e5b7d2c4e",
+     "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6"
+    },
+    "proposal_card": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "3f1c0a9e5b7d2c4e",
+     "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6"
+    },
+    "same_hash": true,
+    "same_business_facts": true,
+    "action": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    },
+    "cert": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    },
+    "card_core": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "3f1c0a9e5b7d2c4e",
+     "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6"
+    },
+    "challenge": "none",
+    "not_yet_text": null,
+    "mismatch_text": null
+   }
+  }
+ }
+}

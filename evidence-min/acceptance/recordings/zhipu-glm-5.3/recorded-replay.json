@@ -1,0 +1,374 @@
+{
+ "run": "run-20261029-150651-bf1f6ca8",
+ "mode": "replay",
+ "candidate_head": "2fef7c21d3716a3725dd33fdbb12080fee35643d",
+ "deployment": "zhipu-glm-5.3",
+ "model": "glm-5.3",
+ "api": "chat",
+ "reasoning_effort": null,
+ "max_output_tokens": 512,
+ "max_calls_per_session": 8,
+ "currency": "CNY",
+ "shared_budget_assumption_cny": "30",
+ "calls_are_observed_not_assumed": true,
+ "protocol_sha256": "ce92f3ccc73f9b6ff3bfcb401476dbb1323e387482defaeed417bc476d2cb730",
+ "runner_sha256": "a4d919b24884e9f4e14e39e995d521a68631e2421bbfe39deca0c0af62588ced",
+ "protocol_copy_sha256": "ce92f3ccc73f9b6ff3bfcb401476dbb1323e387482defaeed417bc476d2cb730",
+ "runner_copy_sha256": "a4d919b24884e9f4e14e39e995d521a68631e2421bbfe39deca0c0af62588ced",
+ "cases": [
+  {
+   "name": "01-transfer-1500",
+   "input": "给妈妈转1500元",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 422
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "glm-5.3",
+     "api": "chat",
+     "reasoning_effort": null,
+     "max_output_tokens": 512,
+     "prompt_hash": "791a363755e5204deb6b1778a083c7643a97a981cbed5ebe24bb54420592110b",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "72e1df125ed23f31ad5e9d123072ccc9ffb55db02416046c440c97d808209fdb",
+     "source": "replay-miss"
+    }
+   ],
+   "planner_sources": [
+    "replay-miss"
+   ],
+   "planner_client_mode": "strict",
+   "failure_type": "AssertionError",
+   "passed": false,
+   "failure_observation": {
+    "chat_status": null,
+    "chat_intent": null,
+    "chat_payload_keys": [],
+    "chat_vm_keys": [],
+    "purchase_review": {},
+    "confirmation_button_ids": [],
+    "device_task_key": null,
+    "tasks": [],
+    "business_keys": [],
+    "bank_execute_delta": 0,
+    "receipt_count": 0,
+    "receipt_kinds": [],
+    "positions": [
+     {
+      "product_ref": "P_A",
+      "principal_amount": "500"
+     }
+    ],
+    "audit_valid": true
+   },
+   "planner_spend_assumption_usd": "0"
+  },
+  {
+   "name": "02-bill-september",
+   "input": "看看9月账单",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 422
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "glm-5.3",
+     "api": "chat",
+     "reasoning_effort": null,
+     "max_output_tokens": 512,
+     "prompt_hash": "73de0bcddc39de5c4488fed28ae65e0509f467c7b50e96d35b2e426add2e8040",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "cd5e81c6ceee43b673ba8679b986d176a105374b39f150f0073eb21aac758eba",
+     "source": "replay-miss"
+    }
+   ],
+   "planner_sources": [
+    "replay-miss"
+   ],
+   "planner_client_mode": "strict",
+   "failure_type": "AssertionError",
+   "passed": false,
+   "failure_observation": {
+    "chat_status": null,
+    "chat_intent": null,
+    "chat_payload_keys": [],
+    "chat_vm_keys": [],
+    "purchase_review": {},
+    "confirmation_button_ids": [],
+    "device_task_key": null,
+    "tasks": [],
+    "business_keys": [],
+    "bank_execute_delta": 0,
+    "receipt_count": 0,
+    "receipt_kinds": [],
+    "positions": [
+     {
+      "product_ref": "P_A",
+      "principal_amount": "500"
+     }
+    ],
+    "audit_valid": true
+   },
+   "planner_spend_assumption_usd": "0"
+  },
+  {
+   "name": "03-wealth-buy-p-a",
+   "input": "帮我申购2000元稳健30天持有",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 422
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "glm-5.3",
+     "api": "chat",
+     "reasoning_effort": null,
+     "max_output_tokens": 512,
+     "prompt_hash": "0e4c70f722d4357824f26c2dbb7e30f00b2a4bdd0dc06fb083309348ee7a75d9",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "88a3048d724d7aacd997ae24b4bd59ce941376caae16235fc2268a1a7e8a2339",
+     "source": "replay-miss"
+    }
+   ],
+   "planner_sources": [
+    "replay-miss"
+   ],
+   "planner_client_mode": "strict",
+   "failure_type": "AssertionError",
+   "passed": false,
+   "failure_observation": {
+    "chat_status": null,
+    "chat_intent": null,
+    "chat_payload_keys": [],
+    "chat_vm_keys": [],
+    "purchase_review": {},
+    "confirmation_button_ids": [],
+    "device_task_key": null,
+    "tasks": [],
+    "business_keys": [],
+    "bank_execute_delta": 0,
+    "receipt_count": 0,
+    "receipt_kinds": [],
+    "positions": [
+     {
+      "product_ref": "P_A",
+      "principal_amount": "500"
+     }
+    ],
+    "audit_valid": true
+   },
+   "planner_spend_assumption_usd": "0"
+  },
+  {
+   "name": "04-card-lost",
+   "input": "我的卡丢了",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 422
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "glm-5.3",
+     "api": "chat",
+     "reasoning_effort": null,
+     "max_output_tokens": 512,
+     "prompt_hash": "495e08b7bcfc2e8a6fbe1eb8661e5358ac5ad9bc78669ebb4cab173c8b807781",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "f3181f3347e30eba89d206ad27786a61954951f90a1737f73b7920327decdec3",
+     "source": "replay-miss"
+    }
+   ],
+   "planner_sources": [
+    "replay-miss"
+   ],
+   "planner_client_mode": "strict",
+   "failure_type": "AssertionError",
+   "passed": false,
+   "failure_observation": {
+    "chat_status": null,
+    "chat_intent": null,
+    "chat_payload_keys": [],
+    "chat_vm_keys": [],
+    "purchase_review": {},
+    "confirmation_button_ids": [],
+    "device_task_key": null,
+    "tasks": [],
+    "business_keys": [],
+    "bank_execute_delta": 0,
+    "receipt_count": 0,
+    "receipt_kinds": [],
+    "positions": [
+     {
+      "product_ref": "P_A",
+      "principal_amount": "500"
+     }
+    ],
+    "audit_valid": true
+   },
+   "planner_spend_assumption_usd": "0"
+  },
+  {
+   "name": "05-subscription-cancel",
+   "input": "取消订阅",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 422
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "glm-5.3",
+     "api": "chat",
+     "reasoning_effort": null,
+     "max_output_tokens": 512,
+     "prompt_hash": "077960555793363e42ef5af1d5c3c3b884a46986347c121cf3b3de438a33f98f",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "ee2c44dd3fe83a4b4040f58304d8ebb4349879e9fe172edc7bb3c551e8b8cbb7",
+     "source": "replay-miss"
+    }
+   ],
+   "planner_sources": [
+    "replay-miss"
+   ],
+   "planner_client_mode": "strict",
+   "failure_type": "AssertionError",
+   "passed": false,
+   "failure_observation": {
+    "chat_status": null,
+    "chat_intent": null,
+    "chat_payload_keys": [],
+    "chat_vm_keys": [],
+    "purchase_review": {},
+    "confirmation_button_ids": [],
+    "device_task_key": null,
+    "tasks": [],
+    "business_keys": [],
+    "bank_execute_delta": 0,
+    "receipt_count": 0,
+    "receipt_kinds": [],
+    "positions": [
+     {
+      "product_ref": "P_A",
+      "principal_amount": "500"
+     }
+    ],
+    "audit_valid": true
+   },
+   "planner_spend_assumption_usd": "0"
+  },
+  {
+   "name": "06-birthday-dag",
+   "input": "帮我准备老婆的生日",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 422
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "glm-5.3",
+     "api": "chat",
+     "reasoning_effort": null,
+     "max_output_tokens": 512,
+     "prompt_hash": "1379b3361b9351810e785adc374f4e6308316f5f07bc378da060d44be04c5659",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "398b8e4e7d399b607d73af4148f8085c83918bf1f63a3fa44fa6eeba5e9ae5e8",
+     "source": "replay-miss"
+    }
+   ],
+   "planner_sources": [
+    "replay-miss"
+   ],
+   "planner_client_mode": "strict",
+   "failure_type": "AssertionError",
+   "passed": false,
+   "failure_observation": {
+    "chat_status": null,
+    "chat_intent": null,
+    "chat_payload_keys": [],
+    "chat_vm_keys": [],
+    "purchase_review": {},
+    "confirmation_button_ids": [],
+    "device_task_key": null,
+    "tasks": [],
+    "business_keys": [],
+    "bank_execute_delta": 0,
+    "receipt_count": 0,
+    "receipt_kinds": [],
+    "positions": [
+     {
+      "product_ref": "P_A",
+      "principal_amount": "500"
+     }
+    ],
+    "audit_valid": true
+   },
+   "planner_spend_assumption_usd": "0"
+  }
+ ],
+ "passed_count": 0,
+ "failed_count": 6,
+ "provider_invoice": false,
+ "human_approval": false,
+ "provider_calls_total": 0,
+ "spend_assumption_usd_total": "0"
+}

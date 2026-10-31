@@ -1,0 +1,596 @@
+{
+ "ok": true,
+ "generation": "q3Lw9xYp0aZk",
+ "revision": 9,
+ "state": {
+  "schema": 1,
+  "contract": "web-contract/1.1",
+  "generation": "q3Lw9xYp0aZk",
+  "revision": 9,
+  "view": "judge",
+  "locale": "en",
+  "capabilities": {
+   "tabs": [
+    "plans"
+   ],
+   "shortcuts": [
+    "transfer",
+    "cards",
+    "birthday",
+    "scam_drill"
+   ],
+   "live": false,
+   "plan_select": true,
+   "compensate": false,
+   "aa": false,
+   "lab": false
+  },
+  "session": {
+   "logged_in": true,
+   "clock_text": "2026-09-15 10:30 (Beijing time)",
+   "bank_name": "Demo Bank",
+   "assistant_name": "Assistant",
+   "phone_url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=en&view=judge"
+  },
+  "shell": {
+   "corner": "Synthetic data · simulated authentication · no real money",
+   "judge_strip": "Judge view: kernel verdicts, hashes and audit evidence; the view is a display preference, not access control",
+   "badge": {
+    "kind": "demo",
+    "text": "Scripted demo"
+   },
+   "safety": {
+    "locked": false,
+    "text": null,
+    "hint": null,
+    "state": "Normal",
+    "reason": null,
+    "unlock_after_text": null,
+    "rule_ids": []
+   },
+   "paused_banner": null,
+   "notices": []
+  },
+  "chat": {
+   "shortcuts": [
+    {
+     "key": "transfer",
+     "label": "Send Mom 800 yuan"
+    },
+    {
+     "key": "cards",
+     "label": "I lost my card"
+    },
+    {
+     "key": "birthday",
+     "label": "Plan my wife's birthday"
+    },
+    {
+     "key": "scam_drill",
+     "label": "Scam drill"
+    }
+   ],
+   "drill_caption": "Drill: a rehearsed 'staff told me to transfer now' message, to show how the system answers (Judge) The drill sentence hits the phrase gate: no card, 0 dispatches",
+   "greeting": null,
+   "turns": [
+    {
+     "id": "u4",
+     "role": "user",
+     "rkey": "R4",
+     "text": "帮我准备老婆的生日"
+    },
+    {
+     "id": "a4",
+     "role": "assistant",
+     "rkey": "R4",
+     "text": "Tick from the first item without gaps; unticked items will not run"
+    }
+   ],
+   "responses": {
+    "R4": {
+     "rkey": "R4",
+     "current": true,
+     "status": "awaiting_selection",
+     "status_text": "Waiting for selection",
+     "copy_lines": [
+      "Tick from the first item without gaps; unticked items will not run"
+     ],
+     "tier": {
+      "code": "yellow",
+      "label": "Yellow · device confirmation",
+      "glyph": "diamond"
+     },
+     "requested_tier": null,
+     "redisplay_notice": null,
+     "cards": [
+      {
+       "key": "R4-0",
+       "title": "Facts for the device to check · not yet authorised",
+       "purpose": "Birthday plan",
+       "amount_text": "¥268.00",
+       "tier": {
+        "code": "yellow",
+        "label": "Yellow · device confirmation",
+        "glyph": "diamond"
+       },
+       "tier_reason": "Transfer to a new payee",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "Order cake ¥268.00"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       },
+       "position": "1/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "268.00"
+        },
+        "amount_raw": "268.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "Payee",
+         "lines": [
+          "Order cake ¥268.00"
+         ]
+        }
+       ]
+      },
+      {
+       "key": "R4-1",
+       "title": "Facts for the device to check · not yet authorised",
+       "purpose": "Birthday plan",
+       "amount_text": "¥199.00",
+       "tier": {
+        "code": "yellow",
+        "label": "Yellow · device confirmation",
+        "glyph": "diamond"
+       },
+       "tier_reason": "Transfer to a new payee",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "Order flowers ¥199.00"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       },
+       "position": "2/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "199.00"
+        },
+        "amount_raw": "199.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "Payee",
+         "lines": [
+          "Order flowers ¥199.00"
+         ]
+        }
+       ]
+      },
+      {
+       "key": "R4-2",
+       "title": "Facts for the device to check · not yet authorised",
+       "purpose": "Birthday plan",
+       "amount_text": "¥500.00",
+       "tier": {
+        "code": "yellow",
+        "label": "Yellow · device confirmation",
+        "glyph": "diamond"
+       },
+       "tier_reason": "Transfer to a new payee",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "Restaurant deposit ¥500.00"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       },
+       "position": "3/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "500.00"
+        },
+        "amount_raw": "500.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "Payee",
+         "lines": [
+          "Restaurant deposit ¥500.00"
+         ]
+        }
+       ]
+      },
+      {
+       "key": "R4-3",
+       "title": "Facts for the device to check · not yet authorised",
+       "purpose": "Birthday plan",
+       "amount_text": "¥1,299.00",
+       "tier": {
+        "code": "yellow",
+        "label": "Yellow · device confirmation",
+        "glyph": "diamond"
+       },
+       "tier_reason": "Transfer to a new payee",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "Gift ¥1,299.00"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       },
+       "position": "4/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "1299.00"
+        },
+        "amount_raw": "1299.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "Payee",
+         "lines": [
+          "Gift ¥1,299.00"
+         ]
+        }
+       ]
+      }
+     ],
+     "gate": null,
+     "result": null,
+     "failure": null,
+     "live_notes": [],
+     "device_task": "TR4",
+     "route_hint": null,
+     "fallback_shortcuts": false,
+     "cancel": {
+      "label": "Cancel",
+      "hint": "Cancel withdraws every pending proposal in this session; settled ones stay"
+     },
+     "plan_select": {
+      "tkey": "TR4",
+      "rule_text": "Tick from the first item without gaps; unticked items will not run",
+      "nodes": [
+       {
+        "key": "n0",
+        "label": "Order cake ¥268.00",
+        "checked": true
+       },
+       {
+        "key": "n1",
+        "label": "Order flowers ¥199.00",
+        "checked": true
+       },
+       {
+        "key": "n2",
+        "label": "Restaurant deposit ¥500.00",
+        "checked": false
+       },
+       {
+        "key": "n3",
+        "label": "Gift ¥1,299.00",
+        "checked": false
+       }
+      ],
+      "mode": "subset",
+      "count": 2,
+      "total": 4,
+      "error_text": null
+     },
+     "card_source": "authoritative",
+     "technical_url": "/api/evidence/responses/R4"
+    }
+   },
+   "current": "R4",
+   "gated_elsewhere": [],
+   "task_panel": null,
+   "composer": {
+    "placeholder": "Tell me what you need, e.g. send Mom 500 yuan",
+    "max_chars": 4000,
+    "attach_label": "Attach a file the other party sent (simulated)",
+    "attach_note": "The attachment switch is self-reported; no file is read",
+    "contacts_note": "Demo contacts: Mom (妈妈), Landlord (房东), Classmate (同学), Neighbor (邻居), New contact (新联系人), Spouse (爱人)",
+    "disabled": false
+   }
+  },
+  "device": {
+   "title": "Simulated signing device (software)",
+   "idle_text": "Nothing needs confirming on the device",
+   "queue_text": null,
+   "tasks": [
+    {
+     "key": "TR4",
+     "source": "chat",
+     "source_label": "Chat",
+     "rkey": "R4",
+     "current": true,
+     "cards": [
+      {
+       "key": "TR4-0",
+       "title": "Facts for the device to check · not yet authorised",
+       "purpose": "Birthday plan",
+       "amount_text": "¥268.00",
+       "tier": {
+        "code": "yellow",
+        "label": "Yellow · device confirmation",
+        "glyph": "diamond"
+       },
+       "tier_reason": "Transfer to a new payee",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "Order cake ¥268.00"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       },
+       "position": "1/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "268.00"
+        },
+        "amount_raw": "268.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "Payee",
+         "lines": [
+          "Order cake ¥268.00"
+         ]
+        }
+       ]
+      },
+      {
+       "key": "TR4-1",
+       "title": "Facts for the device to check · not yet authorised",
+       "purpose": "Birthday plan",
+       "amount_text": "¥199.00",
+       "tier": {
+        "code": "yellow",
+        "label": "Yellow · device confirmation",
+        "glyph": "diamond"
+       },
+       "tier_reason": "Transfer to a new payee",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "Order flowers ¥199.00"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       },
+       "position": "2/4",
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "199.00"
+        },
+        "amount_raw": "199.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "Payee",
+         "lines": [
+          "Order flowers ¥199.00"
+         ]
+        }
+       ]
+      }
+     ],
+     "step": "confirm_subset",
+     "step_text": "A new plan card for the 2 selected items will be prepared; nothing is signed in this step",
+     "gesture": {
+      "op": "confirm",
+      "token": "Pq7dLm2xZ0aR5tVb8nC1wE",
+      "card_version": "1a2b3c4d5e6f70811a2b3c4d5e6f7081",
+      "label": "Prepare new card"
+     },
+     "cancel": {
+      "label": "Cancel",
+      "hint": "Cancel withdraws every pending proposal in this session; settled ones stay"
+     },
+     "selection": {
+      "count": 2,
+      "total": 4,
+      "text": "2 of 4 selected"
+     },
+     "nodes_version": "0f1e2d3c4b5a69780f1e2d3c4b5a6978",
+     "hash": {
+      "algorithm": "SHA-256(JCS)",
+      "short": "3f1c0a9e5b7d2c4e",
+      "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6",
+      "status": "pending",
+      "label": "H(display.card)"
+     }
+    }
+   ],
+   "active": "TR4",
+   "sms": {
+    "url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=en&view=judge",
+    "label": "Simulated SMS (synthetic, not a real text message)",
+    "open_label": "Open in a new window",
+    "footer": "Synthetic SMS · no SMS gateway · no real phone number"
+   }
+  },
+  "evidence": {
+   "open_by_default": [
+    "kernel",
+    "consistency",
+    "dispatch"
+   ],
+   "planner": {
+    "badge": "Scripted planner",
+    "source": "Scripted planner (offline)",
+    "counters": []
+   },
+   "dispatch": {
+    "count": 0,
+    "receipts": []
+   },
+   "audit": {
+    "count": 3,
+    "head": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    },
+    "verified": true,
+    "note": "Audit verification shows the chain was not rewritten; it does not prove what happened outside"
+   },
+   "safety": {
+    "state": "Normal",
+    "reason": null
+   },
+   "intent_log": [
+    {
+     "intent": "transfer",
+     "status": "awaiting_input",
+     "response": "R4",
+     "utterance": ""
+    }
+   ],
+   "intent_log_note": "The intent log is not in the hash chain",
+   "planner_log": [
+    {
+     "rkey": "R4",
+     "planner": "scripted",
+     "intent": "transfer",
+     "outcome": "Escalate",
+     "tier": "yellow",
+     "rule_ids": [
+      "APR-NEWPAYEE"
+     ]
+    }
+   ],
+   "footer": "Evidence is read-only; the view is a display preference, not access control",
+   "response": {
+    "rkey": "R4",
+    "intent": "transfer",
+    "status": "awaiting_input",
+    "rule_ids": [
+     "APR-NEWPAYEE"
+    ],
+    "rule_lines": [
+     "APR-NEWPAYEE: a first-time payee needs device confirmation"
+    ],
+    "audit_hash": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    }
+   },
+   "kernel": {
+    "outcome": "Escalate",
+    "tier": "yellow",
+    "rule_ids": [
+     "APR-NEWPAYEE"
+    ],
+    "rule_lines": [
+     "APR-NEWPAYEE: a first-time payee needs device confirmation"
+    ],
+    "note": null
+   },
+   "consistency": {
+    "display_card": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "3f1c0a9e5b7d2c4e",
+     "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6"
+    },
+    "proposal_card": null,
+    "same_hash": null,
+    "same_business_facts": null,
+    "action": null,
+    "cert": null,
+    "card_core": null,
+    "challenge": "none",
+    "not_yet_text": "Not yet produced",
+    "mismatch_text": null
+   }
+  }
+ }
+}

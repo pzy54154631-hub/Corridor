@@ -1,0 +1,109 @@
+/* Design tokens. Text on its background is at least 4.5:1; component borders at least 3:1. */
+:root {
+  --brand-900: #241a31;
+  --brand-800: #2f2341;
+  --brand-700: #392b49;
+  --brand-600: #47365c;
+  --brand-500: #584174;
+  --brand-400: #7a62a0;
+  --brand-200: #d6cbe6;
+  --brand-100: #eee8f4;
+  --brand-50: #f7f5fa;
+  --gold-300: #f3d39c;
+
+  --ink-900: #292437;
+  --ink-600: #5d536b;
+  --ink-500: #766f83;
+  --line: #e9e3ee;
+  --line-strong: #d9d2e4;
+  --surface: #ffffff;
+  --surface-2: #f4f1f8;
+
+  --ok-fg: #1f5e2e;
+  --ok-bg: #e8f3ea;
+  --ok-line: #9fcfab;
+  --info-fg: #1f3a5f;
+  --info-bg: #eef4fa;
+  --info-line: #9fb6cf;
+  --warn-fg: #6b4b10;
+  --warn-bg: #fff6e2;
+  --warn-line: #ecc77a;
+  --bad-fg: #8a2f28;
+  --bad-bg: #fbeceb;
+  --bad-line: #e3a29b;
+  --pause-line: #b23b3b;
+
+  --tier-green-fg: #1e5a45;
+  --tier-green-bg: #dcefe8;
+  --tier-green-line: #8cc7ad;
+  --tier-yellow-fg: #6e4d12;
+  --tier-yellow-bg: #f9ebcf;
+  --tier-yellow-line: #e2c27a;
+  --tier-red-fg: #8d342d;
+  --tier-red-bg: #f9e2df;
+  --tier-red-line: #e3a29b;
+  --tier-black-fg: #ffffff;
+  --tier-black-bg: #39333f;
+  --tier-black-line: #39333f;
+
+  --font-text: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei",
+    "Noto Sans CJK SC", "Source Han Sans SC", "Segoe UI", system-ui, sans-serif;
+  --font-num: "Segoe UI", "SF Pro Text", "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-15: 15px;
+  --fs-17: 17px;
+  --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-32: 32px;
+  --fs-40: 40px;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-phone: 40px;
+  --r-pill: 999px;
+
+  --sh-1: 0 1px 2px rgba(41, 36, 55, 0.06);
+  --sh-2: 0 4px 14px rgba(52, 36, 68, 0.08);
+  --sh-3: 0 12px 32px rgba(36, 26, 49, 0.16);
+  --sh-phone: 0 40px 80px -28px rgba(36, 26, 49, 0.42), 0 14px 30px -12px rgba(36, 26, 49, 0.18);
+  --sh-device: 0 30px 60px -30px rgba(36, 26, 49, 0.45), 0 10px 24px -14px rgba(36, 26, 49, 0.25);
+
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 280ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --header-h: 64px;
+  --phone-w: 402px;
+  --device-w: 360px;
+  --z-header: 20;
+  --z-drawer: 40;
+  --z-scrim: 45;
+  --z-sheet: 50;
+  --z-toast: 60;
+  --z-corner: 2147483647;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-1: 0ms;
+    --dur-2: 0ms;
+    --dur-3: 0ms;
+  }
+}

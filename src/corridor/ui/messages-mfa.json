@@ -1,0 +1,26 @@
+{
+  "Send simulated unlock code": {
+    "en": "Send simulated unlock code",
+    "zh-CN": "请求解锁验证码"
+  },
+  "The code has expired or is locked. Cancel and start again.": {
+    "en": "The code has expired or is locked. Cancel and start again.",
+    "zh-CN": "验证码已失效或已锁定，请取消后重新发起"
+  },
+  "Simulated device (embedded in this demo)": {
+    "en": "Simulated device (embedded in this demo)",
+    "zh-CN": "模拟设备（演示内嵌）"
+  },
+  "Cancel remaining allocation": {
+    "en": "Cancel remaining allocation",
+    "zh-CN": "取消剩余配置"
+  },
+  "Cancel unlock verification": {
+    "en": "Cancel unlock verification",
+    "zh-CN": "取消解锁验证"
+  },
+  "A cancelled challenge keeps its original 120-second window and attempt limit.": {
+    "en": "A cancelled challenge keeps its original 120-second window and attempt limit.",
+    "zh-CN": "取消不会重置原有验证码的 120 秒有效期或尝试次数；请在该窗口结束后重新请求。"
+  }
+}

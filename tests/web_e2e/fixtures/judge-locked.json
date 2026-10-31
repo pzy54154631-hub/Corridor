@@ -1,0 +1,391 @@
+{
+ "ok": true,
+ "generation": "q3Lw9xYp0aZk",
+ "revision": 14,
+ "state": {
+  "schema": 1,
+  "contract": "web-contract/1.1",
+  "generation": "q3Lw9xYp0aZk",
+  "revision": 14,
+  "view": "judge",
+  "locale": "zh-CN",
+  "capabilities": {
+   "tabs": [],
+   "shortcuts": [
+    "transfer",
+    "cards",
+    "scam_drill"
+   ],
+   "live": false,
+   "plan_select": false,
+   "compensate": false,
+   "aa": false,
+   "lab": false
+  },
+  "session": {
+   "logged_in": true,
+   "clock_text": "2026-09-15 10:30（北京时间）",
+   "bank_name": "演示银行",
+   "assistant_name": "智能助手",
+   "phone_url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=zh-CN&view=judge"
+  },
+  "shell": {
+   "corner": "合成数据 · 模拟认证 · 无真实资金",
+   "judge_strip": "评委视图：显示内核裁决、哈希与审计证据；视图只是展示偏好，不是访问控制",
+   "badge": {
+    "kind": "demo",
+    "text": "脚本演示"
+   },
+   "safety": {
+    "locked": true,
+    "text": "已锁定：黄色和红色操作会被拒绝，绿色查询仍可使用。",
+    "hint": "解锁需要冷却期、本人设备确认和模拟短信验证；本网页暂未提供，可在兜底界面完成，或点“重新开始”换一个新的合成会话",
+    "state": "Locked",
+    "reason": "breaker_mfa",
+    "unlock_after_text": "2026-09-15 11:02（北京时间）",
+    "rule_ids": [
+     "APR-LOCK",
+     "BRK-LOCK"
+    ]
+   },
+   "paused_banner": null,
+   "notices": []
+  },
+  "chat": {
+   "shortcuts": [
+    {
+     "key": "transfer",
+     "label": "给妈妈转 800 元"
+    },
+    {
+     "key": "cards",
+     "label": "我的卡丢了"
+    },
+    {
+     "key": "scam_drill",
+     "label": "诈骗演练"
+    }
+   ],
+   "drill_caption": "演练：模拟一段“工作人员让您立即转账”的话术，看系统如何回应 （评委）演练句命中话术闸门：不出卡，派发 0",
+   "greeting": null,
+   "turns": [
+    {
+     "id": "u2",
+     "role": "user",
+     "rkey": "R2",
+     "text": "给妈妈转5000元"
+    },
+    {
+     "id": "a2",
+     "role": "assistant",
+     "rkey": "R2",
+     "text": "验证码连续错误，账户已锁定。"
+    }
+   ],
+   "responses": {
+    "R2": {
+     "rkey": "R2",
+     "current": true,
+     "status": "rejected",
+     "status_text": "验证失败",
+     "copy_lines": [
+      "验证码连续错误，账户已锁定。"
+     ],
+     "tier": {
+      "code": "red",
+      "label": "红 · 需独立模拟验证",
+      "glyph": "triangle"
+     },
+     "requested_tier": null,
+     "redisplay_notice": null,
+     "cards": [
+      {
+       "key": "R2-0",
+       "title": "网关审批卡",
+       "purpose": "转账",
+       "amount_text": "¥5,000.00",
+       "tier": {
+        "code": "red",
+        "label": "红 · 需独立模拟验证",
+        "glyph": "triangle"
+       },
+       "tier_reason": "单笔超过 2,000 元",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "收款人",
+         "value": "妈妈 · 尾号3721（合成）"
+        },
+        {
+         "key": "fees",
+         "label": "手续费",
+         "value": "¥0.00（无手续费）"
+        }
+       ],
+       "notes": [
+        {
+         "kind": "red",
+         "title": null,
+         "lines": [
+          "红档操作：设备确认后还需输入模拟短信验证码"
+         ],
+         "footer": null
+        }
+       ],
+       "not_signed_label": "不属于签名内容",
+       "why": {
+        "lines": [
+         "原因：金额超过红档阈值，需要独立模拟验证"
+        ]
+       },
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "5000.00"
+        },
+        "amount_raw": "5000.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "收款人",
+         "lines": [
+          "妈妈 · 尾号3721（合成）"
+         ]
+        }
+       ]
+      }
+     ],
+     "gate": null,
+     "result": null,
+     "failure": null,
+     "live_notes": [],
+     "device_task": "TR2",
+     "route_hint": null,
+     "fallback_shortcuts": false,
+     "cancel": {
+      "label": "取消",
+      "hint": "取消会撤回本会话所有待确认提案；已结算的不变"
+     },
+     "card_source": "authoritative",
+     "technical_url": "/api/evidence/responses/R2"
+    }
+   },
+   "current": "R2",
+   "gated_elsewhere": [],
+   "task_panel": null,
+   "composer": {
+    "placeholder": "说说您要办理什么，例如：给妈妈转500元",
+    "max_chars": 4000,
+    "attach_label": "附上对方发来的文件（模拟）",
+    "attach_note": "附件开关由您自报，系统不读取任何文件",
+    "contacts_note": "演示联系人：妈妈、房东、同学、邻居、新联系人、爱人",
+    "disabled": false
+   }
+  },
+  "device": {
+   "title": "模拟签名设备（软件模拟）",
+   "idle_text": "当前没有需要在设备上确认的操作",
+   "queue_text": null,
+   "tasks": [
+    {
+     "key": "TR2",
+     "source": "chat",
+     "source_label": "对话",
+     "rkey": "R2",
+     "current": true,
+     "cards": [
+      {
+       "key": "TR2-0",
+       "title": "网关审批卡",
+       "purpose": "转账",
+       "amount_text": "¥5,000.00",
+       "tier": {
+        "code": "red",
+        "label": "红 · 需独立模拟验证",
+        "glyph": "triangle"
+       },
+       "tier_reason": "单笔超过 2,000 元",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "收款人",
+         "value": "妈妈 · 尾号3721（合成）"
+        },
+        {
+         "key": "fees",
+         "label": "手续费",
+         "value": "¥0.00（无手续费）"
+        }
+       ],
+       "notes": [
+        {
+         "kind": "red",
+         "title": null,
+         "lines": [
+          "红档操作：设备确认后还需输入模拟短信验证码"
+         ],
+         "footer": null
+        }
+       ],
+       "not_signed_label": "不属于签名内容",
+       "why": {
+        "lines": [
+         "原因：金额超过红档阈值，需要独立模拟验证"
+        ]
+       },
+       "technical": {
+        "card": {
+         "kind": "transfer",
+         "amount": "5000.00"
+        },
+        "amount_raw": "5000.00",
+        "contact_aliases": []
+       },
+       "structured": [
+        {
+         "label": "收款人",
+         "lines": [
+          "妈妈 · 尾号3721（合成）"
+         ]
+        }
+       ]
+      }
+     ],
+     "step": "account_locked",
+     "step_text": "账户已锁定，黄红档操作暂不可用",
+     "gesture": null,
+     "cancel": {
+      "label": "取消",
+      "hint": "取消会撤回本会话所有待确认提案；已结算的不变"
+     },
+     "hash": {
+      "algorithm": "SHA-256(JCS)",
+      "short": "3f1c0a9e5b7d2c4e",
+      "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6",
+      "status": "pending",
+      "label": "H(display.card)"
+     }
+    }
+   ],
+   "active": "TR2",
+   "sms": {
+    "url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=zh-CN&view=judge",
+    "label": "模拟短信（合成，不是真实短信）",
+    "open_label": "在新窗口打开",
+    "footer": "合成短信 · 无短信网关 · 无真实手机号"
+   }
+  },
+  "evidence": {
+   "open_by_default": [
+    "kernel",
+    "consistency",
+    "dispatch"
+   ],
+   "planner": {
+    "badge": "脚本规划",
+    "source": "脚本规划（离线）",
+    "counters": []
+   },
+   "dispatch": {
+    "count": 0,
+    "receipts": []
+   },
+   "audit": {
+    "count": 3,
+    "head": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    },
+    "verified": true,
+    "note": "审计校验只说明链未被改写，不证明外部世界发生了什么"
+   },
+   "safety": {
+    "state": "Locked",
+    "reason": "breaker_mfa"
+   },
+   "intent_log": [
+    {
+     "intent": "transfer",
+     "status": "awaiting_input",
+     "response": "R2",
+     "utterance": ""
+    }
+   ],
+   "intent_log_note": "意图日志不在哈希链内",
+   "planner_log": [
+    {
+     "rkey": "R2",
+     "planner": "scripted",
+     "intent": "transfer",
+     "outcome": "Escalate",
+     "tier": "red",
+     "rule_ids": [
+      "APR-NEWPAYEE"
+     ]
+    }
+   ],
+   "footer": "证据只读；视图只是展示偏好，不是访问控制",
+   "response": {
+    "rkey": "R2",
+    "intent": "transfer",
+    "status": "awaiting_input",
+    "rule_ids": [
+     "APR-NEWPAYEE"
+    ],
+    "rule_lines": [
+     "APR-NEWPAYEE：首次收款人需设备确认"
+    ],
+    "audit_hash": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    }
+   },
+   "kernel": {
+    "outcome": "Escalate",
+    "tier": "red",
+    "rule_ids": [
+     "APR-NEWPAYEE"
+    ],
+    "rule_lines": [
+     "APR-NEWPAYEE：首次收款人需设备确认"
+    ],
+    "note": null
+   },
+   "consistency": {
+    "display_card": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "3f1c0a9e5b7d2c4e",
+     "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6"
+    },
+    "proposal_card": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "3f1c0a9e5b7d2c4e",
+     "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6"
+    },
+    "same_hash": true,
+    "same_business_facts": true,
+    "action": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    },
+    "cert": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    },
+    "card_core": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "3f1c0a9e5b7d2c4e",
+     "full": "3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5061728394a5b6c7d8e9f0a1b2c3d4e5f6"
+    },
+    "challenge": "none",
+    "not_yet_text": null,
+    "mismatch_text": null
+   }
+  }
+ }
+}

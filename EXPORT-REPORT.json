@@ -1,0 +1,94 @@
+{
+  "schema": "domestic-source-release-v1",
+  "author": "Corridor",
+  "scan": "PASS_WITH_DISCLOSED_FROZEN_EXCEPTIONS",
+  "scanned_files": 1041,
+  "opaque_blind_cases": 24,
+  "blind_payload_policy": "byte hash/copy only; not decoded, parsed, inspected or scanned",
+  "blind_sha256": {
+    "data/blind-zh/cases/zh-g-01.json": "89b6d872c5774ced206d4d0f02009802f87360ce24f3811ea14f695fc3dce553",
+    "data/blind-zh/cases/zh-g-02.json": "876301746d731a2b5218efa280a69367c0529330879f6d0e9542ee4dcdd40cd0",
+    "data/blind-zh/cases/zh-g-03.json": "ae1dfd1bfe3ed45a53ceec2078cdcfe84e87ff3b204f7c2b443597c8b4e30a4d",
+    "data/blind-zh/cases/zh-g-04.json": "a27c17596b97e194666f9c76e1734845d248fde8887b1d4818930d8303b20c85",
+    "data/blind-zh/cases/zh-g-05.json": "1139e89ca9091aac6d523422c785eaa9cee7c4525ae3ce9acc0758fa8cb68a5a",
+    "data/blind-zh/cases/zh-g-06.json": "2cec771ef9c041800cfff010c77c6f761c59ebeb0805d632be70e7b45f0fbc8a",
+    "data/blind-zh/cases/zh-g-07.json": "eb5205cbce699c703f068acd197d4858de71e51d56cfaadeb6efac0cd5b8c122",
+    "data/blind-zh/cases/zh-g-08.json": "cba34c1af0e33680392f73072792ef016e4be3e733aea196f9002a9c66694301",
+    "data/blind-zh/cases/zh-g-09.json": "ecaf11471d84389cfd316797322441e96def01a860689ea248e6643751241294",
+    "data/blind-zh/cases/zh-g-10.json": "d83ba5efa5bd0f5297d0e5386f64d70870765e9b8c9df04de3487104286a74a5",
+    "data/blind-zh/cases/zh-g-11.json": "181b3615ecc1346460279ce92f7beaf313a7a8c3d72877d8d700e8b1684e712a",
+    "data/blind-zh/cases/zh-g-12.json": "5d67669dd05953d570582cc6456d6af0b4ecf079564421c6b7dd87d07dd3a897",
+    "data/blind-zh/cases/zh-q-01.json": "c5d0454cb689f256d1f8cf3691649aa0ad278fba3acee499dbfa3fd44c4f1770",
+    "data/blind-zh/cases/zh-q-02.json": "fb0ff9663db187a921bbb1a23d309c029c9d8ef3d5dcaa88c9970ba42a05201d",
+    "data/blind-zh/cases/zh-q-03.json": "603f65bc19047543b1b99948087bd48bd722f170d3c2c97abab7740ae5535d2e",
+    "data/blind-zh/cases/zh-q-04.json": "1ce0a7176084ec28a00cc4cf62382708d280c5ba2702296783c2d1f9b14ebc48",
+    "data/blind-zh/cases/zh-q-05.json": "2af9d4750534560224abb1bfec3cc6b088e0c3f034dc28ef0f139e7112458ae6",
+    "data/blind-zh/cases/zh-q-06.json": "570edb5c5e19b5039385f119aa991bbb3b2984b509fdf81b2c887d03aabd2b02",
+    "data/blind-zh/cases/zh-q-07.json": "9638c1e5b65c88010a60f219feb7feb6d8a7bef9a40aa065fee73f8cb8f14548",
+    "data/blind-zh/cases/zh-q-08.json": "93632bda38971c673b46252fabb1d88cb45d7cf6f0de9940578d8dc828a9f0c1",
+    "data/blind-zh/cases/zh-q-09.json": "9e52bdc6652bc0d5c588e78e3dafeaae390e0cd652baee7452e274553510e6c9",
+    "data/blind-zh/cases/zh-q-10.json": "84c4c7f7123569351e8e5bd034938d3d0197750e9f942858f0119d268220e211",
+    "data/blind-zh/cases/zh-q-11.json": "ab898e00606df34d41a38376b1a04bcc30357e336e4f1893e74061a1e88e0b0b",
+    "data/blind-zh/cases/zh-q-12.json": "410b4e15ebe25a0bfbfebbc2262a9b8da4877a7d32fe38c6cf9827ad4f0dd558"
+  },
+  "exceptions": [
+    {
+      "path": "evidence-min/f9/paired-sidecar.json",
+      "category": "api-key",
+      "sha256": "52c0c4a82ee620a0cef34768c187a5267f093880e45edc1f60c473e9d87222ec",
+      "reason": "A hyphenated scenario label contains the letters sk- inside a word; no credential. Recorded evidence bytes are retained"
+    },
+    {
+      "path": "data/blind-zh/materials/brief.md",
+      "category": "qualification",
+      "sha256": "2f8b3326d263a60d0edca4cff3e5fdac2b9ef5aa7b1ab527249e67f0ef02ebdf",
+      "reason": "Frozen official source material; original bytes preserve provenance"
+    },
+    {
+      "path": "docs/BRIEF-domestic.md",
+      "category": "qualification",
+      "sha256": "2f8b3326d263a60d0edca4cff3e5fdac2b9ef5aa7b1ab527249e67f0ef02ebdf",
+      "reason": "Byte-identical public rules required by material-integrity regression"
+    }
+  ],
+  "tcb_manifest": {
+    "path": "release/TCB-domestic-freeze-10.sha256",
+    "files": 54,
+    "verified_against": "Git blobs of domestic-freeze-10"
+  },
+  "unshipped_generation_records": {
+    "path": "release/BLIND-ZH-PROVENANCE.sha256",
+    "files": 5,
+    "policy": "byte hash only; not decoded and not distributed"
+  },
+  "not_distributed": [
+    "data/blind/ (international blind corpus)",
+    "data/blind-zh/provenance/ (generation records; hashes in the manifest)",
+    "internal export tools and their tests",
+    "tests importing undistributed modules (listed in release/TESTS-NOT-DISTRIBUTED.txt)",
+    "evidence-min/ recordings (supplied with the submission materials; sha256 in evidence-min/EXTERNAL-ASSETS.sha256)"
+  ],
+  "tests_not_distributed": 18,
+  "evidence": {
+    "paths": [
+      "evidence/domestic/public-tree/judge.json",
+      "evidence/domestic/public-tree/witness.json"
+    ],
+    "origin": "Regenerated with the scripted planner on the exported public tree (offline); not an internal recording"
+  },
+  "evidence_min": {
+    "files": 90,
+    "external_assets": "evidence-min/EXTERNAL-ASSETS.sha256",
+    "verify": "python -B evidence-min/verify_all.py"
+  },
+  "results_status": "pending",
+  "scope": "source, frozen synthetic inputs, minimal scripted reproduction evidence and the minimal public evidence package (evidence-min/)",
+  "regression_inputs": {
+    "paths": [
+      "docs/BRIEF-domestic.md",
+      "docs/submission/rule-matrix.md"
+    ],
+    "purpose": "Frozen rules used by retained regressions",
+    "current_submission": "Separate Chinese documents are the current deliverables"
+  }
+}

@@ -1,0 +1,26 @@
+.venv/
+.uv-cache/
+.mplconfig/
+.tmp/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+pytest-cache-files-*/
+.hypothesis/
+.ruff_cache/
+.mypy_cache/
+.import_linter_cache/
+dist/
+*.egg-info/
+
+# local secrets
+.env
+.streamlit/secrets.toml
+
+# generated run output; only the curated summaries are tracked
+results/*
+!results/FINAL-RESULTS-zh.md
+evidence/*
+!evidence/domestic/
+# local reproduction output written by the README and evaluation commands
+evidence/reproduced/

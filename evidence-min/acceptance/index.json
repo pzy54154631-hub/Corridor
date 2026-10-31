@@ -1,0 +1,56 @@
+[
+ {
+  "deployment": "deepseek-flash",
+  "directory": "recordings/deepseek-flash",
+  "cases": 6,
+  "recorded_passed": 6,
+  "journal_files": 9,
+  "candidate_head": "2fef7c21d3716a3725dd33fdbb12080fee35643d",
+  "run": "run-20261029-150555-c98f40a9"
+ },
+ {
+  "deployment": "zhipu-glm-5.3",
+  "directory": "recordings/zhipu-glm-5.3",
+  "cases": 6,
+  "recorded_passed": 0,
+  "journal_files": 0,
+  "candidate_head": "2fef7c21d3716a3725dd33fdbb12080fee35643d",
+  "run": "run-20261029-150644-33543399"
+ },
+ {
+  "deployment": "zhipu-glm-5.3-flash",
+  "directory": "recordings/zhipu-glm-5.3-flash",
+  "cases": 6,
+  "recorded_passed": 4,
+  "journal_files": 6,
+  "candidate_head": "2fef7c21d3716a3725dd33fdbb12080fee35643d",
+  "run": "run-20261029-150704-b6949e0f"
+ },
+ {
+  "deployment": "zhipu-glm-4.7-flash",
+  "directory": "recordings/zhipu-glm-4.7-flash",
+  "cases": 6,
+  "recorded_passed": 0,
+  "journal_files": 1,
+  "candidate_head": "2fef7c21d3716a3725dd33fdbb12080fee35643d",
+  "run": "run-20261029-150825-a7533e4b"
+ },
+ {
+  "deployment": "openai-gpt-6.1-sol",
+  "directory": "recordings/openai-gpt-6.1-sol",
+  "cases": 6,
+  "recorded_passed": 6,
+  "journal_files": 9,
+  "candidate_head": "2fef7c21d3716a3725dd33fdbb12080fee35643d",
+  "run": "run-20261028-163951-ed6d517d"
+ },
+ {
+  "deployment": "openai-gpt-5.4-mini",
+  "directory": "recordings/openai-gpt-5.4-mini",
+  "cases": 6,
+  "recorded_passed": 6,
+  "journal_files": 9,
+  "candidate_head": "cbf824c1a6b6041eb8cfe589f249e41cdcde5b3d",
+  "run": "run-20261029-160320-e68199f5"
+ }
+]

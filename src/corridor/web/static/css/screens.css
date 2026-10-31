@@ -1,0 +1,1320 @@
+/* Business screens inside the phone pane: login, conversation, replies,
+   self-check questions, receipts and the ext tabs. Tokens come from
+   tokens.css; components (buttons, cards, notes) from components.css. */
+
+/* Login ---------------------------------------------------------------- */
+
+.scr-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  gap: var(--sp-6);
+  padding: var(--sp-6) var(--sp-5);
+}
+
+.scr-login-hero {
+  padding: var(--sp-8) var(--sp-5);
+  border-radius: var(--r-lg);
+  color: #fff;
+  background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+  box-shadow: var(--sh-2);
+}
+
+.scr-login-mark {
+  color: var(--gold-300);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.scr-login-title {
+  margin: var(--sp-3) 0 var(--sp-2);
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.scr-login-intro {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.scr-login-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.scr-login-actions .btn {
+  width: 100%;
+}
+
+.scr-login-caption {
+  text-align: center;
+}
+
+/* Conversation --------------------------------------------------------- */
+
+.scr-chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.scr-chat-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* Growth below the pinned reply must not push it out of view. */
+  overflow-anchor: none;
+  padding: var(--sp-4) var(--sp-4) var(--sp-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.scr-chat-log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.scr-turn {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.scr-turn-user {
+  align-items: flex-end;
+}
+
+.scr-turn-assistant {
+  align-items: flex-start;
+}
+
+.scr-turn-system {
+  align-items: center;
+}
+
+.scr-bubble {
+  max-width: 86%;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-md);
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.scr-turn-user .scr-bubble {
+  color: #fff;
+  background: var(--brand-500);
+  border-bottom-right-radius: var(--r-xs);
+}
+
+.scr-turn-assistant .scr-bubble {
+  color: var(--ink-900);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-bottom-left-radius: var(--r-xs);
+  box-shadow: var(--sh-1);
+}
+
+.scr-turn-system .scr-bubble {
+  max-width: 92%;
+  padding: var(--sp-1) var(--sp-3);
+  color: var(--ink-600);
+  background: var(--surface-2);
+  font-size: 13px;
+  text-align: center;
+}
+
+.scr-turn-note {
+  margin: var(--sp-1) 0 0;
+  color: var(--ink-600);
+  font-size: 12px;
+}
+
+.scr-typing {
+  color: var(--ink-600);
+  animation: scr-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes scr-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.scr-greeting {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.scr-greeting:empty {
+  display: none;
+}
+
+/* Shortcuts ------------------------------------------------------------ */
+
+.scr-shortcuts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.scr-shortcut-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-2);
+}
+
+.scr-shortcut-grid .btn,
+.scr-shortcut-drill .btn {
+  min-height: 44px;
+  white-space: normal;
+}
+
+.scr-shortcut-drill {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.scr-chips {
+  flex: 0 0 auto;
+  padding: 0 var(--sp-4);
+}
+
+.scr-chips:empty {
+  display: none;
+}
+
+.scr-shortcuts-compact {
+  flex-direction: row;
+  gap: var(--sp-2);
+  overflow-x: auto;
+  padding: var(--sp-1) 0;
+  scrollbar-width: thin;
+}
+
+.scr-shortcuts-compact .scr-shortcut-grid {
+  display: flex;
+  gap: var(--sp-2);
+}
+
+.scr-shortcuts-compact .scr-shortcut-drill .scr-hint {
+  display: none;
+}
+
+.scr-shortcuts-compact .btn {
+  flex: 0 0 auto;
+  min-height: 44px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+
+/* Composer ------------------------------------------------------------- */
+
+.scr-composer {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: var(--sp-2) var(--sp-4) var(--sp-3);
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.scr-composer-row {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sp-2);
+}
+
+.scr-composer-input {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+  max-height: calc(3 * 1.6em + 2 * var(--sp-2) + 2px);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-900);
+  background: var(--surface);
+  resize: none;
+  field-sizing: content;
+}
+
+.scr-composer-input:focus-visible {
+  outline: 2px solid var(--brand-400);
+  outline-offset: 2px;
+}
+
+.scr-composer-input::placeholder {
+  color: var(--ink-500);
+}
+
+.scr-composer-row .btn {
+  flex: 0 0 auto;
+  min-height: 44px;
+}
+
+.scr-attach {
+  font-size: 13px;
+  color: var(--ink-600);
+}
+
+.scr-attach-note {
+  margin: 0;
+}
+
+.scr-composer-contacts {
+  overflow-wrap: anywhere;
+}
+
+/* Replies -------------------------------------------------------------- */
+
+.scr-contact-hint {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.scr-contact-hint .scr-p {
+  margin: 0;
+}
+
+.scr-contact-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scr-contact-list li {
+  max-width: 100%;
+  padding: 2px var(--sp-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  color: var(--ink-900);
+  background: var(--surface);
+  overflow-wrap: anywhere;
+}
+
+.scr-response {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.scr-response-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  animation: scr-rise var(--dur-2) cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.scr-current > .scr-response-body {
+  border-color: var(--brand-200);
+  box-shadow: var(--sh-2);
+}
+
+.scr-earlier > .scr-response-body {
+  background: var(--surface-2);
+}
+
+@keyframes scr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.scr-response-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.scr-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 var(--sp-2);
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-600);
+  background: var(--brand-100);
+}
+
+.scr-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.scr-card-unit {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.scr-notes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.scr-device-look {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  border: 1px dashed var(--brand-200);
+  background: var(--brand-50);
+}
+
+.scr-device-look-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-500);
+}
+
+.scr-device-look-text::after {
+  content: " \2192";
+}
+
+/* The device pane is beside the phone on wide screens; the button only
+   opens the bottom sheet on narrow ones. */
+.scr-device-look .btn {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .scr-device-look .btn {
+    display: inline-flex;
+  }
+
+  .scr-device-look-text::after {
+    content: none;
+  }
+}
+
+.scr-cancel-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1) var(--sp-3);
+}
+
+.scr-cancel-row .scr-hint {
+  flex: 1 1 180px;
+}
+
+.scr-route {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1) var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  background: var(--brand-100);
+}
+
+.scr-route-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-500);
+}
+
+/* Clarification -------------------------------------------------------- */
+
+.scr-clarify,
+.scr-gate-q,
+.scr-candidates,
+.scr-subs-cancel,
+.scr-objective {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.scr-clarify[data-locked="true"] .scr-radio {
+  opacity: 0.6;
+}
+
+.scr-radio,
+.scr-check {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-900);
+  cursor: pointer;
+}
+
+.scr-radio-lg {
+  min-height: 44px;
+  padding: 0 var(--sp-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+}
+
+.scr-radio-lg:has(input:checked) {
+  border-color: var(--brand-500);
+  background: var(--brand-100);
+}
+
+.scr-radio-lg:has(input:disabled) {
+  cursor: not-allowed;
+}
+
+.scr-radio input,
+.scr-check input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex: 0 0 auto;
+  accent-color: var(--brand-500);
+}
+
+.scr-radio input:focus-visible,
+.scr-check input:focus-visible {
+  outline: 2px solid var(--brand-400);
+  outline-offset: 2px;
+}
+
+/* Self-check questions (information colours: a page hint, not signed) -- */
+
+.scr-gate {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid #9fb6cf;
+  border-radius: var(--r-md);
+  color: #1f3a5f;
+  background: #eef4fa;
+}
+
+.scr-gate-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+
+.scr-gate-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.scr-gate .scr-muted,
+.scr-gate .scr-hint {
+  color: #1f3a5f;
+}
+
+.scr-gate .scr-radio-lg {
+  border-color: #9fb6cf;
+}
+
+.scr-gate .scr-radio-lg:has(input:checked) {
+  border-color: #1f3a5f;
+  background: #dfe9f5;
+}
+
+.scr-gate-legend {
+  padding: 0;
+  margin-bottom: var(--sp-1);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.scr-gate-cues {
+  margin: 0;
+  font-size: 13px;
+}
+
+.scr-gate-notice {
+  margin: 0;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  color: #6b4b10;
+  background: #fff6e2;
+  border: 1px solid #ecc77a;
+  font-size: 13px;
+}
+
+.scr-gate-pause {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border: 2px solid #b23b3b;
+  border-radius: var(--r-sm);
+  color: #8a2f28;
+  background: #fbeceb;
+}
+
+.scr-gate-pause .scr-hint,
+.scr-gate-pause .scr-p {
+  color: #8a2f28;
+}
+
+/* The retry label is a full sentence: it wraps inside the button instead of overflowing. */
+.scr-gate-pause .btn {
+  min-height: 44px;
+  padding-block: var(--sp-2);
+  white-space: normal;
+  text-align: center;
+}
+
+.scr-gate-footer {
+  margin: 0;
+  padding-top: var(--sp-2);
+  border-top: 1px solid #9fb6cf;
+  font-size: 12px;
+}
+
+.scr-not-signed {
+  display: inline-flex;
+  padding: 0 var(--sp-2);
+  border-radius: var(--r-xs);
+  font-size: 12px;
+  color: #1f3a5f;
+  background: #fff;
+  border: 1px solid #9fb6cf;
+}
+
+/* Plan selection and birthday ------------------------------------------ */
+
+.scr-plan-select {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.scr-plan-node {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.scr-plan-node > .scr-check {
+  min-height: 44px;
+  padding: 0 var(--sp-3);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+}
+
+.scr-plan-count {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-600);
+}
+
+.scr-choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.scr-birthday {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.scr-schedule-cancel-select .scr-choice-row > .btn {
+  flex: 1 1 100%;
+  min-width: 0;
+  white-space: normal;
+  text-align: left;
+}
+
+/* Receipts and failures ------------------------------------------------ */
+
+.scr-result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.scr-result-nested {
+  padding-left: var(--sp-3);
+  border-left: 2px solid var(--line-strong);
+}
+
+.scr-result-nodes {
+  margin: 0;
+  padding-left: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.scr-banner {
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  border: 1px solid;
+  font-size: 14px;
+  font-weight: 600;
+  animation: scr-fade var(--dur-3) ease-out;
+}
+
+@keyframes scr-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.scr-tone-success {
+  color: #1f5e2e;
+  background: #e8f3ea;
+  border-color: #9fcfab;
+}
+
+.scr-tone-info {
+  color: #1f3a5f;
+  background: #eef4fa;
+  border-color: #9fb6cf;
+}
+
+.scr-tone-warning {
+  color: #6b4b10;
+  background: #fff6e2;
+  border-color: #ecc77a;
+}
+
+.scr-tone-error {
+  color: #8a2f28;
+  background: #fbeceb;
+  border-color: #e3a29b;
+}
+
+.scr-receipt-line {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-600);
+}
+
+.scr-failure {
+  padding: var(--sp-3);
+  border-radius: var(--r-sm);
+  border: 1px solid #e3a29b;
+  color: #8a2f28;
+  background: #fbeceb;
+}
+
+.scr-failure .scr-hint {
+  color: #8a2f28;
+}
+
+.scr-error {
+  margin: 0;
+  font-size: 13px;
+  color: #8a2f28;
+}
+
+/* Bills, subscriptions, tables ----------------------------------------- */
+
+.scr-bill,
+.scr-subs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.scr-totals {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.scr-anomalies {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.scr-anomaly {
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  border: 1px solid #ecc77a;
+  background: #fff6e2;
+  color: #6b4b10;
+  font-size: 13px;
+}
+
+.scr-anomaly-head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  font-weight: 600;
+}
+
+.scr-anomaly .scr-muted {
+  color: #6b4b10;
+}
+
+.scr-table-wrap {
+  overflow-x: auto;
+}
+
+.scr-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.scr-table th,
+.scr-table td {
+  padding: var(--sp-1) var(--sp-2);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+/* Task panel, operator, gated list -------------------------------------- */
+
+.scr-chat-tail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.scr-chat-tail:empty,
+.scr-operator-slot:empty,
+.scr-thinking:empty {
+  display: none;
+}
+
+.scr-task-panel {
+  border-radius: var(--r-md);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.scr-task-panel .disclosure-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  overflow-x: auto;
+}
+
+.scr-gated-elsewhere {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  border: 1px solid #9fb6cf;
+  background: #eef4fa;
+  color: #1f3a5f;
+}
+
+.scr-gated-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  font-size: 13px;
+}
+
+.scr-operator {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border-radius: var(--r-md);
+  border: 1px solid var(--brand-200);
+  background: var(--surface);
+}
+
+.scr-operator-snapshot {
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+}
+
+/* Tab pages ------------------------------------------------------------ */
+
+.scr-tabpage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+}
+
+.scr-tabpage:empty {
+  display: none;
+}
+
+.scr-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.scr-kv {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-3);
+  font-size: 14px;
+}
+
+.scr-kv-label {
+  color: var(--ink-600);
+}
+
+.scr-kv-value {
+  color: var(--ink-900);
+  font-weight: 600;
+  text-align: right;
+}
+
+.scr-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.scr-rows > li {
+  padding: var(--sp-2) 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.scr-rows > li:last-child {
+  border-bottom: 0;
+}
+
+.scr-receipt-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px var(--sp-2);
+}
+
+.scr-product,
+.scr-position {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+}
+
+.scr-product-chosen {
+  border-color: var(--brand-500);
+  background: var(--brand-50);
+}
+
+.scr-product-head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+
+.scr-product-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.scr-chip {
+  padding: 0 var(--sp-2);
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  color: #fff;
+  background: var(--brand-500);
+}
+
+.scr-refusal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border-radius: var(--r-md);
+  border: 1px solid #e3a29b;
+  background: #fbeceb;
+  color: #8a2f28;
+}
+
+.scr-refusal .scr-hint {
+  color: #8a2f28;
+}
+
+.scr-skeleton {
+  min-height: 120px;
+  padding: var(--sp-4);
+  border-radius: var(--r-md);
+  color: var(--ink-600);
+  background: linear-gradient(90deg, var(--surface-2), var(--brand-50), var(--surface-2));
+  background-size: 200% 100%;
+  animation: scr-shimmer 1.2s linear infinite;
+}
+
+@keyframes scr-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* Shared text ---------------------------------------------------------- */
+
+.scr-h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink-900);
+}
+
+.scr-h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.scr-p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.scr-muted {
+  margin: 0;
+  color: var(--ink-600);
+  font-size: 13px;
+}
+
+.scr-hint {
+  margin: 0;
+  color: var(--ink-600);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.scr-empty {
+  margin: 0;
+  padding: var(--sp-4);
+  text-align: center;
+  color: var(--ink-600);
+  font-size: 13px;
+}
+
+.scr-foot {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-500);
+}
+
+.scr-lines {
+  margin: 0;
+  padding-left: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.scr-num {
+  font-family: "Segoe UI", "SF Pro Text", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.scr-mono,
+.scr-json {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+  font-size: 12px;
+}
+
+.scr-json {
+  margin: 0;
+  max-height: 240px;
+  overflow: auto;
+  padding: var(--sp-2);
+  border-radius: var(--r-xs);
+  background: var(--surface-2);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.scr-judge-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  border: 1px dashed var(--brand-200);
+  background: var(--brand-50);
+}
+
+.scr-judge-line {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-600);
+}
+
+.scr-judge-tag {
+  display: inline-flex;
+  margin-right: var(--sp-1);
+  padding: 0 var(--sp-1);
+  border-radius: var(--r-xs);
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+  font-size: 11px;
+  color: var(--ink-600);
+  background: var(--brand-100);
+}
+
+.scr-rule-ids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scr-response-body,
+  .scr-banner,
+  .scr-typing,
+  .scr-skeleton {
+    animation: none;
+  }
+}
+
+.scr-route-go {
+  cursor: pointer;
+}
+
+.scr-link {
+  padding: 0;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-500);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.scr-link:focus-visible {
+  outline: 2px solid var(--brand-400);
+  outline-offset: 2px;
+  border-radius: var(--r-xs);
+}
+
+.scr-task-controls {
+  padding: 0 var(--sp-3) var(--sp-3);
+}
+
+.scr-thinking {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.scr-pending .scr-bubble {
+  opacity: 0.6;
+}
+
+/* A block first drawn in the other language keeps its written text (P-DIFF-19). */
+.scr-born-other {
+  position: relative;
+}
+
+.scr-born-tag {
+  align-self: flex-end;
+  padding: 0 6px;
+  border-radius: var(--r-xs);
+  background: var(--surface-2);
+  color: var(--ink-600);
+  font-size: 11px;
+  line-height: 18px;
+}
+
+.scr-locale-switch .scr-bubble {
+  border: 1px dashed var(--line);
+  background: transparent;
+}
+
+/* A settled bank receipt leads with the amount it records. */
+.scr-receipt-hero {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: var(--sp-1);
+}
+
+.scr-receipt-check {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ok-bg);
+  color: var(--ok-fg);
+  box-shadow: inset 0 0 0 1px var(--ok-line);
+}
+
+.scr-receipt-amount {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+}
+
+.scr-receipt-main {
+  display: grid;
+  gap: 2px;
+}
+
+.scr-receipt-status {
+  color: var(--ok-fg);
+  font-size: var(--fs-14);
+  font-weight: 600;
+}
+
+/* A reply with only its status (the phrase gate's answer): a quiet line, not a card. */
+.scr-response-bare > .scr-response-body {
+  padding: 0 var(--sp-1);
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+/* Long English chips fade at the edge, so a cut word reads as "scroll for more". */
+.scr-shortcuts-compact {
+  -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent);
+  mask-image: linear-gradient(90deg, #000 86%, transparent);
+}
+
+/* Sign-in: a balanced headline and three quiet facts under it. */
+.scr-login h1,
+.scr-login-title {
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+.scr-login-facts {
+  display: grid;
+  gap: var(--sp-2);
+  width: 100%;
+  margin: var(--sp-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scr-login-fact {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  text-align: left;
+}
+
+.scr-login-fact-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--brand-100);
+  color: var(--brand-600);
+}
+
+.scr-login-fact-title {
+  display: block;
+  color: var(--ink-900);
+  font-size: var(--fs-14);
+  font-weight: 600;
+}
+
+.scr-login-fact-text {
+  display: block;
+  color: var(--ink-600);
+  font-size: var(--fs-12);
+  line-height: 1.5;
+}
+
+/* Model suggestions under a clarification: one full-width question per row. */
+.scr-suggest .scr-suggest-row {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+  gap: var(--sp-1);
+  min-width: 0;
+}
+
+.scr-suggest .scr-suggest-row > .btn {
+  white-space: normal;
+  text-align: left;
+}

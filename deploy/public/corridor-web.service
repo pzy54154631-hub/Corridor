@@ -1,0 +1,41 @@
+# Corridor 公开模式网页进程。进程只监听回环地址，TLS 与 80/443 由 Caddy 负责。
+# 只有 Restart=always 这一层守护；没有健康检查自动重启（RW-8 第 15 条）。
+[Unit]
+Description=Corridor web demo (public mode, loopback upstream behind Caddy)
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+User=corridor
+Group=corridor
+WorkingDirectory=/opt/corridor/current
+EnvironmentFile=/etc/corridor/web-public.env
+Environment=PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ExecStart=/opt/corridor/current/.venv/bin/python -m corridor.web --host 127.0.0.1 --port 8772 --max-sessions 128 --idle-seconds 3600 --evict-idle-after 1800 --per-ip-sessions 16 --per-ip-new-sessions 30/600
+Restart=always
+RestartSec=3
+TimeoutStopSec=15
+StateDirectory=corridor
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+MemoryMax=6G
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target

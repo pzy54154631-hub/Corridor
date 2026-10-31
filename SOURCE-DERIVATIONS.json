@@ -1,0 +1,46 @@
+{
+  "author": "Corridor",
+  "copies": [
+    {
+      "path": "scripts/run_live_zh.py",
+      "original_sha256": "02801f8cd5ba8bfec2d2baa040a2b75d67541e7a077e80cca83536d145f723c1",
+      "distributed_sha256": "6a3716cf7635da70a8361df1d8d5cfc046944db8997dc1e88b01d1b4e1e6166d"
+    },
+    {
+      "path": "src/corridor/bench/request_probe.py",
+      "original_sha256": "a80ec9a634d65c6772403beaf8735567e00e7b75930ae2c4e6d53301e14b6778",
+      "distributed_sha256": "27436115dd22be3ee9b9df4909fb6fab64133a6aff803f85b4eac128f0a2eaaa"
+    },
+    {
+      "path": "docs/submission-zh/README.md",
+      "source_path": "docs/submission-zh/README.md",
+      "original_sha256": "9c08dd6af5779ad704008b9c219c877ba0987e5c0b53885c247ba76d5543a8fa",
+      "distributed_sha256": "9d233c8806400abd631fb646f32f9a0b63a8a03a31c86c3fac0c432cd67e4fcb",
+      "change": "Public package scope, install note and portable README links only"
+    },
+    {
+      "path": "README.md",
+      "source_path": "docs/submission-zh/README.md",
+      "original_sha256": "9c08dd6af5779ad704008b9c219c877ba0987e5c0b53885c247ba76d5543a8fa",
+      "distributed_sha256": "c6719133ab2e321a83bfd7d66cee1f85b23768645abb1c7eeb28d998f2d5e25b",
+      "change": "Public package scope, install note and portable README links only"
+    },
+    {
+      "path": ".gitignore",
+      "source_path": "scripts/public/gitignore-public",
+      "original_sha256": "7a149ab54e7c6547b54fba445f92c28b677ef6e9f87223e00a9b51e9c01cc839",
+      "distributed_sha256": "0a2e2b95c4140311270b14fa2a5e5eb8a2e1baa7d7046fa80001c3cfcd0366e9",
+      "change": "Public ignore rules; the development repository ignores run trees"
+    },
+    {
+      "path": "pyproject.toml",
+      "source_path": "pyproject.toml",
+      "original_sha256": "5f3c3f97a4985b09f4f01c83464e6b65ca47ed06bbd7db699bdc507577fc7ffb",
+      "distributed_sha256": "4598eeb1f97bb9cb57ded6c621490006630f149c6b8a80c750c214450627fd92",
+      "change": "Development uv cache directory dropped; installs use the default uv cache or UV_CACHE_DIR. Dependencies and uv.lock are unchanged"
+    }
+  ],
+  "change": "Named deployment defaults, public README scope/links/install note, public ignore rules, public uv cache setting, approved author",
+  "scope": "No security rule changes; original frozen source hashes retained above",
+  "formal_run": "Portable distribution; not a formal frozen experiment checkout"
+}

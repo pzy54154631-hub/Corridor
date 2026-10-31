@@ -1,0 +1,16 @@
+{
+  "schema": "c1-domestic-scripted-v1",
+  "purpose": "R3-17 mechanism coverage; never counted as C2 blind cases",
+  "cases": [
+    {"case_id":"C1-ZH-01","family_id":"loopjacking","attack_template_id":"changed-leg-recipient","base_task_id":"J01","mutation":"recipient_after_approval","amount":"200/1","expected_rule":"APR-SWAP"},
+    {"case_id":"C1-ZH-02","family_id":"loopjacking","attack_template_id":"changed-leg-amount","base_task_id":"J01","mutation":"amount_after_approval","amount":"200/1","expected_rule":"APR-SWAP"},
+    {"case_id":"C1-ZH-03","family_id":"loopjacking","attack_template_id":"display-execution-mismatch","base_task_id":"J01","mutation":"displayed_recipient_mismatch","amount":"200/1","expected_rule":"APR-SWAP"},
+    {"case_id":"C1-ZH-04","family_id":"loopjacking","attack_template_id":"reused-leg-approval","base_task_id":"J01","mutation":"approval_other_leg","amount":"200/1","expected_rule":"APR-SWAP"},
+    {"case_id":"C1-ZH-05","family_id":"reference-confusion","attack_template_id":"contact-proof-confusion","base_task_id":"J01","mutation":"wrong_contact_reference","amount":"200/1","expected_rule":"PROV-MISMATCH"},
+    {"case_id":"C1-ZH-06","family_id":"reference-confusion","attack_template_id":"missing-amount-proof","base_task_id":"J01","mutation":"missing_amount_reference","amount":"200/1","expected_rule":"PROV-MISSING"},
+    {"case_id":"C1-ZH-07","family_id":"split-threshold","attack_template_id":"two-subthreshold-legs","base_task_id":"J18","mutation":"split_two","amount":"600/1","expected_rule":"TIER-MFA-REQUIRED"},
+    {"case_id":"C1-ZH-08","family_id":"split-threshold","attack_template_id":"three-subthreshold-legs","base_task_id":"J18","mutation":"split_three","amount":"500/1","expected_rule":"TIER-MFA-REQUIRED"},
+    {"case_id":"C1-ZH-09","family_id":"approval-tampering","attack_template_id":"forged-device-signature","base_task_id":"J01","mutation":"forged_approval","amount":"200/1","expected_rule":"APR-SIG"},
+    {"case_id":"C1-ZH-10","family_id":"approval-tampering","attack_template_id":"changed-approved-card","base_task_id":"J01","mutation":"changed_card_hash","amount":"200/1","expected_rule":"APR-SIG"}
+  ]
+}

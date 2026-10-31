@@ -1,0 +1,50 @@
+{
+  "suggest.question": {
+    "zh-CN": "您是想：{sentence}吗？",
+    "en": "Did you mean: “{sentence}”?"
+  },
+  "suggest.note": {
+    "zh-CN": "建议由模型生成，点击后仍需按卡逐步确认。",
+    "en": "Suggested by the model. After you choose one, every step still needs your confirmation on its card."
+  },
+  "suggest.state.adopted": {
+    "zh-CN": "已按这条建议发送上面的规范句；随后的卡片仍需您逐步确认。",
+    "en": "The sentence above was sent as this suggestion; the card that follows still needs your confirmation, step by step."
+  },
+  "suggest.state.discarded": {
+    "zh-CN": "这条建议已失效：系统规则已无法识别这句话，没有发送任何内容。",
+    "en": "This suggestion was discarded: the bank's rules no longer read this sentence, so nothing was sent."
+  },
+  "suggest.state.expired": {
+    "zh-CN": "这条建议已过期，没有发送任何内容；如需办理，请直接说明。",
+    "en": "This suggestion has expired and nothing was sent; say what you need directly."
+  },
+  "suggest.error": {
+    "zh-CN": "这条建议已失效，没有发送任何内容；请直接说明您的需求。",
+    "en": "This suggestion is no longer valid and nothing was sent; please say what you need directly."
+  },
+  "suggest.send_failed": {
+    "zh-CN": "这条建议没有发送成功，也没有生成新的回复；建议仍可再选一次，或请直接输入您的需求。",
+    "en": "This suggestion could not be sent and no new reply was made; you can choose it again, or type what you need."
+  },
+  "suggest.sent_then_failed": {
+    "zh-CN": "这条建议的规范句已经发送，系统已收到；随后页面显示回复时出错。请查看上方对话，不要重复发送。",
+    "en": "This suggestion's sentence was sent and received; the page then failed while showing the reply. Check the conversation above and do not send it again."
+  },
+  "suggest.judge.source": {
+    "zh-CN": "评委证据：建议来自实时模型（这句话以令牌化形式发给模型，连同原话提到的可信联系人与上一轮回复的意图标签〔封闭枚举，不含原话〕，计入本会话的实时调用上限），模型只给出封闭列表里的意图与槽位；规范句由系统固定模板和可信数据写成：联系人须是原话里唯一提到的可信联系人，且整句原话就是一句本人立即付款的说法（封闭的开头如“帮我、请、我要”，“给+该联系人别名+金额+元/块”，封闭的结尾如“过去、吧、吗”，前后没有别的内容）；金额须是原话里唯一的金额（同一金额写两次也不出建议），为紧跟元/块的普通数字，可信金额语法读出的值与之相同，规范句里的别名和数字与原话逐字相同；本条回复没有生成卡片、没有签署，也没有派发。按日志严格回放会话时不生成建议，回放覆盖的是采纳后作为新输入的规范句。",
+    "en": "Judge evidence: the suggestions come from the live model (these words were sent to it in tokenized form, with the trusted contacts they mention and the previous reply's intent label, a closed label that holds no words, and count against this session's live call cap), which only names intents and slots from a closed list; each sentence is written by the system from a fixed template and trusted data: the contact must be the only trusted contact the words name, and the whole of the words must be the customer paying that contact now (a closed opening such as “帮我”, “请” or “我要”, then “给 + the contact's alias + the amount + 元/块”, then a closed ending such as “过去”, “吧” or “吗”, and nothing else before or after); the amount must be the only amount the words write (the same amount written twice gets no suggestion), plain digits followed by 元/块 that the trusted amount grammar reads as the same value, and the alias and digits of the sentence are exactly the ones written; this reply prepared no card, signed nothing and dispatched nothing. A strict replay of the session from its journal offers no suggestion; what it replays is the adopted sentence, sent as a new message."
+  },
+  "suggest.judge.item": {
+    "zh-CN": "建议 {number}：意图 {intent} · 联系人引用 {contact} · 金额 {amount}",
+    "en": "Suggestion {number}: intent {intent} · contact reference {contact} · amount {amount}"
+  },
+  "suggest.judge.event": {
+    "zh-CN": "建议事件 #{seq}：{event}（原因 {reason}）· 记录哈希 {hash}",
+    "en": "Suggestion event #{seq}: {event} (reason {reason}) · record hash {hash}"
+  },
+  "live.note.suggest_timeout": {
+    "zh-CN": "建议生成超时，未提供建议；本条回复本身是规则的澄清，不受影响。",
+    "en": "The suggestion request timed out and no suggestion was offered; the reply itself is the rules' clarification and is unaffected."
+  }
+}

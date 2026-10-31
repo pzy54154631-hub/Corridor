@@ -1,0 +1,1637 @@
+{
+ "run": "run-20261028-164048-9af5bf2a",
+ "mode": "replay",
+ "candidate_head": "2fef7c21d3716a3725dd33fdbb12080fee35643d",
+ "model": "gpt-6.1-sol",
+ "api": "responses",
+ "reasoning_effort": "low",
+ "max_output_tokens": 1024,
+ "max_calls_per_session": 8,
+ "shared_budget_assumption_usd": "2",
+ "calls_are_observed_not_assumed": true,
+ "protocol_sha256": "ce92f3ccc73f9b6ff3bfcb401476dbb1323e387482defaeed417bc476d2cb730",
+ "runner_sha256": "511f35ddd2092b6cdca40c92090367295aeffb3dc9e1da0481a1f2fda85f2463",
+ "protocol_copy_sha256": "ce92f3ccc73f9b6ff3bfcb401476dbb1323e387482defaeed417bc476d2cb730",
+ "runner_copy_sha256": "511f35ddd2092b6cdca40c92090367295aeffb3dc9e1da0481a1f2fda85f2463",
+ "cases": [
+  {
+   "name": "01-transfer-1500",
+   "input": "给妈妈转1500元",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/confirm",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/mfa/request",
+     "status": 200
+    },
+    {
+     "method": "GET",
+     "path": "/api/phone/{pair}",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/mfa/verify",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/confirm",
+     "status": 200
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "gpt-6.1-sol",
+     "api": "responses",
+     "reasoning_effort": "low",
+     "max_output_tokens": 1024,
+     "prompt_hash": "791a363755e5204deb6b1778a083c7643a97a981cbed5ebe24bb54420592110b",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "37cacfd8a0f531a4f2aee5abcd3c5ec5a91387a45f41aaa38c4b34a78f5086b5",
+     "output_sha256": "cc326f70fcae4d19797591f1335449992cc0fcd4ea41822dccfebdfb005b835d",
+     "source": "replay"
+    },
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "gpt-6.1-sol",
+     "api": "responses",
+     "reasoning_effort": "low",
+     "max_output_tokens": 1024,
+     "prompt_hash": "905108c83de78c86d43b6a01f752bb6e573dc96c2a70fb97ee9bfd5d0b98c549",
+     "tool_state_hash": "cc4bbc6f107e1d785405192d40f0ece9c2c0d90c7e0e0c6c7b4f9c9968009142",
+     "request_hash": "6ed4f2067f1620216cfef8256f6f5a5ec0a0ec533bc6cbb5bd81703f58b8995d",
+     "output_sha256": "cfc7599749908e98f9d608df1d648005f7149b208739d395108cb0c1578eb386",
+     "source": "replay"
+    },
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "gpt-6.1-sol",
+     "api": "responses",
+     "reasoning_effort": "low",
+     "max_output_tokens": 1024,
+     "prompt_hash": "311d32d407ef0489d97788887de748594b4dd31b826f3090028d5368dbcd90ea",
+     "tool_state_hash": "f9ab38617fa34dd2c9848393ac7e3879162f02820181cbf6c22c867475ab7cc4",
+     "request_hash": "3a13033d96d100f83d3749df2ba55d2de43017cf4c09970ad14719b4f29fe781",
+     "output_sha256": "59a3178ce030902bb3f05955b354c5d620562437257984f7de1ac8cf104f3999",
+     "source": "replay"
+    }
+   ],
+   "planner_sources": [
+    "replay",
+    "replay",
+    "replay"
+   ],
+   "planner_client_mode": "strict",
+   "business": {
+    "response": {
+     "status": "settled",
+     "status_text": "已办理",
+     "tier": {
+      "code": "red",
+      "label": "红色 · 需短信验证（模拟）后确认",
+      "glyph": "triangle"
+     },
+     "result": {
+      "banner": {
+       "tone": "success",
+       "text": "已执行 · 银行回执已核验"
+      },
+      "receipt_line": "办理时间：2026-10-16T02:00:00Z · 回执编号：a1692959-c91b-50ee-bb20-94626a0d036d · 状态：已完成",
+      "facts_lines": [
+       "转账已结算。",
+       "已核验余额：8500.00 CNY。",
+       "转账金额：1500.00 CNY。"
+      ],
+      "message_lines": [],
+      "why": {
+       "lines": [
+        "审批级别：尚未判定",
+        "本视图未报告拒绝或升级验证的规则命中。"
+       ]
+      },
+      "amount_text": "¥1,500.00",
+      "rule_ids": [],
+      "receipt": {
+       "receipt_type": "bank",
+       "receipt_id": "a1692959-c91b-50ee-bb20-94626a0d036d",
+       "version": 1,
+       "intent_key": "c65129eb2b86666506c9fe072d361a188d76f41b19c3d96695fc49f5c6d7984b",
+       "kind": "transfer",
+       "status": "settled",
+       "exact_effects": [
+        {
+         "effect_type": "debit",
+         "object_ref": "A_CURRENT",
+         "account_ref": "A_CURRENT",
+         "counterparty_ref": "DEST_CONTACT_CHEN",
+         "amount": "1500/1",
+         "field": "balance",
+         "before": "10000/1",
+         "after": "8500/1"
+        },
+        {
+         "effect_type": "credit",
+         "object_ref": "DEST_CONTACT_CHEN",
+         "account_ref": "DEST_CONTACT_CHEN",
+         "counterparty_ref": "A_CURRENT",
+         "amount": "1500/1",
+         "field": "balance",
+         "before": "0/1",
+         "after": "1500/1"
+        }
+       ],
+       "executed_at": "2026-10-16T02:00:00Z",
+       "settle_at": null,
+       "sig": "9e20255c493fca70a5749e79cea528494dcfb7b2d18c46d510b5827c5f3ca653a5d889039a28b538dd35c881b04e32c2b9835b1e2ffd9b14a6ae3e8e5e166509"
+      },
+      "audit_checkpoint": {
+       "seq": 20,
+       "head": "9af5b82f4538d9a58ce0ef00d37dc61a00645bc37903824097818dcf274fcc4b"
+      }
+     }
+    },
+    "bank_execute_delta": 1,
+    "receipts": [
+     {
+      "receipt_type": "bank",
+      "receipt_id": "a1692959-c91b-50ee-bb20-94626a0d036d",
+      "version": 1,
+      "intent_key": "c65129eb2b86666506c9fe072d361a188d76f41b19c3d96695fc49f5c6d7984b",
+      "kind": "transfer",
+      "status": "settled",
+      "exact_effects": [
+       {
+        "effect_type": "debit",
+        "object_ref": "A_CURRENT",
+        "account_ref": "A_CURRENT",
+        "counterparty_ref": "DEST_CONTACT_CHEN",
+        "amount": "1500/1",
+        "field": "balance",
+        "before": "10000/1",
+        "after": "8500/1"
+       },
+       {
+        "effect_type": "credit",
+        "object_ref": "DEST_CONTACT_CHEN",
+        "account_ref": "DEST_CONTACT_CHEN",
+        "counterparty_ref": "A_CURRENT",
+        "amount": "1500/1",
+        "field": "balance",
+        "before": "0/1",
+        "after": "1500/1"
+       }
+      ],
+      "executed_at": "2026-10-16T02:00:00Z",
+      "settle_at": null,
+      "sig": "9e20255c493fca70a5749e79cea528494dcfb7b2d18c46d510b5827c5f3ca653a5d889039a28b538dd35c881b04e32c2b9835b1e2ffd9b14a6ae3e8e5e166509"
+     }
+    ],
+    "audit_valid": true,
+    "audit_head": {
+     "seq": 21,
+     "head": "2b7fcfb852bf87d493c8dc9c2f2c8f8aa569b959937e650e38ce1b4330345a13"
+    },
+    "tasks": [
+     {
+      "key": "TR1",
+      "source": "chat",
+      "step": "done",
+      "gesture_op": null,
+      "card_kind": null
+     }
+    ],
+    "device_operations": [
+     {
+      "task": "TR1",
+      "step": "confirm",
+      "op": "confirm",
+      "bank_execute_delta": 0,
+      "result_status": "waiting_mfa"
+     },
+     {
+      "task": "TR1",
+      "step": "mfa_request",
+      "op": "mfa_request",
+      "bank_execute_delta": 0,
+      "result_status": "waiting_mfa"
+     },
+     {
+      "task": "TR1",
+      "step": "mfa_code",
+      "op": "mfa_verify",
+      "bank_execute_delta": 0,
+      "result_status": "mfa_verified"
+     },
+     {
+      "task": "TR1",
+      "step": "final_confirm",
+      "op": "confirm",
+      "bank_execute_delta": 1,
+      "result_status": "settled"
+     }
+    ],
+    "business_state": {},
+    "state_effects": {
+     "positions": [
+      {
+       "product_ref": "P_A",
+       "principal_amount": "500"
+      }
+     ],
+     "subscription_statuses": {
+      "S1": "active"
+     },
+     "card_statuses": {
+      "CARD_UI_DEMO": "active"
+     },
+     "plans": [
+      {
+       "plan_id": "efba3986-5e08-5806-995c-35483d9aa1a4",
+       "blocked": false,
+       "node_tools": [
+        "transfer"
+       ],
+       "node_statuses": [
+        "succeeded"
+       ]
+      }
+     ]
+    },
+    "accepted_terminal_assertions": true
+   },
+   "business_semantic_hash": "e0c194f7790b7b9c92d8a03ec0dec232e0e9100fd9bfe347caf82fef7bdfc8e6",
+   "receipt_count_delta": 1,
+   "audit_valid": true,
+   "planner_spend_assumption_usd": "0",
+   "journal_dir": "openai-gpt-6.1-sol\\session-0001",
+   "strict_hash_match": true,
+   "strict_source_and_zero_api": true,
+   "strict_business_match": true,
+   "strict_receipts_match": true,
+   "passed": true
+  },
+  {
+   "name": "02-bill-september",
+   "input": "看看9月账单",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 200
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "gpt-6.1-sol",
+     "api": "responses",
+     "reasoning_effort": "low",
+     "max_output_tokens": 1024,
+     "prompt_hash": "73de0bcddc39de5c4488fed28ae65e0509f467c7b50e96d35b2e426add2e8040",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "e942e1199a77aaf18b988d535b4ff0db24150c8ec5c2f8c4d5591360feb7eaf3",
+     "output_sha256": "84c0693443670dbac33ebf913b950117e1a59f865b86768f3cfe30f30f8b1642",
+     "source": "replay"
+    }
+   ],
+   "planner_sources": [
+    "replay"
+   ],
+   "planner_client_mode": "strict",
+   "business": {
+    "response": {
+     "status": "settled",
+     "status_text": "已办理",
+     "tier": {
+      "code": "green",
+      "label": "绿色 · 自动查询",
+      "glyph": "circle"
+     },
+     "result": {
+      "banner": {
+       "tone": "success",
+       "text": "分析已完成 · 计算回执已核验"
+      },
+      "receipt_line": null,
+      "facts_lines": [],
+      "message_lines": [],
+      "why": {
+       "lines": [
+        "审批级别：尚未判定",
+        "本视图未报告拒绝或升级验证的规则命中。"
+       ]
+      },
+      "rule_ids": [],
+      "receipt": {
+       "receipt_type": "analysis",
+       "receipt_id": "a597fb43-98c4-5b4f-88f3-baf6dfc308d6",
+       "version": 1,
+       "dataset_hash": "9bd515fa768e6482bae1d75eaf2f12d017d362e182ff6260fdfe6444559e5211",
+       "function_id": "bill_summary_v1",
+       "parameters": {
+        "principal": "C_DEMO",
+        "account_ref": "A_CURRENT",
+        "period": {
+         "start_inclusive": "2026-08-31T16:00:00Z",
+         "end_exclusive": "2026-09-30T16:00:00Z"
+        },
+        "action_hash": "c959ad1fdee6f0ae03d6ddb929c41aba44b69be4b277de10d1e16b9f64aacc33"
+       },
+       "results": {
+        "gross_spend": {
+         "value": "2559/1",
+         "unit": "CNY",
+         "source_tx_ids": [
+          "34b668ae-efc9-5752-b0e4-f91842295477",
+          "532091fd-454c-508c-a23d-e7fd613939c9",
+          "56af1d74-1b5c-508b-8fb7-af2017964156",
+          "7d9e6376-feb0-5d51-933f-eba130fc171a",
+          "TX_DINING",
+          "TX_SHOPPING",
+          "TX_SUB_A_2",
+          "TX_SUB_B_2",
+          "TX_SUB_C_1",
+          "TX_TRANSPORT",
+          "a4330a00-6625-5d04-8147-50a9a46e8796"
+         ]
+        },
+        "refunds": {
+         "value": "180/1",
+         "unit": "CNY",
+         "source_tx_ids": [
+          "70d7ed63-4f97-5ad9-aa0a-31bd7d8f2dd5",
+          "TX_SHOPPING_REFUND"
+         ]
+        },
+        "net_spend": {
+         "value": "2379/1",
+         "unit": "CNY",
+         "source_tx_ids": [
+          "34b668ae-efc9-5752-b0e4-f91842295477",
+          "532091fd-454c-508c-a23d-e7fd613939c9",
+          "56af1d74-1b5c-508b-8fb7-af2017964156",
+          "70d7ed63-4f97-5ad9-aa0a-31bd7d8f2dd5",
+          "7d9e6376-feb0-5d51-933f-eba130fc171a",
+          "TX_DINING",
+          "TX_SHOPPING",
+          "TX_SHOPPING_REFUND",
+          "TX_SUB_A_2",
+          "TX_SUB_B_2",
+          "TX_SUB_C_1",
+          "TX_TRANSPORT",
+          "a4330a00-6625-5d04-8147-50a9a46e8796"
+         ]
+        },
+        "category_totals.dining": {
+         "value": "514/1",
+         "unit": "CNY",
+         "source_tx_ids": [
+          "34b668ae-efc9-5752-b0e4-f91842295477",
+          "7d9e6376-feb0-5d51-933f-eba130fc171a",
+          "TX_DINING"
+         ]
+        },
+        "category_totals.services": {
+         "value": "177/1",
+         "unit": "CNY",
+         "source_tx_ids": [
+          "TX_SUB_A_2",
+          "TX_SUB_B_2",
+          "TX_SUB_C_1"
+         ]
+        },
+        "category_totals.shopping": {
+         "value": "1548/1",
+         "unit": "CNY",
+         "source_tx_ids": [
+          "56af1d74-1b5c-508b-8fb7-af2017964156",
+          "70d7ed63-4f97-5ad9-aa0a-31bd7d8f2dd5",
+          "TX_SHOPPING",
+          "TX_SHOPPING_REFUND"
+         ]
+        },
+        "category_totals.transport": {
+         "value": "140/1",
+         "unit": "CNY",
+         "source_tx_ids": [
+          "532091fd-454c-508c-a23d-e7fd613939c9",
+          "TX_TRANSPORT",
+          "a4330a00-6625-5d04-8147-50a9a46e8796"
+         ]
+        }
+       },
+       "program_hash": null,
+       "trust": "builtin",
+       "computed_at": "2026-10-16T02:00:00Z",
+       "sig": "a0cd79e4a3fe27d0eebaee3b50344cf7c99c74d089f3ccc19cedf4951cfb11bef5ecd1184c66c870890192785d8a99bc098931a1ece2fd8da0bf52e4e5b79804"
+      },
+      "audit_checkpoint": {
+       "seq": 6,
+       "head": "6c0019e0983d677401e91522d14ba9c3a7ba373ad8bc9aff590489db5f567a77"
+      },
+      "bill": {
+       "totals": [
+        {
+         "label": "消费支出",
+         "value": "¥2,559.00",
+         "source": "a597fb43-98c4-5b4f-88f3-baf6dfc308d6 · gross_spend"
+        },
+        {
+         "label": "已退款",
+         "value": "¥180.00",
+         "source": "a597fb43-98c4-5b4f-88f3-baf6dfc308d6 · refunds"
+        },
+        {
+         "label": "净支出",
+         "value": "¥2,379.00",
+         "source": "a597fb43-98c4-5b4f-88f3-baf6dfc308d6 · net_spend"
+        }
+       ],
+       "categories": [
+        {
+         "label": "餐饮",
+         "value": "¥514.00",
+         "ratio": "0.332"
+        },
+        {
+         "label": "服务",
+         "value": "¥177.00",
+         "ratio": "0.1143"
+        },
+        {
+         "label": "购物",
+         "value": "¥1,548.00",
+         "ratio": "1"
+        },
+        {
+         "label": "交通",
+         "value": "¥140.00",
+         "ratio": "0.0904"
+        }
+       ],
+       "anomalies": [],
+       "empty_text": null
+      }
+     }
+    },
+    "bank_execute_delta": 0,
+    "receipts": [
+     {
+      "receipt_type": "analysis",
+      "receipt_id": "a597fb43-98c4-5b4f-88f3-baf6dfc308d6",
+      "version": 1,
+      "dataset_hash": "9bd515fa768e6482bae1d75eaf2f12d017d362e182ff6260fdfe6444559e5211",
+      "function_id": "bill_summary_v1",
+      "parameters": {
+       "principal": "C_DEMO",
+       "account_ref": "A_CURRENT",
+       "period": {
+        "start_inclusive": "2026-08-31T16:00:00Z",
+        "end_exclusive": "2026-09-30T16:00:00Z"
+       },
+       "action_hash": "c959ad1fdee6f0ae03d6ddb929c41aba44b69be4b277de10d1e16b9f64aacc33"
+      },
+      "results": {
+       "gross_spend": {
+        "value": "2559/1",
+        "unit": "CNY",
+        "source_tx_ids": [
+         "34b668ae-efc9-5752-b0e4-f91842295477",
+         "532091fd-454c-508c-a23d-e7fd613939c9",
+         "56af1d74-1b5c-508b-8fb7-af2017964156",
+         "7d9e6376-feb0-5d51-933f-eba130fc171a",
+         "TX_DINING",
+         "TX_SHOPPING",
+         "TX_SUB_A_2",
+         "TX_SUB_B_2",
+         "TX_SUB_C_1",
+         "TX_TRANSPORT",
+         "a4330a00-6625-5d04-8147-50a9a46e8796"
+        ]
+       },
+       "refunds": {
+        "value": "180/1",
+        "unit": "CNY",
+        "source_tx_ids": [
+         "70d7ed63-4f97-5ad9-aa0a-31bd7d8f2dd5",
+         "TX_SHOPPING_REFUND"
+        ]
+       },
+       "net_spend": {
+        "value": "2379/1",
+        "unit": "CNY",
+        "source_tx_ids": [
+         "34b668ae-efc9-5752-b0e4-f91842295477",
+         "532091fd-454c-508c-a23d-e7fd613939c9",
+         "56af1d74-1b5c-508b-8fb7-af2017964156",
+         "70d7ed63-4f97-5ad9-aa0a-31bd7d8f2dd5",
+         "7d9e6376-feb0-5d51-933f-eba130fc171a",
+         "TX_DINING",
+         "TX_SHOPPING",
+         "TX_SHOPPING_REFUND",
+         "TX_SUB_A_2",
+         "TX_SUB_B_2",
+         "TX_SUB_C_1",
+         "TX_TRANSPORT",
+         "a4330a00-6625-5d04-8147-50a9a46e8796"
+        ]
+       },
+       "category_totals.dining": {
+        "value": "514/1",
+        "unit": "CNY",
+        "source_tx_ids": [
+         "34b668ae-efc9-5752-b0e4-f91842295477",
+         "7d9e6376-feb0-5d51-933f-eba130fc171a",
+         "TX_DINING"
+        ]
+       },
+       "category_totals.services": {
+        "value": "177/1",
+        "unit": "CNY",
+        "source_tx_ids": [
+         "TX_SUB_A_2",
+         "TX_SUB_B_2",
+         "TX_SUB_C_1"
+        ]
+       },
+       "category_totals.shopping": {
+        "value": "1548/1",
+        "unit": "CNY",
+        "source_tx_ids": [
+         "56af1d74-1b5c-508b-8fb7-af2017964156",
+         "70d7ed63-4f97-5ad9-aa0a-31bd7d8f2dd5",
+         "TX_SHOPPING",
+         "TX_SHOPPING_REFUND"
+        ]
+       },
+       "category_totals.transport": {
+        "value": "140/1",
+        "unit": "CNY",
+        "source_tx_ids": [
+         "532091fd-454c-508c-a23d-e7fd613939c9",
+         "TX_TRANSPORT",
+         "a4330a00-6625-5d04-8147-50a9a46e8796"
+        ]
+       }
+      },
+      "program_hash": null,
+      "trust": "builtin",
+      "computed_at": "2026-10-16T02:00:00Z",
+      "sig": "a0cd79e4a3fe27d0eebaee3b50344cf7c99c74d089f3ccc19cedf4951cfb11bef5ecd1184c66c870890192785d8a99bc098931a1ece2fd8da0bf52e4e5b79804"
+     }
+    ],
+    "audit_valid": true,
+    "audit_head": {
+     "seq": 7,
+     "head": "435a67f81ffaa5d274fc185f4c2df908aed67fbf685dd03fe4eeced949908ed1"
+    },
+    "tasks": [],
+    "device_operations": [],
+    "business_state": {},
+    "state_effects": {
+     "positions": [
+      {
+       "product_ref": "P_A",
+       "principal_amount": "500"
+      }
+     ],
+     "subscription_statuses": {
+      "S1": "active"
+     },
+     "card_statuses": {
+      "CARD_UI_DEMO": "active"
+     },
+     "plans": [
+      {
+       "plan_id": "6805a09d-b33e-533c-8fb1-d5b46ffa20c9",
+       "blocked": false,
+       "node_tools": [
+        "bill_report"
+       ],
+       "node_statuses": [
+        "succeeded"
+       ]
+      }
+     ]
+    },
+    "accepted_terminal_assertions": true
+   },
+   "business_semantic_hash": "6203b237486d4f928d83844d08b9ad98781a070f5c4bd1a602eb95a3508b071d",
+   "receipt_count_delta": 1,
+   "audit_valid": true,
+   "planner_spend_assumption_usd": "0",
+   "journal_dir": "openai-gpt-6.1-sol\\session-0002",
+   "strict_hash_match": true,
+   "strict_source_and_zero_api": true,
+   "strict_business_match": true,
+   "strict_receipts_match": true,
+   "passed": true
+  },
+  {
+   "name": "03-wealth-buy-p-a",
+   "input": "帮我申购2000元稳健30天持有",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/confirm",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/mfa/request",
+     "status": 200
+    },
+    {
+     "method": "GET",
+     "path": "/api/phone/{pair}",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/mfa/verify",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/confirm",
+     "status": 200
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "gpt-6.1-sol",
+     "api": "responses",
+     "reasoning_effort": "low",
+     "max_output_tokens": 1024,
+     "prompt_hash": "0e4c70f722d4357824f26c2dbb7e30f00b2a4bdd0dc06fb083309348ee7a75d9",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "92fcafba4a62fa9f61179673dad90958a495858ae89b548b786438119b34aaa2",
+     "output_sha256": "75979605be48ab5e4de632d56c1b4ee3ebbebe13ae6a8cb4350a501b8720c817",
+     "source": "replay"
+    }
+   ],
+   "planner_sources": [
+    "replay"
+   ],
+   "planner_client_mode": "strict",
+   "business": {
+    "response": {
+     "status": "settled",
+     "status_text": "已办理",
+     "tier": {
+      "code": "red",
+      "label": "红色 · 需短信验证（模拟）后确认",
+      "glyph": "triangle"
+     },
+     "result": {
+      "banner": {
+       "tone": "success",
+       "text": "已执行 · 银行回执已核验"
+      },
+      "receipt_line": "办理时间：2026-10-16T02:00:00Z · 回执编号：54e18f32-f4e5-5c37-a3ff-f291793fb6b1 · 状态：已完成",
+      "facts_lines": [
+       "申购已结算。",
+       "已核验余额：8000.00 CNY。",
+       "申购本金：2000.00 CNY。"
+      ],
+      "message_lines": [],
+      "why": {
+       "lines": [
+        "审批级别：尚未判定",
+        "本视图未报告拒绝或升级验证的规则命中。"
+       ]
+      },
+      "amount_text": "¥2,000.00",
+      "rule_ids": [],
+      "receipt": {
+       "receipt_type": "bank",
+       "receipt_id": "54e18f32-f4e5-5c37-a3ff-f291793fb6b1",
+       "version": 1,
+       "intent_key": "b8a9268a06052089c93ba9f0a7dfab97c149047e7ec15bcb723d44a204cadef7",
+       "kind": "purchase_product",
+       "status": "settled",
+       "exact_effects": [
+        {
+         "effect_type": "debit",
+         "object_ref": "A_CURRENT",
+         "account_ref": "A_CURRENT",
+         "counterparty_ref": "P_A",
+         "amount": "2000/1",
+         "field": "balance",
+         "before": "10000/1",
+         "after": "8000/1"
+        },
+        {
+         "effect_type": "position",
+         "object_ref": "1c73b865-5c9f-537f-8bc4-81027beeb8fe",
+         "account_ref": null,
+         "counterparty_ref": null,
+         "amount": null,
+         "field": "position",
+         "before": null,
+         "after": {
+          "id": "1c73b865-5c9f-537f-8bc4-81027beeb8fe",
+          "version": 1,
+          "owner": "C_DEMO",
+          "product_ref": "P_A",
+          "principal_amount": "2000/1",
+          "units": "2000/1",
+          "reserved_units": "0/1",
+          "nav": "1/1",
+          "acquired_at": "2026-10-16T02:00:00Z",
+          "redeemable_at": "2026-11-15T02:00:00Z",
+          "status": "active"
+         }
+        }
+       ],
+       "executed_at": "2026-10-16T02:00:00Z",
+       "settle_at": null,
+       "sig": "91c25abc0ae7eee2c1c69d8c22ecbdf15d933b75ef55c0bdc6966b1e1a5e2ac99ce13f948b1006be391f9b8f3a327aad62005a3e5396f710ae9abc54db8ee102"
+      },
+      "audit_checkpoint": {
+       "seq": 18,
+       "head": "a58286f4ed4358efbf4480062f1a6c1bbcc709f16eb7cde70e68a9a1f56dc0b3"
+      }
+     }
+    },
+    "bank_execute_delta": 1,
+    "receipts": [
+     {
+      "receipt_type": "bank",
+      "receipt_id": "54e18f32-f4e5-5c37-a3ff-f291793fb6b1",
+      "version": 1,
+      "intent_key": "b8a9268a06052089c93ba9f0a7dfab97c149047e7ec15bcb723d44a204cadef7",
+      "kind": "purchase_product",
+      "status": "settled",
+      "exact_effects": [
+       {
+        "effect_type": "debit",
+        "object_ref": "A_CURRENT",
+        "account_ref": "A_CURRENT",
+        "counterparty_ref": "P_A",
+        "amount": "2000/1",
+        "field": "balance",
+        "before": "10000/1",
+        "after": "8000/1"
+       },
+       {
+        "effect_type": "position",
+        "object_ref": "1c73b865-5c9f-537f-8bc4-81027beeb8fe",
+        "account_ref": null,
+        "counterparty_ref": null,
+        "amount": null,
+        "field": "position",
+        "before": null,
+        "after": {
+         "id": "1c73b865-5c9f-537f-8bc4-81027beeb8fe",
+         "version": 1,
+         "owner": "C_DEMO",
+         "product_ref": "P_A",
+         "principal_amount": "2000/1",
+         "units": "2000/1",
+         "reserved_units": "0/1",
+         "nav": "1/1",
+         "acquired_at": "2026-10-16T02:00:00Z",
+         "redeemable_at": "2026-11-15T02:00:00Z",
+         "status": "active"
+        }
+       }
+      ],
+      "executed_at": "2026-10-16T02:00:00Z",
+      "settle_at": null,
+      "sig": "91c25abc0ae7eee2c1c69d8c22ecbdf15d933b75ef55c0bdc6966b1e1a5e2ac99ce13f948b1006be391f9b8f3a327aad62005a3e5396f710ae9abc54db8ee102"
+     }
+    ],
+    "audit_valid": true,
+    "audit_head": {
+     "seq": 19,
+     "head": "9cf6de9bc480117d21a8cf2bac9097c3cbba3bb75eb6b3052dfe47caa8c39187"
+    },
+    "tasks": [
+     {
+      "key": "TR1",
+      "source": "chat",
+      "step": "done",
+      "gesture_op": null,
+      "card_kind": null
+     }
+    ],
+    "device_operations": [
+     {
+      "task": "TR1",
+      "step": "review_purchase",
+      "op": "confirm",
+      "bank_execute_delta": 0,
+      "result_status": "waiting_mfa"
+     },
+     {
+      "task": "TR1",
+      "step": "mfa_request",
+      "op": "mfa_request",
+      "bank_execute_delta": 0,
+      "result_status": "waiting_mfa"
+     },
+     {
+      "task": "TR1",
+      "step": "mfa_code",
+      "op": "mfa_verify",
+      "bank_execute_delta": 0,
+      "result_status": "mfa_verified"
+     },
+     {
+      "task": "TR1",
+      "step": "final_confirm",
+      "op": "confirm",
+      "bank_execute_delta": 1,
+      "result_status": "settled"
+     }
+    ],
+    "business_state": {},
+    "state_effects": {
+     "positions": [
+      {
+       "product_ref": "P_A",
+       "principal_amount": "500"
+      },
+      {
+       "product_ref": "P_A",
+       "principal_amount": "2000"
+      }
+     ],
+     "subscription_statuses": {
+      "S1": "active"
+     },
+     "card_statuses": {
+      "CARD_UI_DEMO": "active"
+     },
+     "plans": [
+      {
+       "plan_id": "f96bfefe-982a-58a6-9d73-5116c48dd7ea",
+       "blocked": false,
+       "node_tools": [
+        "purchase_product"
+       ],
+       "node_statuses": [
+        "succeeded"
+       ]
+      }
+     ]
+    },
+    "accepted_terminal_assertions": true
+   },
+   "business_semantic_hash": "0e47a95180d3651aaf132b42503ac5d5dd8fac2ef225379f5463146ef4210d8c",
+   "receipt_count_delta": 1,
+   "audit_valid": true,
+   "planner_spend_assumption_usd": "0",
+   "journal_dir": "openai-gpt-6.1-sol\\session-0003",
+   "strict_hash_match": true,
+   "strict_source_and_zero_api": true,
+   "strict_business_match": true,
+   "strict_receipts_match": true,
+   "passed": true
+  },
+  {
+   "name": "04-card-lost",
+   "input": "我的卡丢了",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/confirm",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/mfa/request",
+     "status": 200
+    },
+    {
+     "method": "GET",
+     "path": "/api/phone/{pair}",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/mfa/verify",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/confirm",
+     "status": 200
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "gpt-6.1-sol",
+     "api": "responses",
+     "reasoning_effort": "low",
+     "max_output_tokens": 1024,
+     "prompt_hash": "495e08b7bcfc2e8a6fbe1eb8661e5358ac5ad9bc78669ebb4cab173c8b807781",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "ba85f0e6186b2f86ce0ddbc67eedab41bae44c46d2d85657c424ef1f5a8349de",
+     "output_sha256": "182c477dc8b7c5dec1cdbc407ba776703dd08294fbb72fe9fef3c417eaba3abe",
+     "source": "replay"
+    }
+   ],
+   "planner_sources": [
+    "replay"
+   ],
+   "planner_client_mode": "strict",
+   "business": {
+    "response": {
+     "status": "settled",
+     "status_text": "已办理",
+     "tier": {
+      "code": "red",
+      "label": "红色 · 需短信验证（模拟）后确认",
+      "glyph": "triangle"
+     },
+     "result": {
+      "banner": {
+       "tone": "success",
+       "text": "已执行 · 银行回执已核验"
+      },
+      "receipt_line": "办理时间：2026-10-16T02:00:00Z · 回执编号：c007d1fc-240d-5155-938b-e8a196077d21 · 状态：已完成",
+      "facts_lines": [],
+      "message_lines": [],
+      "why": {
+       "lines": [
+        "审批级别：尚未判定",
+        "本视图未报告拒绝或升级验证的规则命中。"
+       ]
+      },
+      "rule_ids": [],
+      "receipt": {
+       "receipt_type": "bank",
+       "receipt_id": "c007d1fc-240d-5155-938b-e8a196077d21",
+       "version": 1,
+       "intent_key": "2dc81ecef947a7bb8d53e305bf747341736c930d5ff7fdbfa8581b9ae16cc1d6",
+       "kind": "report_card_lost",
+       "status": "settled",
+       "exact_effects": [
+        {
+         "effect_type": "state",
+         "object_ref": "CARD_UI_DEMO",
+         "account_ref": null,
+         "counterparty_ref": null,
+         "amount": null,
+         "field": "card",
+         "before": {
+          "id": "CARD_UI_DEMO",
+          "version": 1,
+          "owner": "C_DEMO",
+          "account_ref": "A_CURRENT",
+          "kind": "virtual",
+          "status": "active",
+          "limit": "2000/1",
+          "restrictions": [
+           "overseas"
+          ],
+          "card_token": "SYNTHETIC_UI_CARD"
+         },
+         "after": {
+          "id": "CARD_UI_DEMO",
+          "version": 2,
+          "owner": "C_DEMO",
+          "account_ref": "A_CURRENT",
+          "kind": "virtual",
+          "status": "lost",
+          "limit": "2000/1",
+          "restrictions": [
+           "overseas"
+          ],
+          "card_token": "SYNTHETIC_UI_CARD"
+         }
+        }
+       ],
+       "executed_at": "2026-10-16T02:00:00Z",
+       "settle_at": null,
+       "sig": "3120342dd8cb4aa51ba638799421b827056a505baafc355dcc4010284282fa58d1b38b1c2c061f1ab10b6e194e734ba31267291c4bc8ebc8c695a31bbc328608"
+      },
+      "audit_checkpoint": {
+       "seq": 18,
+       "head": "672780658670d2b4884bd56c30cafaf8c0fbcebc0ce91741d35715f581c96ef4"
+      }
+     }
+    },
+    "bank_execute_delta": 1,
+    "receipts": [
+     {
+      "receipt_type": "bank",
+      "receipt_id": "c007d1fc-240d-5155-938b-e8a196077d21",
+      "version": 1,
+      "intent_key": "2dc81ecef947a7bb8d53e305bf747341736c930d5ff7fdbfa8581b9ae16cc1d6",
+      "kind": "report_card_lost",
+      "status": "settled",
+      "exact_effects": [
+       {
+        "effect_type": "state",
+        "object_ref": "CARD_UI_DEMO",
+        "account_ref": null,
+        "counterparty_ref": null,
+        "amount": null,
+        "field": "card",
+        "before": {
+         "id": "CARD_UI_DEMO",
+         "version": 1,
+         "owner": "C_DEMO",
+         "account_ref": "A_CURRENT",
+         "kind": "virtual",
+         "status": "active",
+         "limit": "2000/1",
+         "restrictions": [
+          "overseas"
+         ],
+         "card_token": "SYNTHETIC_UI_CARD"
+        },
+        "after": {
+         "id": "CARD_UI_DEMO",
+         "version": 2,
+         "owner": "C_DEMO",
+         "account_ref": "A_CURRENT",
+         "kind": "virtual",
+         "status": "lost",
+         "limit": "2000/1",
+         "restrictions": [
+          "overseas"
+         ],
+         "card_token": "SYNTHETIC_UI_CARD"
+        }
+       }
+      ],
+      "executed_at": "2026-10-16T02:00:00Z",
+      "settle_at": null,
+      "sig": "3120342dd8cb4aa51ba638799421b827056a505baafc355dcc4010284282fa58d1b38b1c2c061f1ab10b6e194e734ba31267291c4bc8ebc8c695a31bbc328608"
+     }
+    ],
+    "audit_valid": true,
+    "audit_head": {
+     "seq": 18,
+     "head": "672780658670d2b4884bd56c30cafaf8c0fbcebc0ce91741d35715f581c96ef4"
+    },
+    "tasks": [
+     {
+      "key": "TR1",
+      "source": "chat",
+      "step": "done",
+      "gesture_op": null,
+      "card_kind": null
+     }
+    ],
+    "device_operations": [
+     {
+      "task": "TR1",
+      "step": "confirm_intent",
+      "op": "confirm",
+      "bank_execute_delta": 0,
+      "result_status": "waiting_mfa"
+     },
+     {
+      "task": "TR1",
+      "step": "mfa_request",
+      "op": "mfa_request",
+      "bank_execute_delta": 0,
+      "result_status": "waiting_mfa"
+     },
+     {
+      "task": "TR1",
+      "step": "mfa_code",
+      "op": "mfa_verify",
+      "bank_execute_delta": 0,
+      "result_status": "mfa_verified"
+     },
+     {
+      "task": "TR1",
+      "step": "final_confirm",
+      "op": "confirm",
+      "bank_execute_delta": 1,
+      "result_status": "settled"
+     }
+    ],
+    "business_state": {},
+    "state_effects": {
+     "positions": [
+      {
+       "product_ref": "P_A",
+       "principal_amount": "500"
+      }
+     ],
+     "subscription_statuses": {
+      "S1": "active"
+     },
+     "card_statuses": {
+      "CARD_UI_DEMO": "lost"
+     },
+     "plans": [
+      {
+       "plan_id": "cefdcbc0-7066-59fd-a021-53d622523d24",
+       "blocked": false,
+       "node_tools": [
+        "report_card_lost"
+       ],
+       "node_statuses": [
+        "succeeded"
+       ]
+      }
+     ]
+    },
+    "accepted_terminal_assertions": true
+   },
+   "business_semantic_hash": "020226f18cd257d16da268e4c51647c95fc33dd18d277b4416700ba3a08138b1",
+   "receipt_count_delta": 1,
+   "audit_valid": true,
+   "planner_spend_assumption_usd": "0",
+   "journal_dir": "openai-gpt-6.1-sol\\session-0004",
+   "strict_hash_match": true,
+   "strict_source_and_zero_api": true,
+   "strict_business_match": true,
+   "strict_receipts_match": true,
+   "passed": true
+  },
+  {
+   "name": "05-subscription-cancel",
+   "input": "取消订阅",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/responses/{rkey}/subscription",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/confirm",
+     "status": 200
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "gpt-6.1-sol",
+     "api": "responses",
+     "reasoning_effort": "low",
+     "max_output_tokens": 1024,
+     "prompt_hash": "077960555793363e42ef5af1d5c3c3b884a46986347c121cf3b3de438a33f98f",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "9a5d77f4c1ea841ed504315ab32224b6c0b5e1ef07aac38ab5fbf056868dc596",
+     "output_sha256": "1887ed9c1563511907ea34881ce2cab6628652ebf9f49143aecf3a375ebb8a42",
+     "source": "replay"
+    }
+   ],
+   "planner_sources": [
+    "replay"
+   ],
+   "planner_client_mode": "strict",
+   "business": {
+    "response": {
+     "status": "settled",
+     "status_text": "已办理",
+     "tier": {
+      "code": "yellow",
+      "label": "黄色 · 需用户确认",
+      "glyph": "diamond"
+     },
+     "result": {
+      "banner": {
+       "tone": "success",
+       "text": "已执行 · 银行回执已核验"
+      },
+      "receipt_line": "办理时间：2026-10-16T02:00:00Z · 回执编号：c0ebe1e2-eceb-5b31-9920-f1314f516d0b · 状态：已完成",
+      "facts_lines": [],
+      "message_lines": [],
+      "why": {
+       "lines": [
+        "审批级别：尚未判定",
+        "本视图未报告拒绝或升级验证的规则命中。"
+       ]
+      },
+      "rule_ids": [],
+      "receipt": {
+       "receipt_type": "bank",
+       "receipt_id": "c0ebe1e2-eceb-5b31-9920-f1314f516d0b",
+       "version": 1,
+       "intent_key": "0b174989740bacf2b6bb63589b131e0140b3621fb66be4aa482a372b29d290dd",
+       "kind": "cancel_subscription",
+       "status": "settled",
+       "exact_effects": [
+        {
+         "effect_type": "state",
+         "object_ref": "S1",
+         "account_ref": null,
+         "counterparty_ref": null,
+         "amount": null,
+         "field": "status",
+         "before": "active",
+         "after": "cancelled"
+        }
+       ],
+       "executed_at": "2026-10-16T02:00:00Z",
+       "settle_at": null,
+       "sig": "93d903764a4582771869db2357adda26479e5cb49ab893b9df66e2efbd995880eeafa61cb0cee2a6b576230d1d160570c6728b6c11b8c74064385314a6fbc50e"
+      },
+      "audit_checkpoint": {
+       "seq": 12,
+       "head": "c764ed28a4e121d91828dc454ea6f1e84d494667d7f03eb0c7ed29ff5beade69"
+      }
+     }
+    },
+    "bank_execute_delta": 1,
+    "receipts": [
+     {
+      "receipt_type": "bank",
+      "receipt_id": "c0ebe1e2-eceb-5b31-9920-f1314f516d0b",
+      "version": 1,
+      "intent_key": "0b174989740bacf2b6bb63589b131e0140b3621fb66be4aa482a372b29d290dd",
+      "kind": "cancel_subscription",
+      "status": "settled",
+      "exact_effects": [
+       {
+        "effect_type": "state",
+        "object_ref": "S1",
+        "account_ref": null,
+        "counterparty_ref": null,
+        "amount": null,
+        "field": "status",
+        "before": "active",
+        "after": "cancelled"
+       }
+      ],
+      "executed_at": "2026-10-16T02:00:00Z",
+      "settle_at": null,
+      "sig": "93d903764a4582771869db2357adda26479e5cb49ab893b9df66e2efbd995880eeafa61cb0cee2a6b576230d1d160570c6728b6c11b8c74064385314a6fbc50e"
+     }
+    ],
+    "audit_valid": true,
+    "audit_head": {
+     "seq": 12,
+     "head": "c764ed28a4e121d91828dc454ea6f1e84d494667d7f03eb0c7ed29ff5beade69"
+    },
+    "tasks": [
+     {
+      "key": "TR2",
+      "source": "chat",
+      "step": "done",
+      "gesture_op": null,
+      "card_kind": null
+     }
+    ],
+    "device_operations": [
+     {
+      "op": "subscription_choice",
+      "bank_execute_delta": 0
+     },
+     {
+      "task": "TR2",
+      "step": "confirm_intent",
+      "op": "confirm",
+      "bank_execute_delta": 1,
+      "result_status": "settled"
+     }
+    ],
+    "business_state": {},
+    "state_effects": {
+     "positions": [
+      {
+       "product_ref": "P_A",
+       "principal_amount": "500"
+      }
+     ],
+     "subscription_statuses": {
+      "S1": "cancelled"
+     },
+     "card_statuses": {
+      "CARD_UI_DEMO": "active"
+     },
+     "plans": [
+      {
+       "plan_id": "c5c2acc4-e7da-5f0a-b9a5-0170bc86779d",
+       "blocked": false,
+       "node_tools": [
+        "cancel_subscription"
+       ],
+       "node_statuses": [
+        "succeeded"
+       ]
+      }
+     ]
+    },
+    "accepted_terminal_assertions": true
+   },
+   "business_semantic_hash": "89c9cc00982a27759ef18fd72194ffa7f1cc1c7ff80d746e6ff906f42833ad32",
+   "receipt_count_delta": 1,
+   "audit_valid": true,
+   "planner_spend_assumption_usd": "0",
+   "journal_dir": "openai-gpt-6.1-sol\\session-0005",
+   "strict_hash_match": true,
+   "strict_source_and_zero_api": true,
+   "strict_business_match": true,
+   "strict_receipts_match": true,
+   "passed": true
+  },
+  {
+   "name": "06-birthday-dag",
+   "input": "帮我准备老婆的生日",
+   "http_steps": [
+    {
+     "method": "POST",
+     "path": "/api/session/login",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/nodes",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/confirm",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/chat/message",
+     "status": 200
+    },
+    {
+     "method": "POST",
+     "path": "/api/device/tasks/{tkey}/confirm",
+     "status": 200
+    }
+   ],
+   "planner_api_calls": 0,
+   "planner_calls": [
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "gpt-6.1-sol",
+     "api": "responses",
+     "reasoning_effort": "low",
+     "max_output_tokens": 1024,
+     "prompt_hash": "1379b3361b9351810e785adc374f4e6308316f5f07bc378da060d44be04c5659",
+     "tool_state_hash": "26a92356ba659f66061c325fa0f2156879439651ec741c958c1d6cb577c45cef",
+     "request_hash": "c502845d4012490164890def494bd852107a8d4aa572c14d3f05374c2785e8fd",
+     "output_sha256": "f02de951dc7af9572cccc2adc19e93c21c013add6e97e676041860ef52975e8d",
+     "source": "replay"
+    },
+    {
+     "schema_version": "bank-llm-v1",
+     "model": "gpt-6.1-sol",
+     "api": "responses",
+     "reasoning_effort": "low",
+     "max_output_tokens": 1024,
+     "prompt_hash": "9bc70072dbacdde6d1df76ce606a668ab533a65b17553798034bd743c0d57dd1",
+     "tool_state_hash": "55c2d7b95665dea684352cf1e302e8ea87515b2b4fe3f92cdc3251795e4b32d3",
+     "request_hash": "35ab102c45bc113ccb498d0920a4a8c0156fa25f4419bb756ce96e2077e72d71",
+     "output_sha256": "f02de951dc7af9572cccc2adc19e93c21c013add6e97e676041860ef52975e8d",
+     "source": "replay"
+    }
+   ],
+   "planner_sources": [
+    "replay",
+    "replay"
+   ],
+   "planner_client_mode": "strict",
+   "business": {
+    "response": {
+     "status": "settled",
+     "status_text": "已办理",
+     "tier": {
+      "code": "yellow",
+      "label": "黄色 · 需用户确认",
+      "glyph": "diamond"
+     },
+     "result": null
+    },
+    "bank_execute_delta": 2,
+    "receipts": [
+     {
+      "receipt_type": "bank",
+      "receipt_id": "6010ed63-0cd5-5450-8cd4-aef479730aaf",
+      "version": 1,
+      "intent_key": "aa6e11ed0154a288b029c765d1dc432d310184f3d8897274ea0ea6d7b13704b9",
+      "kind": "lock_funds",
+      "status": "settled",
+      "exact_effects": [
+       {
+        "effect_type": "debit",
+        "object_ref": "A_CURRENT",
+        "account_ref": "A_CURRENT",
+        "counterparty_ref": "A_LOCKED",
+        "amount": "1000/1",
+        "field": "balance",
+        "before": "10000/1",
+        "after": "9000/1"
+       },
+       {
+        "effect_type": "credit",
+        "object_ref": "A_LOCKED",
+        "account_ref": "A_LOCKED",
+        "counterparty_ref": "A_CURRENT",
+        "amount": "1000/1",
+        "field": "balance",
+        "before": "0/1",
+        "after": "1000/1"
+       }
+      ],
+      "executed_at": "2026-10-16T02:00:00Z",
+      "settle_at": null,
+      "sig": "9c227c33783064334dfdab4b630ae50e835b17d3e2c582e252d6f18261208c51824c650677d34d7a175ef616d0113d92bc8d1b9e848352a903d453360cd3bc0f"
+     },
+     {
+      "receipt_type": "bank",
+      "receipt_id": "8e8b9cb2-296f-5106-a93d-70c055f07b1b",
+      "version": 1,
+      "intent_key": "b810d741347ad610989ac40f7d0db3fc8ea2c43f35be17bd998090f7b86c8918",
+      "kind": "unlock_funds",
+      "status": "settled",
+      "exact_effects": [
+       {
+        "effect_type": "debit",
+        "object_ref": "A_LOCKED",
+        "account_ref": "A_LOCKED",
+        "counterparty_ref": "A_CURRENT",
+        "amount": "1000/1",
+        "field": "balance",
+        "before": "1000/1",
+        "after": "0/1"
+       },
+       {
+        "effect_type": "credit",
+        "object_ref": "A_CURRENT",
+        "account_ref": "A_CURRENT",
+        "counterparty_ref": "A_LOCKED",
+        "amount": "1000/1",
+        "field": "balance",
+        "before": "9000/1",
+        "after": "10000/1"
+       }
+      ],
+      "executed_at": "2026-10-16T02:00:00Z",
+      "settle_at": null,
+      "sig": "5bd0d0f5e7010833e793f6eb24965e8f11a165a43ef0036edc673ecf025876fe7bfac6bcbd0e21ab62c09a12b8b45126b8fc059bf4d1ca75e0eb732d7a572707"
+     }
+    ],
+    "audit_valid": true,
+    "audit_head": {
+     "seq": 58,
+     "head": "c6932a842d99e050a5aeb9d4c621787efd62b8a0b9da0f5cf7011fb3ba731a25"
+    },
+    "tasks": [
+     {
+      "key": "TR3",
+      "source": "chat",
+      "step": "done",
+      "gesture_op": null,
+      "card_kind": null
+     }
+    ],
+    "device_operations": [
+     {
+      "op": "select_plan_nodes",
+      "bank_execute_delta": 0
+     },
+     {
+      "task": "TR1",
+      "step": "confirm_plan",
+      "op": "confirm",
+      "bank_execute_delta": 1,
+      "result_status": "settled"
+     },
+     {
+      "task": "TR3",
+      "step": "confirm_intent",
+      "op": "confirm",
+      "bank_execute_delta": 1,
+      "result_status": "settled"
+     }
+    ],
+    "business_state": {},
+    "state_effects": {
+     "positions": [
+      {
+       "product_ref": "P_A",
+       "principal_amount": "500"
+      }
+     ],
+     "subscription_statuses": {
+      "S1": "active"
+     },
+     "card_statuses": {
+      "CARD_UI_DEMO": "active"
+     },
+     "plans": [
+      {
+       "plan_id": "cefdcbc0-7066-59fd-a021-53d622523d24",
+       "blocked": true,
+       "node_tools": [
+        "lock_funds",
+        "unlock_funds",
+        "merchant_order",
+        "merchant_order"
+       ],
+       "node_statuses": [
+        "compensated",
+        "cancelled",
+        "cancelled",
+        "cancelled"
+       ]
+      },
+      {
+       "plan_id": "83b0fb46-7fda-5dbf-a853-91ad7aeb3dfe",
+       "blocked": false,
+       "node_tools": [
+        "unlock_funds"
+       ],
+       "node_statuses": [
+        "succeeded"
+       ]
+      }
+     ]
+    },
+    "accepted_terminal_assertions": true
+   },
+   "business_semantic_hash": "2fd4ea9c701cda951d09f1fdef3e4d46f026d92b6d1c0302efec7c6f4ad0f3aa",
+   "receipt_count_delta": 2,
+   "audit_valid": true,
+   "planner_spend_assumption_usd": "0",
+   "journal_dir": "openai-gpt-6.1-sol\\session-0006",
+   "strict_hash_match": true,
+   "strict_source_and_zero_api": true,
+   "strict_business_match": true,
+   "strict_receipts_match": true,
+   "passed": true
+  }
+ ],
+ "passed_count": 6,
+ "failed_count": 0,
+ "provider_invoice": false,
+ "human_approval": false,
+ "provider_calls_total": 0,
+ "spend_assumption_usd_total": "0"
+}

@@ -1,0 +1,168 @@
+{
+ "ok": true,
+ "generation": "q3Lw9xYp0aZk",
+ "revision": 3,
+ "state": {
+  "schema": 1,
+  "contract": "web-contract/1.1",
+  "generation": "q3Lw9xYp0aZk",
+  "revision": 3,
+  "view": "judge",
+  "locale": "zh-CN",
+  "capabilities": {
+   "tabs": [],
+   "shortcuts": [
+    "transfer",
+    "cards",
+    "scam_drill"
+   ],
+   "live": false,
+   "plan_select": false,
+   "compensate": false,
+   "aa": false,
+   "lab": false
+  },
+  "session": {
+   "logged_in": true,
+   "clock_text": "2026-09-15 10:30（北京时间）",
+   "bank_name": "演示银行",
+   "assistant_name": "智能助手",
+   "phone_url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=zh-CN&view=judge"
+  },
+  "shell": {
+   "corner": "合成数据 · 模拟认证 · 无真实资金",
+   "judge_strip": "评委视图：显示内核裁决、哈希与审计证据；视图只是展示偏好，不是访问控制",
+   "badge": {
+    "kind": "demo",
+    "text": "脚本演示"
+   },
+   "safety": {
+    "locked": false,
+    "text": null,
+    "hint": null,
+    "state": "Normal",
+    "reason": null,
+    "unlock_after_text": null,
+    "rule_ids": []
+   },
+   "paused_banner": null,
+   "notices": []
+  },
+  "chat": {
+   "shortcuts": [
+    {
+     "key": "transfer",
+     "label": "给妈妈转 800 元"
+    },
+    {
+     "key": "cards",
+     "label": "我的卡丢了"
+    },
+    {
+     "key": "scam_drill",
+     "label": "诈骗演练"
+    }
+   ],
+   "drill_caption": "演练：模拟一段“工作人员让您立即转账”的话术，看系统如何回应 （评委）演练句命中话术闸门：不出卡，派发 0",
+   "greeting": null,
+   "turns": [
+    {
+     "id": "u1",
+     "role": "user",
+     "rkey": "R1",
+     "text": "反诈中心让我立即给新联系人转480元，不然账户冻结"
+    },
+    {
+     "id": "a1",
+     "role": "assistant",
+     "rkey": "R1",
+     "text": "这类说法是常见诈骗话术。公安反诈专线是 96110；如有疑问，请拨打卡背面的官方电话。本次不会生成转账卡。"
+    }
+   ],
+   "responses": {
+    "R1": {
+     "rkey": "R1",
+     "current": true,
+     "status": "phrase_gate",
+     "status_text": "已拦截",
+     "copy_lines": [
+      "这类说法是常见诈骗话术。公安反诈专线是 96110；如有疑问，请拨打卡背面的官方电话。本次不会生成转账卡。"
+     ],
+     "tier": null,
+     "requested_tier": null,
+     "redisplay_notice": null,
+     "cards": [],
+     "gate": null,
+     "result": null,
+     "failure": null,
+     "live_notes": [],
+     "device_task": null,
+     "route_hint": null,
+     "fallback_shortcuts": false,
+     "cancel": null,
+     "card_source": "authoritative",
+     "technical_url": "/api/evidence/responses/R1",
+     "phrase_gate_note": "（评委）话术闸门命中：权威冒充 + 立即转账，未出卡，派发 0"
+    }
+   },
+   "current": "R1",
+   "gated_elsewhere": [],
+   "task_panel": null,
+   "composer": {
+    "placeholder": "说说您要办理什么，例如：给妈妈转500元",
+    "max_chars": 4000,
+    "attach_label": "附上对方发来的文件（模拟）",
+    "attach_note": "附件开关由您自报，系统不读取任何文件",
+    "contacts_note": "演示联系人：妈妈、房东、同学、邻居、新联系人、爱人",
+    "disabled": false
+   }
+  },
+  "device": {
+   "title": "模拟签名设备（软件模拟）",
+   "idle_text": "当前没有需要在设备上确认的操作",
+   "queue_text": null,
+   "tasks": [],
+   "active": null,
+   "sms": {
+    "url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=zh-CN&view=judge",
+    "label": "模拟短信（合成，不是真实短信）",
+    "open_label": "在新窗口打开",
+    "footer": "合成短信 · 无短信网关 · 无真实手机号"
+   }
+  },
+  "evidence": {
+   "open_by_default": [
+    "kernel",
+    "consistency",
+    "dispatch"
+   ],
+   "planner": {
+    "badge": "脚本规划",
+    "source": "脚本规划（离线）",
+    "counters": []
+   },
+   "dispatch": {
+    "count": 0,
+    "receipts": []
+   },
+   "audit": {
+    "count": 3,
+    "head": {
+     "algorithm": "SHA-256(JCS)",
+     "short": "a0b1c2d3e4f50617",
+     "full": "a0b1c2d3e4f5061728394a5b6c7d8e9f3f1c0a9e5b7d2c4e6f8a0b1c2d3e4f5f"
+    },
+    "verified": true,
+    "note": "审计校验只说明链未被改写，不证明外部世界发生了什么"
+   },
+   "safety": {
+    "state": "Normal",
+    "reason": null
+   },
+   "intent_log": [],
+   "intent_log_note": "意图日志不在哈希链内",
+   "planner_log": [],
+   "footer": "证据只读；视图只是展示偏好，不是访问控制"
+  }
+ }
+}

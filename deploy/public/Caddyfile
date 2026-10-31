@@ -1,0 +1,49 @@
+# Corridor 公开模式反向代理配置。
+# 目标版本：Caddy v2.11.7（install.sh 固定版本并校验 sha512）。
+# 语法依据：v2.11.7 标签的 caddyconfig/httpcaddyfile 源码与官方文档。
+# 本地没有运行过 caddy validate；install.sh 在目标机上先校验，校验失败不上线。
+#
+# 这里故意没有的东西：
+#   站点内的 log：不写访问日志，URI 里有手机配对令牌。
+#   encode：响应里同时有用户输入和令牌，不留压缩侧信道。
+#   trusted_proxies：Caddy 因此丢弃客户端自带的 X-Forwarded-*，换成实际对端地址。
+#   tls internal 或明文站点：证书失败时服务保持下线，不降级。
+#
+# 门禁：站点里 import 的 corridor-gate.caddy 在验收通过之前让所有非回环来源得 503。
+# 文件不存在时 Caddy 拒绝加载，所以门禁不会因为丢文件而悄悄打开。
+{
+	# 错误日志和反向代理日志带完整请求（含 /phone/<配对令牌> 与客户端地址），一律丢弃。
+	# ACME 与证书事件不在这些命名空间内，仍写入 journald。install.sh 用金丝雀实测。
+	log default {
+		exclude http.log.error http.handlers.reverse_proxy http.stdlib
+	}
+	servers {
+		timeouts {
+			read_header 10s
+			read_body 30s
+			idle 2m
+		}
+		max_header_size 16KB
+		# 防火墙不开 UDP 443，所以不声明 HTTP/3。
+		protocols h1 h2
+	}
+}
+
+43-154-247-126.sslip.io {
+	header {
+		-Server
+		Strict-Transport-Security "max-age=31536000"
+	}
+	import corridor-gate.caddy
+	request_body {
+		max_size 128KB
+	}
+	reverse_proxy 127.0.0.1:8772 {
+		header_up -X-Real-Ip
+		header_up -Forwarded
+		transport http {
+			dial_timeout 3s
+			response_header_timeout 90s
+		}
+	}
+}

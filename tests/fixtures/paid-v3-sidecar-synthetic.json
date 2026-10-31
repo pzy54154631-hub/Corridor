@@ -1,0 +1,60 @@
+{
+  "schema": "paid-v3-numbers-sidecar-v1",
+  "fixture_notice": "合成测试夹具：全部值都是假值，不来自 run-2 或任何真实报告，只用于 fill_numbers_zh 的 paid-v3 边车单测。",
+  "provenance": {
+    "report": "SYNTHETIC-NOT-A-REPORT/report.json",
+    "report_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "seal_diagnostics_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "generated_utc": "1970-01-01T00:00:00Z",
+    "code": {"sha256": "SYNTHETIC"}
+  },
+  "gates": {
+    "independent_review": {"path": "SYNTHETIC-NOT-A-REVIEW.md", "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"},
+    "external_gates_attestation": null,
+    "review_verdict": "GO",
+    "analysis_completion": {"path": "SYNTHETIC-NOT-A-LOOK.json", "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"}
+  },
+  "binding_ready": true,
+  "binding_blockers": [],
+  "external_gates_attested": false,
+  "notice": "SYNTHETIC FIXTURE. Numbers bind only through these hash-checked rows.",
+  "bindings": {
+    "paid_v3.openai.kj_correct.estimate": {
+      "key": "paid_v3.openai.kj_correct.estimate",
+      "value": "合成假值-估计",
+      "mode": "K-J.correct; synthetic fixture",
+      "denominator": "合成假分母",
+      "source": "report.json#/primary_family/statistics/openai-economy~1openai-flagship:K-J.correct/estimate",
+      "report_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "status": "observed"
+    },
+    "paid_v3.openai.kj_correct.interval": {
+      "key": "paid_v3.openai.kj_correct.interval",
+      "value": "not_evaluable",
+      "mode": "descriptive only: primary_statistical_eligibility=false",
+      "denominator": "not_evaluable",
+      "source": "report.json#/primary_family/statistics/openai-economy~1openai-flagship:K-J.correct/interval",
+      "report_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "status": "not_evaluable",
+      "reason": "synthetic fixture"
+    },
+    "paid_v3.family.primary_conclusion_available": {
+      "key": "paid_v3.family.primary_conclusion_available",
+      "value": "no",
+      "mode": "fixed False in code; synthetic fixture",
+      "denominator": "external gates",
+      "source": "report.json#/primary_family/primary_conclusion_available",
+      "report_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "status": "observed"
+    },
+    "paid_v3.units.not_run": {
+      "key": "paid_v3.units.not_run",
+      "value": "合成假值-单元",
+      "mode": "mechanical not_run units; synthetic fixture",
+      "denominator": "合成假分母",
+      "source": "seal-diagnostics.json#/inventory_states",
+      "report_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "status": "observed"
+    }
+  }
+}

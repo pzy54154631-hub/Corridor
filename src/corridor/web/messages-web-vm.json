@@ -1,0 +1,595 @@
+{
+  "customer:web.vm.purchase.notice": {"zh-CN": "以下是将签署的全部偏好，尚未生成申购确认卡。确认后还须查看该卡、完成模拟短信验证并最终确认。", "en": "These are all the preferences to be signed; the purchase confirmation card has not been prepared yet. Card review, simulated SMS verification and final approval follow."},
+  "web.vm.purchase.value.net_return": {"zh-CN": "净收益", "en": "Net return"},
+  "web.vm.purchase.value.liquidity": {"zh-CN": "流动性", "en": "Liquidity"},
+  "web.vm.purchase.value.wealth": {"zh-CN": "理财类产品", "en": "Wealth products"},
+  "web.vm.step.review_purchase": {"zh-CN": "核对以下申购条件，确认后签署偏好并生成待验证的申购卡。", "en": "Review these purchase terms. Confirmation signs the preference and prepares the purchase card for verification."},
+  "web.vm.purchase.title": {"zh-CN": "申购条件 · 尚未授权", "en": "Purchase terms · not yet authorized"},
+  "web.vm.purchase.notice": {"zh-CN": "以下是将签署的全部偏好，尚无规范卡。确认后还须查看申购卡、完成模拟短信验证并最终确认。", "en": "These are all the preferences to be signed; no canonical card exists yet. Confirmation is followed by card review, simulated SMS verification and final approval."},
+  "web.vm.purchase.confirm": {"zh-CN": "确认这些条件并准备申购卡", "en": "Confirm these terms and prepare the purchase card"},
+  "web.vm.purchase.version": {"zh-CN": "偏好格式版本", "en": "Preference format version"},
+  "web.vm.purchase.source_account_ref": {"zh-CN": "扣款账户", "en": "Source account"},
+  "web.vm.purchase.amount": {"zh-CN": "申购金额", "en": "Purchase amount"},
+  "web.vm.purchase.horizon_days": {"zh-CN": "投资期限", "en": "Investment horizon"},
+  "web.vm.purchase.max_access_days": {"zh-CN": "最长取用等待", "en": "Maximum access delay"},
+  "web.vm.purchase.allowed_types": {"zh-CN": "允许的产品类型", "en": "Allowed product types"},
+  "web.vm.purchase.objective": {"zh-CN": "比较目标", "en": "Comparison objective"},
+  "web.vm.purchase.selection_mode": {"zh-CN": "产品选择方式", "en": "Product selection method"},
+  "web.vm.purchase.selected_product_ref": {"zh-CN": "选定产品", "en": "Selected product"},
+  "web.vm.purchase.reason_code": {"zh-CN": "选择依据", "en": "Selection reason"},
+  "web.vm.purchase.currency": {"zh-CN": "币种", "en": "Currency"},
+  "web.vm.purchase.days": {"zh-CN": "{days} 天", "en": "{days} days"},
+  "web.vm.purchase.value.explicit": {"zh-CN": "用户明确指定", "en": "Explicitly selected by the user"},
+  "web.vm.purchase.value.user_choice": {"zh-CN": "用户自主选择", "en": "User choice"},
+  "web.vm.not_signed": {
+    "zh-CN": "不属于签名内容",
+    "en": "Not part of the signed content"
+  },
+  "web.vm.safety.way_out": {
+    "zh-CN": "解锁需要冷却期、本人设备确认和模拟短信验证；本网页暂未提供，可在兜底界面完成，或点“重新开始”换一个新的合成会话",
+    "en": "Unlocking needs the cooldown, owner device confirmation and simulated SMS verification. This web page does not offer it yet: use the fallback interface, or tap Restart for a new synthetic session"
+  },
+  "web.vm.route.fallback": {
+    "zh-CN": "此项请在兜底界面办理",
+    "en": "Please use the fallback interface for this service"
+  },
+  "web.vm.route.wealth_note": {
+    "zh-CN": "这里是单品比较与申购，与理财顾问流程不同；理财顾问流程请在兜底界面体验",
+    "en": "This is single-product comparison and purchase, different from the advisor flow; try the advisor flow in the fallback interface"
+  },
+  "web.vm.route.operator": {
+    "zh-CN": "打开坐席",
+    "en": "Open the operator view"
+  },
+  "web.vm.composer.placeholder": {
+    "zh-CN": "说说您要办理什么，例如：给妈妈转500元",
+    "en": "Tell me what you need, e.g. transfer 500 yuan to Mom"
+  },
+  "web.vm.composer.contacts_note": {
+    "zh-CN": "演示联系人：{names}",
+    "en": "Demo contacts: {names}"
+  },
+  "web.vm.contact_hint.lead": {
+    "zh-CN": "这句话没有对上演示通讯录里的收款人，所以没有生成卡片。这是合成数据，只有下面这些联系人：",
+    "en": "This message did not match a recipient in the demo address book, so no card was created. It is synthetic and holds only these contacts:"
+  },
+  "web.vm.contact_hint.retry": {
+    "zh-CN": "请按“给妈妈转500元”的说法，用其中一位的称呼重新说一遍。",
+    "en": "Say it again in the form “给妈妈转500元”, using the Chinese name in brackets of one of these contacts."
+  },
+  "web.vm.contact.CONTACT_CHEN": {"zh-CN": "妈妈", "en": "Mom (妈妈)"},
+  "web.vm.contact.CONTACT_LANDLORD": {"zh-CN": "房东", "en": "Landlord (房东)"},
+  "web.vm.contact.CONTACT_LIN_A": {"zh-CN": "同学", "en": "Classmate (同学)"},
+  "web.vm.contact.CONTACT_LIN_B": {"zh-CN": "邻居", "en": "Neighbor (邻居)"},
+  "web.vm.contact.CONTACT_NEW": {"zh-CN": "新联系人", "en": "New contact (新联系人)"},
+  "web.vm.contact.CONTACT_SPOUSE": {"zh-CN": "爱人", "en": "Spouse (爱人)"},
+  "web.vm.composer.attach_label": {
+    "zh-CN": "附上对方发来的文件（模拟）",
+    "en": "Attach a file someone sent you (simulated)"
+  },
+  "web.vm.composer.attach_note": {
+    "zh-CN": "文件内容不会上传，只记“带有 1 个外部文件”；是否有附件由您自报",
+    "en": "The content is never uploaded; only \"one external file\" is noted, as you report it"
+  },
+  "web.vm.turn.cancel": {
+    "zh-CN": "（已点击“取消”）",
+    "en": "(Tapped \"Cancel\")"
+  },
+  "web.vm.turn.handoff": {
+    "zh-CN": "（已点击“转人工”）",
+    "en": "(Tapped \"Hand off\")"
+  },
+  "web.vm.turn.stop_all": {
+    "zh-CN": "（已点击“全部停止”）",
+    "en": "(Tapped \"Stop all\")"
+  },
+  "web.vm.turn.stopped": {
+    "zh-CN": "已停止。已执行的操作不会自动撤销，尚未执行的步骤已停止，以下方回执为准",
+    "en": "Stopped. Completed operations are not reversed automatically; steps not yet run were stopped. See the receipt below"
+  },
+  "web.vm.status.clarify": {
+    "zh-CN": "待补充",
+    "en": "Needs details"
+  },
+  "web.vm.status.awaiting_device_selection": {
+    "zh-CN": "待选择",
+    "en": "Needs a choice"
+  },
+  "web.vm.status.awaiting_input": {
+    "zh-CN": "待确认",
+    "en": "Awaiting confirmation"
+  },
+  "web.vm.status.draft": {
+    "zh-CN": "待确认",
+    "en": "Awaiting confirmation"
+  },
+  "web.vm.status.awaiting_approval": {
+    "zh-CN": "待确认",
+    "en": "Awaiting confirmation"
+  },
+  "web.vm.status.waiting_mfa": {
+    "zh-CN": "等待验证",
+    "en": "Awaiting verification"
+  },
+  "web.vm.status.mfa_verified": {
+    "zh-CN": "验证完成，待再次确认",
+    "en": "Verified; confirm again"
+  },
+  "web.vm.status.redisplay": {
+    "zh-CN": "卡片已更新",
+    "en": "Card updated"
+  },
+  "web.vm.status.paused": {
+    "zh-CN": "等待作答",
+    "en": "Waiting for your answers"
+  },
+  "web.vm.status.settled": {
+    "zh-CN": "已办理",
+    "en": "Done"
+  },
+  "web.vm.status.controlled": {
+    "zh-CN": "已建立定时授权",
+    "en": "Scheduled authorization created"
+  },
+  "web.vm.status.schedule_cancelled": {
+    "zh-CN": "已撤销定时授权",
+    "en": "Scheduled authorization revoked"
+  },
+  "web.vm.status.rejected": {
+    "zh-CN": "未通过检查",
+    "en": "Did not pass the checks"
+  },
+  "web.vm.status.refused": {
+    "zh-CN": "未受理",
+    "en": "Not accepted"
+  },
+  "web.vm.status.withdrawn": {
+    "zh-CN": "已撤回",
+    "en": "Withdrawn"
+  },
+  "web.vm.status.failed": {
+    "zh-CN": "未完成",
+    "en": "Not completed"
+  },
+  "web.vm.status.unknown": {
+    "zh-CN": "待核对",
+    "en": "Being reconciled"
+  },
+  "web.vm.status.interrupted": {
+    "zh-CN": "已中断",
+    "en": "Interrupted"
+  },
+  "web.vm.status.handed_off": {
+    "zh-CN": "已转人工",
+    "en": "Handed off"
+  },
+  "web.vm.status.login_required": {
+    "zh-CN": "需先进入演示",
+    "en": "Enter the demo first"
+  },
+  "web.vm.status.selection_required": {
+    "zh-CN": "待勾选",
+    "en": "Needs a selection"
+  },
+  "web.vm.status.outside_lock_month": {
+    "zh-CN": "不在锁款窗口",
+    "en": "Outside the lock window"
+  },
+  "web.vm.status.intent_confirmation_required": {
+    "zh-CN": "待确认意图",
+    "en": "Confirm the intent first"
+  },
+  "web.vm.status.no_active_plan": {
+    "zh-CN": "没有进行中的计划",
+    "en": "No active plan"
+  },
+  "web.vm.status.other": {
+    "zh-CN": "处理中",
+    "en": "In progress"
+  },
+  "web.vm.clarify.locked": {
+    "zh-CN": "这笔已提交核对，如需换人请先取消",
+    "en": "This one was submitted for review; to change the recipient, cancel first"
+  },
+  "web.vm.gate.self_report": {
+    "zh-CN": "两个问题的回答是您的自述，系统无法核实。",
+    "en": "Your answers to the two questions are your own statement; the system cannot check them."
+  },
+  "web.vm.plan.rule": {
+    "zh-CN": "本链需逐项审批：共 {total} 项 · 已勾选 {count}。请从第一项起连续勾选；未勾选的项目没有执行权限。",
+    "en": "Each item needs its own approval: {total} items · {count} selected. Select from the first item onward without gaps; unselected items get no execution permission."
+  },
+  "web.vm.plan.error": {
+    "zh-CN": "勾选需从第一项起连续，例如只勾第 1 项，或第 1、2 项",
+    "en": "Select from the first item onward without gaps, for example item 1 only, or items 1 and 2"
+  },
+  "web.vm.plan.selection_all": {
+    "zh-CN": "将确认全部 {total} 项",
+    "en": "Confirms all {total} items"
+  },
+  "web.vm.plan.selection_subset": {
+    "zh-CN": "将为所选 {count} 项生成新的待签计划卡，本步不签名",
+    "en": "Creates a new plan card for the {count} selected items; this step signs nothing"
+  },
+  "web.vm.plan.selection_none": {
+    "zh-CN": "尚未勾选：已勾选 {count} / {total} 项",
+    "en": "Nothing to confirm yet: {count} of {total} selected"
+  },
+  "web.vm.plan.empty": {
+    "zh-CN": "还没有已登记的计划。可以在助手里说“帮我准备老婆的生日”。",
+    "en": "No registered plan yet. Ask the assistant to prepare a birthday plan."
+  },
+  "web.vm.device.title": {
+    "zh-CN": "模拟签名设备（软件模拟）",
+    "en": "Simulated signing device (software)"
+  },
+  "customer:web.vm.device.title": {
+    "zh-CN": "设备确认（模拟）",
+    "en": "Device confirmation (simulated)"
+  },
+  "web.vm.device.idle": {
+    "zh-CN": "当前没有待签名的操作。设备只对它显示的这张卡签名。",
+    "en": "No operation is waiting for a signature. The device signs only the card it shows."
+  },
+  "customer:web.vm.device.idle": {
+    "zh-CN": "当前没有需要在设备上确认的操作。",
+    "en": "Nothing needs device confirmation right now."
+  },
+  "web.vm.device.queue": {
+    "zh-CN": "待确认队列：另有 {count} 项",
+    "en": "Also waiting: {count}"
+  },
+  "web.vm.device.back": {
+    "zh-CN": "回到那条回复",
+    "en": "Back to that reply"
+  },
+  "web.vm.device.final": {
+    "zh-CN": "再次确认",
+    "en": "Confirm again"
+  },
+  "web.vm.device.subset": {
+    "zh-CN": "生成新卡",
+    "en": "Create the new card"
+  },
+  "web.vm.device.mfa_request": {
+    "zh-CN": "发送模拟验证码",
+    "en": "Send simulated verification code"
+  },
+  "customer:web.vm.device.mfa_request": {
+    "zh-CN": "获取短信验证码（模拟）",
+    "en": "Get SMS code (simulated)"
+  },
+  "web.vm.device.mfa_verify": {
+    "zh-CN": "提交验证码",
+    "en": "Submit code"
+  },
+  "web.vm.source.chat": {
+    "zh-CN": "对话",
+    "en": "Chat"
+  },
+  "web.vm.source.wealth": {
+    "zh-CN": "理财",
+    "en": "Wealth"
+  },
+  "web.vm.source.subscriptions": {
+    "zh-CN": "订阅",
+    "en": "Subscriptions"
+  },
+  "web.vm.source.plans": {
+    "zh-CN": "计划",
+    "en": "Plans"
+  },
+  "web.vm.source.compensation": {
+    "zh-CN": "补偿",
+    "en": "Compensation"
+  },
+  "web.vm.step.confirm": {
+    "zh-CN": "核对上面的内容无误后再确认",
+    "en": "Check the details above, then confirm"
+  },
+  "web.vm.step.confirm_intent": {
+    "zh-CN": "先确认办理意图；确认后再获取短信验证码。此时尚未签名或执行",
+    "en": "Confirm the intent first; the SMS code comes next. Nothing is signed or executed yet"
+  },
+  "web.vm.step.mfa_request": {
+    "zh-CN": "这笔需要短信验证（模拟）：先获取验证码，再输入",
+    "en": "This one needs a simulated SMS check: get the code, then enter it"
+  },
+  "web.vm.step.mfa_code": {
+    "zh-CN": "请输入模拟手机收到的 6 位验证码",
+    "en": "Enter the 6-digit code from the simulated phone"
+  },
+  "web.vm.step.final_confirm": {
+    "zh-CN": "验证完成，请再确认一次",
+    "en": "Verification complete. Confirm once more"
+  },
+  "web.vm.step.confirm_plan": {
+    "zh-CN": "核对全部节点卡后确认",
+    "en": "Check every item card, then confirm"
+  },
+  "web.vm.step.confirm_subset": {
+    "zh-CN": "核对所选节点卡后生成新卡；新卡出现后再确认",
+    "en": "Check the selected item cards, then create the new card; confirm it once it appears"
+  },
+  "web.vm.step.select_nodes": {
+    "zh-CN": "请在手机上从第一项起连续勾选要确认的项目",
+    "en": "On the phone, select the items to confirm, starting from the first one without gaps"
+  },
+  "web.vm.step.not_current": {
+    "zh-CN": "这项属于较早的回复。回到那条回复继续，或取消",
+    "en": "This belongs to an earlier reply. Go back to it to continue, or cancel"
+  },
+  "web.vm.step.gate_unevaluated": {
+    "zh-CN": "正在核对，请刷新或回到那条回复",
+    "en": "Still being checked; refresh or go back to that reply"
+  },
+  "web.vm.step.gate_blocked": {
+    "zh-CN": "请先在手机上回答两个问题",
+    "en": "Answer the two questions on the phone first"
+  },
+  "web.vm.step.closed_mismatch": {
+    "zh-CN": "这条回复保存的卡与将要签署的卡不一致，不能确认。请取消后重新发起",
+    "en": "This reply's card differs from the card that would be signed, so it cannot be confirmed. Cancel and start again"
+  },
+  "web.vm.step.closed_facts": {
+    "zh-CN": "这张卡的信息不完整，不能确认。请取消后重新发起",
+    "en": "This card's details are incomplete and cannot be confirmed. Cancel and start again"
+  },
+  "web.vm.step.account_locked": {
+    "zh-CN": "账户已锁定：黄色和红色操作暂不能确认，只能取消",
+    "en": "The account is locked: yellow and red actions cannot be confirmed now; only Cancel is available"
+  },
+  "web.vm.step.closed_unknown": {
+    "zh-CN": "这一步的结果无法确认。为安全起见，这张卡不能再确认，请取消后重新发起",
+    "en": "The outcome of this step is unknown. For safety this card cannot be confirmed again; cancel and start again"
+  },
+  "web.vm.step.withdrawn": {
+    "zh-CN": "已撤回",
+    "en": "Withdrawn"
+  },
+  "web.vm.step.refused": {
+    "zh-CN": "未通过检查，没有执行",
+    "en": "Did not pass the checks; nothing was executed"
+  },
+  "web.vm.step.done": {
+    "zh-CN": "已完成，结果见下方",
+    "en": "Done; see the result below"
+  },
+  "web.vm.step.unknown": {
+    "zh-CN": "状态无法确认，请取消后重新发起",
+    "en": "The status cannot be confirmed; cancel and start again"
+  },
+  "web.vm.failure.unknown": {
+    "zh-CN": "这一步的结果无法确认。为安全起见，这张卡不能再确认，请取消后重新发起",
+    "en": "The outcome of this step is unknown. For safety this card cannot be confirmed again; cancel and start again"
+  },
+  "web.vm.sms.label": {
+    "zh-CN": "模拟短信（合成，不是真实短信）",
+    "en": "Simulated SMS (synthetic, not a real text)"
+  },
+  "web.vm.sms.open": {
+    "zh-CN": "在新窗口打开",
+    "en": "Open in a new window"
+  },
+  "web.vm.hash.label": {
+    "zh-CN": "SHA-256（JCS 规范化）· 前 16 位 · {status}",
+    "en": "SHA-256 (JCS) · first 16 hex digits · {status}"
+  },
+  "web.vm.hash.pending": {
+    "zh-CN": "待签",
+    "en": "awaiting signature"
+  },
+  "web.vm.hash.signed": {
+    "zh-CN": "已签",
+    "en": "signed"
+  },
+  "web.vm.hash.not_yet": {
+    "zh-CN": "尚未产生",
+    "en": "not produced yet"
+  },
+  "web.vm.evidence.card_mismatch": {
+    "zh-CN": "这条回复保存的卡与控制器的权威卡业务事实不一致：页面按权威卡显示，这张卡不能确认（不签名、不派发），请取消后重新发起",
+    "en": "This reply's stored card differed from the controller's authoritative card in its business facts: the page shows the authoritative card, and this card cannot be confirmed (nothing is signed or dispatched). Cancel and start again"
+  },
+  "web.vm.evidence.audit_note": {
+    "zh-CN": "审计校验只说明链未被改写，不证明外部世界发生了什么",
+    "en": "Audit verification only shows that the chain was not rewritten; it does not prove what happened outside"
+  },
+  "web.vm.evidence.not_yet": {
+    "zh-CN": "尚未产生：草稿阶段还没有内核复核卡",
+    "en": "Not produced yet: a draft has no kernel-checked card"
+  },
+  "web.vm.evidence.mismatch": {
+    "zh-CN": "显示卡与内核复核卡的业务事实不一致；设备不会对它签名",
+    "en": "The display card and the kernel-checked card differ in business facts; the device will not sign it"
+  },
+  "web.vm.evidence.kernel_none": {
+    "zh-CN": "这条回复还没有内核裁决",
+    "en": "This reply has no kernel decision yet"
+  },
+  "web.vm.evidence.rule_line": {
+    "zh-CN": "{rule} · {text}",
+    "en": "{rule} · {text}"
+  },
+  "web.vm.evidence.counter": {
+    "zh-CN": "本会话规划记录：{count} 条",
+    "en": "Planner records in this session: {count}"
+  },
+  "web.vm.evidence.receipt_status": {
+    "zh-CN": "{kind} · {status}",
+    "en": "{kind} · {status}"
+  },
+  "web.vm.operator.intro": {
+    "zh-CN": "转人工后自动执行暂停。坐席只看到脱敏快照；之后的资金操作仍需授权与网关检查。",
+    "en": "A handoff pauses automatic execution. The operator sees a redacted snapshot; later money actions still need authorization and gateway checks."
+  },
+  "web.vm.operator.none": {
+    "zh-CN": "还没有转人工记录。在对话里说“转人工”，或点任务面板的“转人工”。",
+    "en": "No handoff yet. Say hand off in the chat, or tap Handoff in the task panel."
+  },
+  "web.vm.operator.row": {
+    "zh-CN": "第 {index} 条：{intent} · {status}",
+    "en": "Item {index}: {intent} · {status}"
+  },
+  "web.vm.operator.plans": {
+    "zh-CN": "计划 {count} 个，其中已停止 {blocked} 个",
+    "en": "Plans: {count}, stopped: {blocked}"
+  },
+  "web.vm.intent.transfer": {
+    "zh-CN": "转账",
+    "en": "Transfer"
+  },
+  "web.vm.intent.balance_query": {
+    "zh-CN": "查询余额",
+    "en": "Balance query"
+  },
+  "web.vm.intent.bill_report": {
+    "zh-CN": "账单",
+    "en": "Bills"
+  },
+  "web.vm.intent.investment": {
+    "zh-CN": "理财",
+    "en": "Wealth"
+  },
+  "web.vm.intent.card": {
+    "zh-CN": "卡片",
+    "en": "Cards"
+  },
+  "web.vm.intent.subscription": {
+    "zh-CN": "订阅",
+    "en": "Subscriptions"
+  },
+  "web.vm.intent.birthday": {
+    "zh-CN": "生日安排",
+    "en": "Birthday plan"
+  },
+  "web.vm.intent.stop": {
+    "zh-CN": "停止",
+    "en": "Stop"
+  },
+  "web.vm.intent.handoff": {
+    "zh-CN": "转人工",
+    "en": "Handoff"
+  },
+  "web.vm.intent.other": {
+    "zh-CN": "其他",
+    "en": "Other"
+  },
+  "web.vm.live.fallback": {
+    "zh-CN": "实时模型开关请在兜底界面演示",
+    "en": "Please demonstrate the live model switch in the fallback interface"
+  },
+  "web.vm.session.clock": {
+    "zh-CN": "{time}（北京时间）",
+    "en": "{time} (Beijing time)"
+  },
+  "web.vm.accounts.empty": {
+    "zh-CN": "还没有账户信息，请先进入演示。",
+    "en": "No account information yet; enter the demo first."
+  },
+  "web.vm.accounts.locked": {
+    "zh-CN": "锁定预算账户",
+    "en": "Locked budget account"
+  },
+  "web.vm.accounts.current": {
+    "zh-CN": "活期账户",
+    "en": "Current account"
+  },
+  "web.vm.reason.approval": {
+    "zh-CN": "审批必须与您核对的办理信息、持有者、授权范围和有效期一致。",
+    "en": "Approval must match the details you reviewed, the owner, the scope and the validity window."
+  },
+  "web.vm.reason.audit": {
+    "zh-CN": "执行前必须具备有效且只追加的审计记录。",
+    "en": "Execution requires a valid append-only audit record."
+  },
+  "web.vm.step.confirm_intent_signs": {
+    "zh-CN": "核对上面的内容无误后再确认。确认即在设备上签名并办理",
+    "en": "Check the details above, then confirm. Confirming signs on the device and carries it out"
+  },
+  "web.vm.step.gate_later": {
+    "zh-CN": "这之后的对话里出现了冒充权威、他人指使或外部文件等风险提示，且尚未核实。为安全起见，这笔较早的付款不能再继续，请取消；核实后重新发起",
+    "en": "A later message carries an unverified scam cue (an authority, someone telling you to pay, or an outside file). For safety this earlier payment cannot continue; cancel it, verify, then start again"
+  },
+  "web.vm.step.gate_plan": {
+    "zh-CN": "这份计划含付款，而发起它的话里有冒充权威、他人指使或外部文件等风险提示（或付给新收款人）。计划不做逐笔核实，所以不能在这里确认；请取消后逐笔办理",
+    "en": "This plan pays someone, and the words that started it carry a scam cue (an authority, someone telling you to pay, or an outside file) or it pays a new recipient. Plans skip the per-payment check, so it cannot be confirmed here; cancel and make the payments one by one"
+  },
+  "web.vm.device.confirm_all": {
+    "zh-CN": "确认全部 {total} 项（逐张签名）",
+    "en": "Confirm all {total} (signs each card)"
+  },
+  "web.vm.fact.authorization_ref": {
+    "zh-CN": "取消的扣款授权",
+    "en": "Debit authorization to cancel"
+  },
+  "web.vm.fact.position_ref": {
+    "zh-CN": "赎回的持仓",
+    "en": "Position to redeem"
+  },
+  "web.vm.fact.subscription_value": {
+    "zh-CN": "{name} · 每期 {amount}",
+    "en": "{name} · {amount} per period"
+  },
+  "web.vm.fact.position_value": {
+    "zh-CN": "{name} · 本金 {amount}",
+    "en": "{name} · principal {amount}"
+  },
+  "web.vm.plan.compensate_target": {
+    "zh-CN": "退回补偿作用于计划 {index}（最近登记的计划）",
+    "en": "Compensation applies to plan {index} (the latest registered plan)"
+  },
+  "web.vm.evidence.kernel_confirmation": {
+    "zh-CN": "确认后的记录：这笔在一次确认手势中签名并派发，这里显示设备流程对该次确认保存的内核裁决与哈希（在确认之后读取，不是网页在派发前读到的）",
+    "en": "Recorded after the confirmation: this action was signed and dispatched in one gesture; shown is the kernel decision and hashes the device workflow kept for that confirmation (read after it, not by the web before dispatch)"
+  },
+  "web.vm.evidence.kernel_snapshot": {
+    "zh-CN": "待确认时的记录：派发后控制器不再保留这份复核，这里显示网页在这笔待确认、尚未派发时读到的同一份内核裁决与哈希",
+    "en": "Recorded while pending: the controller no longer keeps this check once dispatched; shown is the same kernel decision and hashes the web read while the action was pending, before dispatch"
+  },
+  "web.vm.evidence.beijing": {
+    "zh-CN": "{time}（北京时间）",
+    "en": "{time} (Beijing time)"
+  },
+  "web.vm.session.untrusted": {
+    "zh-CN": "刚才的操作意外中断，结果未知。为安全起见，本会话不再签发任何确认，请取消或点“重新开始”",
+    "en": "The last action stopped unexpectedly and its outcome is unknown. For safety this session issues no more confirmations; cancel, or choose Start over"
+  },
+  "web.vm.live.inherited_env": {
+    "zh-CN": "实时模型不可用：进程环境里有 {count} 个冻结客户端会继承的变量，会改变上限或请求参数；请在不含这些变量的环境里启动（变量名不在页面显示）。",
+    "en": "Live model unavailable: the process environment carries {count} variables the frozen client would inherit, which would change its caps or request settings; start the demo without them (their names are not shown on the page)."
+  },
+  "web.vm.live.public_closed.deployment": {
+    "zh-CN": "实时模型不可用：公开站点只允许它配置的那一个部署，当前所选部署不在其中。",
+    "en": "Live model unavailable: the public site allows only the one deployment it is configured for, and the selected deployment is not it."
+  },
+  "web.vm.live.public_closed.access": {
+    "zh-CN": "实时模型不可用：公开站点没有配置成对且格式正确的口令验证子（CORRIDOR_WEB_ACCESS_KDF 与 LIVE_ACCESS_CODE，由 access_setup 工具生成）。",
+    "en": "Live model unavailable: the public site has no whole, well-formed access verifier pair (CORRIDOR_WEB_ACCESS_KDF and LIVE_ACCESS_CODE, as printed by the access_setup tool)."
+  },
+  "web.vm.live.public_closed.caps": {
+    "zh-CN": "实时模型不可用：公开站点的费用配置超出允许范围（固定运行日志目录、每会话至多 20 次调用、累计预算至多 100 元）。",
+    "en": "Live model unavailable: the public site's spend configuration exceeds its bounds (one fixed journal directory, at most 20 calls per session, a cumulative budget of at most 100 yuan)."
+  },
+  "web.vm.live.public_closed.ledger": {
+    "zh-CN": "实时模型不可用：公开站点的花费台账丢失或无法读取，人工核账恢复之前不开放，站点其余功能照常。",
+    "en": "Live model unavailable: the public site's spend ledger is lost or unreadable; live stays closed until an operator has reconciled it, and the rest of the site keeps working."
+  },
+  "web.vm.live.public_caps": {
+    "zh-CN": "上限：每会话 {calls} 次调用 · 整站累计 {cny} CNY（按假设价计，不分日，不会重新计）。这是假设价下的预算守卫，不是提供商账单的硬上限。",
+    "en": "Caps: {calls} calls per session · {cny} CNY cumulative for the whole site (assumed prices, no daily reset, never starts again). This is a budget guard at assumed prices, not a provider's hard billing limit."
+  },
+  "web.vm.live.public_on": {
+    "zh-CN": "已开启：银行对话请求发给 {deployment}。消息文字里只有 11 位以上的号码、邮箱、验证码和密钥换成代号，人名、地址、金额等其余文字原样发送，并附上一轮的意图标签；转账还会发送整张合成通讯录的代号和别名，以及账户、联系人、金额的类型化句柄。规则听不懂的话也会发给它，连同其中提到的联系人代号和称呼，只用于生成建议问句，这些调用计入本会话的调用上限。",
+    "en": "On: banking chat requests go to {deployment}. In a message only numbers of 11 or more digits, email addresses, verification codes and keys are replaced by tokens; names, addresses, amounts and all other words go as written, with the previous reply's intent label. A transfer also sends the whole synthetic address book's handles and aliases and typed handles for the account, contact and amount. Words the rules cannot read go to it too, with the handles and aliases of the contacts they name, only to suggest questions; those calls count against the session's call cap."
+  },
+  "web.vm.public.banner": {
+    "zh-CN": "演示环境：全部为合成数据与模拟银行，不是真实银行；请勿输入任何真实姓名、账号、证件号或密码。默认按固定脚本理解和规划，不调用模型。只有凭评委口令开启真模型后，本会话之后的消息才会发给模型：11 位以上的号码、邮箱、验证码和密钥换成代号，人名、地址、金额等其余文字原样发送，并附上一轮的意图标签；转账还会发送整张合成通讯录的代号和别名，以及账户、联系人、金额的类型化句柄；本地规则读不懂的消息会附上其中提到的联系人代号和称呼。服务器保留请求摘要与模型输出。",
+    "en": "Demo environment: everything here is synthetic data and a simulated bank, not a real bank; do not enter any real name, account number, ID number or password. By default the demo understands and plans from a fixed script and calls no model. Only after the judges' access code opens the live model do this session's later messages go to the model: numbers of 11 or more digits, email addresses, verification codes and keys are replaced by tokens, while names, addresses, amounts and all other words go as written, with the previous reply's intent label; a transfer also sends the whole synthetic address book's handles and aliases and typed handles for the account, contact and amount; a message the local rules cannot read also sends the handles and aliases of the contacts it names. The server keeps the request digests and the model's output."
+  },
+  "web.vm.public.phone_banner": {
+    "zh-CN": "演示环境：合成数据与模拟短信，不是真实银行；请勿输入任何真实信息。",
+    "en": "Demo environment: synthetic data and simulated SMS, not a real bank; do not enter any real information."
+  },
+  "web.vm.safety.approval_rate": {"en": "Too many approvals in this session; it has been paused. Click “Restart” at the top right to continue the demo.", "zh-CN": "本会话审批过于频繁，已暂停；点右上角“重新开始”可继续演示。"}
+}

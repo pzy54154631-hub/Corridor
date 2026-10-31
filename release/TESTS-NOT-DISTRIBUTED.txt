@@ -1,0 +1,18 @@
+tests/bench/test_freeze8_audit.py  imports scripts.freeze8_audit, which is not distributed
+tests/bench/test_rerun_zh.py  imports scripts.freeze8_audit, which is not distributed
+tests/unit/test_c22_video.py  reads scripts/demo/render_zh.py, scripts/demo/narration_zh.json, which are not distributed
+tests/unit/test_d1b_deck.py  imports scripts.figures.build_deck_zh, which is not distributed
+tests/unit/test_d1b_editorial_audit.py  imports scripts.figures.verify_submission_zh, which is not distributed
+tests/unit/test_d1c_deck_figures.py  imports scripts.figures.build_deck_zh, which is not distributed
+tests/unit/test_d1d_story.py  imports scripts.figures.build_deck_zh, which is not distributed
+tests/unit/test_d1e_deck.py  imports scripts.figures.build_deck_zh, which is not distributed
+tests/unit/test_d5b_report_bindings.py  imports scripts.figures.rebuild_all_zh, which is not distributed
+tests/unit/test_d5c_deck.py  imports scripts.figures.build_deck_zh, which is not distributed
+tests/unit/test_deck_wording_zh.py  imports scripts.figures.build_deck_zh, which is not distributed
+tests/unit/test_docs_batch2_generators_zh.py  imports scripts.figures.build_documents_zh, which is not distributed
+tests/unit/test_docs_batch3_zh.py  imports scripts.figures.verify_submission_zh, which is not distributed
+tests/unit/test_docs_batch4_zh.py  imports scripts.figures.rebuild_all_zh, which is not distributed
+tests/unit/test_docs_batch5_zh.py  reads docs/submission-zh/技术文档.md, docs/submission-zh/证据索引.md, docs/submission-zh/演示视频脚本.md, docs/submission-zh/deck-content.json, scripts/figures/build_deck_zh.py, scripts/demo/narration_zh.json, scripts/demo/README-zh.md, which are not distributed
+tests/unit/test_docs_batch6_zh.py  imports scripts.figures.build_deck_zh, which is not distributed
+tests/unit/test_f10_report_bindings.py  imports scripts.figures.rebuild_all_zh, which is not distributed
+tests/unit/test_submission_rebuild_zh.py  imports scripts.figures.rebuild_all_zh, which is not distributed

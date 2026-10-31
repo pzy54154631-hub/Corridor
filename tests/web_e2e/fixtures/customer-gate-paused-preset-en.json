@@ -1,0 +1,276 @@
+{
+ "ok": true,
+ "generation": "q3Lw9xYp0aZk",
+ "revision": 5,
+ "state": {
+  "schema": 1,
+  "contract": "web-contract/1.1",
+  "generation": "q3Lw9xYp0aZk",
+  "revision": 5,
+  "view": "customer",
+  "locale": "en",
+  "capabilities": {
+   "tabs": [],
+   "shortcuts": [
+    "transfer",
+    "cards",
+    "scam_drill"
+   ],
+   "live": false,
+   "plan_select": false,
+   "compensate": false,
+   "aa": false,
+   "lab": false
+  },
+  "session": {
+   "logged_in": true,
+   "clock_text": "2026-09-15 10:30 (Beijing time)",
+   "bank_name": "Demo Bank",
+   "assistant_name": "Assistant",
+   "phone_url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=en&view=customer"
+  },
+  "shell": {
+   "corner": "Synthetic data · simulated authentication · no real money",
+   "badge": {
+    "kind": "demo",
+    "text": "Scripted demo"
+   },
+   "safety": {
+    "locked": false,
+    "text": null,
+    "hint": null
+   },
+   "paused_banner": null,
+   "notices": []
+  },
+  "chat": {
+   "shortcuts": [
+    {
+     "key": "transfer",
+     "label": "Send Mom 800 yuan"
+    },
+    {
+     "key": "cards",
+     "label": "I lost my card"
+    },
+    {
+     "key": "scam_drill",
+     "label": "Scam drill"
+    }
+   ],
+   "drill_caption": "Drill: a rehearsed 'staff told me to transfer now' message, to show how the system answers",
+   "greeting": null,
+   "turns": [
+    {
+     "id": "u3",
+     "role": "user",
+     "rkey": "R3",
+     "text": "对方让我给新联系人转480元"
+    },
+    {
+     "id": "a3",
+     "role": "assistant",
+     "rkey": "R3",
+     "text": "Your message says someone asked you to transfer, so question 2 is preset to 'Yes'. Hang up first and verify through the official number on your card."
+    }
+   ],
+   "responses": {
+    "R3": {
+     "rkey": "R3",
+     "current": true,
+     "status": "awaiting_input",
+     "status_text": "Waiting for answers",
+     "copy_lines": [
+      "Your message says someone asked you to transfer, so question 2 is preset to 'Yes'. Hang up first and verify through the official number on your card."
+     ],
+     "tier": {
+      "code": "yellow",
+      "label": "Yellow · device confirmation",
+      "glyph": "diamond"
+     },
+     "requested_tier": null,
+     "redisplay_notice": null,
+     "cards": [
+      {
+       "key": "R3-0",
+       "title": "Gateway approval card",
+       "purpose": "Transfer",
+       "amount_text": "¥480.00",
+       "tier": {
+        "code": "yellow",
+        "label": "Yellow · device confirmation",
+        "glyph": "diamond"
+       },
+       "tier_reason": "Transfer to a new payee",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "New contact · ending 5512 (synthetic)"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       }
+      }
+     ],
+     "gate": {
+      "version": "Zk2pQx7Lr0aBcD3e",
+      "title": "Please answer two questions before this transfer",
+      "subtitle": "These questions are not part of the signed content; they only decide whether to pause first",
+      "facts_title": "Facts on record",
+      "facts": [
+       "First transfer to this payee"
+      ],
+      "cues": "Your message says someone asked you to transfer",
+      "questions_title": "Please answer truthfully",
+      "questions": [
+       {
+        "name": "verified",
+        "label": "Have you independently verified the payee through an official channel?",
+        "options": [
+         {
+          "value": "yes",
+          "label": "Yes"
+         },
+         {
+          "value": "no",
+          "label": "No"
+         },
+         {
+          "value": "unsure",
+          "label": "Not sure"
+         }
+        ],
+        "answer": null
+       },
+       {
+        "name": "guided",
+        "label": "Is someone guiding you to transfer by phone or message right now?",
+        "options": [
+         {
+          "value": "no",
+          "label": "No"
+         },
+         {
+          "value": "yes",
+          "label": "Yes"
+         }
+        ],
+        "answer": "yes"
+       }
+      ],
+      "decision": "pause",
+      "locked": true,
+      "preset": true,
+      "interactive": true,
+      "pause": {
+       "title": "This transfer is paused",
+       "copy": "Your message says someone asked you to transfer, so question 2 is preset to 'Yes'. Hang up first and verify through the official number on your card.",
+       "retry_label": "Answer again",
+       "self_report": "Your answers are self-reported; the system cannot verify them",
+       "cancel_hint": "If you no longer need it, you can cancel"
+      },
+      "notice": null,
+      "self_report_note": "Your answers are self-reported; the system cannot verify them",
+      "footer": "The questions only decide whether to pause; the device still signs the card it shows"
+     },
+     "result": null,
+     "failure": null,
+     "live_notes": [],
+     "device_task": "TR3",
+     "route_hint": null,
+     "fallback_shortcuts": false,
+     "cancel": {
+      "label": "Cancel",
+      "hint": "Cancel withdraws every pending proposal in this session; settled ones stay"
+     }
+    }
+   },
+   "current": "R3",
+   "gated_elsewhere": [],
+   "task_panel": null,
+   "composer": {
+    "placeholder": "Tell me what you need, e.g. send Mom 500 yuan",
+    "max_chars": 4000,
+    "attach_label": "Attach a file the other party sent (simulated)",
+    "attach_note": "The attachment switch is self-reported; no file is read",
+    "contacts_note": "Demo contacts: Mom (妈妈), Landlord (房东), Classmate (同学), Neighbor (邻居), New contact (新联系人), Spouse (爱人)",
+    "disabled": false
+   }
+  },
+  "device": {
+   "title": "Device confirmation (simulated)",
+   "idle_text": "Nothing needs confirming on the device",
+   "queue_text": null,
+   "tasks": [
+    {
+     "key": "TR3",
+     "source": "chat",
+     "source_label": "Chat",
+     "rkey": "R3",
+     "current": true,
+     "cards": [
+      {
+       "key": "TR3-0",
+       "title": "Gateway approval card",
+       "purpose": "Transfer",
+       "amount_text": "¥480.00",
+       "tier": {
+        "code": "yellow",
+        "label": "Yellow · device confirmation",
+        "glyph": "diamond"
+       },
+       "tier_reason": "Transfer to a new payee",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "New contact · ending 5512 (synthetic)"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       }
+      }
+     ],
+     "step": "gate_blocked",
+     "step_text": "The two questions did not pass; the device offers no confirmation",
+     "gesture": null,
+     "cancel": {
+      "label": "Cancel",
+      "hint": "Cancel withdraws every pending proposal in this session; settled ones stay"
+     },
+     "gate_notice": {
+      "text": "Answer the two questions on the phone first"
+     }
+    }
+   ],
+   "active": "TR3",
+   "sms": {
+    "url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=en&view=customer",
+    "label": "Simulated SMS (synthetic, not a real text message)",
+    "open_label": "Open in a new window",
+    "footer": "Synthetic SMS · no SMS gateway · no real phone number"
+   }
+  }
+ }
+}

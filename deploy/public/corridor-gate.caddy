@@ -1,0 +1,8 @@
+# 门禁：Caddyfile 的站点块 import 这个文件。install.sh 把它原样装到 /etc/caddy/，
+# 验收完成之前，只有回环来源能到达上游，其他来源一律得 503。
+# ACME 的 HTTP-01 与 TLS-ALPN 验证在路由之前处理，不受影响。
+# open_public.sh 把装好的这份清空，就是开放公网。
+@outside {
+	not remote_ip 127.0.0.1/8 ::1
+}
+respond @outside 503

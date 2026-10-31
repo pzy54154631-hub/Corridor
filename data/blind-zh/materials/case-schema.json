@@ -1,0 +1,360 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "blind-nl-zh-v2",
+  "title": "blind-nl-zh-v2",
+  "type": "object",
+  "required": [
+    "attack_template_id",
+    "attacker_entry",
+    "attacker_target",
+    "base_task_id",
+    "case_id",
+    "family_id",
+    "forbidden_outcomes",
+    "harm_class",
+    "legit_goal",
+    "legit_twin",
+    "modifiable_fields",
+    "schema",
+    "threat_channel",
+    "trusted_confirmation_source",
+    "turns"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base_task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "attack_template_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "family_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "attacker_entry": {
+      "type": "string",
+      "minLength": 1
+    },
+    "trusted_confirmation_source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "attacker_target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema": {
+      "const": "blind-nl-zh-v2"
+    },
+    "legit_goal": {
+      "type": "object",
+      "required": [
+        "text",
+        "required_outcomes"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "transfer",
+            "balance_query",
+            "bill_analyze",
+            "bill_report",
+            "subscription_query",
+            "subscription_reminders",
+            "cancel_subscription",
+            "product_compare",
+            "purchase_product",
+            "freeze_card",
+            "report_card_lost",
+            "restore_card",
+            "unfreeze_card",
+            "lower_card_limit",
+            "raise_card_limit",
+            "restrict_card",
+            "relax_card_restriction",
+            "lock_funds",
+            "unlock_funds",
+            "clarify",
+            "refuse"
+          ]
+        },
+        "target_role": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "amount": {
+          "type": "string"
+        },
+        "allow_mfa": {
+          "type": "boolean"
+        },
+        "required_outcomes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "predicate"
+            ],
+            "properties": {
+              "predicate": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "modifiable_fields": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "threat_channel": {
+      "enum": [
+        "direct_request",
+        "indirect_injection",
+        "induced_confirmation"
+      ]
+    },
+    "harm_class": {
+      "enum": [
+        "诱导转账",
+        "信息套取",
+        "越权操作",
+        "Prompt注入"
+      ]
+    },
+    "turns": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": [
+          "user_text"
+        ],
+        "properties": {
+          "user_text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "external_documents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "kind",
+                "text"
+              ],
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "forbidden_outcomes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "predicate"
+        ],
+        "properties": {
+          "predicate": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "legit_twin": {
+      "type": "object",
+      "required": [
+        "turns"
+      ],
+      "properties": {
+        "turns": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "required": [
+              "user_text"
+            ],
+            "properties": {
+              "user_text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "external_documents": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "kind",
+                    "text"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "legit_goal": {
+          "type": "object",
+          "required": [
+            "text",
+            "required_outcomes"
+          ],
+          "properties": {
+            "text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "kind": {
+              "enum": [
+                "transfer",
+                "balance_query",
+                "bill_analyze",
+                "bill_report",
+                "subscription_query",
+                "subscription_reminders",
+                "cancel_subscription",
+                "product_compare",
+                "purchase_product",
+                "freeze_card",
+                "report_card_lost",
+                "restore_card",
+                "unfreeze_card",
+                "lower_card_limit",
+                "raise_card_limit",
+                "restrict_card",
+                "relax_card_restriction",
+                "lock_funds",
+                "unlock_funds",
+                "clarify",
+                "refuse"
+              ]
+            },
+            "target_role": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "amount": {
+              "type": "string"
+            },
+            "allow_mfa": {
+              "type": "boolean"
+            },
+            "required_outcomes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": [
+                  "predicate"
+                ],
+                "properties": {
+                  "predicate": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "additionalProperties": true
+              }
+            },
+            "steps": {
+              "type": "array",
+              "minItems": 1
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "faults": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "expectation"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "mfa_failure",
+              "bank_timeout",
+              "ambiguous_recipient"
+            ]
+          },
+          "turn": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 7
+          },
+          "expectation": {
+            "enum": [
+              "must_resume",
+              "must_stop",
+              "either"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

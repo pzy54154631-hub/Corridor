@@ -1,0 +1,174 @@
+{
+  "Simulated password changes only increment the credential version; no password is collected. Red-tier MFA and canonical approval are required.": {
+    "en": "Simulated password changes only increment the credential version; no password is collected. Red-tier MFA and canonical approval are required.",
+    "zh-CN": "模拟修改密码仅递增凭据版本，不收集任何密码；必须完成红级 MFA 和规范卡审批。"
+  },
+  "Simulate password change (no password collected)": {
+    "en": "Simulate password change (no password collected)",
+    "zh-CN": "模拟修改密码（不收集任何密码）"
+  },
+  "Birthday plan: normal completion": {
+    "en": "Birthday plan: normal completion",
+    "zh-CN": "生日计划·正常完成"
+  },
+  "Mid-chain changes: isolated gateway": {
+    "en": "Mid-chain changes: isolated gateway",
+    "zh-CN": "链中途变化演示 · 隔离网关"
+  },
+  "A partner birthday was found in the synthetic calendar. Preview a budget lock and flower and cake orders two days before the birthday.": {
+    "en": "A partner birthday was found in the synthetic calendar. Preview a budget lock and flower and cake orders two days before the birthday.",
+    "zh-CN": "检测到合成日历中的爱人生日：可预览锁定预算、生日前两天订花和蛋糕的计划。"
+  },
+  "Preview partner birthday plan": {
+    "en": "Preview partner birthday plan",
+    "zh-CN": "查看爱人生日计划"
+  },
+  "Read-only birthday suggestion; no operation authorized. Due: ": {
+    "en": "Read-only birthday suggestion; no operation authorized. Due: ",
+    "zh-CN": "只读生日建议 · 尚未授权任何操作 · 到期时间："
+  },
+  "Send simulated verification code": {
+    "en": "Send simulated verification code",
+    "zh-CN": "发送模拟验证码"
+  },
+  "Trusted simulated device: synthetic SMS only. Type the code here; never send it to chat.": {
+    "en": "Trusted simulated device: synthetic SMS only. Type the code here; never send it to chat.",
+    "zh-CN": "可信模拟设备区 · 仅显示合成短信；请手动键入，不要发送到聊天。"
+  },
+  "Send this leg a simulated code": {
+    "en": "Send this leg a simulated code",
+    "zh-CN": "发送本笔模拟验证码"
+  },
+  "Trusted simulated device: separate SMS verifier for each leg": {
+    "en": "Trusted simulated device: separate SMS verifier for each leg",
+    "zh-CN": "可信模拟设备区 · 每笔独立短信验证器"
+  },
+  "Simulated code verified; canonical approval is still required before dispatch.": {
+    "en": "Simulated code verified; canonical approval is still required before dispatch.",
+    "zh-CN": "模拟验证码已验证；仍需确认规范卡后派发。"
+  },
+  "Type the simulated verification code": {
+    "en": "Type the simulated verification code",
+    "zh-CN": "键入模拟验证码"
+  },
+  "Submit simulated verification code": {
+    "en": "Submit simulated verification code",
+    "zh-CN": "提交模拟验证码"
+  },
+  "The simulated code for this leg is verified.": {
+    "en": "The simulated code for this leg is verified.",
+    "zh-CN": "本笔模拟验证码已验证。"
+  },
+  "Type the simulated code for this leg": {
+    "en": "Type the simulated code for this leg",
+    "zh-CN": "键入本笔模拟验证码"
+  },
+  "Submit the simulated code for this leg": {
+    "en": "Submit the simulated code for this leg",
+    "zh-CN": "提交本笔模拟验证码"
+  },
+  "Simulated verification passed. Review and approve the canonical card.": {
+    "en": "Simulated verification passed. Review and approve the canonical card.",
+    "zh-CN": "模拟验证通过。请核对规范卡并批准。"
+  },
+  "Type the code displayed by the simulated device.": {
+    "en": "Type the code displayed by the simulated device.",
+    "zh-CN": "请键入模拟设备显示的验证码。"
+  },
+  "The code is incorrect or expired. The existing verifier and safety lock record failed attempts.": {
+    "en": "The code is incorrect or expired. The existing verifier and safety lock record failed attempts.",
+    "zh-CN": "验证码错误或已失效；错误次数由现有验证器和安全锁记录。"
+  },
+  "Execution date / monthly authorization start (UTC+8 YYYY-MM-DD)": {
+    "en": "Execution date / monthly authorization start (UTC+8 YYYY-MM-DD)",
+    "zh-CN": "指定日期 / 每月授权开始日（北京时间 YYYY-MM-DD）"
+  },
+  "Day of month (1-28)": {
+    "en": "Day of month (1-28)",
+    "zh-CN": "每月几号（1–28）"
+  },
+  "Scheduled payments support the current account. Monthly mode permits up to 3 runs over 90 days, requires red-tier MFA at creation, and is rechecked by the gateway when due.": {
+    "en": "Scheduled payments support the current account. Monthly mode permits up to 3 runs over 90 days, requires red-tier MFA at creation, and is rechecked by the gateway when due.",
+    "zh-CN": "定时付款支持当前活期账户；每月模式最多 3 次，授权窗口 90 天，创建须红级 MFA。到期仍由网关重新检查。"
+  },
+  "Execution time": {
+    "en": "Execution time",
+    "zh-CN": "执行时间"
+  },
+  "Immediately": {
+    "en": "Immediately",
+    "zh-CN": "立即"
+  },
+  "On a date": {
+    "en": "On a date",
+    "zh-CN": "指定日"
+  },
+  "Monthly": {
+    "en": "Monthly",
+    "zh-CN": "每月"
+  },
+  "Beijing time": {
+    "en": "Beijing time",
+    "zh-CN": "北京时间"
+  },
+  "Next charge (Beijing time)": {
+    "en": "Next charge (Beijing time)",
+    "zh-CN": "下次扣费（北京时间）"
+  },
+  "Position eligible for redemption": {
+    "en": "Position eligible for redemption",
+    "zh-CN": "持仓已过最低持有期，可申请赎回"
+  },
+  "Position still within its minimum holding period": {
+    "en": "Position still within its minimum holding period",
+    "zh-CN": "持仓仍在最低持有期内"
+  },
+  "Redeemable from (Beijing time): ": {
+    "en": "Redeemable from (Beijing time): ",
+    "zh-CN": "可赎回时间（北京时间）："
+  },
+  "birthday.event_fact": {
+    "en": "Calendar event {event}: {contact} · {relation} · birthday {date} · order time {due} (Beijing time) · budget-lock month {month}",
+    "zh-CN": "日历事件 {event}：{contact} · {relation} · 生日 {date} · 订购时间 {due}（北京时间） · 锁款月份 {month}"
+  },
+  "birthday.relation.spouse": {
+    "en": "Partner",
+    "zh-CN": "爱人"
+  },
+  "birthday.relation.parent": {
+    "en": "Mother",
+    "zh-CN": "母亲"
+  },
+  "birthday.relation.father": {
+    "en": "Father",
+    "zh-CN": "父亲"
+  },
+  "birthday.relation.none": {
+    "en": "Relation not identified",
+    "zh-CN": "未识别关系"
+  },
+  "birthday.selection_required": {
+    "en": "No single birthday matches this request. Choose one from the synthetic calendar; no plan is created until you do.",
+    "zh-CN": "没有唯一匹配的生日，请从合成日历中选择一个；选择前不会生成计划。"
+  },
+  "birthday.outside_lock_month": {
+    "en": "This birthday is outside its budget-lock window (the order day's month, before the order time). No plan was created and no operation was authorized.",
+    "zh-CN": "该生日不在锁款窗口内（订购日所在月份、订购时间之前），未生成计划，也未授权任何操作。"
+  },
+  "birthday.not_eligible": {
+    "en": "This birthday is no longer an eligible calendar event. No plan was created and no operation was authorized.",
+    "zh-CN": "该生日已不是可安排的日历事件，未生成计划；尚未授权任何操作。"
+  },
+  "birthday.preview_this": {
+    "en": "Preview this birthday plan",
+    "zh-CN": "预览这个生日的计划"
+  },
+  "birthday.reminder_only": {
+    "en": "Read-only reminder: the plan can be previewed once its budget-lock month starts; no operation authorized.",
+    "zh-CN": "只读提醒：锁款月份开始后才能预览计划；尚未授权任何操作。"
+  },
+  "birthday.calendar_candidates": {
+    "en": "Birthdays in the synthetic calendar",
+    "zh-CN": "合成日历中的生日"
+  }
+}

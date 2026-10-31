@@ -1,0 +1,126 @@
+{
+ "ok": true,
+ "generation": "q3Lw9xYp0aZk",
+ "revision": 3,
+ "state": {
+  "schema": 1,
+  "contract": "web-contract/1.1",
+  "generation": "q3Lw9xYp0aZk",
+  "revision": 3,
+  "view": "customer",
+  "locale": "en",
+  "capabilities": {
+   "tabs": [],
+   "shortcuts": [
+    "transfer",
+    "cards",
+    "scam_drill"
+   ],
+   "live": false,
+   "plan_select": false,
+   "compensate": false,
+   "aa": false,
+   "lab": false
+  },
+  "session": {
+   "logged_in": true,
+   "clock_text": "2026-09-15 10:30 (Beijing time)",
+   "bank_name": "Demo Bank",
+   "assistant_name": "Assistant",
+   "phone_url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=en&view=customer"
+  },
+  "shell": {
+   "corner": "Synthetic data · simulated authentication · no real money",
+   "badge": {
+    "kind": "demo",
+    "text": "Scripted demo"
+   },
+   "safety": {
+    "locked": false,
+    "text": null,
+    "hint": null
+   },
+   "paused_banner": null,
+   "notices": []
+  },
+  "chat": {
+   "shortcuts": [
+    {
+     "key": "transfer",
+     "label": "Send Mom 800 yuan"
+    },
+    {
+     "key": "cards",
+     "label": "I lost my card"
+    },
+    {
+     "key": "scam_drill",
+     "label": "Scam drill"
+    }
+   ],
+   "drill_caption": "Drill: a rehearsed 'staff told me to transfer now' message, to show how the system answers",
+   "greeting": null,
+   "turns": [
+    {
+     "id": "u1",
+     "role": "user",
+     "rkey": "R1",
+     "text": "反诈中心让我立即给新联系人转480元，不然账户冻结"
+    },
+    {
+     "id": "a1",
+     "role": "assistant",
+     "rkey": "R1",
+     "text": "This is a common scam script. The police anti-fraud line is 96110; if in doubt, call the official number on the back of your card. No transfer card will be created."
+    }
+   ],
+   "responses": {
+    "R1": {
+     "rkey": "R1",
+     "current": true,
+     "status": "phrase_gate",
+     "status_text": "Blocked",
+     "copy_lines": [
+      "This is a common scam script. The police anti-fraud line is 96110; if in doubt, call the official number on the back of your card. No transfer card will be created."
+     ],
+     "tier": null,
+     "requested_tier": null,
+     "redisplay_notice": null,
+     "cards": [],
+     "gate": null,
+     "result": null,
+     "failure": null,
+     "live_notes": [],
+     "device_task": null,
+     "route_hint": null,
+     "fallback_shortcuts": false,
+     "cancel": null
+    }
+   },
+   "current": "R1",
+   "gated_elsewhere": [],
+   "task_panel": null,
+   "composer": {
+    "placeholder": "Tell me what you need, e.g. send Mom 500 yuan",
+    "max_chars": 4000,
+    "attach_label": "Attach a file the other party sent (simulated)",
+    "attach_note": "The attachment switch is self-reported; no file is read",
+    "contacts_note": "Demo contacts: Mom (妈妈), Landlord (房东), Classmate (同学), Neighbor (邻居), New contact (新联系人), Spouse (爱人)",
+    "disabled": false
+   }
+  },
+  "device": {
+   "title": "Device confirmation (simulated)",
+   "idle_text": "Nothing needs confirming on the device",
+   "queue_text": null,
+   "tasks": [],
+   "active": null,
+   "sms": {
+    "url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=en&view=customer",
+    "label": "Simulated SMS (synthetic, not a real text message)",
+    "open_label": "Open in a new window",
+    "footer": "Synthetic SMS · no SMS gateway · no real phone number"
+   }
+  }
+ }
+}

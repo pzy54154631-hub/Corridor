@@ -1,0 +1,242 @@
+{
+ "ok": true,
+ "generation": "q3Lw9xYp0aZk",
+ "revision": 7,
+ "state": {
+  "schema": 1,
+  "contract": "web-contract/1.1",
+  "generation": "q3Lw9xYp0aZk",
+  "revision": 7,
+  "view": "customer",
+  "locale": "en",
+  "capabilities": {
+   "tabs": [],
+   "shortcuts": [
+    "transfer",
+    "cards",
+    "scam_drill"
+   ],
+   "live": false,
+   "plan_select": false,
+   "compensate": false,
+   "aa": false,
+   "lab": false
+  },
+  "session": {
+   "logged_in": true,
+   "clock_text": "2026-09-15 10:30 (Beijing time)",
+   "bank_name": "Demo Bank",
+   "assistant_name": "Assistant",
+   "phone_url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=en&view=customer"
+  },
+  "shell": {
+   "corner": "Synthetic data · simulated authentication · no real money",
+   "badge": {
+    "kind": "demo",
+    "text": "Scripted demo"
+   },
+   "safety": {
+    "locked": false,
+    "text": null,
+    "hint": null
+   },
+   "paused_banner": null,
+   "notices": []
+  },
+  "chat": {
+   "shortcuts": [
+    {
+     "key": "transfer",
+     "label": "Send Mom 800 yuan"
+    },
+    {
+     "key": "cards",
+     "label": "I lost my card"
+    },
+    {
+     "key": "scam_drill",
+     "label": "Scam drill"
+    }
+   ],
+   "drill_caption": "Drill: a rehearsed 'staff told me to transfer now' message, to show how the system answers",
+   "greeting": null,
+   "turns": [
+    {
+     "id": "u2",
+     "role": "user",
+     "rkey": "R2",
+     "text": "给妈妈转5000元"
+    },
+    {
+     "id": "a2",
+     "role": "assistant",
+     "rkey": "R2",
+     "text": "Complete the simulated verification, then confirm this operation."
+    }
+   ],
+   "responses": {
+    "R2": {
+     "rkey": "R2",
+     "current": true,
+     "status": "waiting_mfa",
+     "status_text": "Waiting for verification",
+     "copy_lines": [
+      "Complete the simulated verification, then confirm this operation."
+     ],
+     "tier": {
+      "code": "red",
+      "label": "Red · independent simulated verification",
+      "glyph": "triangle"
+     },
+     "requested_tier": null,
+     "redisplay_notice": null,
+     "cards": [
+      {
+       "key": "R2-0",
+       "title": "Gateway approval card",
+       "purpose": "Transfer",
+       "amount_text": "¥5,000.00",
+       "tier": {
+        "code": "red",
+        "label": "Red · independent simulated verification",
+        "glyph": "triangle"
+       },
+       "tier_reason": "Single transfer above 2,000 yuan",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "Mom · ending 3721 (synthetic)"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [
+        {
+         "kind": "red",
+         "title": null,
+         "lines": [
+          "Red operation: after device confirmation, enter the simulated SMS code"
+         ],
+         "footer": null
+        }
+       ],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       }
+      }
+     ],
+     "gate": null,
+     "result": null,
+     "failure": null,
+     "live_notes": [],
+     "device_task": "TR2",
+     "route_hint": null,
+     "fallback_shortcuts": false,
+     "cancel": {
+      "label": "Cancel",
+      "hint": "Cancel withdraws every pending proposal in this session; settled ones stay"
+     }
+    }
+   },
+   "current": "R2",
+   "gated_elsewhere": [],
+   "task_panel": null,
+   "composer": {
+    "placeholder": "Tell me what you need, e.g. send Mom 500 yuan",
+    "max_chars": 4000,
+    "attach_label": "Attach a file the other party sent (simulated)",
+    "attach_note": "The attachment switch is self-reported; no file is read",
+    "contacts_note": "Demo contacts: Mom (妈妈), Landlord (房东), Classmate (同学), Neighbor (邻居), New contact (新联系人), Spouse (爱人)",
+    "disabled": false
+   }
+  },
+  "device": {
+   "title": "Device confirmation (simulated)",
+   "idle_text": "Nothing needs confirming on the device",
+   "queue_text": null,
+   "tasks": [
+    {
+     "key": "TR2",
+     "source": "chat",
+     "source_label": "Chat",
+     "rkey": "R2",
+     "current": true,
+     "cards": [
+      {
+       "key": "TR2-0",
+       "title": "Gateway approval card",
+       "purpose": "Transfer",
+       "amount_text": "¥5,000.00",
+       "tier": {
+        "code": "red",
+        "label": "Red · independent simulated verification",
+        "glyph": "triangle"
+       },
+       "tier_reason": "Single transfer above 2,000 yuan",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "Payee",
+         "value": "Mom · ending 3721 (synthetic)"
+        },
+        {
+         "key": "fees",
+         "label": "Fee",
+         "value": "¥0.00 (no fee)"
+        }
+       ],
+       "notes": [
+        {
+         "kind": "red",
+         "title": null,
+         "lines": [
+          "Red operation: after device confirmation, enter the simulated SMS code"
+         ],
+         "footer": null
+        }
+       ],
+       "not_signed_label": "Not part of the signed content",
+       "why": {
+        "lines": [
+         "Why: the amount is above the red threshold and needs independent verification"
+        ]
+       }
+      }
+     ],
+     "step": "mfa_code",
+     "step_text": "Enter the 6-digit code the simulated phone received",
+     "gesture": {
+      "op": "mfa_verify",
+      "token": "k3JxR0h1Z2xvYmFsX3Rva2",
+      "card_version": "9f0c6a1d2b3e4f509f0c6a1d2b3e4f50",
+      "label": "Submit code"
+     },
+     "cancel": {
+      "label": "Cancel",
+      "hint": "Cancel withdraws every pending proposal in this session; settled ones stay"
+     },
+     "mfa": {
+      "sent_text": "Code sent to the simulated phone (ending 8866, synthetic)",
+      "method_text": "SMS code (simulated) · other strong methods not connected",
+      "hint": "The code appears only in the simulated SMS panel",
+      "expired_text": null
+     }
+    }
+   ],
+   "active": "TR2",
+   "sms": {
+    "url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=en&view=customer",
+    "label": "Simulated SMS (synthetic, not a real text message)",
+    "open_label": "Open in a new window",
+    "footer": "Synthetic SMS · no SMS gateway · no real phone number"
+   }
+  }
+ }
+}

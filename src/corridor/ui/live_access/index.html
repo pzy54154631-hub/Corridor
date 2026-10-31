@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Live model access</title>
+    <style>
+      :root {
+        --text: #31333f;
+        --border: #d5d7de;
+        --field: #ffffff;
+        --accent: #4a3d63;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        color: var(--text);
+        font-family: "Source Sans Pro", "Noto Sans SC", "PingFang SC", "Microsoft YaHei",
+          sans-serif;
+        font-size: 14px;
+      }
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: flex-end;
+        padding: 2px 1px 6px;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        flex: 1 1 220px;
+        min-width: 0;
+      }
+      input {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 7px 10px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--field);
+        color: var(--text);
+        font-size: 14px;
+      }
+      button {
+        padding: 7px 14px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--field);
+        color: var(--accent);
+        font-size: 14px;
+        cursor: pointer;
+      }
+      button:disabled,
+      input:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      S7 external review 3: the access code is hashed here with the server's single-use
+      challenge and only {nonce, proof} is sent back; the code itself never reaches the
+      Streamlit session. The field is cleared after every submission.
+      C3 (review of round 3): the field answers only its own parent page (same origin as
+      this component), posts only to that origin, runs only in a secure context (HTTPS or
+      a local address), and clears its value once the server has used a proof.
+    -->
+    <form id="access" autocomplete="off">
+      <label>
+        <span id="label"></span>
+        <input id="code" type="password" maxlength="256" autocomplete="off" spellcheck="false" />
+      </label>
+      <button id="submit" type="submit"></button>
+    </form>
+    <script src="hmac.js"></script>
+    <script>
+      (function () {
+        "use strict";
+        var form = document.getElementById("access");
+        var field = document.getElementById("code");
+        var button = document.getElementById("submit");
+        var nonce = null;
+        var disabled = true;
+        var sentNonce = null;
+        var secure = window.isSecureContext === true && window.parent !== window;
+        var SET_VALUE = "streamlit:setComponentValue";
+        var origin = window.location.origin;
+
+        function send(type, data) {
+          var message = { isStreamlitMessage: true, type: type };
+          for (var name in data) {
+            message[name] = data[name];
+          }
+          window.parent.postMessage(message, origin);
+        }
+
+        function height() {
+          send("streamlit:setFrameHeight", { height: document.body.scrollHeight + 4 });
+        }
+
+        function render(args, frozen, theme) {
+          nonce = typeof args.nonce === "string" ? args.nonce : null;
+          if (sentNonce !== null && nonce !== sentNonce) {
+            // The server used the proof (a new challenge arrived): clear the stored value.
+            sentNonce = null;
+            send(SET_VALUE, { value: null, dataType: "json" });
+          }
+          disabled = Boolean(args.disabled) || Boolean(frozen) || nonce === null || !secure;
+          document.getElementById("label").textContent =
+            String(args.label || "") + (secure ? "" : " · HTTPS");
+          button.textContent = String(args.button || "");
+          field.disabled = disabled;
+          button.disabled = disabled;
+          if (theme) {
+            var style = document.documentElement.style;
+            if (theme.textColor) style.setProperty("--text", theme.textColor);
+            if (theme.secondaryBackgroundColor)
+              style.setProperty("--field", theme.secondaryBackgroundColor);
+            if (theme.primaryColor) style.setProperty("--accent", theme.primaryColor);
+          }
+          height();
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var code = field.value;
+          field.value = "";
+          if (disabled || !nonce || !code) {
+            return;
+          }
+          var proof = window.CorridorHmac.proof(code, nonce);
+          code = null;
+          sentNonce = nonce;
+          send(SET_VALUE, {
+            value: { nonce: nonce, proof: proof },
+            dataType: "json"
+          });
+        });
+
+        window.addEventListener("message", function (event) {
+          // Only the page that embeds this field, from this field's own origin, may draw it.
+          if (event.source !== window.parent || event.origin !== window.location.origin) {
+            return;
+          }
+          var data = event.data;
+          if (!data || data.type !== "streamlit:render") {
+            return;
+          }
+          render(data.args || {}, data.disabled, data.theme);
+        });
+
+        send("streamlit:componentReady", { apiVersion: 1 });
+        height();
+      })();
+    </script>
+  </body>
+</html>

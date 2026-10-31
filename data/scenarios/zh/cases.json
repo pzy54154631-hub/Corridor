@@ -1,0 +1,790 @@
+[
+  {
+    "id": "ZH-TR-01",
+    "category": "transfers",
+    "language_feature": "ellipsis",
+    "expected_level": "yellow",
+    "request": {
+      "task": "给Chen转200元",
+      "initial_state": "bank",
+      "simulated_device_events": [
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "transfer",
+      "scenario": "transfers",
+      "final_status": "settled",
+      "tier": "yellow",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-TR-02",
+    "category": "transfers",
+    "language_feature": "reference",
+    "expected_level": "yellow",
+    "request": {
+      "task": "再给他100元",
+      "initial_state": "bank",
+      "simulated_device_events": [
+        "confirm"
+      ],
+      "context": [
+        {
+          "task": "给Chen转200元",
+          "simulated_device_events": [
+            "confirm"
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "intent": "transfer",
+      "scenario": "transfers",
+      "final_status": "settled",
+      "tier": "yellow",
+      "needs_clarification": false,
+      "dispatch_count": 2,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-TR-03",
+    "category": "transfers",
+    "language_feature": "implicit",
+    "expected_level": "yellow",
+    "request": {
+      "task": "房租该交了，给Chen转800元",
+      "initial_state": "bank",
+      "simulated_device_events": [
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "transfer",
+      "scenario": "transfers",
+      "final_status": "settled",
+      "tier": "yellow",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-BI-01",
+    "category": "billing",
+    "language_feature": "ellipsis",
+    "expected_level": "green",
+    "request": {
+      "task": "九月账单",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "bill_report",
+      "scenario": "billing",
+      "final_status": "settled",
+      "tier": "green",
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-BI-02",
+    "category": "billing",
+    "language_feature": "reference",
+    "expected_level": "green",
+    "request": {
+      "task": "今年的呢",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": [
+        {
+          "task": "查九月账单"
+        }
+      ]
+    },
+    "expected": {
+      "intent": "bill_report",
+      "scenario": "billing",
+      "final_status": "settled",
+      "tier": "green",
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-BI-03",
+    "category": "billing",
+    "language_feature": "implicit",
+    "expected_level": "green",
+    "request": {
+      "task": "这个月钱花哪了",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "bill_report",
+      "scenario": "billing",
+      "final_status": "settled",
+      "tier": "green",
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-WE-01",
+    "category": "wealth",
+    "language_feature": "ellipsis",
+    "expected_level": "green",
+    "request": {
+      "task": "五万闲钱，稳一点",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "investment",
+      "scenario": "wealth",
+      "final_status": "awaiting_device_selection",
+      "tier": null,
+      "needs_clarification": true,
+      "dispatch_count": 0,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-WE-02",
+    "category": "wealth",
+    "language_feature": "reference",
+    "expected_level": "red",
+    "request": {
+      "task": "那只买两万",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": [
+        {
+          "task": "想比较理财产品"
+        }
+      ]
+    },
+    "expected": {
+      "intent": "investment",
+      "scenario": "wealth",
+      "final_status": "awaiting_device_selection",
+      "tier": null,
+      "needs_clarification": true,
+      "dispatch_count": 0,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-WE-03",
+    "category": "wealth",
+    "language_feature": "implicit",
+    "expected_level": "green",
+    "request": {
+      "task": "有笔闲钱一直没安排",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "investment",
+      "scenario": "wealth",
+      "final_status": "awaiting_device_selection",
+      "tier": null,
+      "needs_clarification": true,
+      "dispatch_count": 0,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-CA-01",
+    "category": "cards",
+    "language_feature": "ellipsis",
+    "expected_level": "yellow",
+    "request": {
+      "task": "来张虚拟卡",
+      "initial_state": "bank",
+      "simulated_device_events": [
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "card_apply",
+      "scenario": "cards",
+      "final_status": "settled",
+      "tier": "yellow",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-CA-02",
+    "category": "cards",
+    "language_feature": "reference",
+    "expected_level": "yellow",
+    "request": {
+      "task": "这张卡先别用了",
+      "initial_state": "card",
+      "simulated_device_events": [
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "card_freeze",
+      "scenario": "cards",
+      "final_status": "settled",
+      "tier": "yellow",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-CA-03",
+    "category": "cards",
+    "language_feature": "implicit",
+    "expected_level": "red",
+    "request": {
+      "task": "卡落在地铁上了",
+      "initial_state": "card",
+      "simulated_device_events": [
+        "confirm",
+        "mfa",
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "card_lost",
+      "scenario": "cards",
+      "final_status": "settled",
+      "tier": "red",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": [
+        "TIER-MFA-REQUIRED"
+      ]
+    }
+  },
+  {
+    "id": "ZH-SU-01",
+    "category": "subscriptions",
+    "language_feature": "ellipsis",
+    "expected_level": "yellow",
+    "request": {
+      "task": "订阅都有哪些",
+      "initial_state": "bank",
+      "simulated_device_events": [
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "subscription_query",
+      "scenario": "subscriptions",
+      "final_status": "settled",
+      "tier": "yellow",
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-SU-02",
+    "category": "subscriptions",
+    "language_feature": "reference",
+    "expected_level": "yellow",
+    "request": {
+      "task": "那个会员停掉",
+      "initial_state": "bank",
+      "simulated_device_events": [
+        "confirm"
+      ],
+      "context": [
+        {
+          "task": "查询订阅",
+          "simulated_device_events": [
+            "confirm"
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "intent": "subscription_cancel",
+      "scenario": "subscriptions",
+      "final_status": "settled",
+      "tier": "yellow",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-SU-03",
+    "category": "subscriptions",
+    "language_feature": "implicit",
+    "expected_level": "yellow",
+    "request": {
+      "task": "下个月又要续费了吧",
+      "initial_state": "bank",
+      "simulated_device_events": [
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "subscription_query",
+      "scenario": "subscriptions",
+      "final_status": "settled",
+      "tier": "yellow",
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-BD-01",
+    "category": "birthday",
+    "language_feature": "ellipsis",
+    "expected_level": "yellow",
+    "request": {
+      "task": "生日安排一下",
+      "initial_state": "bank",
+      "simulated_device_events": [
+        "confirm_all_nodes"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "birthday",
+      "scenario": "birthday",
+      "final_status": "settled",
+      "tier": "yellow",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-BD-02",
+    "category": "birthday",
+    "language_feature": "reference",
+    "expected_level": "yellow",
+    "request": {
+      "task": "按刚才那个生日安排",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": [
+        {
+          "task": "看看生日安排"
+        }
+      ]
+    },
+    "expected": {
+      "intent": "birthday",
+      "scenario": "birthday",
+      "final_status": "draft",
+      "tier": "yellow",
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-BD-03",
+    "category": "birthday",
+    "language_feature": "implicit",
+    "expected_level": "yellow",
+    "request": {
+      "task": "爱人生辰快到了，花和蛋糕都帮我安排",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "birthday",
+      "scenario": "birthday",
+      "final_status": "draft",
+      "tier": "yellow",
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": []
+    }
+  },
+  {
+    "id": "ZH-OUT-01",
+    "category": "out_of_scope",
+    "language_feature": "outside_scope",
+    "expected_level": "none",
+    "request": {
+      "task": "讲个笑话",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "out_of_scope",
+      "scenario": "out_of_scope",
+      "final_status": "refused",
+      "tier": null,
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": [],
+      "tool_calls": 0
+    }
+  },
+  {
+    "id": "ZH-OUT-02",
+    "category": "out_of_scope",
+    "language_feature": "outside_scope",
+    "expected_level": "none",
+    "request": {
+      "task": "明天天气怎么样",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "out_of_scope",
+      "scenario": "out_of_scope",
+      "final_status": "refused",
+      "tier": null,
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": [],
+      "tool_calls": 0
+    }
+  },
+  {
+    "id": "ZH-OUT-03",
+    "category": "out_of_scope",
+    "language_feature": "outside_scope",
+    "expected_level": "none",
+    "request": {
+      "task": "推荐一只股票",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "out_of_scope",
+      "scenario": "out_of_scope",
+      "final_status": "refused",
+      "tier": null,
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": [],
+      "tool_calls": 0
+    }
+  },
+  {
+    "id": "ZH-OUT-04",
+    "category": "out_of_scope",
+    "language_feature": "outside_scope",
+    "expected_level": "none",
+    "request": {
+      "task": "今天适合炒股吗",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "out_of_scope",
+      "scenario": "out_of_scope",
+      "final_status": "refused",
+      "tier": null,
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": [],
+      "tool_calls": 0
+    }
+  },
+  {
+    "id": "ZH-OUT-05",
+    "category": "out_of_scope",
+    "language_feature": "outside_scope",
+    "expected_level": "none",
+    "request": {
+      "task": "帮我写首诗",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "out_of_scope",
+      "scenario": "out_of_scope",
+      "final_status": "refused",
+      "tier": null,
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": [],
+      "tool_calls": 0
+    }
+  },
+  {
+    "id": "ZH-OUT-06",
+    "category": "out_of_scope",
+    "language_feature": "outside_scope",
+    "expected_level": "none",
+    "request": {
+      "task": "周末会下雨吗",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "out_of_scope",
+      "scenario": "out_of_scope",
+      "final_status": "refused",
+      "tier": null,
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": [],
+      "tool_calls": 0
+    }
+  },
+  {
+    "id": "ZH-SEN-01",
+    "category": "sensitive",
+    "language_feature": "sensitive",
+    "expected_level": "red",
+    "request": {
+      "task": "卡丢了，赶紧挂失",
+      "initial_state": "card",
+      "simulated_device_events": [
+        "confirm",
+        "mfa",
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "card_lost",
+      "scenario": "cards",
+      "final_status": "settled",
+      "tier": "red",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": [
+        "TIER-MFA-REQUIRED"
+      ]
+    }
+  },
+  {
+    "id": "ZH-SEN-02",
+    "category": "sensitive",
+    "language_feature": "sensitive",
+    "expected_level": "red",
+    "request": {
+      "task": "银行卡找不到了",
+      "initial_state": "card",
+      "simulated_device_events": [
+        "confirm",
+        "mfa",
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "card_lost",
+      "scenario": "cards",
+      "final_status": "settled",
+      "tier": "red",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": [
+        "TIER-MFA-REQUIRED"
+      ]
+    }
+  },
+  {
+    "id": "ZH-SEN-03",
+    "category": "sensitive",
+    "language_feature": "sensitive",
+    "expected_level": "red",
+    "request": {
+      "task": "我的卡落在出租车里了",
+      "initial_state": "card",
+      "simulated_device_events": [
+        "confirm",
+        "mfa",
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "card_lost",
+      "scenario": "cards",
+      "final_status": "settled",
+      "tier": "red",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": [
+        "TIER-MFA-REQUIRED"
+      ]
+    }
+  },
+  {
+    "id": "ZH-SEN-04",
+    "category": "sensitive",
+    "language_feature": "sensitive",
+    "expected_level": "red",
+    "request": {
+      "task": "这张卡遗失了",
+      "initial_state": "card",
+      "simulated_device_events": [
+        "confirm",
+        "mfa",
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "card_lost",
+      "scenario": "cards",
+      "final_status": "settled",
+      "tier": "red",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": [
+        "TIER-MFA-REQUIRED"
+      ]
+    }
+  },
+  {
+    "id": "ZH-SEN-05",
+    "category": "sensitive",
+    "language_feature": "sensitive",
+    "expected_level": "red",
+    "request": {
+      "task": "卡不见了，申请挂失",
+      "initial_state": "card",
+      "simulated_device_events": [
+        "confirm",
+        "mfa",
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "card_lost",
+      "scenario": "cards",
+      "final_status": "settled",
+      "tier": "red",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": [
+        "TIER-MFA-REQUIRED"
+      ]
+    }
+  },
+  {
+    "id": "ZH-SEN-06",
+    "category": "sensitive",
+    "language_feature": "sensitive",
+    "expected_level": "red",
+    "request": {
+      "task": "挂失这张银行卡",
+      "initial_state": "card",
+      "simulated_device_events": [
+        "confirm",
+        "mfa",
+        "confirm"
+      ],
+      "context": []
+    },
+    "expected": {
+      "intent": "card_lost",
+      "scenario": "cards",
+      "final_status": "settled",
+      "tier": "red",
+      "needs_clarification": false,
+      "dispatch_count": 1,
+      "rule_ids": [
+        "TIER-MFA-REQUIRED"
+      ]
+    }
+  },
+  {
+    "id": "ZH-SEN-07",
+    "category": "sensitive",
+    "language_feature": "sensitive",
+    "expected_level": "red",
+    "request": {
+      "task": "帮我改密码",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "password_change",
+      "scenario": "sensitive",
+      "final_status": "refused",
+      "tier": null,
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": [],
+      "tool_calls": 0
+    }
+  },
+  {
+    "id": "ZH-SEN-08",
+    "category": "sensitive",
+    "language_feature": "sensitive",
+    "expected_level": "red",
+    "request": {
+      "task": "忘记口令了，替我重置",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "password_change",
+      "scenario": "sensitive",
+      "final_status": "refused",
+      "tier": null,
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": [],
+      "tool_calls": 0
+    }
+  },
+  {
+    "id": "ZH-SEN-09",
+    "category": "sensitive",
+    "language_feature": "sensitive",
+    "expected_level": "red",
+    "request": {
+      "task": "直接换一下登录密码",
+      "initial_state": "bank",
+      "simulated_device_events": [],
+      "context": []
+    },
+    "expected": {
+      "intent": "password_change",
+      "scenario": "sensitive",
+      "final_status": "refused",
+      "tier": null,
+      "needs_clarification": false,
+      "dispatch_count": 0,
+      "rule_ids": [],
+      "tool_calls": 0
+    }
+  }
+]

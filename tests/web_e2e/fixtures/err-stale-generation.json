@@ -1,0 +1,102 @@
+{
+ "ok": false,
+ "generation": "Jt8vNq2Wm5Yc",
+ "revision": 0,
+ "error": {
+  "code": "stale_generation",
+  "message": "这个页面属于已重置的会话，已按新会话刷新",
+  "retry": false
+ },
+ "state": {
+  "schema": 1,
+  "contract": "web-contract/1.1",
+  "generation": "Jt8vNq2Wm5Yc",
+  "revision": 0,
+  "view": "customer",
+  "locale": "zh-CN",
+  "capabilities": {
+   "tabs": [],
+   "shortcuts": [
+    "transfer",
+    "cards",
+    "scam_drill"
+   ],
+   "live": false,
+   "plan_select": false,
+   "compensate": false,
+   "aa": false,
+   "lab": false
+  },
+  "session": {
+   "logged_in": false,
+   "clock_text": "2026-09-15 10:30（北京时间）",
+   "bank_name": "演示银行",
+   "assistant_name": "智能助手",
+   "phone_url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=zh-CN&view=customer"
+  },
+  "shell": {
+   "corner": "合成数据 · 模拟认证 · 无真实资金",
+   "badge": {
+    "kind": "demo",
+    "text": "脚本演示"
+   },
+   "safety": {
+    "locked": false,
+    "text": null,
+    "hint": null
+   },
+   "paused_banner": null,
+   "notices": []
+  },
+  "login": {
+   "title": "进入合成演示",
+   "intro": "这是合成数据的演示银行，不连接任何真实账户",
+   "button": "进入合成演示",
+   "caption": "模拟认证 · 无真实资金"
+  },
+  "chat": {
+   "shortcuts": [
+    {
+     "key": "transfer",
+     "label": "给妈妈转 800 元"
+    },
+    {
+     "key": "cards",
+     "label": "我的卡丢了"
+    },
+    {
+     "key": "scam_drill",
+     "label": "诈骗演练"
+    }
+   ],
+   "drill_caption": "演练：模拟一段“工作人员让您立即转账”的话术，看系统如何回应",
+   "greeting": "您好，我是智能助手，可以帮您转账、查询和挂失",
+   "turns": [],
+   "responses": {},
+   "current": null,
+   "gated_elsewhere": [],
+   "task_panel": null,
+   "composer": {
+    "placeholder": "说说您要办理什么，例如：给妈妈转500元",
+    "max_chars": 4000,
+    "attach_label": "附上对方发来的文件（模拟）",
+    "attach_note": "附件开关由您自报，系统不读取任何文件",
+    "contacts_note": "演示联系人：妈妈、房东、同学、邻居、新联系人、爱人",
+    "disabled": true
+   }
+  },
+  "device": {
+   "title": "设备确认（模拟）",
+   "idle_text": "当前没有需要在设备上确认的操作",
+   "queue_text": null,
+   "tasks": [],
+   "active": null,
+   "sms": {
+    "url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=zh-CN&view=customer",
+    "label": "模拟短信（合成，不是真实短信）",
+    "open_label": "在新窗口打开",
+    "footer": "合成短信 · 无短信网关 · 无真实手机号"
+   }
+  }
+ }
+}

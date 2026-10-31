@@ -1,0 +1,314 @@
+{
+  "polish.scam.title": {
+    "en": "Please verify the recipient: registered facts and two questions (display-layer prompt; not part of the signed content)",
+    "zh-CN": "请您核实收款人：登记事实与两个问题（展示层提示，不属于签名内容）"
+  },
+  "customer:polish.scam.title": {
+    "en": "Please verify the recipient: registered facts and two questions (a page prompt; not part of the signed content)",
+    "zh-CN": "请您核实收款人：登记事实与两个问题（页面提示，不属于签名内容）"
+  },
+  "polish.scam.not_signed": {
+    "en": "This prompt and your answers are not part of the signed content: they are kept only in the current product session and never enter the canonical card, the signature payload or the audit chain. They do not change the frozen kernel's own approval and signing rules; this page adds its own answering precondition.",
+    "zh-CN": "本提示与您的回答不属于签名内容：仅保存在当前产品会话，不进入规范卡、签名载荷或审计链；不改变冻结内核原有的审批与签名规则，本界面另有作答前置条件。"
+  },
+  "customer:polish.scam.not_signed": {
+    "en": "This prompt and your answers are not part of the signed content: they stay in this session only, are never written into what you sign, and do not change the bank's own approval rules; this page also asks you to answer two questions first.",
+    "zh-CN": "本提示与您的回答不属于签名内容：只保存在本次会话，不写入您签署的内容，也不改变银行原有的审批规则；本页另外要求您先回答两个问题。"
+  },
+  "polish.scam.facts_title": {
+    "en": "Registered facts about the recipient (source: the trusted contact registry, read-only)",
+    "zh-CN": "收款人登记事实（来源：可信通讯录，展示层只读）"
+  },
+  "customer:polish.scam.facts_title": {
+    "en": "Registered facts about the recipient (source: the trusted contact registry, read-only)",
+    "zh-CN": "收款人登记事实（来源：可信通讯录，只读）"
+  },
+  "polish.scam.fact_payee": {
+    "en": "Recipient: {payee} · number ending {tail} (synthetic)",
+    "zh-CN": "收款人：{payee} · 尾号{tail}（合成）"
+  },
+  "polish.scam.fact_payee_plain": {
+    "en": "Recipient: {payee}",
+    "zh-CN": "收款人：{payee}"
+  },
+  "polish.scam.fact_new": {
+    "en": "Registration status: this recipient is registered as a new recipient.",
+    "zh-CN": "登记状态：该收款人登记为新收款人。"
+  },
+  "polish.scam.fact_known": {
+    "en": "Registration status: this recipient already has an entry in your contact registry (not marked as a new recipient).",
+    "zh-CN": "登记状态：该收款人已在您的通讯录中登记（未标记为新收款人）。"
+  },
+  "polish.scam.fact_registered": {
+    "en": "This recipient has an entry in your contact registry.",
+    "zh-CN": "该收款人在您的通讯录中有登记记录。"
+  },
+  "polish.scam.fact_unregistered": {
+    "en": "This recipient has no entry in your contact registry.",
+    "zh-CN": "该收款人不在您的通讯录中。"
+  },
+  "polish.scam.fact_source": {
+    "en": "These facts are read from the trusted contact registry; they are not the bank's verification of who the recipient is.",
+    "zh-CN": "以上事实读自可信通讯录，不是银行对对方身份的核验。"
+  },
+  "polish.scam.advice": {
+    "en": "Suggested check: verify the recipient through contact details you saved yourself (for example in person, on a number of theirs you saved long ago, or on the official number on the back of your bank card), never through a number or link they just sent you.",
+    "zh-CN": "核实建议：请用您自己保存的联系方式核实对方（如当面核对、用您早已保存的对方电话，或银行卡背面的官方电话），不要用对方刚发来的号码或链接。"
+  },
+  "polish.scam.cues": {
+    "en": "Your message matches fixed keyword or phrasing rules: {cues}.",
+    "zh-CN": "您这句话命中了固定关键词或措辞规则：{cues}。"
+  },
+  "polish.scam.cue_separator": {
+    "en": "; ",
+    "zh-CN": "；"
+  },
+  "polish.scam.cue.authority": {
+    "en": "someone claiming to be the bank, the police or an anti-fraud centre",
+    "zh-CN": "自称银行、公安或反诈中心"
+  },
+  "polish.scam.cue.external": {
+    "en": "a receiving account supplied by the other party",
+    "zh-CN": "收款账户由对方提供"
+  },
+  "polish.scam.cue.urgency": {
+    "en": "time pressure or a threat to freeze your account",
+    "zh-CN": "限时催促或威胁冻结账户"
+  },
+  "polish.scam.cue.split": {
+    "en": "a request to split the payment",
+    "zh-CN": "要求分笔转账"
+  },
+  "polish.scam.questions_title": {
+    "en": "Two questions before the next step",
+    "zh-CN": "下一步之前的两个问题"
+  },
+  "polish.scam.q_verified": {
+    "en": "Has this recipient account been verified through an independent trusted channel (for example in person, on a number of theirs you saved long ago, or on the official number on the back of your bank card)?",
+    "zh-CN": "这次的收款账号，是否已通过独立可信渠道核实（如当面核对、用您早已保存的对方电话，或银行卡背面的官方电话）？"
+  },
+  "polish.scam.q_verified.yes": {
+    "en": "Verified independently",
+    "zh-CN": "已独立核实"
+  },
+  "polish.scam.q_verified.no": {
+    "en": "Not verified independently (only the information the other party gave me)",
+    "zh-CN": "未独立核实（只有对方提供的信息）"
+  },
+  "polish.scam.q_verified.unsure": {
+    "en": "Not sure",
+    "zh-CN": "不确定"
+  },
+  "polish.scam.q_guided": {
+    "en": "Is someone guiding you through this transfer right now, by phone or chat?",
+    "zh-CN": "现在是否有人在电话或聊天中指导您转账？"
+  },
+  "polish.scam.q_guided.no": {
+    "en": "No",
+    "zh-CN": "否"
+  },
+  "polish.scam.q_guided.yes": {
+    "en": "Yes",
+    "zh-CN": "是"
+  },
+  "polish.scam.incomplete": {
+    "en": "The next-step button appears after both questions are answered; until then this page will not request a new SMS verification or submit this payment, and Cancel is available at any time.",
+    "zh-CN": "回答以上两个问题后，才会显示下一步按钮；作答之前，这里不会再发起新的短信验证，也不会提交这笔付款；您随时可以点「取消」。"
+  },
+  "polish.scam.stale": {
+    "en": "The card this check was shown for is no longer the current one. Until the check is answered again for the current card, this page will not request a new SMS verification, confirm an approval or submit this payment; Cancel is available at any time.",
+    "zh-CN": "本次核实针对的卡片已不是当前卡片。在针对当前卡片重新作答之前，本界面不会再发起新的短信验证、确认审批或付款提交；您随时可以点「取消」。"
+  },
+  "polish.scam.pause_title": {
+    "en": "Paused: please verify through an official channel first",
+    "zh-CN": "已暂停：请先通过官方渠道核实"
+  },
+  "polish.scam.pause_title_guided": {
+    "en": "Paused: please hang up or end the other party's guidance first",
+    "zh-CN": "已暂停：请先挂断或结束对方的指导"
+  },
+  "polish.scam.pause_lead": {
+    "en": "Your answers say: {triggers}. ",
+    "zh-CN": "您的回答显示：{triggers}。"
+  },
+  "polish.scam.pause_lead_plain": {
+    "en": "Your answers triggered a pause. ",
+    "zh-CN": "您的回答触发了暂停。"
+  },
+  "polish.scam.pause_lead_preset": {
+    "en": "Based on keywords in your message (such as someone telling you to pay), the system preset the second question to “yes”; this may be wrong. If no one is guiding you, choose answer again and answer for yourself. ",
+    "zh-CN": "系统根据您原话中的关键词（如“某某让我转”）把第二题预置为“是”，这可能有误；如果没有人在指导您，请点「重新作答」后按实际情况回答。"
+  },
+  "polish.scam.trigger_separator": {
+    "en": "; and ",
+    "zh-CN": "；并且"
+  },
+  "polish.scam.trigger.guided_yes": {
+    "en": "someone is guiding you through this transfer right now",
+    "zh-CN": "现在有人在电话或聊天中指导您转账"
+  },
+  "polish.scam.trigger.verified_no": {
+    "en": "this recipient account has not been verified through an independent trusted channel (only the information the other party gave you)",
+    "zh-CN": "这次的收款账号未经独立可信渠道核实（只有对方提供的信息）"
+  },
+  "polish.scam.trigger.verified_unsure": {
+    "en": "you are not sure whether this recipient account was verified independently",
+    "zh-CN": "您不确定这次的收款账号是否已独立核实"
+  },
+  "polish.scam.pause": {
+    "en": "{lead}Verify the recipient through contact details you saved yourself, then answer again. Until both questions are answered and this check allows you to continue, this page will not request a new SMS verification and will not submit this payment.",
+    "zh-CN": "{lead}请先用您自己保存的联系方式核实对方，再重新作答。在两题回答完整且这一步自查允许继续之前，这里不会再发起新的短信验证，也不会提交这笔付款。"
+  },
+  "polish.scam.pause_authority": {
+    "en": "{lead}Hang up first, call the official number on the back of your card to verify, then answer again. Until both questions are answered and this check allows you to continue, this page will not request a new SMS verification and will not submit this payment.",
+    "zh-CN": "{lead}请先挂断电话，通过银行卡背面的官方客服电话核实，再重新作答。在两题回答完整且这一步自查允许继续之前，这里不会再发起新的短信验证，也不会提交这笔付款。"
+  },
+  "polish.scam.pause_guided": {
+    "en": "{lead}Hang up or end the other party's guidance first, make sure on your own that this payment is what you yourself want, then answer again. Until both questions are answered and this check allows you to continue, this page will not request a new SMS verification and will not submit this payment.",
+    "zh-CN": "{lead}请先挂断或结束对方的指导，独自确认这笔付款是您本人的意愿，再重新作答。在两题回答完整且这一步自查允许继续之前，这里不会再发起新的短信验证，也不会提交这笔付款。"
+  },
+  "polish.scam.pause_guided_authority": {
+    "en": "{lead}Hang up or end the other party's guidance first, make sure on your own that this payment is what you yourself want, verify by calling the official number on the back of your card, then answer again. Until both questions are answered and this check allows you to continue, this page will not request a new SMS verification and will not submit this payment.",
+    "zh-CN": "{lead}请先挂断电话或结束对方的指导，独自确认这笔付款是您本人的意愿，并通过银行卡背面的官方客服电话核实，再重新作答。在两题回答完整且这一步自查允许继续之前，这里不会再发起新的短信验证，也不会提交这笔付款。"
+  },
+  "polish.scam.pause_challenge": {
+    "en": " A verification code sent earlier keeps counting down on its original validity window; once it expires, cancel and start again.",
+    "zh-CN": "此前发出的验证码仍按原有效期计时；过期后需取消并重新发起。"
+  },
+  "polish.scam.pause_retry": {
+    "en": "I have verified through an official channel (self-reported); answer again",
+    "zh-CN": "我已通过官方渠道核实（用户自述），重新作答"
+  },
+  "polish.scam.pause_retry_guided": {
+    "en": "I have confirmed this on my own (self-reported); answer again",
+    "zh-CN": "我已独立确认（用户自述），重新作答"
+  },
+  "polish.scam.pause_retry_guided_authority": {
+    "en": "I have confirmed this on my own and verified by calling the official number (self-reported); answer again",
+    "zh-CN": "我已独立确认并通过官方电话核实（用户自述），重新作答"
+  },
+  "polish.scam.pause_self_report": {
+    "en": "Tapping this button only represents your own statement; it is not a bank verification and creates no verification record. Your new answers are judged by the same fixed rule.",
+    "zh-CN": "点此按钮仅代表您的自述，不构成银行核验，也不形成核验记录；重新作答后仍按同一固定规则判断。"
+  },
+  "polish.scam.pause_cancel_hint": {
+    "en": "To give up this payment, tap Cancel below.",
+    "zh-CN": "如要放弃这笔付款，请点下方「取消」。"
+  },
+  "polish.scam.footer": {
+    "en": "This prompt and these questions come from fixed rules and may ask too much or too little. They do not change the frozen kernel's rules or the signed card, do not cover paths that bypass this page, and do not judge whether the recipient is a scammer; whether to continue is your decision. Until both questions are answered and this check allows you to continue, this page will not request a new SMS verification, confirm an approval or submit this payment; it may pause the confirmation flow and so delay or avoid initiating the transaction.",
+    "zh-CN": "以上提示与问题由固定规则生成，可能漏问或多问；它不修改冻结内核的规则与签名卡，不覆盖绕过本页面的路径，也不判断收款人是否为诈骗方；是否继续由您决定。在两题回答完整且这一步自查允许继续之前，本界面不会再发起新的短信验证、确认审批或付款提交；它可能暂停确认流程，从而推迟或避免交易发起。"
+  },
+  "polish.scam.judge_note": {
+    "en": "Display-layer gate: it reads only the canonical card, the trusted contact registry, the user's own words and the attachment count. Answers are kept only in the current product session, bound to the action instance, the card identity and an answering epoch; they never enter the canonical card, the signature payload or the audit chain. Once the gate is established for an action, the controller entry points refuse to request a new SMS verification, confirm an approval or submit a dispatch until both questions are answered and the gate allows it; a changed card, a changed context or an answer-again gesture invalidates the earlier answers and requires new ones. A challenge issued earlier is not voided by this gate and still expires on its original window; after that, cancel and start again. The fraud warning above says the warning itself does not block or delay anything; this gate may pause the confirmation flow and so delay or avoid initiating the transaction. The pause is a display-layer gesture, not the kernel cooling-off period or delayed credit on the roadmap. Added after F9 and not part of the F9 measurement; there is no evidence yet that it identifies scams or reduces losses.",
+    "zh-CN": "展示层门控：只读规范卡、可信通讯录、用户原话与附件数量。回答仅保存在当前产品会话，按动作实例、卡片身份与作答代次绑定，不进入规范卡、签名载荷或审计链。门控一经建立，在两题回答完整且本门控允许继续之前，控制器入口拒绝发起新的短信验证、确认审批与提交派发；卡片变化、上下文变化或“重新作答”都使此前的回答失效、须重新作答。已签发的挑战不被本门控作废，仍按原有效期过期；过期后需取消重来。上方防骗提醒所说的“不会拦截、延迟”指提醒本身；本门控可能暂停确认流程，从而推迟或避免交易发起。暂停是展示层手势，不是路线图中的内核冷静期或延时到账。该功能在 F9 之后新增，未纳入 F9 测量，尚无诈骗识别或减少损失的效果证据。"
+  },
+  "polish.scam.judge_record": {
+    "en": "Interaction record (display layer, not in the audit chain): verified independently = {verified}; guided = {guided}; gate state = {decision}",
+    "zh-CN": "交互记录（展示层，不进审计链）：独立核实＝{verified}；有人指导＝{guided}；门控状态＝{decision}"
+  },
+  "polish.scam.unanswered": {
+    "en": "unanswered",
+    "zh-CN": "未作答"
+  },
+  "polish.scam.decision.incomplete": {
+    "en": "incomplete",
+    "zh-CN": "未答完"
+  },
+  "polish.scam.decision.pause": {
+    "en": "paused",
+    "zh-CN": "暂停"
+  },
+  "polish.scam.decision.proceed": {
+    "en": "may continue",
+    "zh-CN": "可继续"
+  },
+  "polish.scam.decision.stale": {
+    "en": "answer again for the current card",
+    "zh-CN": "须针对当前卡片重新作答"
+  },
+  "polish.scam.paused_copy": {
+    "en": "This page has paused the further verification and confirmation of this payment: until both questions are answered and the check allows you to continue, this page will not request a new SMS verification and will not submit this payment.",
+    "zh-CN": "本界面对这笔付款的后续验证与确认已暂停：在两题回答完整且这一步自查允许继续之前，这里不会再发起新的短信验证，也不会提交这笔付款。"
+  },
+  "polish.scam.incomplete_copy": {
+    "en": "This payment waits for your answers to the recipient check: until both questions are answered, this page will not request a new SMS verification and will not submit this payment.",
+    "zh-CN": "这笔付款等待您核实收款人并作答：在两个问题答完之前，这里不会再发起新的短信验证，也不会提交这笔付款。"
+  },
+  "polish.scam.stale_copy": {
+    "en": "The card this payment's check was answered for is no longer the current one: until the check is answered again for the current card, this page will not request a new SMS verification and will not submit this payment.",
+    "zh-CN": "这笔付款作答时针对的卡片已不是当前卡片：在针对当前卡片重新作答之前，这里不会再发起新的短信验证，也不会提交这笔付款。"
+  },
+  "polish.scam.other_gated": {
+    "en": "An earlier payment is still waiting for you to verify its recipient and answer (paused or unanswered). Return to that reply to answer, or tap Cancel under that reply.",
+    "zh-CN": "另有一笔付款尚待您核实收款人并作答（暂停或未答完）。可回到该回复作答，或在该回复下点「取消」。"
+  },
+  "polish.scam.other_gated_button": {
+    "en": "Return to that reply and answer",
+    "zh-CN": "回到该回复作答"
+  },
+  "polish.scam.device_title": {
+    "en": "Recipient facts (display layer; not part of the signed content)",
+    "zh-CN": "收款人登记事实（展示层，不属于签名内容）"
+  },
+  "customer:polish.scam.device_title": {
+    "en": "Recipient facts (a page prompt; not part of the signed content)",
+    "zh-CN": "收款人登记事实（页面提示，不属于签名内容）"
+  },
+  "polish.scam.device_paused": {
+    "en": "This operation is paused on the chat page (your answers there triggered the pause). Until both questions are answered there and the check allows you to continue, this device page will not request a new SMS verification and will not confirm. Please return to the chat page to answer.",
+    "zh-CN": "此操作在对话页处于暂停态（您在对话页的回答触发了暂停）。在两题回答完整且这一步自查允许继续之前，设备页不会再发起新的短信验证，也不会确认。请回对话页作答。"
+  },
+  "polish.scam.device_incomplete": {
+    "en": "The two recipient-check questions for this operation have not been answered on the chat page yet. Until they are, this device page will not request a new SMS verification and will not confirm. Please return to the chat page to answer.",
+    "zh-CN": "此操作的两个核实问题尚未在对话页作答。答完之前，设备页不会再发起新的短信验证，也不会确认。请回对话页作答。"
+  },
+  "polish.scam.device_stale": {
+    "en": "The recipient check for this operation was answered for a card that is no longer the current one. Until it is answered again on the chat page for the current card, this device page will not request a new SMS verification and will not confirm.",
+    "zh-CN": "此操作的核实问题作答时针对的卡片已不是当前卡片。在对话页针对当前卡片重新作答之前，设备页不会再发起新的短信验证，也不会确认。"
+  },
+  "polish.scam.device_back": {
+    "en": "Return to the chat page to answer",
+    "zh-CN": "回对话页作答"
+  },
+  "polish.scam.drill_label": {
+    "en": "Induced-payment drill",
+    "zh-CN": "诱导付款演练"
+  },
+  "polish.scam.drill_caption": {
+    "en": "One click submits a simulated payment request to the assistant (with an impersonated anti-fraud centre, an account supplied by the other party, a split payment and a freeze threat), addressed to a new recipient. Synthetic data; no payment happens unless you act.",
+    "zh-CN": "一键向助手提交一条模拟付款请求（含冒充反诈中心、对方提供账户、分笔、威胁冻结的说法），收款人为新收款人。合成数据；您不操作就不会有任何付款。"
+  },
+  "polish.scam.drill_caption_judge": {
+    "en": " Judge view: a zh-q-01 style message with the same cue set, not the case text. It hits both the impersonated-authority list and the freeze / safe-account / transfer-now list, so the phrase gate (R7) gives it no card.",
+    "zh-CN": " 评委视图：zh-q-01 同族话术（线索集合相同），不是用例原文。它同时命中“冒充权威”与“冻结 / 安全账户 / 立即转账”两组词表，按话术闸门（R7）不出卡。"
+  },
+  "polish.scam.drill_utterance": {
+    "en": "The anti-fraud centre staff told me to transfer 480 yuan to the new contact immediately; the receiving account is a verification account they sent me; split it into two payments, or else my account will be frozen",
+    "zh-CN": "反诈中心工作人员要我立即给新联系人转480元，收款账号是对方发来的验证专户，分两笔转，不然账户冻结"
+  },
+  "Awaiting the recipient check answers": {
+    "en": "Awaiting your answers to the recipient check",
+    "zh-CN": "等待您作答（核实收款人）"
+  },
+  "polish.scam.phrase_gate": {
+    "en": "You mentioned {authority} and also {pressure}. Banks, the police and anti-fraud centres never ask you to move money to a “safe account”, and never freeze your account because you did not transfer. This payment was not created and nothing was executed. To check, hang up first, then call 96110 or the official number on the back of your card.",
+    "zh-CN": "您这句话提到了「{authority}」，还提到了「{pressure}」。银行、公安和反诈中心不会让您向“安全账户”转账，也不会因为您不转账就冻结账户。这笔付款没有生成，也没有执行任何操作。如需核实，请先挂断对方电话，拨打 96110 或银行卡背面的官方客服电话。"
+  },
+  "polish.scam.phrase_separator": {
+    "en": ", ",
+    "zh-CN": "、"
+  },
+  "polish.scam.phrase_gate_judge": {
+    "en": "Phrase gate (fixed product-layer word lists): when the words of a payment or purchase request hit both closed lists, an impersonated authority (anti-fraud centre, police, prosecutor, court and the like) and a freeze / safe-account / transfer-now demand, the lexical router stops that sentence at clarification before the planner: the gate itself creates no draft and no card, dispatches nothing, and neither interrupts running plans nor withdraws pending cards. It applies only in this interface's chat and may hold a legitimate payment for one more step; it does not change the frozen kernel's rules or signed cards, does not cover paths that bypass the chat, and does not decide whether anyone is a fraudster: fixed lists miss some wording (paraphrases, typos, wording split over two turns) and also hold some legitimate wording. It was added after F9, is not part of the F9 measurement, and there is no evidence yet that it identifies fraud or reduces losses.",
+    "zh-CN": "话术闸门（产品层固定词表）：付款或申购请求的原话同时命中“冒充权威”（反诈中心、公安、公检法、检察院、法院等）与“冻结 / 安全账户 / 立即转账”两组封闭词表时，词法路由在规划器之前把这句停在澄清：闸门本身不建草稿、不出卡、派发为 0，也不中断进行中的计划、不撤回待确认的卡片。它只在本界面的对话里生效，可能让合法付款多停一步；它不修改冻结内核的规则与签名卡，不覆盖绕过对话的路径，也不判断对方是否为诈骗方：固定词表会漏判（改写、错别字、分两轮说的话），也会误伤合法说法。该功能在 F9 之后新增，未纳入 F9 测量，尚无诈骗识别或减少损失的效果证据。"
+  },
+  "polish.scam.opening": {
+    "en": "Please don't rush this payment. Your message mentions {cues}. Banks, the police and anti-fraud centres never ask you to move money to a “safe account”, and never freeze your account because you did not transfer. The payment below has not been executed; answer the two self-check questions before you continue. To check, hang up first, then call 96110 or the official number on the back of your card.",
+    "zh-CN": "先别急着付款。您这句话里有这样的说法：{cues}。银行、公安和反诈中心不会让您向“安全账户”转账，也不会因为您不转账就冻结账户。下面这笔付款还没有执行，继续之前请先回答两个自查问题。如需核实，请先挂断对方电话，拨打 96110 或银行卡背面的官方客服电话。"
+  },
+  "polish.scam.preset_judge": {
+    "en": "The second question was preset to “yes” from the user's words (someone told them to pay, a closed rule); only the user's own answer-again gesture clears it, and the user's own answers decide from then on.",
+    "zh-CN": "第二题按原话预置为“是”（原话含“某某让我转”一类说法，封闭规则）；只有用户点「重新作答」才会清除，之后按用户自己的回答判定。"
+  }
+}

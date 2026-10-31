@@ -1,0 +1,247 @@
+{
+ "ok": false,
+ "generation": "q3Lw9xYp0aZk",
+ "revision": 9,
+ "error": {
+  "code": "card_changed",
+  "message": "卡片内容已更新，请重新核对后再确认",
+  "retry": false
+ },
+ "state": {
+  "schema": 1,
+  "contract": "web-contract/1.1",
+  "generation": "q3Lw9xYp0aZk",
+  "revision": 9,
+  "view": "customer",
+  "locale": "zh-CN",
+  "capabilities": {
+   "tabs": [],
+   "shortcuts": [
+    "transfer",
+    "cards",
+    "scam_drill"
+   ],
+   "live": false,
+   "plan_select": false,
+   "compensate": false,
+   "aa": false,
+   "lab": false
+  },
+  "session": {
+   "logged_in": true,
+   "clock_text": "2026-09-15 10:30（北京时间）",
+   "bank_name": "演示银行",
+   "assistant_name": "智能助手",
+   "phone_url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=zh-CN&view=customer"
+  },
+  "shell": {
+   "corner": "合成数据 · 模拟认证 · 无真实资金",
+   "badge": {
+    "kind": "demo",
+    "text": "脚本演示"
+   },
+   "safety": {
+    "locked": false,
+    "text": null,
+    "hint": null
+   },
+   "paused_banner": null,
+   "notices": []
+  },
+  "chat": {
+   "shortcuts": [
+    {
+     "key": "transfer",
+     "label": "给妈妈转 800 元"
+    },
+    {
+     "key": "cards",
+     "label": "我的卡丢了"
+    },
+    {
+     "key": "scam_drill",
+     "label": "诈骗演练"
+    }
+   ],
+   "drill_caption": "演练：模拟一段“工作人员让您立即转账”的话术，看系统如何回应",
+   "greeting": null,
+   "turns": [
+    {
+     "id": "u2",
+     "role": "user",
+     "rkey": "R2",
+     "text": "给妈妈转5000元"
+    },
+    {
+     "id": "a2",
+     "role": "assistant",
+     "rkey": "R2",
+     "text": "完成模拟验证后再确认此操作。"
+    }
+   ],
+   "responses": {
+    "R2": {
+     "rkey": "R2",
+     "current": true,
+     "status": "waiting_mfa",
+     "status_text": "等待验证",
+     "copy_lines": [
+      "完成模拟验证后再确认此操作。"
+     ],
+     "tier": {
+      "code": "red",
+      "label": "红 · 需独立模拟验证",
+      "glyph": "triangle"
+     },
+     "requested_tier": null,
+     "redisplay_notice": null,
+     "cards": [
+      {
+       "key": "R2-0",
+       "title": "网关审批卡",
+       "purpose": "转账",
+       "amount_text": "¥5,000.00",
+       "tier": {
+        "code": "red",
+        "label": "红 · 需独立模拟验证",
+        "glyph": "triangle"
+       },
+       "tier_reason": "单笔超过 2,000 元",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "收款人",
+         "value": "妈妈 · 尾号3721（合成）"
+        },
+        {
+         "key": "fees",
+         "label": "手续费",
+         "value": "¥0.00（无手续费）"
+        }
+       ],
+       "notes": [
+        {
+         "kind": "red",
+         "title": null,
+         "lines": [
+          "红档操作：设备确认后还需输入模拟短信验证码"
+         ],
+         "footer": null
+        }
+       ],
+       "not_signed_label": "不属于签名内容",
+       "why": {
+        "lines": [
+         "原因：金额超过红档阈值，需要独立模拟验证"
+        ]
+       }
+      }
+     ],
+     "gate": null,
+     "result": null,
+     "failure": null,
+     "live_notes": [],
+     "device_task": "TR2",
+     "route_hint": null,
+     "fallback_shortcuts": false,
+     "cancel": {
+      "label": "取消",
+      "hint": "取消会撤回本会话所有待确认提案；已结算的不变"
+     }
+    }
+   },
+   "current": "R2",
+   "gated_elsewhere": [],
+   "task_panel": null,
+   "composer": {
+    "placeholder": "说说您要办理什么，例如：给妈妈转500元",
+    "max_chars": 4000,
+    "attach_label": "附上对方发来的文件（模拟）",
+    "attach_note": "附件开关由您自报，系统不读取任何文件",
+    "contacts_note": "演示联系人：妈妈、房东、同学、邻居、新联系人、爱人",
+    "disabled": false
+   }
+  },
+  "device": {
+   "title": "设备确认（模拟）",
+   "idle_text": "当前没有需要在设备上确认的操作",
+   "queue_text": null,
+   "tasks": [
+    {
+     "key": "TR2",
+     "source": "chat",
+     "source_label": "对话",
+     "rkey": "R2",
+     "current": true,
+     "cards": [
+      {
+       "key": "TR2-0",
+       "title": "网关审批卡",
+       "purpose": "转账",
+       "amount_text": "¥5,000.00",
+       "tier": {
+        "code": "red",
+        "label": "红 · 需独立模拟验证",
+        "glyph": "triangle"
+       },
+       "tier_reason": "单笔超过 2,000 元",
+       "facts": [
+        {
+         "key": "objects.contact_ref",
+         "label": "收款人",
+         "value": "妈妈 · 尾号3721（合成）"
+        },
+        {
+         "key": "fees",
+         "label": "手续费",
+         "value": "¥0.00（无手续费）"
+        }
+       ],
+       "notes": [
+        {
+         "kind": "red",
+         "title": null,
+         "lines": [
+          "红档操作：设备确认后还需输入模拟短信验证码"
+         ],
+         "footer": null
+        }
+       ],
+       "not_signed_label": "不属于签名内容",
+       "why": {
+        "lines": [
+         "原因：金额超过红档阈值，需要独立模拟验证"
+        ]
+       }
+      }
+     ],
+     "step": "mfa_code",
+     "step_text": "请输入模拟手机收到的 6 位验证码",
+     "gesture": {
+      "op": "mfa_verify",
+      "token": "k3JxR0h1Z2xvYmFsX3Rva2",
+      "card_version": "9f0c6a1d2b3e4f509f0c6a1d2b3e4f50",
+      "label": "提交验证码"
+     },
+     "cancel": {
+      "label": "取消",
+      "hint": "取消会撤回本会话所有待确认提案；已结算的不变"
+     },
+     "mfa": {
+      "sent_text": "验证码已发送到模拟手机（尾号8866，合成）",
+      "method_text": "短信验证码（模拟）· 其他强验证方式未接入",
+      "hint": "验证码只显示在右侧模拟短信里",
+      "expired_text": null
+     }
+    }
+   ],
+   "active": "TR2",
+   "sms": {
+    "url": "/phone/Qm9nUjVxa2Zv_xT1aA?lang=zh-CN&view=customer",
+    "label": "模拟短信（合成，不是真实短信）",
+    "open_label": "在新窗口打开",
+    "footer": "合成短信 · 无短信网关 · 无真实手机号"
+   }
+  }
+ }
+}
