@@ -736,8 +736,8 @@
     "zh-CN": "要求分多笔转账以“避开限额”，是常见诈骗特征。"
   },
   "polish.fraud.footer": {
-    "en": "An SMS code only confirms that you are the one acting; it cannot verify who the recipient is. This warning comes from fixed keywords and the recipient's registration status and may miss or misfire; it does not block, delay or change this payment, and the decision is yours. If in doubt, tap Cancel and call the official number on the back of your card.",
-    "zh-CN": "短信验证只能确认是您本人在操作，不能核实对方身份。提醒由固定关键词和收款人登记状态生成，可能漏报或误报；它不会拦截、延迟或改变这笔交易，是否继续由您决定。如有疑问，请点「取消」，并通过银行卡背面的官方客服电话核实。"
+    "en": "This prototype only demonstrates device confirmation and simulated verification; it cannot prove real identity or verify the recipient. This warning comes from fixed keywords and the recipient's registration status and may miss or misfire; it does not block, delay or change this payment, and the decision is yours. If in doubt, tap Cancel and call the official number on the back of your card.",
+    "zh-CN": "本原型仅演示设备确认与模拟验证，不能证明真实身份或核实收款方。提醒由固定关键词和收款人登记状态生成，可能漏报或误报；它不会拦截、延迟或改变这笔交易，是否继续由您决定。如有疑问，请点「取消」，并通过银行卡背面的官方客服电话核实。"
   },
   "polish.fraud.judge_note": {
     "en": "Display-layer hint: reads only the canonical card, the trusted contact registry and the user's words; it never affects the kernel verdict, tier or dispatch. Delayed credit for new payees, cooling-off and upgrading externally sourced payees to red are kernel rules (trusted computing base) on the roadmap.",

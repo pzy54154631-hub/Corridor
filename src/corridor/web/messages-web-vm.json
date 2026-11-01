@@ -26,16 +26,16 @@
     "en": "Not part of the signed content"
   },
   "web.vm.safety.way_out": {
-    "zh-CN": "解锁需要冷却期、本人设备确认和模拟短信验证；本网页暂未提供，可在兜底界面完成，或点“重新开始”换一个新的合成会话",
-    "en": "Unlocking needs the cooldown, owner device confirmation and simulated SMS verification. This web page does not offer it yet: use the fallback interface, or tap Restart for a new synthetic session"
+    "zh-CN": "解锁需要冷却期、本人设备确认和模拟短信验证；本网页暂未提供，可使用本地备用入口（Streamlit）完成，或点“重新开始”换一个新的合成会话",
+    "en": "Unlocking needs the cooldown, owner device confirmation and simulated SMS verification. This web page does not offer it yet: use the local backup interface (Streamlit), or tap Restart for a new synthetic session"
   },
   "web.vm.route.fallback": {
-    "zh-CN": "此项请在兜底界面办理",
-    "en": "Please use the fallback interface for this service"
+    "zh-CN": "此项请使用本地备用入口（Streamlit）办理",
+    "en": "Please use the local backup interface (Streamlit) for this service"
   },
   "web.vm.route.wealth_note": {
-    "zh-CN": "这里是单品比较与申购，与理财顾问流程不同；理财顾问流程请在兜底界面体验",
-    "en": "This is single-product comparison and purchase, different from the advisor flow; try the advisor flow in the fallback interface"
+    "zh-CN": "这里是单品比较与申购，与理财顾问流程不同；理财顾问流程请使用本地备用入口（Streamlit）",
+    "en": "This is single-product comparison and purchase, different from the advisor flow; try the advisor flow in the local backup interface (Streamlit)"
   },
   "web.vm.route.operator": {
     "zh-CN": "打开坐席",
@@ -476,8 +476,8 @@
     "en": "Other"
   },
   "web.vm.live.fallback": {
-    "zh-CN": "实时模型开关请在兜底界面演示",
-    "en": "Please demonstrate the live model switch in the fallback interface"
+    "zh-CN": "实时模型开关请使用本地备用入口（Streamlit）演示",
+    "en": "Please demonstrate the live model switch in the local backup interface (Streamlit)"
   },
   "web.vm.session.clock": {
     "zh-CN": "{time}（北京时间）",

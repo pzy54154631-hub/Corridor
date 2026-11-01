@@ -210,6 +210,15 @@ def test_the_view_model_catalog_is_plain_text():
             assert not re.search(r"<[a-z/][^>]*>|\*\*|^#", text), key
 
 
+def test_drill_dispatch_note_names_the_actual_details_location():
+    note = catalog.WEB_MESSAGES["web.ui.rogue.prior"]
+    assert "前置派发见各行技术细节" in note["zh-CN"]
+    assert "each row's Technical details" in note["en"]
+    wealth = catalog.WEB_MESSAGES["web.vm.route.wealth_note"]
+    assert "本地备用入口（Streamlit）" in wealth["zh-CN"]
+    assert "local backup interface (Streamlit)" in wealth["en"]
+
+
 def test_every_device_step_and_reply_status_has_its_own_words():
     from typing import get_args
 

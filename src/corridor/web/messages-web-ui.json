@@ -327,8 +327,8 @@
     "en": "The listed attacks are handwritten synthetic examples, with no model calls. The results describe the authorization kernel’s behavior in these cases only and do not establish protection against all attacks; a manipulated payment confirmed by the user may still execute. Run corridor adversary to reproduce all 40 cases."
   },
   "web.ui.rogue.prior": {
-    "zh-CN": "银行派发指本次攻击阶段；旧审批、重复扣款和伪造回执案例先完成一笔合法操作，下方另列前置派发。",
-    "en": "Bank dispatches below refer to the attack stage. Replay, duplicate and forged-receipt cases first complete a legitimate operation; those prior dispatches are listed separately."
+    "zh-CN": "银行派发指本次攻击阶段；旧审批、重复扣款和伪造回执案例先完成一笔合法操作，前置派发见各行技术细节。",
+    "en": "Bank dispatches below refer to the attack stage. Replay, duplicate and forged-receipt cases first complete a legitimate operation; prior dispatches are shown in each row's Technical details."
   },
   "web.ui.rogue.blocked": {
     "zh-CN": "已拒绝 · 银行派发 {dispatches}",

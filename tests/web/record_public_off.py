@@ -174,6 +174,17 @@ HISTORY = (
             "Banking responses, routes and server options remain identical."
         ),
     },
+    {
+        "commit": "05313a250bd559d04ada039e6ef603c64d051a2f",
+        "changed": ["i18n"],
+        "reason": (
+            "C48 and RW-9 item 7: identify the drill's per-row Technical details, "
+            "name the local Streamlit backup interface, and limit the fraud hint "
+            "to simulated verification in both languages. Recorded with C48 "
+            "working-tree changes; only /api/i18n and its Content-Length change. "
+            "Banking responses, routes and server options remain identical."
+        ),
+    },
 )
 
 

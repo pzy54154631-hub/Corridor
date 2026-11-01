@@ -125,7 +125,9 @@ def test_copy_never_claims_to_block_or_detect_fraud(locale):
         assert not re.search(r"\d{5,}", text), key
     footer = UI_MESSAGES["polish.fraud.footer"]
     assert "不会拦截、延迟或改变" in footer["zh-CN"]
-    assert "不能核实对方身份" in footer["zh-CN"]
+    assert "本原型仅演示设备确认与模拟验证" in footer["zh-CN"]
+    assert "不能证明真实身份或核实收款方" in footer["zh-CN"]
+    assert "cannot prove real identity or verify the recipient" in footer["en"]
     assert "does not block, delay or change" in footer["en"]
 
 
