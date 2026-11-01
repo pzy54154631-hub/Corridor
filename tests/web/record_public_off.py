@@ -125,6 +125,15 @@ HISTORY = (
             "Banking response values, route table and server options are unchanged."
         ),
     },
+    {
+        "commit": "c58f81a4df8e50c8cc33381af70f3af8f6b9e568",
+        "changed": ["i18n"],
+        "reason": (
+            "C40 and RW-9 item 7: add the bilingual short label for the permanent "
+            "header rogue entry. Recorded with C40 working-tree changes; only /api/i18n "
+            "and its Content-Length change. Banking responses and routes are unchanged."
+        ),
+    },
 )
 
 

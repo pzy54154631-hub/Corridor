@@ -5,6 +5,7 @@ import * as phoneApp from "./phone-app.js";
 import * as device from "./device.js";
 import * as evidence from "./evidence.js";
 import * as lab from "./lab.js";
+import { openRogue } from "./rogue.js";
 
 const NARROW = "(max-width: 1023px)";
 const WIDE = "(min-width: 1360px)";
@@ -117,6 +118,12 @@ function headerView(state, ctx) {
         el("p", { class: "brand-name" }, t("web.ui.stage.title")),
         el("p", { class: "brand-sub" }, t("web.ui.stage.subtitle")))),
     el("div", { class: "header-controls" },
+      el("button", {
+        type: "button",
+        class: "btn btn-primary btn-md",
+        "data-testid": "rogue-header-entry",
+        on: { click: () => openRogue(ctx) },
+      }, t("web.ui.rogue.entry")),
       // The authorization lab is a judge-view tool behind its own capability (R2).
       labAllowed(state) ? c.button({
         label: t(store.ui.labOpen ? "web.ui.lab.back" : "web.ui.lab.entry"),

@@ -3,6 +3,7 @@ export function openRogue(ctx) {
   const { h, t } = ctx;
   if (document.querySelector('[data-testid="rogue-panel"]')) return;
   const origin = document.activeElement;
+  const originId = origin?.getAttribute("data-testid");
   let timer = null;
   let report = null;
   const rows = h("ol", { class: "rogue-rows", "data-testid": "rogue-rows" });
@@ -33,7 +34,9 @@ export function openRogue(ctx) {
     }, close: () => {
       clearTimeout(timer);
       dialog.remove();
-      if (origin?.isConnected) origin.focus();
+      const returnTo = origin?.isConnected ? origin : originId
+        ? document.querySelector(`[data-testid="${CSS.escape(originId)}"]`) : null;
+      returnTo?.focus({ preventScroll: true });
     } },
   },
   h("header", { class: "rogue-banner" }, h("div", { class: "rogue-head" },

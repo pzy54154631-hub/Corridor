@@ -311,6 +311,7 @@
   "web.ui.evidence.outcome.accept": {"en": "Accept", "zh-CN": "通过"},
   "web.ui.evidence.outcome.escalate": {"en": "Escalate", "zh-CN": "升级"},
   "web.ui.evidence.outcome.reject": {"en": "Reject", "zh-CN": "拒绝"},
+  "web.ui.rogue.entry": {"zh-CN": "让模型叛变", "en": "Go rogue"},
   "web.ui.rogue.title": {
     "zh-CN": "让模型叛变，看它能不能动钱",
     "en": "Let the model go rogue"

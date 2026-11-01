@@ -68,6 +68,10 @@ export function update(root, state, ctx) {
         el(ctx, "div", { class: "scr-login-mark" }, state.session.bank_name),
         el(ctx, "h2", { class: "scr-login-title" }, vm.title),
         para(ctx, vm.intro, "scr-login-intro"),
+        button(ctx, {
+          label: ctx.t("web.ui.rogue.title"), kind: "secondary", size: "lg",
+          testid: "rogue-entry", onClick: () => openRogue(ctx),
+        }),
         facts(ctx),
       ),
       el(
@@ -82,10 +86,6 @@ export function update(root, state, ctx) {
           onClick: () => ctx.actions.login(),
         }),
         para(ctx, vm.caption, "scr-hint scr-login-caption"),
-        button(ctx, {
-          label: ctx.t("web.ui.rogue.title"), kind: "secondary", size: "lg",
-          testid: "rogue-entry", onClick: () => openRogue(ctx),
-        }),
       ),
     );
   }

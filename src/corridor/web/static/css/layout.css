@@ -1216,8 +1216,28 @@ button.planner-badge:hover {
   }
 
   .stage-header {
-    position: static;
+    position: relative;
     flex-wrap: wrap;
+  }
+
+  .header-controls {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .stage-header > .brand {
+    max-width: calc(100% - 104px);
+    min-height: 40px;
+  }
+
+  .stage-header [data-testid="rogue-header-entry"] {
+    position: absolute;
+    top: var(--sp-2);
+    right: var(--sp-4);
+  }
+
+  .stage-header .btn {
+    padding: 0 var(--sp-2);
   }
 
   .stage-main {

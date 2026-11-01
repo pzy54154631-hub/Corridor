@@ -42,6 +42,12 @@
   color: rgba(255, 255, 255, 0.88);
 }
 
+.scr-login-hero > .btn {
+  width: 100%;
+  margin-top: var(--sp-3);
+  white-space: normal;
+}
+
 .scr-login-actions {
   display: flex;
   flex-direction: column;
@@ -54,6 +60,28 @@
 
 .scr-login-caption {
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .scr-login {
+    padding-top: 0;
+  }
+
+  .scr-login-hero {
+    padding-top: var(--sp-2);
+  }
+
+  .scr-login-title {
+    margin: var(--sp-1) 0;
+  }
+
+  .scr-login-intro {
+    line-height: 1.35;
+  }
+
+  .scr-login-hero > .btn {
+    margin-top: var(--sp-2);
+  }
 }
 
 /* Conversation --------------------------------------------------------- */
