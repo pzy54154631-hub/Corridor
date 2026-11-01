@@ -57,7 +57,8 @@ export function update(root, state, ctx) {
     refs.sig = null;
     return;
   }
-  const sig = JSON.stringify([state.generation, vm, state.session.bank_name, state.session.assistant_name]);
+  const sig = JSON.stringify([state.generation, vm, state.session.bank_name,
+    state.session.assistant_name, ctx.store.i18n?.locale, ctx.store.i18n?.view]);
   if (sig !== refs.sig) {
     refs.sig = sig;
     refs.body.replaceChildren(
@@ -67,7 +68,7 @@ export function update(root, state, ctx) {
         { class: "scr-login-hero" },
         el(ctx, "div", { class: "scr-login-mark" }, state.session.bank_name),
         el(ctx, "h2", { class: "scr-login-title" }, vm.title),
-        para(ctx, vm.intro, "scr-login-intro"),
+        para(ctx, ctx.t("web.ui.login.intro"), "scr-login-intro"),
         button(ctx, {
           label: ctx.t("web.ui.rogue.title"), kind: "secondary", size: "lg",
           testid: "rogue-entry", onClick: () => openRogue(ctx),

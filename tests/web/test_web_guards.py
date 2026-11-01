@@ -470,6 +470,7 @@ def test_static_phone_and_main_page_keep_to_their_documents():
 
 
 CONTRACT_ATTRIBUTES = {
+    "scope",  # Native table headers associate each verdict with its row and column.
     "class",
     "id",
     "role",

@@ -7,14 +7,14 @@
 .scr-login {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   min-height: 100%;
-  gap: var(--sp-6);
-  padding: var(--sp-6) var(--sp-5);
+  gap: var(--sp-3);
+  padding: var(--sp-4);
 }
 
 .scr-login-hero {
-  padding: var(--sp-8) var(--sp-5);
+  padding: var(--sp-4);
   border-radius: var(--r-lg);
   color: #fff;
   background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
@@ -64,11 +64,13 @@
 
 @media (max-width: 767px) {
   .scr-login {
-    padding-top: 0;
+    padding: 0 var(--sp-3) var(--sp-2);
+    gap: var(--sp-2);
+    justify-content: flex-start;
   }
 
   .scr-login-hero {
-    padding-top: var(--sp-2);
+    padding: var(--sp-2) var(--sp-3);
   }
 
   .scr-login-title {
@@ -1301,8 +1303,8 @@
   display: grid;
   grid-template-columns: 36px minmax(0, 1fr);
   align-items: center;
-  gap: var(--sp-3);
-  padding: var(--sp-3);
+  gap: var(--sp-2);
+  padding: var(--sp-2);
   border-radius: var(--r-md);
   background: var(--surface);
   border: 1px solid var(--line);
@@ -1333,6 +1335,18 @@
   line-height: 1.5;
 }
 
+@media (max-width: 767px) {
+  .scr-login-mark { display: none; }
+  .scr-login-title { font-size: 18px; line-height: 1.2; }
+  .scr-login-intro { font-size: 12px; }
+  .scr-login .btn-lg { min-height: 44px; }
+  .scr-login-facts { gap: 4px; }
+  .scr-login-fact { grid-template-columns: 24px minmax(0, 1fr); padding: 3px 8px; }
+  .scr-login-fact-icon { width: 24px; height: 24px; }
+  .scr-login-fact-text { display: none; }
+  .scr-login-caption { margin: 0; font-size: 11px; }
+}
+
 /* Model suggestions under a clarification: one full-width question per row. */
 .scr-suggest .scr-suggest-row {
   display: flex;
@@ -1347,55 +1361,96 @@
   text-align: left;
 }
 
-/* Read-only mechanism demonstration; the bank stage keeps its existing geometry. */
-.rogue-panel { box-sizing: border-box; position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: #f5f3f9; color: #241b38; overflow-y: auto; overflow-wrap: anywhere; }
+/* The drill is a paper-like report, with its own bounded page. */
+.rogue-panel { box-sizing: border-box; position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 36px 24px; border: 0; background: #f1f3f4; color: var(--ink-900); overflow-y: auto; overflow-wrap: anywhere; }
 .rogue-panel::backdrop { background: #12232dcc; }
-.rogue-banner { padding: 20px max(24px, calc((100% - 1240px) / 2)); background: #32204f; color: #fff; }
-.rogue-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.rogue-head h2 { margin: 0; font-size: 36px; line-height: 1.3; color: inherit; }
-.rogue-head button { flex-shrink: 0; background: #fff; color: #32204f; }
-.rogue-banner p { margin: 12px 0 0; font-size: 16px; line-height: 1.6; color: #eee8f8; }
-.rogue-body { max-width: 1240px; margin: 0 auto; padding: 16px 24px 20px; box-sizing: content-box; }
-.rogue-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.rogue-stat { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 0; padding: 14px 24px; border: 1px solid #ddd5e9; border-radius: 14px; background: #fff; }
-.rogue-stat span { font-size: 18px; font-weight: 600; }
-.rogue-stat strong { font-size: 48px; line-height: 1.1; color: #186247; font-variant-numeric: tabular-nums; }
-.rogue-stats[aria-busy="true"] strong { font-size: 24px; color: #706182; }
-.rogue-rows { padding: 0; margin: 16px 0; list-style: none; display: grid; gap: 6px; }
-.rogue-rows li { border: 1px solid #e0dbe7; border-left: 4px solid #318465; border-radius: 10px; padding: 7px 16px; background: #fff; min-width: 0; }
-.rogue-row-head, .rogue-intent, .rogue-verdict { display: flex; align-items: center; gap: 12px; min-width: 0; }
-.rogue-row-head { justify-content: space-between; }
-.rogue-intent strong { font-size: 17px; line-height: 1.4; }
-.rogue-tag { flex-shrink: 0; border-radius: 5px; padding: 3px 7px; font-size: 12px; font-weight: 600; line-height: 1.4; }
-.rogue-attack-tag { background: #fff0f0; color: #a5303f; }
-.rogue-verdict-tag { background: #e8f5ed; color: #176143; }
-.rogue-verdict code { font-size: 13px; white-space: normal; color: #466452; }
-.rogue-result { margin: 4px 0 0; font-size: 13px; line-height: 1.5; color: #52635b; }
-.rogue-rows details { font-size: 12px; color: #6c6279; }
-.rogue-rows summary { cursor: pointer; width: fit-content; line-height: 1.5; }
-.rogue-rows details p { margin: 6px 0 0; }
-.rogue-rows .rogue-pending { border-left-color: #8b70ad; min-height: 63px; }
-.rogue-pending .rogue-verdict-tag { background: #f0eafa; color: #5c3c86; }
-.rogue-rows .rogue-failed { border-color: #b72323; background: #fff3f3; }
-.rogue-failed .rogue-verdict-tag, .rogue-stat-failed strong { color: #a11b2d; }
-.rogue-failed .rogue-verdict-tag { background: #ffe0e3; }
-.rogue-limit { margin: 12px 0; padding: 12px 16px; background: #fff0d8; border-radius: 10px; font-size: 13px; line-height: 1.6; color: #62431d; }
-.rogue-footer { display: flex; align-items: center; gap: 24px; }
-.rogue-footer p { flex: 1; margin: 0; line-height: 1.6; color: #6c6279; }
-.rogue-footer button { flex-shrink: 0; }
+.rogue-paper { max-width: 1080px; margin: 0 auto; padding: 32px 40px; background: #fff; }
+.rogue-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.rogue-head h2 { margin: 0; font: 600 34px/1.4 var(--font-serif); }
+.rogue-head button { flex-shrink: 0; }
+.rogue-banner p { margin: 16px 0 24px; font-size: 15px; line-height: 1.75; }
+.rogue-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 26px 0 30px; }
+.rogue-stat { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 6px 16px; min-width: 0; }
+.rogue-stat + .rogue-stat { border-left: 1px solid #c9cfd3; }
+.rogue-stat span { font-size: 14px; }
+.rogue-stat strong { font: 500 42px/1.2 var(--font-serif); font-variant-numeric: tabular-nums; }
+.rogue-stats[aria-busy="true"] strong { font-size: 20px; }
+.rogue-table { width: 100%; table-layout: fixed; border-collapse: collapse; border-top: 2px solid #34434b; border-bottom: 2px solid #34434b; font-size: 13px; line-height: 1.6; }
+.rogue-table caption { text-align: left; padding: 0 0 12px; font-weight: 600; font-size: 14px; }
+.rogue-table thead { border-bottom: 1px solid #7b858c; }
+.rogue-table th, .rogue-table td { border: 0; padding: 10px 8px; background: transparent; text-align: left; vertical-align: top; }
+.rogue-table th { font-weight: 600; }
+.rogue-table th:nth-child(1) { width: 14%; }
+.rogue-table th:nth-child(2) { width: 27%; }
+.rogue-table th:nth-child(3) { width: 23%; }
+.rogue-table th:nth-child(4) { width: 12%; }
+.rogue-table th:nth-child(5), .rogue-table th:nth-child(6) { width: 12%; }
+.rogue-table code { font-size: 11px; white-space: normal; overflow-wrap: anywhere; background: none; padding: 0; }
+.rogue-rows tr { animation: rogue-appear .5s ease-out; }
+.rogue-rows details { margin-top: 2px; font-size: 11px; color: var(--ink-600); }
+.rogue-rows summary { cursor: pointer; width: fit-content; }
+.rogue-rows details p { margin: 5px 0 0; }
+.rogue-failed td:nth-child(4), .rogue-stat-failed strong { text-decoration: underline; font-weight: 700; }
+.rogue-limit, .rogue-prior { margin: 12px 0 0; font-size: 12px; line-height: 1.7; color: var(--ink-600); }
+.rogue-footer { display: flex; justify-content: flex-end; margin-top: 18px; }
 [data-testid="rogue-entry"] { white-space: normal; height: auto; }
-@media (max-width: 700px) {
-  .rogue-banner { padding: 20px 16px; }
-  .rogue-head { align-items: flex-start; gap: 10px; }
+@keyframes rogue-appear { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .rogue-rows tr { animation: none; } }
+@media (max-width: 767px) {
+  .rogue-panel { padding: 12px; }
+  .rogue-paper { padding: 20px 16px; }
+  .rogue-head { align-items: flex-start; gap: 8px; }
   .rogue-head h2 { font-size: 26px; }
-  .rogue-banner p { font-size: 14px; }
-  .rogue-body { padding: 16px; }
-  .rogue-stats { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .rogue-stat { padding: 12px 20px; }
-  .rogue-row-head { align-items: flex-start; flex-direction: column; gap: 8px; }
-  .rogue-intent { align-items: flex-start; flex-direction: column; gap: 6px; }
-  .rogue-verdict { flex-wrap: wrap; gap: 8px; }
-  .rogue-rows li { padding: 14px; }
-  .rogue-rows summary { padding: 6px 0; }
-  .rogue-footer { flex-direction: column; align-items: stretch; gap: 16px; }
+  .rogue-head button { min-width: 48px; padding: 0 10px; }
+  .rogue-banner p { font-size: 13px; margin: 14px 0 20px; }
+  .rogue-stats { margin: 20px 0 24px; }
+  .rogue-stat { flex-direction: column; gap: 8px; padding: 4px 6px; text-align: center; }
+  .rogue-stat span { font-size: 11px; }
+  .rogue-stat strong { font-size: 30px; }
+  .rogue-stats[aria-busy="true"] strong { font-size: 16px; }
+  .rogue-table, .rogue-table caption, .rogue-rows { display: block; }
+  .rogue-table caption { padding-top: 12px; }
+  .rogue-table thead { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+  .rogue-rows tr { display: block; padding: 12px 0; border-top: 1px solid #c9cfd3; }
+  .rogue-rows th, .rogue-rows td { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 8px; width: auto !important; padding: 4px 0; }
+  .rogue-rows [data-label]::before { content: attr(data-label); font-size: 12px; color: var(--ink-600); font-weight: 400; }
+  .rogue-rows details { grid-column: 2; }
+  .rogue-rows summary { padding: 4px 0; }
+}
+
+/* Restrained typography on the landing and idle-device surfaces only. */
+.scr-login { gap: 14px; }
+.scr-login-hero { background: #fff; color: var(--ink-900); border: 1px solid var(--line); border-radius: 4px; box-shadow: none; padding: 22px; }
+.scr-login-mark { color: var(--brand-700); }
+.scr-login-title { font: 600 27px/1.45 var(--font-serif); margin: 12px 0; }
+.scr-login-intro { color: var(--ink-600); font-size: 13px; line-height: 1.65; }
+.scr-login-facts { gap: 0; margin-top: 16px; }
+.scr-login-fact { border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 10px 0; background: none; }
+.scr-login-fact-icon { background: none; border-radius: 0; }
+.scr-login-fact-text { display: block; }
+.scr-login .btn { border-radius: 4px; box-shadow: none; }
+@media (max-width: 767px) {
+  .scr-login { padding: 0 12px 8px; gap: 8px; }
+  .scr-login-hero { padding: 8px 14px; }
+  .scr-login-title { font-size: 20px; line-height: 1.3; margin: 4px 0 6px; }
+  .scr-login-intro { font-size: 12px; line-height: 1.5; }
+  .scr-login-facts { margin-top: 8px; }
+  .scr-login-fact { padding: 4px 0; gap: 8px; }
+  .scr-login-fact-title { font-size: 12px; }
+  .scr-login-fact-text { display: block; font-size: 11px; line-height: 1.4; }
+  html[lang="en"] .scr-login-title { font-size: 19px; }
+  html[lang="en"] .scr-login-intro { font-size: 11px; line-height: 1.4; }
+  html[lang="en"] .scr-login { gap: 6px; }
+  html[lang="en"] .scr-login-hero { padding-top: 6px; padding-bottom: 6px; }
+  html[lang="en"] .scr-login-facts { margin-top: 6px; }
+  html[lang="en"] .scr-login-fact { padding: 3px 0; }
+}
+
+@media (min-width: 768px) {
+  html[lang="en"] .scr-login-hero { padding: 14px 18px; }
+  html[lang="en"] .scr-login-title { font-size: 22px; line-height: 1.25; margin: 8px 0; }
+  html[lang="en"] .scr-login-intro { font-size: 12px; line-height: 1.45; }
+  html[lang="en"] .scr-login-facts { margin-top: 10px; }
+  html[lang="en"] .scr-login-fact { padding: 7px 0; }
+  html[lang="en"] .scr-login-fact-text { font-size: 11px; line-height: 1.4; }
 }

@@ -134,6 +134,46 @@ HISTORY = (
             "and its Content-Length change. Banking responses and routes are unchanged."
         ),
     },
+    {
+        "commit": "fa3043e2350da2608bc6fd75ff7b9a3d933680ec",
+        "changed": ["i18n"],
+        "reason": (
+            "C41 and RW-9 item 7: shorten the bilingual landing copy and add the idle "
+            "device introduction and three confirmation steps. Recorded with C41 "
+            "working-tree changes; only /api/i18n and its Content-Length change. "
+            "Banking responses, routes and server options remain unchanged."
+        ),
+    },
+    {
+        "commit": "b4af7f621cfe6def762dc00a6618ebd41c3a69cb",
+        "changed": ["i18n", "login.title"],
+        "reason": (
+            "C42 and RW-9 item 7: use Compromised-Model Drill terminology, complete "
+            "bilingual landing and device descriptions, and academic table labels. "
+            "Recorded with C42 working-tree changes. The landing title and i18n "
+            "catalogue change; authorization results, routes and server options do not."
+        ),
+    },
+    {
+        "commit": "77d94dc26949375e95efb75c19e3c36786edf55c",
+        "changed": ["i18n"],
+        "reason": (
+            "C43 and RW-9 item 7: clarify the bilingual synthetic-attack limitation and "
+            "replace informal authorization-lab instructions. Recorded with C43 "
+            "working-tree changes; only the i18n response changes. Authorization "
+            "results, routes and server options remain identical."
+        ),
+    },
+    {
+        "commit": "cc690d85ffc8abfefb26e8f1572a916efbc4f6f4",
+        "changed": ["i18n"],
+        "reason": (
+            "C45 and RW-9 item 7: use confirmation-card wording in six bilingual "
+            "customer explanations while retaining the judge text. Recorded with C45 "
+            "working-tree changes; only /api/i18n and its Content-Length change. "
+            "Banking responses, routes and server options remain identical."
+        ),
+    },
 )
 
 

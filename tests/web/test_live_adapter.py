@@ -371,6 +371,36 @@ def test_the_panel_before_any_post_reads_a_fresh_session_and_keeps_none(hosted, 
     assert ws.live is None and not list(journal.glob("*/session-*"))
 
 
+@pytest.mark.parametrize("public", [False, True])
+@pytest.mark.parametrize("view", ["customer", "judge"])
+@pytest.mark.parametrize("locale", ["zh-CN", "en"])
+def test_deployment_credential_copy_is_local_judge_only(
+    audience, monkeypatch, tmp_path, public, view, locale
+):
+    from corridor.ui.live_config import SITE_DEPLOYMENTS, Credential, LiveConfig
+    from corridor.web.public import DEPLOYMENTS as allowed
+
+    config = LiveConfig(enabled=True, env_dir=tmp_path)
+    monkeypatch.setattr(live, "_config", lambda: (config, False))
+    monkeypatch.setattr(live_runtime.LiveSession, "credential_status", lambda self, item: "ok")
+    for module in (live, live_runtime):
+        monkeypatch.setattr(module, "read_credential", lambda path: Credential("test-only"))
+    ws = web_session(view, locale)
+    ws.public = public
+    ws.public_deployments = allowed if public else None
+    audience(view, locale)
+    items = live.view(ws)["deployments"]
+    table = SITE_DEPLOYMENTS if public else DEPLOYMENTS
+    assert items
+    assert {item["id"] for item in items} == (allowed if public else {i.id for i in table})
+    for item in items:
+        assert item["label"] == next(i.label for i in table if i.id == item["id"])
+        if view == "judge" and not public:
+            assert item["credential_text"] == tr("live.credential.ok")
+        else:
+            assert "credential_text" not in item
+
+
 def test_unlocking_and_switching_both_ways_at_the_boundary(hosted, audience, monkeypatch):
     FakeModel(monkeypatch)
     hosted()

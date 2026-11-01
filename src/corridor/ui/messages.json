@@ -2547,10 +2547,7 @@
     "zh-CN": "简体中文",
     "en": "简体中文"
   },
-  "home_title": {
-    "zh-CN": "对话办业务，逐项看清再授权。",
-    "en": "Bank by conversation, with facts you can verify."
-  },
+  "home_title": {"zh-CN": "以自然语言办理业务，逐笔核验后授权", "en": "Bank in natural language, with authorization after verification"},
   "home_intro": {
     "zh-CN": "从自然语言转账开始，体验账单分析、理财、卡片与订阅管理、生日任务联动。每笔业务遵守权限分级，执行结果以已核验回执为准。",
     "en": "Start with a transfer request, then explore bills, wealth, cards, subscriptions and birthday plans. Every operation follows its permission tier; outcomes come from verified receipts."

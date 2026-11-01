@@ -170,6 +170,7 @@ def test_customer_visible_copy_has_no_internal_words():
             continue
         for word in INTERNAL:
             assert word.lower() not in text.lower(), (key, word)
+        assert "canonical card" not in text.lower(), key
 
 
 def test_the_view_model_copy_names_self_reports_as_such():

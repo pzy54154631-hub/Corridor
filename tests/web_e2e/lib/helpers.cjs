@@ -295,6 +295,12 @@ async function expectNoRawKeys(page) {
 
 async function assertCornerOnTop(page) {
   const corner = page.locator(T('corner-notice'));
+  if (page.viewportSize().width <= 767) {
+    await expect(corner).toBeHidden();
+    await expect(page.locator('.status-label')).toContainText(/合成|synthetic/);
+    if (MODE === 'public') await expect(page.locator(T('public-banner')).first()).toContainText(/合成|synthetic/);
+    return;
+  }
   await expect(corner).toBeVisible();
   const verdict = await corner.evaluate((element) => {
     // The corner is pointer-events: none so it never blocks a click; hit-test it with

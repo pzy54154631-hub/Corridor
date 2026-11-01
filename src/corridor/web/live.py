@@ -840,7 +840,7 @@ def view(ws) -> dict:
                 "label": item["label"],
                 **(
                     {"credential_text": tr("live.credential." + item["credential"])}
-                    if judge
+                    if judge and not _public(ws)
                     else {}
                 ),
             }

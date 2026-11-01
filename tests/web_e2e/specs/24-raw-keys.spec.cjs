@@ -26,7 +26,24 @@ async function firstScreen(page, view, locale) {
   await h.openApp(page, { view, locale: locale === 'en' ? locale : undefined });
   const facts = page.locator(`${T('login-facts')} li`);
   await expect(facts).toHaveCount(3);
-  for (const text of await facts.allInnerTexts()) expect(text.trim().length).toBeGreaterThan(8);
+  let titles = locale === 'en'
+    ? ['Canonical card review', 'Authorization by risk tier', 'Receipt verification']
+    : ['规范卡核对', '分级授权', '回执核验'];
+  let descriptions = locale === 'en'
+    ? ['You can review the recipient, amount and authorization scope on the canonical card.', 'The authorization kernel determines the risk tier; higher-risk operations require additional verification.', 'Verified bank receipts establish the result, allowing you to check the execution status.']
+    : ['您可在规范卡上核对操作对象、金额与授权范围。', '授权内核确定风险分级，较高风险的操作须增加验证。', '办理结果以核验后的银行回执为准，您可据此确认执行状态。'];
+  if (view === 'customer') {
+    const customerCopy = text => text.replaceAll('规范卡', '确认卡')
+      .replaceAll('Canonical card', 'Confirmation card').replaceAll('canonical card', 'confirmation card');
+    titles = titles.map(customerCopy);
+    descriptions = descriptions.map(customerCopy);
+  }
+  for (let i = 0; i < titles.length; i++) {
+    await expect(facts.nth(i).locator('.scr-login-fact-title')).toHaveText(titles[i]);
+    await expect(facts.nth(i).locator('.scr-login-fact-title')).toBeVisible();
+    await expect(facts.nth(i).locator('.scr-login-fact-text')).toHaveText(descriptions[i]);
+    await expect(facts.nth(i).locator('.scr-login-fact-text')).toBeVisible();
+  }
   await h.expectNoRawKeys(page);
 }
 

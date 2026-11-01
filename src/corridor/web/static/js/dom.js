@@ -2,7 +2,7 @@
 
 const ATTRS = new Set([
   "class", "id", "role", "type", "name", "value", "checked", "disabled", "for", "inputmode",
-  "autocomplete", "maxlength", "tabindex", "title", "lang", "href", "src",
+  "autocomplete", "maxlength", "tabindex", "title", "lang", "href", "src", "scope",
 ]);
 const PROPS = new Set(["value", "checked", "disabled"]);
 // The SVG namespace is read from the HTML parser so that no URL literal appears in the bundle.

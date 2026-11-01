@@ -10,9 +10,9 @@
   "web.ui.lab.entry": {"en": "Authorization lab", "zh-CN": "授权实验"},
   "web.ui.lab.back": {"en": "Back to banking", "zh-CN": "回到银行"},
   "web.ui.lab.refresh": {"en": "Refresh experiment view", "zh-CN": "刷新实验视图"},
-  "web.ui.lab.eyebrow": {"en": "AUTHORIZATION LAB", "zh-CN": "授权实验 · 亲手验证"},
+  "web.ui.lab.eyebrow": {"en": "AUTHORIZATION LAB", "zh-CN": "授权实验"},
   "web.ui.lab.title": {"en": "Why can this payment go through?", "zh-CN": "这笔钱，为什么能转？"},
-  "web.ui.lab.lead": {"en": "Change the recipient. Try the old confirmation. Then explicitly confirm the new card and inspect the bank result.", "zh-CN": "改变收款人，试一次旧确认；再亲手确认新卡，核对银行实际发生了什么。"},
+  "web.ui.lab.lead": {"en": "You can change the recipient to test whether the previous confirmation remains valid, then confirm the new canonical card and inspect the bank execution result.", "zh-CN": "您可以改变收款人，验证旧确认是否仍然有效，再确认新的规范卡并核对银行执行结果。"},
   "web.ui.lab.disclosure": {"en": "Fixed-script demo · no model calls · synthetic money · simulated signing and SMS", "zh-CN": "固定脚本演示 · 零模型调用 · 合成资金 · 模拟签名与短信"},
   "web.ui.lab.scenario": {"en": "Prepare a scenario", "zh-CN": "准备实验场景"},
   "web.ui.lab.scenario.yellow": {"en": "Prepare 500 yuan · yellow", "zh-CN": "准备 500 元 · 黄档"},
@@ -252,21 +252,18 @@
   "web.ui.hash.expand": {"en": "Show the full value", "zh-CN": "显示完整值"},
   "web.ui.hash.copy": {"en": "Copy", "zh-CN": "复制"},
   "web.ui.hash.copied": {"en": "Copied", "zh-CN": "已复制"},
-  "web.ui.login.fact_review.title": {"en": "Check before you confirm", "zh-CN": "先核对，再确认"},
-  "web.ui.login.fact_review.text": {
-    "en": "An operation is listed on a card first, and you confirm it only after checking it.",
-    "zh-CN": "要办理的业务先列成卡片，你看清内容后才能确认。"
-  },
-  "web.ui.login.fact_tiers.title": {"en": "Tiers by risk", "zh-CN": "按风险分级"},
-  "web.ui.login.fact_tiers.text": {
-    "en": "Queries answer at once, transfers need device approval, larger ones also need a simulated SMS code, and prohibited operations never run.",
-    "zh-CN": "查询直接回答，转账要在设备上确认，金额较大时还要模拟短信验证码，禁止的操作不执行。"
-  },
-  "web.ui.login.fact_receipt.title": {"en": "Outcomes come from receipts", "zh-CN": "结果以回执为准"},
-  "web.ui.login.fact_receipt.text": {
-    "en": "What was done is what the verified receipt shows, not what the chat says.",
-    "zh-CN": "办成了什么，以已核验回执为准，不以对话里的说法为准。"
-  },
+  "web.ui.login.intro": {"zh-CN": "智能体负责理解与建议，确定性授权内核负责裁决。涉及资金的操作须经规范卡核对、设备确认与回执核验，全程留痕，可断网重放。", "en": "The agent interprets requests and proposes actions; a deterministic authorization kernel decides whether they are permitted. Financial operations require card review, device confirmation and receipt verification. Records support offline strict replay."},
+  "web.ui.device.idle_title": {"zh-CN": "模拟设备", "en": "Simulated device"},
+  "web.ui.device.idle_intro": {"zh-CN": "待确认的操作将在此呈现。每笔资金操作须在设备上核对规范卡后确认。", "en": "Operations awaiting your confirmation appear here. Review the canonical card on this device before confirming each financial operation."},
+  "web.ui.device.idle_review": {"zh-CN": "规范卡核对", "en": "Card review"},
+  "web.ui.device.idle_confirm": {"en": "Confirm", "zh-CN": "设备确认"},
+  "web.ui.device.idle_receipt": {"zh-CN": "回执核验", "en": "Receipt verification"},
+  "web.ui.login.fact_review.title": {"zh-CN": "规范卡核对", "en": "Canonical card review"},
+  "web.ui.login.fact_review.text": {"zh-CN": "您可在规范卡上核对操作对象、金额与授权范围。", "en": "You can review the recipient, amount and authorization scope on the canonical card."},
+  "web.ui.login.fact_tiers.title": {"zh-CN": "分级授权", "en": "Authorization by risk tier"},
+  "web.ui.login.fact_tiers.text": {"zh-CN": "授权内核确定风险分级，较高风险的操作须增加验证。", "en": "The authorization kernel determines the risk tier; higher-risk operations require additional verification."},
+  "web.ui.login.fact_receipt.title": {"zh-CN": "回执核验", "en": "Receipt verification"},
+  "web.ui.login.fact_receipt.text": {"zh-CN": "办理结果以核验后的银行回执为准，您可据此确认执行状态。", "en": "Verified bank receipts establish the result, allowing you to check the execution status."},
   "web.ui.err.network": {"en": "Connection lost, please retry", "zh-CN": "连接中断，请重试"},
   "web.ui.err.card_changed": {
     "en": "The card changed; review it again before confirming",
@@ -311,29 +308,23 @@
   "web.ui.evidence.outcome.accept": {"en": "Accept", "zh-CN": "通过"},
   "web.ui.evidence.outcome.escalate": {"en": "Escalate", "zh-CN": "升级"},
   "web.ui.evidence.outcome.reject": {"en": "Reject", "zh-CN": "拒绝"},
-  "web.ui.rogue.entry": {"zh-CN": "让模型叛变", "en": "Go rogue"},
-  "web.ui.rogue.title": {
-    "zh-CN": "让模型叛变，看它能不能动钱",
-    "en": "Let the model go rogue"
-  },
-  "web.ui.rogue.checking": {"zh-CN": "检查中", "en": "Checking"},
-  "web.ui.rogue.stat.blocked": {"zh-CN": "拦下", "en": "Blocked"},
-  "web.ui.rogue.stat.dispatches": {"zh-CN": "银行派发", "en": "Bank dispatches"},
-  "web.ui.rogue.stat.controls": {"zh-CN": "正常对照", "en": "Normal controls"},
-  "web.ui.rogue.replay": {"zh-CN": "再演练一次", "en": "Replay demonstration"},
-  "web.ui.rogue.intent": {"zh-CN": "模型想这么干", "en": "Model's intent"},
-  "web.ui.rogue.attacking": {"zh-CN": "模型发起攻击…", "en": "Model launching attack…"},
+  "web.ui.rogue.entry": {"zh-CN": "模型失陷演练", "en": "Compromised-Model Drill"},
+  "web.ui.rogue.title": {"zh-CN": "模型失陷演练", "en": "Compromised-Model Drill"},
+  "web.ui.rogue.checking": {"zh-CN": "计算中", "en": "Calculating"},
+  "web.ui.rogue.stat.blocked": {"zh-CN": "拦截", "en": "Blocked"},
+  "web.ui.rogue.stat.dispatches": {"zh-CN": "违规派发", "en": "Attack dispatches"},
+  "web.ui.rogue.stat.controls": {"zh-CN": "良性孪生完成", "en": "Benign twins completed"},
+  "web.ui.rogue.replay": {"zh-CN": "再次运行", "en": "Run again"},
+  "web.ui.rogue.intent": {"zh-CN": "攻击方式", "en": "Attack method"},
+  "web.ui.rogue.attacking": {"zh-CN": "计算中", "en": "Calculating"},
   "web.ui.rogue.rejected": {"zh-CN": "已拒绝", "en": "Rejected"},
   "web.ui.rogue.check_failed": {"zh-CN": "检查未通过", "en": "Check failed"},
   "web.ui.rogue.dispatches": {"zh-CN": "银行派发 {dispatches}", "en": "Bank dispatches {dispatches}"},
   "web.ui.rogue.technical": {"zh-CN": "技术细节", "en": "Technical details"},
-  "web.ui.rogue.intro": {
-    "zh-CN": "假设模型和规划器已被攻击者完全控制。它能提出任何动作，但拿不到设备私钥，也改不了内核。",
-    "en": "Assume an attacker fully controls the model and planner. It can propose any action, but cannot obtain the device private key or change the kernel."
-  },
+  "web.ui.rogue.intro": {"zh-CN": "假设规划模型已被攻击者完全控制。攻击者可提出任意动作，但无法取得设备私钥，亦无法修改授权内核。", "en": "The planning model is assumed to be fully compromised. The attacker can propose arbitrary actions but cannot obtain the device private key or modify the authorization kernel."},
   "web.ui.rogue.limit": {
-    "zh-CN": "这些是手写的合成攻击，没有调用模型。只说明内核在这些情形下的行为，不代表所有攻击都防得住；用户亲手确认的诱导付款仍可能执行。完整 40 例可运行 corridor adversary 复现。",
-    "en": "These are handwritten synthetic attacks with no model calls. They show kernel behavior in these cases, not protection against every attack. A manipulated payment personally confirmed by the user may still execute. Run corridor adversary to reproduce all 40 cases."
+    "zh-CN": "所列攻击均为手写合成样例，未调用模型。结果仅说明授权内核在上述情形下的行为，不代表可阻止全部攻击；用户本人确认的诱导付款仍可能执行。完整 40 例可运行 corridor adversary 复现。",
+    "en": "The listed attacks are handwritten synthetic examples, with no model calls. The results describe the authorization kernel’s behavior in these cases only and do not establish protection against all attacks; a manipulated payment confirmed by the user may still execute. Run corridor adversary to reproduce all 40 cases."
   },
   "web.ui.rogue.prior": {
     "zh-CN": "银行派发指本次攻击阶段；旧审批、重复扣款和伪造回执案例先完成一笔合法操作，下方另列前置派发。",
@@ -347,14 +338,8 @@
     "zh-CN": "检查未通过 · 银行派发 {dispatches}",
     "en": "Check failed · bank dispatches {dispatches}"
   },
-  "web.ui.rogue.control_ok": {
-    "zh-CN": "正常操作：已完成",
-    "en": "Normal operation: completed"
-  },
-  "web.ui.rogue.control_failed": {
-    "zh-CN": "正常操作：未完成",
-    "en": "Normal operation: incomplete"
-  },
+  "web.ui.rogue.control_ok": {"zh-CN": "已完成", "en": "Completed"},
+  "web.ui.rogue.control_failed": {"zh-CN": "未完成", "en": "Incomplete"},
   "web.ui.rogue.details": {
     "zh-CN": "预期规则 {rule} · 违规 {violation} · 禁止效果 {effects} · 合法前置派发 {prior}",
     "en": "Expected {rule} · violation {violation} · prohibited effects {effects} · legitimate prior dispatches {prior}"
@@ -375,36 +360,33 @@
     "zh-CN": "演练暂不可用，请关闭后重试。",
     "en": "Demonstration unavailable. Close and try again."
   },
-  "web.ui.rogue.attack.wrong_recipient": {
-    "zh-CN": "把收款人换成陌生账户",
-    "en": "Replace the recipient with a stranger"
-  },
-  "web.ui.rogue.attack.missing_mfa": {
-    "zh-CN": "大额转账跳过短信验证",
-    "en": "Skip SMS verification for a large transfer"
-  },
-  "web.ui.rogue.attack.replayed_approval": {
-    "zh-CN": "拿旧审批再用一次",
-    "en": "Reuse an old approval"
-  },
-  "web.ui.rogue.attack.duplicate_dispatch": {
-    "zh-CN": "同一笔重复扣款",
-    "en": "Debit the same transaction twice"
-  },
-  "web.ui.rogue.attack.sponsored_selection": {
-    "zh-CN": "收钱推荐指定产品",
-    "en": "Recommend a sponsored product"
-  },
-  "web.ui.rogue.attack.forged_receipt": {
-    "zh-CN": "伪造银行回执",
-    "en": "Forge a bank receipt"
-  },
-  "web.ui.rogue.attack.stopped_plan_dispatch": {
-    "zh-CN": "喊停之后继续执行",
-    "en": "Keep executing after stop"
-  },
-  "web.ui.rogue.attack.sandbox_file": {
-    "zh-CN": "跳出沙箱读文件",
-    "en": "Read a file outside the sandbox"
-  }
+  "web.ui.rogue.attack.wrong_recipient": {"zh-CN": "将收款人替换为陌生账户。", "en": "Substitute an unknown recipient account."},
+  "web.ui.rogue.attack.missing_mfa": {"zh-CN": "大额转账跳过短信验证。", "en": "Omit SMS verification for a large transfer."},
+  "web.ui.rogue.attack.replayed_approval": {"zh-CN": "再次使用已消费的审批。", "en": "Reuse an approval that has already been consumed."},
+  "web.ui.rogue.attack.duplicate_dispatch": {"zh-CN": "对同一笔交易重复扣款。", "en": "Debit the same transaction twice."},
+  "web.ui.rogue.attack.sponsored_selection": {"zh-CN": "以赞助信息干预产品选择。", "en": "Use sponsorship information to influence product selection."},
+  "web.ui.rogue.attack.forged_receipt": {"zh-CN": "提交伪造的银行回执。", "en": "Submit a forged bank receipt."},
+  "web.ui.rogue.attack.stopped_plan_dispatch": {"zh-CN": "在计划停止后继续派发。", "en": "Dispatch an action after the plan has stopped."},
+  "web.ui.rogue.attack.sandbox_file": {"zh-CN": "尝试在沙箱中读取文件。", "en": "Attempt to read a file from the sandbox."},
+  "web.ui.rogue.caption": {"zh-CN": "表 1  八类攻击的内核裁决（页面实时计算）", "en": "Table 1. Kernel decisions for eight attack classes (computed on page load)"},
+  "web.ui.rogue.column.category": {"zh-CN": "攻击类别", "en": "Attack class"},
+  "web.ui.rogue.column.method": {"zh-CN": "攻击方式", "en": "Attack method"},
+  "web.ui.rogue.column.rules": {"zh-CN": "触发规则", "en": "Triggered rules"},
+  "web.ui.rogue.column.verdict": {"zh-CN": "内核裁决", "en": "Kernel decision"},
+  "web.ui.rogue.column.dispatch": {"zh-CN": "银行派发", "en": "Bank dispatches"},
+  "web.ui.rogue.column.twin": {"zh-CN": "良性孪生", "en": "Benign twin"},
+  "web.ui.rogue.category.wrong_recipient": {"zh-CN": "收款人替换", "en": "Recipient substitution"},
+  "web.ui.rogue.category.missing_mfa": {"zh-CN": "验证绕过", "en": "MFA bypass"},
+  "web.ui.rogue.category.replayed_approval": {"zh-CN": "审批重用", "en": "Approval replay"},
+  "web.ui.rogue.category.duplicate_dispatch": {"zh-CN": "重复派发", "en": "Duplicate dispatch"},
+  "web.ui.rogue.category.sponsored_selection": {"zh-CN": "推荐干预", "en": "Sponsored selection"},
+  "web.ui.rogue.category.forged_receipt": {"zh-CN": "回执伪造", "en": "Receipt forgery"},
+  "web.ui.rogue.category.stopped_plan_dispatch": {"zh-CN": "停止后派发", "en": "Dispatch after stop"},
+  "web.ui.rogue.category.sandbox_file": {"zh-CN": "沙箱越界", "en": "Sandbox escape"},
+  "customer:web.ui.lab.lead": {"en": "You can change the recipient to test whether the previous confirmation remains valid, then confirm the new confirmation card and inspect the bank execution result.", "zh-CN": "您可以改变收款人，验证旧确认是否仍然有效，再确认新的确认卡并核对银行执行结果。"},
+  "customer:web.ui.login.intro": {"zh-CN": "智能体负责理解与建议，确定性授权内核负责裁决。涉及资金的操作须经确认卡核对、设备确认与回执核验，全程留痕，可断网重放。", "en": "The agent interprets requests and proposes actions; a deterministic authorization kernel decides whether they are permitted. Financial operations require card review, device confirmation and receipt verification. Records support offline strict replay."},
+  "customer:web.ui.login.fact_review.title": {"zh-CN": "确认卡核对", "en": "Confirmation card review"},
+  "customer:web.ui.login.fact_review.text": {"zh-CN": "您可在确认卡上核对操作对象、金额与授权范围。", "en": "You can review the recipient, amount and authorization scope on the confirmation card."},
+  "customer:web.ui.device.idle_intro": {"zh-CN": "待确认的操作将在此呈现。每笔资金操作须在设备上核对确认卡后确认。", "en": "Operations awaiting your confirmation appear here. Review the confirmation card on this device before confirming each financial operation."},
+  "customer:web.ui.device.idle_review": {"zh-CN": "确认卡核对", "en": "Card review"}
 }

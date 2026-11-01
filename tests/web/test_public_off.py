@@ -45,7 +45,12 @@ def test_the_golden_says_why_it_was_recorded_again():
         ["i18n", "routes"],
         ["i18n"],
         ["i18n"],
+        ["i18n"],
+        ["i18n", "login.title"],
+        ["i18n"],
+        ["i18n"],
     ]
+    assert "C45" in later[-1]["reason"] and "RW-9" in later[-1]["reason"]
     assert all(len(item["commit"]) == 40 and item["reason"] for item in later)
     answer = _by_label(RECORDED["responses"])["i18n"]
     strings = json.loads(answer["body"]["json"])["strings"]
@@ -53,7 +58,7 @@ def test_the_golden_says_why_it_was_recorded_again():
         f"web.ui.login.fact_{name}.{part}"
         for name in ("review", "tiers", "receipt")
         for part in ("title", "text")
-    }
+    } | {"web.ui.login.intro"}
 
 
 def test_make_app_without_public_has_no_public_settings():

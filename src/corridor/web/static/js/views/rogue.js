@@ -6,7 +6,12 @@ export function openRogue(ctx) {
   const originId = origin?.getAttribute("data-testid");
   let timer = null;
   let report = null;
-  const rows = h("ol", { class: "rogue-rows", "data-testid": "rogue-rows" });
+  const columns = ["category", "method", "rules", "verdict", "dispatch", "twin"];
+  const rows = h("tbody", { class: "rogue-rows", "data-testid": "rogue-rows" });
+  const table = h("table", { class: "rogue-table" },
+    h("caption", null, t("web.ui.rogue.caption")),
+    h("thead", null, h("tr", null, ...columns.map(key =>
+      h("th", { scope: "col" }, t("web.ui.rogue.column." + key))))), rows);
   const summary = h("p", { class: "sr-only", role: "status", "data-testid": "rogue-summary" });
   const stats = ["blocked", "dispatches", "controls"].map((key) => {
     const value = h("strong", { "data-testid": "rogue-stat-" + key }, t("web.ui.rogue.checking"));
@@ -39,33 +44,32 @@ export function openRogue(ctx) {
       returnTo?.focus({ preventScroll: true });
     } },
   },
-  h("header", { class: "rogue-banner" }, h("div", { class: "rogue-head" },
+  h("article", { class: "rogue-paper" }, h("header", { class: "rogue-banner" }, h("div", { class: "rogue-head" },
     h("h2", { id: "rogue-title" }, t("web.ui.rogue.title")), close),
   h("p", null, t("web.ui.rogue.intro"))),
   h("div", { class: "rogue-body" },
     h("div", { class: "rogue-stats", "data-testid": "rogue-stats", "aria-busy": "true" }, ...stats.map(s => s.node)),
-    rows, summary,
+    table, summary,
     h("p", { class: "rogue-limit", "data-testid": "rogue-limit" }, t("web.ui.rogue.limit")),
-    h("footer", { class: "rogue-footer" }, h("p", { class: "small" }, t("web.ui.rogue.prior")), replay)));
+    h("p", { class: "rogue-prior small" }, t("web.ui.rogue.prior")),
+    h("footer", { class: "rogue-footer" }, replay))));
 
   function renderRow(row, pending) {
     const state = pending ? "pending" : row.passed ? "ok" : "failed";
-    return h("li", { "data-testid": "rogue-row", class: "rogue-" + state },
-      h("div", { class: "rogue-row-head" },
-        h("div", { class: "rogue-intent" }, h("span", { class: "rogue-tag rogue-attack-tag" }, t("web.ui.rogue.intent")),
-          h("strong", null, t("web.ui.rogue.attack." + row.attack))),
-        h("div", { class: "rogue-verdict" },
-          h("span", { class: "rogue-tag rogue-verdict-tag" }, t(pending ? "web.ui.rogue.attacking" : row.passed ? "web.ui.rogue.rejected" : "web.ui.rogue.check_failed")),
-          pending ? null : h("code", null, row.rule_ids.join(" · ")))),
-      pending ? null : h("p", { class: "rogue-result" }, t("web.ui.rogue.dispatches", { dispatches: row.attack_dispatches }), " · ",
-        t(row.benign_completed ? "web.ui.rogue.control_ok" : "web.ui.rogue.control_failed")),
-      pending ? null : h("details", null,
+    const cell = (key, ...children) => h("td", { "data-label": t("web.ui.rogue.column." + key) }, ...children);
+    return h("tr", { "data-testid": "rogue-row", class: "rogue-" + state },
+      h("th", { scope: "row", "data-label": t("web.ui.rogue.column.category") }, t("web.ui.rogue.category." + row.attack)),
+      cell("method", t("web.ui.rogue.attack." + row.attack), h("details", null,
         h("summary", null, t("web.ui.rogue.technical")),
         h("p", null, t("web.ui.rogue.details", {
           rule: row.expected_rule, effects: row.prohibited_effects,
           violation: t(row.oracle_violation ? "web.ui.rogue.yes" : "web.ui.rogue.no"),
           prior: row.legitimate_prior_effects,
-        }))));
+        })))),
+      cell("rules", h("code", null, row.rule_ids.join(" · "))),
+      cell("verdict", t(row.passed ? "web.ui.rogue.rejected" : "web.ui.rogue.check_failed")),
+      cell("dispatch", String(row.attack_dispatches)),
+      cell("twin", t(row.benign_completed ? "web.ui.rogue.control_ok" : "web.ui.rogue.control_failed")));
   }
   function finish() {
     const s = report.summary;
@@ -98,14 +102,12 @@ export function openRogue(ctx) {
     function advance() {
       if (!dialog.open) return;
       const row = report.rows[index++];
-      const pending = renderRow(row, true);
-      rows.append(pending);
+      rows.append(renderRow(row, false));
       timer = setTimeout(() => {
         if (!dialog.open) return;
-        pending.replaceWith(renderRow(row, false));
         if (index < report.rows.length) advance();
         else finish();
-      }, 400);
+      }, 500);
     }
     advance();
   }

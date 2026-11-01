@@ -1,5 +1,6 @@
 /* Design tokens. Text on its background is at least 4.5:1; component borders at least 3:1. */
 :root {
+  --font-serif: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "STZhongsong", "STSong", SimSun, serif;
   --brand-900: #241a31;
   --brand-800: #2f2341;
   --brand-700: #392b49;

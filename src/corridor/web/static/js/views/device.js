@@ -2,6 +2,7 @@
 // Gestures happen only here, and each one carries the token the server issued for this step.
 
 import { render } from "../dom.js";
+import { openRogue } from "./rogue.js";
 
 let parts = null;
 let lastActive = null;
@@ -263,10 +264,17 @@ function queueView(state, ctx) {
 }
 
 function idleView(state, ctx) {
-  const { h, icons } = ctx;
+  const { h, icons, t } = ctx;
   return h("div", { class: "device-idle" },
-    h("span", { class: "idle-icon", "aria-hidden": "true" }, icons.shield(40)),
-    h("p", { class: "idle-text" }, state.device.idle_text));
+    h("span", { class: "idle-icon", "aria-hidden": "true" }, icons.named("device", 36)),
+    h("h3", { class: "idle-title", "data-testid": "device-idle-title" }, t("web.ui.device.idle_title")),
+    h("p", { class: "idle-text" }, t("web.ui.device.idle_intro")),
+    h("ol", { class: "device-idle-steps" },
+      [["cards", "web.ui.device.idle_review"], ["shield", "web.ui.device.idle_confirm"], ["check", "web.ui.device.idle_receipt"]].map(([icon, key]) =>
+        h("li", null, h("span", { "aria-hidden": "true" }, icons.named(icon, 24)),
+          h("span", null, t(key))))),
+    h("button", { type: "button", class: "btn btn-secondary", "data-testid": "rogue-device-entry",
+      on: { click: () => openRogue(ctx) } }, t("web.ui.rogue.entry")));
 }
 
 function smsLabel(ctx) {

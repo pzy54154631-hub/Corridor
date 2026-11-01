@@ -110,6 +110,17 @@ def scan(url, body, view):
     return found
 
 
+def test_card_term_is_rejected_even_in_explanatory_copy():
+    key = "web.ui.login.intro"
+    for url, body in (
+        ("/api/i18n", {"strings": {key: "规范卡"}}),
+        ("/api/i18n", {"strings": {key: "规范卡审计链"}}),
+        ("/api/i18n", {"strings": {"other": "规范卡"}}),
+        ("/api/state", {key: "规范卡"}),
+    ):
+        assert any("internal word" in problem for problem in scan(url, body, "customer"))
+
+
 @pytest.fixture
 def customer(client, monkeypatch):
     monkeypatch.setattr(web_package, "FEATURES", web_package.FEATURES | EXT)

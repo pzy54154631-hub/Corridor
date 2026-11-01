@@ -66,6 +66,12 @@ body {
   gap: var(--sp-2);
 }
 
+.stage-header > [data-testid="rogue-header-entry"] {
+  flex: none;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
 .header-sep {
   width: 1px;
   height: 24px;
@@ -518,6 +524,23 @@ button.planner-badge:hover {
 .idle-text {
   max-width: 260px;
   font-size: var(--fs-14);
+}
+
+.idle-title { margin: 0; color: var(--ink-900); font-size: 22px; }
+.device-idle .idle-text { margin: 0; line-height: 1.7; text-wrap: balance; }
+.device-idle-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-2);
+  width: 100%;
+  margin: var(--sp-4) 0;
+  padding: 0;
+  list-style: none;
+}
+.device-idle-steps li { display: grid; justify-items: center; gap: var(--sp-2); font-size: 12px; }
+.device-idle-steps li > span:first-child {
+  display: grid; place-items: center; width: 48px; height: 48px;
+  border-radius: var(--r-md); background: var(--brand-100); color: var(--brand-600);
 }
 
 .device-task {
@@ -1136,6 +1159,7 @@ button.planner-badge:hover {
 
 /* Below 768: best effort; the app fills the screen without the frame */
 @media (max-width: 767px) {
+  .stage > .corner { display: none; }
   /* One scroll owner for the sheet: the card never shrinks behind the SMS inbox. */
   .col-device {
     max-height: calc(100dvh - 12px);
@@ -1217,23 +1241,25 @@ button.planner-badge:hover {
 
   .stage-header {
     position: relative;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
   }
 
   .header-controls {
+    grid-column: 1 / -1;
     width: 100%;
     justify-content: flex-start;
   }
 
   .stage-header > .brand {
-    max-width: calc(100% - 104px);
+    max-width: none;
     min-height: 40px;
   }
 
   .stage-header [data-testid="rogue-header-entry"] {
-    position: absolute;
-    top: var(--sp-2);
-    right: var(--sp-4);
+    height: 40px;
+    font-size: 12px;
   }
 
   .stage-header .btn {
@@ -1388,4 +1414,34 @@ button.planner-badge:hover {
   bottom: 8px;
   padding: 4px 10px;
   font-size: 11px;
+}
+
+/* The idle device describes the same authorization sequence as the card. */
+.idle-title, .device-title { font-family: var(--font-serif); }
+.device-idle .idle-icon { border-radius: 4px; background: none; }
+.device-idle-steps { position: relative; gap: 0; }
+.device-idle-steps::before { content: ""; position: absolute; left: 16.67%; right: 16.67%; top: 24px; border-top: 1px solid var(--line); }
+.device-idle-steps li { position: relative; }
+.device-idle-steps li > span:first-child { border-radius: 0; background: var(--surface); }
+@media (max-width: 767px) {
+  html[lang="en"] .stage-header [data-testid="rogue-header-entry"] { font-size: 11px; }
+  html[lang="en"] .stage-header .brand-name { font-size: 14px; }
+  .header-controls { gap: 4px; }
+  .header-controls .segmented { flex: 1 0 calc(50% - 2px); min-width: 0; order: -1; height: 40px; }
+  .header-controls .segment { flex: 1; min-height: 32px; padding: 0 6px; font-size: 12px; white-space: nowrap; }
+  html[lang="en"] .header-controls .segment { font-size: 11px; padding: 0 2px; }
+  .header-controls .btn, .header-controls .planner-badge { height: 40px; white-space: nowrap; border-radius: var(--r-sm); }
+  .header-controls .btn { padding: 0 6px; font-size: 11px; gap: 4px; }
+  .header-controls .planner-badge { padding: 6px; font-size: 11px; }
+  .is-login .header-controls .btn { padding: 0 4px; font-size: 10px; gap: 3px; }
+  .is-login .header-controls .btn svg { width: 13px; height: 13px; }
+  .is-login .header-controls .planner-badge { padding: 4px; font-size: 10px; gap: 3px; }
+  .is-login .judge-strip { padding: 6px 12px; font-size: 11px; line-height: 1.45; }
+  .is-login .public-banner { padding: 5px 12px; font-size: 11px; }
+  .is-login .public-details { padding: 5px 12px; font-size: 11px; }
+  .is-login .status-bar { height: 28px; }
+  .is-login .app-header { padding: 4px 16px 8px; }
+}
+@media (max-width: 374px) {
+  .header-controls .segment { font-size: 11px; padding: 0 4px; }
 }

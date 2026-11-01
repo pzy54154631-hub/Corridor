@@ -117,13 +117,13 @@ function headerView(state, ctx) {
       el("div", { class: "brand-text" },
         el("p", { class: "brand-name" }, t("web.ui.stage.title")),
         el("p", { class: "brand-sub" }, t("web.ui.stage.subtitle")))),
+    el("button", {
+      type: "button",
+      class: "btn btn-primary btn-md",
+      "data-testid": "rogue-header-entry",
+      on: { click: () => openRogue(ctx) },
+    }, t("web.ui.rogue.entry")),
     el("div", { class: "header-controls" },
-      el("button", {
-        type: "button",
-        class: "btn btn-primary btn-md",
-        "data-testid": "rogue-header-entry",
-        on: { click: () => openRogue(ctx) },
-      }, t("web.ui.rogue.entry")),
       // The authorization lab is a judge-view tool behind its own capability (R2).
       labAllowed(state) ? c.button({
         label: t(store.ui.labOpen ? "web.ui.lab.back" : "web.ui.lab.entry"),
@@ -333,6 +333,7 @@ export function update(root, state, ctx) {
   const judge = state.view === "judge";
   parts.shell.setAttribute("data-view", state.view);
   parts.shell.setAttribute("data-locale", state.locale);
+  parts.shell.classList.toggle("is-login", Boolean(state.login));
   parts.shell.classList.toggle("has-evidence", Boolean(state.evidence));
   parts.shell.classList.toggle("is-lab", Boolean(store.ui.labOpen));
   parts.banner.textContent = state.shell.public_banner || "";
