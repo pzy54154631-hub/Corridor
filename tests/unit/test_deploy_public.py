@@ -186,7 +186,14 @@ def test_the_entry_arguments_and_the_template_give_the_ruled_capacity():
     assert (config.max_sessions, config.idle_seconds, config.evict_idle_after) == (128, 3600, 1800)
     assert config.per_ip_sessions == 16
     assert config.rates["session"] == Rate(30, 20.0)
-    assert config.deployments == {"deepseek-flash"}
+    assert config.deployments == {
+        "deepseek-flash",
+        "deepseek-v4-pro",
+        "zhipu-glm-5.2",
+        "zhipu-glm-5.1",
+        "zhipu-glm-5-turbo",
+        "zhipu-glm-4.7",
+    }
 
 
 # --- environment template -------------------------------------------------------------------

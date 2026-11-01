@@ -57,7 +57,7 @@ from corridor.ui.domestic_views import (
 )
 from corridor.ui.explanations import explanation, plain_reasons
 from corridor.ui.insights import anomaly_projection, billing_projection, load_billing
-from corridor.ui.live_config import DEPLOYMENTS, LiveConfig
+from corridor.ui.live_config import DEPLOYMENTS, SITE_DEPLOYMENTS, LiveConfig, read_credential
 from corridor.ui.live_controls import FAILURE_REASONS, _failure_source, _summary
 from corridor.ui.live_runtime import (
     GLOBAL_LOCK_AFTER,
@@ -79,6 +79,8 @@ from corridor.ui.view_mode import CUSTOMER_HIDDEN_PAGES
 from corridor.ui.wealth_controller import WealthController
 
 __all__ = [
+    "SITE_DEPLOYMENTS",
+    "read_credential",
     "CUSTOMER_HIDDEN_PAGES",
     "DEPLOYMENTS",
     "EXAMPLES",

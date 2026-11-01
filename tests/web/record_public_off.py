@@ -106,6 +106,25 @@ HISTORY = (
             "change in this journey. Desktop layout and task view fields are unchanged."
         ),
     },
+    {
+        "commit": "de50ee3710c083af610a3cc2779638702c47267d",
+        "changed": ["i18n", "routes"],
+        "reason": (
+            "C38 and RW-12 / RW-9 item 7: add bilingual rogue demonstration strings and "
+            "the session-independent read-only /api/rogue route. Recorded with C38 "
+            "working-tree changes; existing banking response values are unchanged."
+        ),
+    },
+    {
+        "commit": "92810b5d62e79a344532989bc3a6ffb43a672a3f",
+        "changed": ["i18n"],
+        "reason": (
+            "C39 and RW-9 item 7: add bilingual rogue animation, summary tiles, technical "
+            "disclosure and replay labels, plus the site-only Zhipu budget note. Recorded "
+            "with C39 working-tree changes; only /api/i18n and its Content-Length change. "
+            "Banking response values, route table and server options are unchanged."
+        ),
+    },
 )
 
 

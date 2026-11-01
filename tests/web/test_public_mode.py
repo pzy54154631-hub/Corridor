@@ -263,7 +263,7 @@ def test_the_environment_opens_public_mode_with_the_rw8_capacities():
     assert settings.per_ip_sessions == 16 and settings.rates["session"] == Rate(30, 20.0)
     assert (settings.inflight_per_source, settings.inflight_per_browser) == (12, 3)
     assert settings.rates["page"] == Rate(1200, 1 / 60)
-    assert settings.deployments == DEEPSEEK and settings.table_size == 4096
+    assert settings.deployments == public_mode.DEPLOYMENTS and settings.table_size == 4096
     assert set(settings.rates) == {"session", "unlock", "api", "phone", "page"}
 
 
@@ -287,11 +287,9 @@ def test_a_public_host_is_a_lower_case_dns_name_without_port_or_path(host):
         PublicConfig.from_args(namespace(public_host=host), {})
 
 
-@pytest.mark.parametrize(
-    "listed", ["", "zhipu-glm-5.3", "deepseek-flash,sol", "deepseek-flash,zhipu-glm-5.3", "sol"]
-)
-def test_public_mode_requires_exactly_the_deepseek_flash_deployment(listed):
-    with pytest.raises(ValueError, match="RW-8 item 6"):
+@pytest.mark.parametrize("listed", ["", "zhipu-glm-5.3", "deepseek-flash,sol", "sol"])
+def test_public_mode_rejects_models_outside_the_cny_allow_list(listed):
+    with pytest.raises(ValueError, match="allowed CNY deployments"):
         PublicConfig.from_args(namespace(public_host=HOST), {public_mode.DEPLOYMENTS_ENV: listed})
     allowed = PublicConfig.from_args(
         namespace(public_host=HOST), {public_mode.DEPLOYMENTS_ENV: " deepseek-flash "}
@@ -583,13 +581,13 @@ def test_sessions_carry_the_public_flags_from_creation_reuse_and_reset(
     any state is rendered, so the first response, a reuse and a reset all see them."""
     public_client.open()
     ws = ws_of(public_app, public_client)
-    assert ws.public is True and ws.public_deployments == DEEPSEEK
+    assert ws.public is True and ws.public_deployments == public_mode.DEPLOYMENTS
     public_client.post("/api/session", {"tab": public_client.tab})
     assert ws_of(public_app, public_client) is ws and ws.public is True
     public_client.post("/api/session/reset", {})
     renewed = ws_of(public_app, public_client)
     assert renewed is not ws and renewed.public is True
-    assert renewed.public_deployments == DEEPSEEK
+    assert renewed.public_deployments == public_mode.DEPLOYMENTS
     client.open()
     plain = ws_of(client.app, client)
     assert plain.public is False and plain.public_deployments is None
@@ -1247,11 +1245,11 @@ def test_a_public_host_does_not_loosen_the_loopback_check(monkeypatch, host):
     assert refused.value.code == 2
 
 
-def test_the_entry_refuses_a_deployment_set_other_than_deepseek_flash(monkeypatch):
+def test_the_entry_refuses_a_deployment_outside_the_public_allowlist(monkeypatch):
     from corridor.web.__main__ import main
 
     monkeypatch.delenv(public_mode.HOST_ENV, raising=False)
-    monkeypatch.setenv(public_mode.DEPLOYMENTS_ENV, "deepseek-flash,zhipu-glm-5.3")
+    monkeypatch.setenv(public_mode.DEPLOYMENTS_ENV, "deepseek-flash,openai-gpt-6.1-sol")
     with pytest.raises(SystemExit) as refused:
         main(["--public-host", "demo.example", "--port", "0"])
     assert refused.value.code == 2
@@ -1353,7 +1351,9 @@ def test_the_demo_notice_is_on_every_public_page_from_the_first_response(real_pu
         client = browser(real_public_app)
         first = client.open(view=view, locale=locale)
         assert first["state"]["shell"]["public_banner"] == notice
-        disclosure = WEB_MESSAGES["web.vm.public.disclosure"][locale]
+        disclosure = WEB_MESSAGES["web.vm.public.disclosure"][locale].format(
+            deployment="DeepSeek deepseek-flash", provider="deepseek"
+        )
         assert first["state"]["shell"]["public_disclosure"] == disclosure
         assert contracts.problems(first) == []
         assert client.json(client.get("/api/state"))["state"]["shell"]["public_banner"] == notice
@@ -1369,7 +1369,12 @@ def test_the_demo_notice_is_on_every_public_page_from_the_first_response(real_pu
         ws = ws_of(real_public_app, client)
         phone = client.json(client.get(f"/api/phone/{ws.pair}?lang={locale}&view={view}"))
         assert phone["banner"] == phone_notice == notice
-        assert phone["public_disclosure"] == disclosure
+        assert phone["public_disclosure"] == WEB_MESSAGES["web.vm.public.disclosure"][
+            locale
+        ].format(
+            deployment=WEB_MESSAGES["web.vm.public.phone_model"][locale],
+            provider=WEB_MESSAGES["web.vm.public.phone_provider"][locale],
+        )
         assert phone["public_details_title"]
         assert contracts.problems(phone, view=view) == []
         for text in (notice, phone_notice):
@@ -1380,7 +1385,15 @@ def test_the_demo_notice_says_what_it_must_in_both_locales():
     from corridor.web.catalog import WEB_MESSAGES
 
     banner = WEB_MESSAGES["web.vm.public.disclosure"]
-    for word in ("合成", "模拟银行", "不是真实银行", "请勿输入", "不调用模型", "口令", "发给模型"):
+    for word in (
+        "合成",
+        "模拟银行",
+        "不是真实银行",
+        "请勿输入",
+        "不调用模型",
+        "口令",
+        "发给所选模型",
+    ):
         assert word in banner["zh-CN"], word
     for word in (
         "synthetic",
@@ -1389,7 +1402,7 @@ def test_the_demo_notice_says_what_it_must_in_both_locales():
         "do not enter",
         "calls no model",
         "access code",
-        "to the model",
+        "to the selected model",
     ):
         assert word in banner["en"], word
     phone = WEB_MESSAGES["web.vm.public.phone_banner"]

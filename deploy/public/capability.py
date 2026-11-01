@@ -28,10 +28,21 @@ def _config() -> Any:
     return PublicConfig(host=PROBE_HOST)
 
 
+# The six CNY models of RW-12; a release with any other list is refused.
+SITE_MODELS = frozenset({
+    "deepseek-flash",
+    "deepseek-v4-pro",
+    "zhipu-glm-5.2",
+    "zhipu-glm-5.1",
+    "zhipu-glm-5-turbo",
+    "zhipu-glm-4.7",
+})
+
+
 def _deployment_is_exact() -> bool:
     from corridor.web import public
 
-    return public.DEPLOYMENTS == {"deepseek-flash"}
+    return public.DEPLOYMENTS == SITE_MODELS
 
 
 def _spend_is_bounded() -> bool:
@@ -116,7 +127,7 @@ def _access_tool_is_present() -> bool:
 
 
 CHECKS: dict[str, Callable[[], bool]] = {
-    "only deepseek-flash": _deployment_is_exact,
+    "the ruled site models": _deployment_is_exact,
     "cumulative spend caps": _spend_is_bounded,
     "session table caps": _sessions_are_bounded,
     "in-flight caps": _inflight_is_bounded,

@@ -637,6 +637,15 @@ def read_live(w):
     w.read("negative", page, "/api/live", headers={"Origin": FOREIGN_ORIGIN})
 
 
+def read_rogue(w):
+    page = w.page()
+    # Build isolated synthetic controls before the global method counters are enabled.
+    # test_rogue checks the cold computation against the existing session's state.
+    assert page.client.get("/api/rogue").code == 200
+    w.read("positive", page, "/api/rogue")
+    w.read("negative", page, "/api/rogue", headers={"Origin": FOREIGN_ORIGIN})
+
+
 def read_phone_inbox(w):
     page = w.page()
     tkey = "T" + page.send(RED)
@@ -678,6 +687,7 @@ def read_root_static(w):
 
 # route: (walk, the success's content type, the refusal's status and code)
 READS = {
+    "/api/rogue": (read_rogue, "application/json", 403, "forbidden_origin"),
     "/api/state": (read_state, "application/json", 409, "stale_generation"),
     "/api/i18n": (read_i18n, "application/json", 401, "no_session"),
     "/api/tabs/{name}": (read_tab, "application/json", 404, "not_found"),

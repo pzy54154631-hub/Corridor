@@ -1,6 +1,7 @@
 // Login screen (W1). Shown only while AppState carries `login`.
 
 import { applyBusy, button, el, para } from "./result.js";
+import { openRogue } from "./rogue.js";
 
 export function mount(root, ctx) {
   const body = el(ctx, "div", { class: "scr-login" });
@@ -81,6 +82,10 @@ export function update(root, state, ctx) {
           onClick: () => ctx.actions.login(),
         }),
         para(ctx, vm.caption, "scr-hint scr-login-caption"),
+        button(ctx, {
+          label: ctx.t("web.ui.rogue.title"), kind: "secondary", size: "lg",
+          testid: "rogue-entry", onClick: () => openRogue(ctx),
+        }),
       ),
     );
   }

@@ -159,7 +159,15 @@ def test_the_clock_check_sees_aliases(source):
     assert any(analysis.name(node.func) in HOST_CLOCK for node in calls(analysis.tree))
 
 
-def boundary_violations(name):
+def boundary_violations(name, source=None):
+    # RW-12 / C38: only the isolated report may call these existing offline checks.
+    # No other bench access and no change to the trusted-core import direction.
+    if source == "corridor.web.rogue" and name in {
+        "corridor.bench.adversary",
+        "corridor.bench.adversary.development_cases",
+        "corridor.bench.adversary.execute_case",
+    }:
+        return None
     if name is None:
         return "computed import"
     if any(_within(name, prefix) for prefix in FORBIDDEN):
@@ -178,10 +186,19 @@ def test_the_web_package_imports_only_its_allowed_dependencies():
     found = []
     for path, analysis in analyses():
         for reference in analysis.imports:
-            problem = boundary_violations(reference.name)
+            problem = boundary_violations(reference.name, module_of(path))
             if problem:
                 found.append(f"{relative(path)}:{reference.lineno}: {reference.name} ({problem})")
     assert not found, found
+
+
+def test_rogue_exception_is_narrow():
+    assert (
+        boundary_violations("corridor.bench.adversary.execute_case", "corridor.web.rogue") is None
+    )
+    assert boundary_violations("corridor.bench.adversary.execute_case", "corridor.web.live")
+    assert boundary_violations("corridor.bench.baseline_exec", "corridor.web.rogue")
+    assert boundary_violations("corridor.kernel.check", "corridor.web.rogue")
 
 
 @pytest.mark.parametrize(

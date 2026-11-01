@@ -107,6 +107,10 @@
     "en": "the official uncached peak rate listed in the evidence index (including price source, UTC time and hash); a budget parameter, not an invoice",
     "zh-CN": "按证据索引所列的官方峰时未缓存价（含价格来源、UTC 时间与哈希）；是预算参数，不是账单"
   },
+  "live.price_note.zhipu-site": {
+    "zh-CN": "未经核验的预算参数：官方价格页未能归档，按偏高假设价记账，不是账单",
+    "en": "an unverified budget parameter: the official price page could not be archived, so a deliberately high assumed price is used; not an invoice"
+  },
   "live.price_note.zhipu-glm-5.3": {
     "en": "an unverified budget parameter (no official price page for this model is archived in this repository)",
     "zh-CN": "未经核验的预算参数（本仓库没有归档该型号的官方价格页）"
@@ -370,5 +374,13 @@
   "live.reason_of.ledger-unreconciled": {
     "zh-CN": "花费台账待核对，请求未发出",
     "en": "the spend ledger awaits reconciliation, so the request was not sent"
+  },
+  "live.price_note.deepseek-v4-pro": {
+    "zh-CN": "官方峰时未缓存价，来源 https://api-docs.deepseek.com/zh-cn/quick_start/pricing，2026-11-01 读取；是预算参数，不是账单",
+    "en": "Official uncached peak rate, source https://api-docs.deepseek.com/zh-cn/quick_start/pricing, read 2026-11-01; a budget parameter, not an invoice"
+  },
+  "live.site_selection": {
+    "zh-CN": "先关闭真模型并结束当前交易，再切换模型。切换保留已解锁状态；口令或凭证变更后需要重新输入口令。所有可选模型共用整站累计人民币预算。",
+    "en": "Turn the live model off and finish the current transaction before switching. Switching keeps existing access; a code or credential change requires the code again. All listed models share the site cumulative CNY budget."
   }
 }

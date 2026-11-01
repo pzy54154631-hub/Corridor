@@ -4,6 +4,7 @@
 // <details> survive unrelated updates. The composer is never rebuilt.
 
 import { operatorBlock } from "./plans.js";
+import { openRogue } from "./rogue.js";
 import { renderResponse } from "./response.js";
 import { applyBusy, button, el, ensureTab, para, textTag } from "./result.js";
 
@@ -46,6 +47,8 @@ function shortcutButtons(ctx, chat, compact, onPick) {
           "div",
           { class: "scr-shortcut-drill" },
           make(drill),
+          button(ctx, { label: ctx.t("web.ui.rogue.title"), kind: "secondary",
+            testid: "rogue-entry", onClick: () => openRogue(ctx) }),
           para(ctx, chat.drill_caption, "scr-hint", "drill-caption"),
         )
       : null,

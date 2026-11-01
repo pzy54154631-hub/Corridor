@@ -26,7 +26,7 @@ import tornado.web
 import corridor.web
 from corridor.i18n import reset_locale, set_locale
 from corridor.ui.audience import reset_audience, set_audience
-from corridor.web import lab, logs, security, suggest
+from corridor.web import lab, logs, rogue, security, suggest
 from corridor.web import public as public_mode
 from corridor.web import state as web_state
 from corridor.web.errors import WebError, WebOperationFailed, WebOutcomeUnknown, body, error
@@ -495,6 +495,15 @@ class Read(Api):
 
     async def get(self, *args: str) -> None:
         read: Callable[[Call], Mapping[str, Any]] = self.options["read"]
+        if self.route == "/api/rogue":
+            # A public mechanism report has no banking session, generation or mutation.
+            held = self.admit()
+            try:
+                result = await self.settings["executor"].call(lambda: read(None))
+            finally:
+                self.readmit(held)
+            self.respond(200, security.dumps({"ok": True, **result}))
+            return
         needs: tuple[str, ...] = self.options.get("needs", ())
         path = self.path_values(self.options.get("params", ()), args)
         ws = self.session()
@@ -1133,6 +1142,7 @@ def _lab_view(call: Call) -> dict[str, Any]:
 
 
 GETS: dict[str, tuple[Callable[[Call], Mapping[str, Any]], tuple[str, ...]]] = {
+    "/api/rogue": (lambda c: {"rogue": rogue.report()}, ()),
     # The lab's SMS is read only by its own pairing's phone page (R2-S2): no lab phone GET.
     "/api/lab": (_lab_view, LAB),
     "/api/state": (lambda c: {"state": c.vm.app.app_state(c.ws)}, ()),

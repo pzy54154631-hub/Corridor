@@ -695,7 +695,7 @@ def test_a_broken_pair_or_wide_caps_close_the_live_path_and_no_call_leaves(
     assert not list(Path(hosted()).glob("*/session-*"))
 
 
-def test_only_the_public_deployment_is_listed_selected_and_selectable(public_app, hosted, canary):
+def test_only_credentialed_public_deployments_are_listed_and_selectable(public_app, hosted, canary):
     # A stray OpenAI credential file next to the DeepSeek one: the product's default would
     # fall on the first deployment of its table.
     hosted()
@@ -703,7 +703,7 @@ def test_only_the_public_deployment_is_listed_selected_and_selectable(public_app
     (creds / ".env").write_text(f"LLM_API_KEY={FAKE_KEY}\n", encoding="utf-8")
     client = browser(public_app)
     shown = panel(client)
-    assert [item["id"] for item in shown["deployments"]] == [DEEPSEEK]
+    assert [item["id"] for item in shown["deployments"]] == [DEEPSEEK, "deepseek-v4-pro"]
     assert shown["selected"] == DEEPSEEK
     # The product's own default on this credential directory is the first OpenAI entry.
     assert LiveSession(LiveConfig.from_environ()).deployment.id == DEPLOYMENTS[0].id
@@ -726,6 +726,39 @@ def test_only_the_public_deployment_is_listed_selected_and_selectable(public_app
 
 
 # --- A3: the outbound request and the journal (RW-8 item 14) ----------------------------
+
+
+def test_all_six_site_models_share_the_grant_caps_and_selected_disclosure(
+    public_app, hosted, monkeypatch
+):
+    from corridor.agent.llm import LLMClient
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("Selection must not call a model")
+
+    monkeypatch.setattr(LLMClient, "complete", forbidden)
+    hosted(files=(".env.deepseek", ".env.zhipu"))
+    client = browser(public_app)
+    assert {item["id"] for item in panel(client)["deployments"]} == public_mode.DEPLOYMENTS
+    for excluded in ("zhipu-glm-5.3", "zhipu-glm-5.3-flash", "openai-gpt-6.1-sol"):
+        response = client.post("/api/live/select", {"deployment": excluded})
+        assert response.code == 422 and code_of(client, response) == "invalid_input"
+    assert unlock(client)[1]["result"] == "accepted"
+    ws = ws_of(public_app, client)
+    for item in live_config.SITE_DEPLOYMENTS:
+        if item.id not in public_mode.DEPLOYMENTS:
+            continue
+        response = client.post("/api/live/select", {"deployment": item.id})
+        assert response.code == 200
+        assert data(client, response)["live"]["selected"] == item.id
+        assert ws.live.snapshot()["available"]
+        assert ws.live.config.budget_cny == Fraction(100)
+        disclosure = data(client, client.get("/api/state"))["state"]["shell"]["public_disclosure"]
+        assert item.label in disclosure and item.provider in disclosure
+        assert client.post("/api/live/toggle", {"on": True}).code == 200
+        refused = client.post("/api/live/select", {"deployment": DEEPSEEK})
+        assert refused.code == 409 and code_of(client, refused) == "live_on"
+        assert client.post("/api/live/toggle", {"on": False}).code == 200
 
 
 def test_before_the_unlock_nothing_leaves_and_the_challenge_carries_the_kdf(

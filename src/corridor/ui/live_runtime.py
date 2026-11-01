@@ -494,7 +494,9 @@ class LiveSession:
         environ: Mapping[str, str] | str | None = None,
         global_lock: bool = True,
         ledger_create: bool = True,
+        deployments: tuple[Deployment, ...] | None = None,
     ) -> None:
+        self.deployments = DEPLOYMENTS if deployments is None else deployments
         self.config = config
         self._environ = environ
         # Whether wrong codes across every session of the ledger block new grants
@@ -512,7 +514,7 @@ class LiveSession:
         self._revoked: str | None = None
         self._nonce: str | None = None
         self._failures = 0
-        self._deployment_id = DEPLOYMENTS[0].id
+        self._deployment_id = self.deployments[0].id
         self._client: JournalClient | None = None
         self._owner: object = None
         self._calls = 0
@@ -573,7 +575,7 @@ class LiveSession:
         self._authorized, self._grant = False, None
 
     def _select_default(self) -> None:
-        for item in DEPLOYMENTS:
+        for item in self.deployments:
             if self.credential_status(item) == "ok":
                 self._deployment_id = item.id
                 return
@@ -620,7 +622,7 @@ class LiveSession:
             code = environ_access_code(values)
             if code:
                 return code
-        for item in DEPLOYMENTS:
+        for item in self.deployments:
             credential = self._credential(item)
             if credential is not None and credential.access_code:
                 return credential.access_code
@@ -630,7 +632,7 @@ class LiveSession:
         """C3: one reading of every credential file (missing / unreadable marked as such);
         a call's grant check and its key come from the same reading."""
         files = {}
-        for name in sorted({item.env_file for item in DEPLOYMENTS}):
+        for name in sorted({item.env_file for item in self.deployments}):
             path = self.config.env_dir / name if self.config.env_dir is not None else None
             try:
                 files[name] = (
@@ -854,7 +856,7 @@ class LiveSession:
                         if self.config.enabled
                         else "disabled",
                     }
-                    for candidate in DEPLOYMENTS
+                    for candidate in self.deployments
                 ],
                 "authorized": self._authorized,
                 "revoked": self._revoked,

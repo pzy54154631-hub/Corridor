@@ -70,8 +70,15 @@ LIVE_ENV = SWITCH
 # A lower-case DNS name without port, path or trailing dot (design §3.1); an address
 # literal (an all-digit last label) is not one.
 HOST = re.compile(r"[a-z0-9]([a-z0-9-]{0,62}[a-z0-9])?(\.[a-z0-9]([a-z0-9-]{0,62}[a-z0-9])?)+")
-# The only deployment a public site may reach (RW-7 item 5, RW-8 item 6).
-DEPLOYMENTS = frozenset({"deepseek-flash"})
+# Fixed CNY-only site allow list (RW-12); the experiment's six rows remain frozen.
+DEPLOYMENTS = frozenset({
+    "deepseek-flash",
+    "deepseek-v4-pro",
+    "zhipu-glm-5.2",
+    "zhipu-glm-5.1",
+    "zhipu-glm-5-turbo",
+    "zhipu-glm-4.7",
+})
 UNKNOWN = "unknown"
 RETRY_AFTER = "5"
 FORWARDED_FOR = "X-Forwarded-For"
@@ -297,9 +304,17 @@ class PublicConfig:
             raise ValueError("public mode needs one request in flight per source and browser")
         if set(self.rates) != set(RATES):
             raise ValueError("public mode rates must name exactly the known scopes")
-        if self.deployments != DEPLOYMENTS:
+        from corridor.web.compat import SITE_DEPLOYMENTS as site_deployments
+
+        currencies = {item.id: item.currency for item in site_deployments}
+        if (
+            not self.deployments
+            or not self.deployments <= DEPLOYMENTS
+            or "deepseek-flash" not in self.deployments
+            or any(currencies.get(item) != "CNY" for item in self.deployments)
+        ):
             raise ValueError(
-                f"{DEPLOYMENTS_ENV} must be exactly {','.join(sorted(DEPLOYMENTS))} (RW-8 item 6)"
+                f"{DEPLOYMENTS_ENV} must contain deepseek-flash and only allowed CNY deployments"
             )
         if self.kdf is not None and not isinstance(self.kdf, Kdf):
             raise ValueError("public mode's kdf is a Kdf or None")
@@ -309,8 +324,9 @@ class PublicConfig:
         """The configuration of the entry's arguments, or None outside public mode.
 
         Without a public host every public-only option is refused, so a deployment cannot
-        believe it is public when it is not; with one the deployment list must be exactly
-        ``deepseek-flash``, the verifier pair must be whole or absent, and with
+        believe it is public when it is not; with one the deployment list must be an allowed
+        CNY subset containing ``deepseek-flash`` (RW-12), the verifier pair must be whole
+        or absent, and with
         ``CORRIDOR_LIVE=1`` the pair must be present and the live caps within the public
         bounds (RW-8 items 6, 10, 11), else the entry refuses to start. Raises
         ``ValueError`` with the message for ``parser.error``.

@@ -560,8 +560,8 @@
     "en": "Live model unavailable: the process environment carries {count} variables the frozen client would inherit, which would change its caps or request settings; start the demo without them (their names are not shown on the page)."
   },
   "web.vm.live.public_closed.deployment": {
-    "zh-CN": "实时模型不可用：公开站点只允许它配置的那一个部署，当前所选部署不在其中。",
-    "en": "Live model unavailable: the public site allows only the one deployment it is configured for, and the selected deployment is not it."
+    "zh-CN": "实时模型不可用：当前所选部署不在站点允许名单中。",
+    "en": "Live model unavailable: the selected deployment is outside the site allow list."
   },
   "web.vm.live.public_closed.access": {
     "zh-CN": "实时模型不可用：公开站点没有配置成对且格式正确的口令验证子（CORRIDOR_WEB_ACCESS_KDF 与 LIVE_ACCESS_CODE，由 access_setup 工具生成）。",
@@ -592,9 +592,17 @@
     "en": "Demo environment: synthetic data and simulated authentication; do not enter real information."
   },
   "web.vm.safety.approval_rate": {"en": "Too many approvals in this session; it has been paused. Click “Restart” at the top right to continue the demo.", "zh-CN": "本会话审批过于频繁，已暂停；点右上角“重新开始”可继续演示。"},
+  "web.vm.public.phone_model": {
+    "zh-CN": "（以银行页面当前选择为准）",
+    "en": "shown in the bank page's current selection"
+  },
+  "web.vm.public.phone_provider": {
+    "zh-CN": "以银行页面所示为准",
+    "en": "shown on that bank page"
+  },
   "web.vm.public.disclosure": {
-    "zh-CN": "演示环境：全部为合成数据与模拟银行，不是真实银行；请勿输入任何真实姓名、账号、证件号或密码。默认按固定脚本理解和规划，不调用模型。只有凭评委口令开启真模型后，本会话之后的消息才会发给模型：11 位以上的号码、邮箱、验证码和密钥换成代号，人名、地址、金额等其余文字原样发送，并附上一轮的意图标签；转账还会发送整张合成通讯录的代号和别名，以及账户、联系人、金额的类型化句柄；本地规则读不懂的消息会附上其中提到的联系人代号和称呼。服务器保留请求摘要与模型输出。",
-    "en": "Demo environment: everything here is synthetic data and a simulated bank, not a real bank; do not enter any real name, account number, ID number or password. By default the demo understands and plans from a fixed script and calls no model. Only after the judges' access code opens the live model do this session's later messages go to the model: numbers of 11 or more digits, email addresses, verification codes and keys are replaced by tokens, while names, addresses, amounts and all other words go as written, with the previous reply's intent label; a transfer also sends the whole synthetic address book's handles and aliases and typed handles for the account, contact and amount; a message the local rules cannot read also sends the handles and aliases of the contacts it names. The server keeps the request digests and the model's output."
+    "zh-CN": "演示环境：全部为合成数据与模拟银行，不是真实银行；请勿输入任何真实姓名、账号、证件号或密码。默认按固定脚本理解和规划，不调用模型。只有凭评委口令开启真模型后，本会话之后的消息才会发给所选模型 {deployment}（提供商 {provider}）：11 位以上的号码、邮箱、验证码和密钥换成代号，人名、地址、金额等其余文字原样发送，并附上一轮的意图标签；转账还会发送整张合成通讯录的代号和别名，以及账户、联系人、金额的类型化句柄；本地规则读不懂的消息会附上其中提到的联系人代号和称呼。服务器保留请求摘要与模型输出。",
+    "en": "Demo environment: everything here is synthetic data and a simulated bank, not a real bank; do not enter any real name, account number, ID number or password. By default the demo understands and plans from a fixed script and calls no model. Only after the judges' access code opens the live model do this session's later messages go to the selected model {deployment} (provider {provider}): numbers of 11 or more digits, email addresses, verification codes and keys are replaced by tokens, while names, addresses, amounts and all other words go as written, with the previous reply's intent label; a transfer also sends the whole synthetic address book's handles and aliases and typed handles for the account, contact and amount; a message the local rules cannot read also sends the handles and aliases of the contacts it names. The server keeps the request digests and the model's output."
   },
   "web.vm.public.details_title": {
     "zh-CN": "演示与数据外发说明",

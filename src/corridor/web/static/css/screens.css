@@ -1318,3 +1318,56 @@
   white-space: normal;
   text-align: left;
 }
+
+/* Read-only mechanism demonstration; the bank stage keeps its existing geometry. */
+.rogue-panel { box-sizing: border-box; position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: #f5f3f9; color: #241b38; overflow-y: auto; overflow-wrap: anywhere; }
+.rogue-panel::backdrop { background: #12232dcc; }
+.rogue-banner { padding: 20px max(24px, calc((100% - 1240px) / 2)); background: #32204f; color: #fff; }
+.rogue-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.rogue-head h2 { margin: 0; font-size: 36px; line-height: 1.3; color: inherit; }
+.rogue-head button { flex-shrink: 0; background: #fff; color: #32204f; }
+.rogue-banner p { margin: 12px 0 0; font-size: 16px; line-height: 1.6; color: #eee8f8; }
+.rogue-body { max-width: 1240px; margin: 0 auto; padding: 16px 24px 20px; box-sizing: content-box; }
+.rogue-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.rogue-stat { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 0; padding: 14px 24px; border: 1px solid #ddd5e9; border-radius: 14px; background: #fff; }
+.rogue-stat span { font-size: 18px; font-weight: 600; }
+.rogue-stat strong { font-size: 48px; line-height: 1.1; color: #186247; font-variant-numeric: tabular-nums; }
+.rogue-stats[aria-busy="true"] strong { font-size: 24px; color: #706182; }
+.rogue-rows { padding: 0; margin: 16px 0; list-style: none; display: grid; gap: 6px; }
+.rogue-rows li { border: 1px solid #e0dbe7; border-left: 4px solid #318465; border-radius: 10px; padding: 7px 16px; background: #fff; min-width: 0; }
+.rogue-row-head, .rogue-intent, .rogue-verdict { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.rogue-row-head { justify-content: space-between; }
+.rogue-intent strong { font-size: 17px; line-height: 1.4; }
+.rogue-tag { flex-shrink: 0; border-radius: 5px; padding: 3px 7px; font-size: 12px; font-weight: 600; line-height: 1.4; }
+.rogue-attack-tag { background: #fff0f0; color: #a5303f; }
+.rogue-verdict-tag { background: #e8f5ed; color: #176143; }
+.rogue-verdict code { font-size: 13px; white-space: normal; color: #466452; }
+.rogue-result { margin: 4px 0 0; font-size: 13px; line-height: 1.5; color: #52635b; }
+.rogue-rows details { font-size: 12px; color: #6c6279; }
+.rogue-rows summary { cursor: pointer; width: fit-content; line-height: 1.5; }
+.rogue-rows details p { margin: 6px 0 0; }
+.rogue-rows .rogue-pending { border-left-color: #8b70ad; min-height: 63px; }
+.rogue-pending .rogue-verdict-tag { background: #f0eafa; color: #5c3c86; }
+.rogue-rows .rogue-failed { border-color: #b72323; background: #fff3f3; }
+.rogue-failed .rogue-verdict-tag, .rogue-stat-failed strong { color: #a11b2d; }
+.rogue-failed .rogue-verdict-tag { background: #ffe0e3; }
+.rogue-limit { margin: 12px 0; padding: 12px 16px; background: #fff0d8; border-radius: 10px; font-size: 13px; line-height: 1.6; color: #62431d; }
+.rogue-footer { display: flex; align-items: center; gap: 24px; }
+.rogue-footer p { flex: 1; margin: 0; line-height: 1.6; color: #6c6279; }
+.rogue-footer button { flex-shrink: 0; }
+[data-testid="rogue-entry"] { white-space: normal; height: auto; }
+@media (max-width: 700px) {
+  .rogue-banner { padding: 20px 16px; }
+  .rogue-head { align-items: flex-start; gap: 10px; }
+  .rogue-head h2 { font-size: 26px; }
+  .rogue-banner p { font-size: 14px; }
+  .rogue-body { padding: 16px; }
+  .rogue-stats { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .rogue-stat { padding: 12px 20px; }
+  .rogue-row-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .rogue-intent { align-items: flex-start; flex-direction: column; gap: 6px; }
+  .rogue-verdict { flex-wrap: wrap; gap: 8px; }
+  .rogue-rows li { padding: 14px; }
+  .rogue-rows summary { padding: 6px 0; }
+  .rogue-footer { flex-direction: column; align-items: stretch; gap: 16px; }
+}

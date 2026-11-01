@@ -65,7 +65,30 @@ sudo install -m 0640 -o root -g corridor /dev/null /etc/corridor/live/.env.deeps
 sudo nano /etc/corridor/live/.env.deepseek
 ```
 
-服务器上只放这一个凭据文件。
+站点允许名单为 `deepseek-flash`、`deepseek-v4-pro`、`zhipu-glm-5.2`、`zhipu-glm-5.1`、`zhipu-glm-5-turbo`、`zhipu-glm-4.7`，默认选 deepseek-flash。配置必须非空、包含 deepseek-flash、且是此名单的子集，全部以 CNY 记账。OpenAI 因香港服务器地区不可达，不在允许名单。名单中的模型仅在对应凭证文件可读且含有效密钥字段时显示；未放 `.env.zhipu` 时智谱不出现。DeepSeek 两个模型共用 `.env.deepseek`。
+
+站点可选 6 个模型：deepseek-flash、deepseek-v4-pro、zhipu-glm-5.2、zhipu-glm-5.1、zhipu-glm-5-turbo、zhipu-glm-4.7，默认 deepseek-flash。上线前用同样六句话跑了两轮（2026-11-01），这 6 个模型每轮 6/6 都得到回答，风险分级一致（黄、绿、红、黄、黄，理财走设备选择），银行派发 0。这是上线检查，不是预注册实验，不含攻击，不能据此推断风控等价。它与技术文档第 07 章的原六部署良性验收是两组不同的记录。
+
+未列入的原因：OpenAI 部署因服务器所在地区被提供商拒绝；glm-5.3 为 0/6，glm-5.3-flash 为 4/6，glm-5 为 5/6，glm-5.3-flashx 两轮合计 11/12，都没有通过两轮全部回答的要求。智谱模型要求服务器上有 `.env.zhipu`，没有时下拉框只显示 DeepSeek 两个。
+
+四个站点智谱模型共用预算参数：输入 12、输出 36 CNY / 百万 token。未经核验的预算参数：官方价格页未能归档，按偏高假设价记账，不是账单。
+
+如需智谱，用户按相同步骤放 `.env.zhipu`，只写 `LLM_API_KEY=<智谱密钥>`：
+
+```
+sudo install -m 0640 -o root -g corridor /dev/null /etc/corridor/live/.env.zhipu
+sudo nano /etc/corridor/live/.env.zhipu
+```
+
+在 `/etc/corridor/web-public.env` 的 `CORRIDOR_WEB_PUBLIC_DEPLOYMENTS` 写入需要的名单（见模板）；已有配置不会被安装器覆盖。关闭真模型且处于交易边界时才能切换，已有解锁保持，凭证或口令变更后重新解锁。所有模型共用 `LIVE_BUDGET_CNY=100` 累计预算，切换不重置调用数或费用。消息与合成联系人数据发往所选模型对应的提供商，外发范围见下文。
+
+上线前逐部署运行六句合成检查，保留输出并剔除不合格部署：
+
+```
+python scripts/public/check_live_deployment.py deepseek-flash /etc/corridor/live --out .tmp/check-deepseek-flash.json
+```
+
+检查使用真实产品路径，逐句新建合成会话，不自动审批；回答、出卡、裁决、派发、调用与预算费用分别记录，回答不代表任务完成。
 
 **第二件：运行 access_setup。** 下面这条命令会运行 `python -m corridor.web.access_setup`，把它打印的验证子写进环境文件，打开开关，再重启服务：
 
@@ -155,7 +178,7 @@ msedge --host-resolver-rules="MAP 43-154-247-126.sslip.io:443 127.0.0.1:8443" ht
 
 恢复之前必须人工核账：
 
-1. 到 DeepSeek 控制台查实到目前为止的累计花费。
+1. 到已启用的 DeepSeek 与智谱控制台分别查实累计花费，按 CNY 汇总。
 2. 有完好的备份，就把它放回原位，属主 `corridor`，权限 0600，核对它记录的花费不低于账单。这就完成了，不需要第 3、4 步。
 3. 把损坏的文件移走，不要删除。
 4. 按核出的金额重建台账，累计预算从这个数接着算：

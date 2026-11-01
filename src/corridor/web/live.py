@@ -33,6 +33,7 @@ from corridor.web.compat import (
     FAILURE_REASONS,
     PROCESS,
     RESERVE_INPUT_TOKENS,
+    SITE_DEPLOYMENTS,
     BudgetExceeded,
     JournalClient,
     LiveConfig,
@@ -40,6 +41,7 @@ from corridor.web.compat import (
     LLMClient,
     LLMConfigurationError,
     LLMOutputError,
+    read_credential,
     tr,
 )
 from corridor.web.state import unwrap
@@ -135,15 +137,39 @@ def _allowed_deployment(ws, deployment_id: str) -> bool:
 
 def _new_live(ws, config: LiveConfig) -> LiveSession:
     """A session's live access. In public mode without the ledger's shared lock (RW-8 item
-    8), never starting a ledger of its own (R8 S2), and selecting the public site's one
-    deployment when the product's default fell on another credential file (RW-8 item 6);
+    8), never starting a ledger of its own (R8 S2), and selecting deepseek-flash by default
+    from the site's separate model table (RW-12);
     the gate below still checks it before a client."""
     public = _public(ws)
-    live = LiveSession(config, environ=PROCESS, global_lock=not public, ledger_create=not public)
-    allowed = getattr(ws, "public_deployments", None)
-    if allowed is not None and live.deployment.id not in allowed and len(allowed) == 1:
-        live.select(next(iter(allowed)))
+    live = LiveSession(
+        config,
+        environ=PROCESS,
+        global_lock=not public,
+        ledger_create=not public,
+        deployments=SITE_DEPLOYMENTS if public else DEPLOYMENTS,
+    )
+    if public:
+        live.select("deepseek-flash")
     return live
+
+
+def _listed(ws, config: LiveConfig, deployment_id: str) -> bool:
+    if not _allowed_deployment(ws, deployment_id):
+        return False
+    if not _public(ws):
+        return True
+    item = next((item for item in SITE_DEPLOYMENTS if item.id == deployment_id), None)
+    path = config.credential_path(item) if item is not None else None
+    return path is not None and read_credential(path) is not None
+
+
+def public_disclosure(ws) -> str:
+    item = (
+        ws.live.deployment
+        if ws.live is not None
+        else next(item for item in DEPLOYMENTS if item.id == "deepseek-flash")
+    )
+    return wtr("web.vm.public.disclosure", deployment=item.label, provider=item.provider)
 
 
 def _public_closed(ws, live: LiveSession, config: LiveConfig) -> str | None:
@@ -410,9 +436,8 @@ def select(ws, deployment: str) -> None:
         raise _errors().error("not_at_boundary")
     if _is_live(ws.controller):
         raise _errors().error("live_on")
-    if deployment not in {item.id for item in DEPLOYMENTS} or not _allowed_deployment(
-        ws, deployment
-    ):
+    table = SITE_DEPLOYMENTS if _public(ws) else DEPLOYMENTS
+    if deployment not in {item.id for item in table} or not _listed(ws, live.config, deployment):
         # Public mode: only the site's deployment (RW-8 item 6); the handler refused it
         # before the action too, so this is the last check before the product call.
         raise _errors().error("invalid_input")
@@ -820,7 +845,7 @@ def view(ws) -> dict:
                 ),
             }
             for item in info["deployments"]
-            if _allowed_deployment(ws, item["id"])
+            if _listed(ws, config, item["id"])
         ],
         selected=info["deployment"],
         revoked_text=tr("live.revoked.credentials")
@@ -840,6 +865,8 @@ def view(ws) -> dict:
         result_text=_unlock_text(shown.get("result"), judge),
     )
     panel["toggle"]["disabled"] = not info["available"] or not boundary or closed is not None
+    if _public(ws):
+        panel["kernel_note"] += " " + tr("live.site_selection")
     if judge:
         panel["price"] = tr(
             "live.price",

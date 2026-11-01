@@ -151,7 +151,39 @@ DEPLOYMENTS: tuple[Deployment, ...] = (
         env_file=".env.zhipu",
     ),
 )
-_BY_ID = {item.id: item for item in DEPLOYMENTS}
+# Keep the six-deployment experiment/UI baseline intact. The web site may offer more.
+SITE_DEPLOYMENTS = DEPLOYMENTS + (
+    Deployment(
+        id="deepseek-v4-pro",
+        label="DeepSeek deepseek-v4-pro",
+        provider="deepseek",
+        model="deepseek-v4-pro",
+        api="chat",
+        api_base="https://api.deepseek.com/v1",
+        currency="CNY",
+        price_in="9",
+        price_out="27",
+        price_note="live.price_note.deepseek-v4-pro",
+        env_file=".env.deepseek",
+    ),
+)
+SITE_DEPLOYMENTS += tuple(
+    Deployment(
+        id=f"zhipu-{model}",
+        label=f"Zhipu {model}",
+        provider="zhipu",
+        model=model,
+        api="chat",
+        api_base="https://open.bigmodel.cn/api/paas/v4",
+        currency="CNY",
+        price_in="12",
+        price_out="36",
+        price_note="live.price_note.zhipu-site",
+        env_file=".env.zhipu",
+    )
+    for model in ("glm-5.2", "glm-5.1", "glm-5-turbo", "glm-4.7")
+)
+_BY_ID = {item.id: item for item in SITE_DEPLOYMENTS}
 
 
 def deployment(deployment_id: str) -> Deployment:

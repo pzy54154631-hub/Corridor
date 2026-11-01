@@ -42,6 +42,8 @@ def test_the_golden_says_why_it_was_recorded_again():
         ["shell.judge_strip"],
         ["i18n"],
         ["i18n"],
+        ["i18n", "routes"],
+        ["i18n"],
     ]
     assert all(len(item["commit"]) == 40 and item["reason"] for item in later)
     answer = _by_label(RECORDED["responses"])["i18n"]

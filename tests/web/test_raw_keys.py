@@ -37,6 +37,17 @@ NAMED = re.compile(r"web\.(?:ui|vm)\.[A-Za-z0-9_.]*")
 # can produce. A new prefix fails ``test_every_key_the_pages_build_is_in_the_catalog`` until
 # it is listed here.
 DYNAMIC = {
+    "web.ui.rogue.stat.": ("blocked", "dispatches", "controls"),
+    "web.ui.rogue.attack.": (
+        "wrong_recipient",
+        "missing_mfa",
+        "replayed_approval",
+        "duplicate_dispatch",
+        "sponsored_selection",
+        "forged_receipt",
+        "stopped_plan_dispatch",
+        "sandbox_file",
+    ),
     "web.ui.evidence.challenge.": ("none", "issued", "verified"),
     "web.ui.lab.check.": ("current_card", "withdrawn_request"),
     "web.ui.lab.prompt.": ("yellow", "red"),
