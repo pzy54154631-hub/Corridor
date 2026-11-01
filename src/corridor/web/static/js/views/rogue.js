@@ -56,6 +56,9 @@ export function openRogue(ctx) {
 
   function renderRow(row, pending) {
     const state = pending ? "pending" : row.passed ? "ok" : "failed";
+    const verdict = row.status === "Escalate"
+      ? (row.attack_dispatches === 0 ? "escalated" : "escalated_dispatched")
+      : ["Reject", "rejected"].includes(row.status) ? "rejected" : "check_failed";
     const cell = (key, ...children) => h("td", { "data-label": t("web.ui.rogue.column." + key) }, ...children);
     return h("tr", { "data-testid": "rogue-row", class: "rogue-" + state },
       h("th", { scope: "row", "data-label": t("web.ui.rogue.column.category") }, t("web.ui.rogue.category." + row.attack)),
@@ -67,7 +70,7 @@ export function openRogue(ctx) {
           prior: row.legitimate_prior_effects,
         })))),
       cell("rules", h("code", null, row.rule_ids.join(" · "))),
-      cell("verdict", t(row.passed ? "web.ui.rogue.rejected" : "web.ui.rogue.check_failed")),
+      cell("verdict", t("web.ui.rogue." + verdict)),
       cell("dispatch", String(row.attack_dispatches)),
       cell("twin", t(row.benign_completed ? "web.ui.rogue.control_ok" : "web.ui.rogue.control_failed")));
   }
@@ -86,13 +89,8 @@ export function openRogue(ctx) {
     if (!report || !dialog.open) return;
     clearTimeout(timer);
     rows.replaceChildren();
-    summary.textContent = t("web.ui.rogue.checking");
+    finish();
     replay.disabled = true;
-    dialog.querySelector(".rogue-stats").setAttribute("aria-busy", "true");
-    stats.forEach(s => {
-      s.value.textContent = t("web.ui.rogue.checking");
-      s.node.classList.remove("rogue-stat-failed");
-    });
     if (ctx.a11y.reducedMotion() || report.rows.length === 0) {
       rows.append(...report.rows.map(row => renderRow(row, false)));
       finish();

@@ -78,7 +78,7 @@ async function send(method, path, body) {
   } catch {
     data = null;
   }
-  return { status: response.status, data, network: false };
+  return { status: response.status, data, network: false, retryAfter: response.headers.get("Retry-After") };
 }
 
 // Returns true when the response was adopted into the store.
@@ -136,7 +136,7 @@ function ensureI18n(state) {
 
 async function run(method, path, body, opts) {
   const sent = { generation, epoch };
-  const { status, data, network } = await send(method, path, body);
+  const { status, data, network, retryAfter } = await send(method, path, body);
   if (network) {
     hooks.onError({ code: "network", status: 0, message: null, path });
     return { ok: false, code: "network", status: 0, data: null };
@@ -157,8 +157,8 @@ async function run(method, path, body, opts) {
     queue.unshift(sessionJob());
     pump();
   }
-  hooks.onError({ code, status, message: error.message || null, path });
-  return { ok: false, code, status, data };
+  hooks.onError({ code, status, message: error.message || null, path, retryAfter });
+  return { ok: false, code, status, data, retryAfter };
 }
 
 function sessionJob() {

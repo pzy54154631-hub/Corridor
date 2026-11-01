@@ -172,7 +172,7 @@ for (const width of [360, 390, 1600, 1920]) {
       const report = (await (await response).json()).rogue;
       const started = Date.now();
       if (width !== 360) {
-        await expect(page.getByTestId('rogue-stat-blocked')).toHaveText(locale === 'en' ? 'Calculating' : '计算中');
+        await expect(page.getByTestId('rogue-stat-blocked')).toHaveText(`${report.summary.blocked}/${report.summary.attacks}`);
         await expect(page.getByTestId('rogue-row').first()).toBeVisible();
         await expect(page.locator('.rogue-table caption')).toContainText(locale === 'en' ? 'Table 1.' : '表 1');
       }
@@ -188,12 +188,23 @@ for (const width of [360, 390, 1600, 1920]) {
       await page.locator('.rogue-rows summary').first().click();
       await expect(page.getByTestId('rogue-limit')).toContainText('corridor adversary');
       await expect(page.getByTestId('rogue-limit')).toHaveText(locale === 'en'
-        ? 'The listed attacks are handwritten synthetic examples, with no model calls. The results describe the authorization kernel’s behavior in these cases only and do not establish protection against all attacks; a manipulated payment confirmed by the user may still execute. Run corridor adversary to reproduce all 40 cases.'
-        : '所列攻击均为手写合成样例，未调用模型。结果仅说明授权内核在上述情形下的行为，不代表可阻止全部攻击；用户本人确认的诱导付款仍可能执行。完整 40 例可运行 corridor adversary 复现。');
+        ? 'The listed attacks are handwritten synthetic examples, with no model calls. Device authorizations in these cases are issued for legitimate goals; cases where users authorize model-selected targets on their devices are outside this drill. The results describe the kernel and gateway’s behavior in these cases only and do not establish protection against all attacks; a manipulated payment confirmed by the user may still execute. Run corridor adversary to reproduce all 40 cases.'
+        : '所列攻击均为手写合成样例，未调用模型。所列用例的设备授权都按合法目标签发；用户为模型所选对象签发授权的情形不在演练内。结果仅说明内核与网关在上述情形下的行为，不代表可阻止全部攻击；用户本人确认的诱导付款仍可能执行。完整 40 例可运行 corridor adversary 复现。');
       await expect(page.getByTestId('rogue-row').last()).toContainText(locale === 'en' ? 'Completed' : '已完成');
+      for (const [index, row] of report.rows.entries()) {
+        const verdict = row.status === 'Escalate'
+          ? (locale === 'en' ? 'Escalated, not dispatched' : '升级，未派发')
+          : (locale === 'en' ? 'Rejected' : '已拒绝');
+        await expect(page.getByTestId('rogue-row').nth(index).locator('td').nth(2)).toHaveText(verdict);
+      }
+      if (width === 1600 && locale === 'zh-CN') {
+        fs.mkdirSync('.tmp/c50', { recursive: true });
+        await page.screenshot({ path: '.tmp/c50/rogue-1600x1000.png' });
+      }
       expect(await page.getByTestId('rogue-panel').evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(true);
       const box = await page.getByTestId('rogue-panel').boundingBox();
       expect(box).toEqual({ x: 0, y: 0, width, height: width === 1920 ? 1080 : width === 1600 ? 1000 : 844 });
+      await expect(page.getByTestId('rogue-replay')).toBeEnabled();
       await page.getByTestId('rogue-close').focus();
       await page.keyboard.press('Shift+Tab');
       await expect(page.getByTestId('rogue-replay')).toBeFocused();
@@ -209,6 +220,8 @@ for (const width of [360, 390, 1600, 1920]) {
         await page.screenshot({ path: 'docs/submission-zh/screenshots/13-rogue-model.png' });
       }
       await page.getByTestId('rogue-replay').click();
+      await expect(page.getByTestId('rogue-stats')).not.toContainText(/计算中|Calculating/);
+      await expect(page.getByTestId('rogue-summary')).not.toContainText(/计算中|Calculating/);
       await expect(page.getByTestId('rogue-summary')).toContainText(`${report.summary.blocked}/8`);
       expect(requests).toBe(1);
       await page.keyboard.press('Escape');
@@ -231,7 +244,7 @@ test('28-rogue-model failure is visible @scripted @public', async ({ page }) => 
   await page.goto('/');
   // Browser fetch uses the public harness's TLS host mapping; APIRequestContext does not.
   const body = await page.evaluate(async () => (await fetch('/api/rogue')).json());
-  Object.assign(body.rogue.rows[0], { passed: false, attack_dispatches: 1, benign_completed: false,
+  Object.assign(body.rogue.rows[0], { status: 'Accept', passed: false, attack_dispatches: 1, benign_completed: false,
     oracle_violation: true, prohibited_effects: 1 });
   Object.assign(body.rogue.summary, { blocked: 7, attack_dispatches: 1, benign_completed: 7,
     violations: 1, prohibited_effects: 1 });
@@ -245,4 +258,16 @@ test('28-rogue-model failure is visible @scripted @public', async ({ page }) => 
   await expect(page.getByTestId('rogue-row').first()).toHaveClass(/rogue-failed/);
   await expect(page.getByTestId('rogue-row').first()).toContainText('检查未通过');
   await expect(page.getByTestId('rogue-row').first()).toContainText('未完成');
+});
+
+test('28-rogue-model verdict follows status rather than attack name @scripted @public', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  const body = await page.evaluate(async () => (await fetch('/api/rogue')).json());
+  body.rogue.rows[0].status = 'Escalate';
+  body.rogue.rows.find(row => row.attack === 'missing_mfa').status = 'Reject';
+  await page.route('**/api/rogue', route => route.fulfill({ json: body }));
+  await page.getByTestId('rogue-entry').click();
+  await expect(page.getByTestId('rogue-row').first()).toContainText('升级，未派发');
+  await expect(page.getByTestId('rogue-row').nth(1)).toContainText('已拒绝');
 });

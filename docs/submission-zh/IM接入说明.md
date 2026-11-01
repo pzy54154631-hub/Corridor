@@ -1,6 +1,6 @@
 # IM 接入说明（模拟渠道）
 
-`src/corridor/channels/im.py` 是同一 `DomesticSession` 会话 API 的纯文本适配器。Streamlit 本地备用入口的「IM 视图」用于演示消息进、规范卡片文本及按钮出的交互；网页主入口（公开站点）没有 IM 视图；没有连接企业微信、飞书或其他真实机器人。
+`src/corridor/channels/im.py` 是同一 `DomesticSession` 会话 API 的纯文本适配器。Streamlit 本地备用入口的「IM 视图」用于演示消息进、规范卡文本及按钮出的交互；网页主入口（公开站点）没有 IM 视图；没有连接企业微信、飞书或其他真实机器人。
 
 ```python
 from corridor.agent.domestic_session import DomesticSession

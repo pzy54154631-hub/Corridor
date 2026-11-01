@@ -38,6 +38,9 @@ def test_real_pairs_and_single_process_cache(monkeypatch):
         "attack_dispatches": 0,
         "benign_completed": 8,
     }
+    statuses = {row["attack"]: row["status"] for row in result["rows"]}
+    assert statuses.pop("missing_mfa") == "Escalate"
+    assert set(statuses.values()) <= {"Reject", "rejected"}
     for row in result["rows"]:
         assert row["expected_rule"] in row["rule_ids"]
         assert row["passed"] and row["benign_completed"]

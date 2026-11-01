@@ -185,6 +185,28 @@ HISTORY = (
             "Banking responses, routes and server options remain identical."
         ),
     },
+    {
+        "commit": "d1451df06376a9452be92548968a3f26e3fb6e8b",
+        "changed": ["i18n"],
+        "reason": (
+            "C50 and RW-9 item 7: disclose legitimate-goal device authorization and "
+            "signing-key assumptions, server-process caching and status-based drill "
+            "decisions in both languages. Recorded with C50 working-tree changes; "
+            "only /api/i18n and its Content-Length change. Banking responses, routes "
+            "and server options remain identical."
+        ),
+    },
+    {
+        "commit": "b10e50f781ee3d27a18ad46a340fd5134dfe3819",
+        "changed": ["i18n", "static"],
+        "reason": (
+            "C52 and RW-9 item 7: add bilingual startup retry countdown and retry-button "
+            "labels and replace the startup retry loop with visible bounded backoff. "
+            "Recorded with C52 working-tree changes; /api/i18n and its Content-Length, "
+            "plus /static/js/main.js content, Content-Length and Etag change. Banking "
+            "responses, routes and server options remain identical."
+        ),
+    },
 )
 
 

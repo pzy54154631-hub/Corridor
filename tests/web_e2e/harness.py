@@ -288,9 +288,14 @@ async def serve(port: int, mode: str, ready: Path, extra_features: frozenset[str
     features = FEATURES | extra_features | ({"live"} if mode in LIVE_MODES else set())
     settings = {"port": actual, "features": features}
     if mode == "public":
-        from corridor.web.public import PublicConfig
+        from corridor.web.public import RATES, PublicConfig, Rate
 
-        settings["public"] = PublicConfig(host=PUBLIC_HOST)
+        # All public journeys share one address and leave their sessions in the table.
+        # Give this suite room for both new sessions and retained sessions; production
+        # rate/capacity behavior is still exercised with defaults in tests/web/.
+        settings["public"] = PublicConfig(
+            host=PUBLIC_HOST, per_ip_sessions=128, rates={**RATES, "session": Rate(1000, 1.0)}
+        )
     app = make_app(settings)
     server = tornado.httpserver.HTTPServer(app)
     server.add_sockets(sockets)

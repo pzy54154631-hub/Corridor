@@ -22,6 +22,7 @@ import { dag } from "./components/dag.js";
 import { bars } from "./components/bars.js";
 import { details } from "./components/details.js";
 import { hash } from "./components/hash.js";
+import { waitToRetry } from "./startup.js";
 
 export const components = {
   button, tierBadge, outcomeBadge, card, notice, sheet, scrim, toast, segmented, codeInput, dag, bars,
@@ -44,6 +45,8 @@ const ERROR_KEYS = {
 };
 const LEVELS = { network: "error", busy: "warning", outcome_unknown: "error", operation_failed: "error", internal: "error" };
 const pendingToasts = [];
+let starting = true;
+let startupRetryAfter = null;
 
 function say(text, opts) {
   if (store.i18n) toast(text(), opts);
@@ -52,7 +55,11 @@ function say(text, opts) {
 
 api.configure({
   sessionBody: actions.sessionBody,
-  onError({ code, message }) {
+  onError({ code, message, path, retryAfter }) {
+    if (starting && path === "/api/session") {
+      startupRetryAfter = retryAfter;
+      return;
+    }
     const key = ERROR_KEYS[code];
     say(() => (key ? t(key) : message || t("web.ui.err.generic")), { level: LEVELS[code] || "warning" });
   },
@@ -100,9 +107,15 @@ async function boot() {
     say(() => t("web.ui.tab_dup"), { level: "info" });
   }
   // Opening a session is not a gesture, so retrying it after a network failure is safe.
-  while (!(await actions.openSession())) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+  let failures = 0;
+  while (true) {
+    startupRetryAfter = null;
+    if (await actions.openSession()) break;
+    failures += 1;
+    await waitToRetry(root, startupRetryAfter, failures);
+    stage.bootView(root, ctx);
   }
+  starting = false;
 }
 
 boot();

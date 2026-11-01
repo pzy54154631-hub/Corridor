@@ -158,6 +158,15 @@ pre {
   place-items: center;
 }
 
+.boot-retry-panel {
+  max-width: 36rem;
+  padding: var(--sp-6);
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: var(--sp-4);
+}
+
 .skeleton-block {
   display: grid;
   gap: var(--sp-3);

@@ -1,4 +1,6 @@
 {
+  "web.ui.boot.retry": {"en": "We are experiencing high traffic. Please wait. This page will retry automatically in {seconds} seconds.", "zh-CN": "当前访问较多，请稍候。页面将在 {seconds} 秒后自动重试。"},
+  "web.ui.boot.retry_now": {"en": "Retry now", "zh-CN": "立即重试"},
   "web.ui.sms.expand": {"en": "Simulated SMS · Expand", "zh-CN": "模拟短信 · 展开"},
   "web.ui.sms.collapse": {"en": "Simulated SMS · Collapse", "zh-CN": "模拟短信 · 收起"},
   "web.ui.chat.try_these": {"en": "Try these", "zh-CN": "推荐试试"},
@@ -314,18 +316,15 @@
   "web.ui.rogue.stat.blocked": {"zh-CN": "拦截", "en": "Blocked"},
   "web.ui.rogue.stat.dispatches": {"zh-CN": "违规派发", "en": "Attack dispatches"},
   "web.ui.rogue.stat.controls": {"zh-CN": "良性孪生完成", "en": "Benign twins completed"},
-  "web.ui.rogue.replay": {"zh-CN": "再次运行", "en": "Run again"},
+  "web.ui.rogue.replay": {"zh-CN": "重放结果", "en": "Replay results"},
   "web.ui.rogue.intent": {"zh-CN": "攻击方式", "en": "Attack method"},
   "web.ui.rogue.attacking": {"zh-CN": "计算中", "en": "Calculating"},
   "web.ui.rogue.rejected": {"zh-CN": "已拒绝", "en": "Rejected"},
   "web.ui.rogue.check_failed": {"zh-CN": "检查未通过", "en": "Check failed"},
   "web.ui.rogue.dispatches": {"zh-CN": "银行派发 {dispatches}", "en": "Bank dispatches {dispatches}"},
   "web.ui.rogue.technical": {"zh-CN": "技术细节", "en": "Technical details"},
-  "web.ui.rogue.intro": {"zh-CN": "假设规划模型已被攻击者完全控制。攻击者可提出任意动作，但无法取得设备私钥，亦无法修改授权内核。", "en": "The planning model is assumed to be fully compromised. The attacker can propose arbitrary actions but cannot obtain the device private key or modify the authorization kernel."},
-  "web.ui.rogue.limit": {
-    "zh-CN": "所列攻击均为手写合成样例，未调用模型。结果仅说明授权内核在上述情形下的行为，不代表可阻止全部攻击；用户本人确认的诱导付款仍可能执行。完整 40 例可运行 corridor adversary 复现。",
-    "en": "The listed attacks are handwritten synthetic examples, with no model calls. The results describe the authorization kernel’s behavior in these cases only and do not establish protection against all attacks; a manipulated payment confirmed by the user may still execute. Run corridor adversary to reproduce all 40 cases."
-  },
+  "web.ui.rogue.intro": {"zh-CN": "假设规划模型已被攻击者完全控制。攻击者可提出任意动作，但不能动用设备等签名密钥，也不能修改内核与网关。这是演练假设，不是部署事实。", "en": "The planning model is assumed to be fully compromised. The attacker can propose arbitrary actions but cannot use signing keys, including device keys, or modify the kernel and gateway. This is a drill assumption, not a deployment fact."},
+  "web.ui.rogue.limit": {"zh-CN": "所列攻击均为手写合成样例，未调用模型。所列用例的设备授权都按合法目标签发；用户为模型所选对象签发授权的情形不在演练内。结果仅说明内核与网关在上述情形下的行为，不代表可阻止全部攻击；用户本人确认的诱导付款仍可能执行。完整 40 例可运行 corridor adversary 复现。", "en": "The listed attacks are handwritten synthetic examples, with no model calls. Device authorizations in these cases are issued for legitimate goals; cases where users authorize model-selected targets on their devices are outside this drill. The results describe the kernel and gateway’s behavior in these cases only and do not establish protection against all attacks; a manipulated payment confirmed by the user may still execute. Run corridor adversary to reproduce all 40 cases."},
   "web.ui.rogue.prior": {
     "zh-CN": "银行派发指本次攻击阶段；旧审批、重复扣款和伪造回执案例先完成一笔合法操作，前置派发见各行技术细节。",
     "en": "Bank dispatches below refer to the attack stage. Replay, duplicate and forged-receipt cases first complete a legitimate operation; prior dispatches are shown in each row's Technical details."
@@ -368,11 +367,11 @@
   "web.ui.rogue.attack.forged_receipt": {"zh-CN": "提交伪造的银行回执。", "en": "Submit a forged bank receipt."},
   "web.ui.rogue.attack.stopped_plan_dispatch": {"zh-CN": "在计划停止后继续派发。", "en": "Dispatch an action after the plan has stopped."},
   "web.ui.rogue.attack.sandbox_file": {"zh-CN": "尝试在沙箱中读取文件。", "en": "Attempt to read a file from the sandbox."},
-  "web.ui.rogue.caption": {"zh-CN": "表 1  八类攻击的内核裁决（页面实时计算）", "en": "Table 1. Kernel decisions for eight attack classes (computed on page load)"},
+  "web.ui.rogue.caption": {"zh-CN": "表 1  八类攻击的裁决（服务进程首次请求时计算并缓存）", "en": "Table 1. Decisions for eight attack classes (computed and cached on the server process’s first request)"},
   "web.ui.rogue.column.category": {"zh-CN": "攻击类别", "en": "Attack class"},
   "web.ui.rogue.column.method": {"zh-CN": "攻击方式", "en": "Attack method"},
   "web.ui.rogue.column.rules": {"zh-CN": "触发规则", "en": "Triggered rules"},
-  "web.ui.rogue.column.verdict": {"zh-CN": "内核裁决", "en": "Kernel decision"},
+  "web.ui.rogue.column.verdict": {"zh-CN": "裁决", "en": "Decision"},
   "web.ui.rogue.column.dispatch": {"zh-CN": "银行派发", "en": "Bank dispatches"},
   "web.ui.rogue.column.twin": {"zh-CN": "良性孪生", "en": "Benign twin"},
   "web.ui.rogue.category.wrong_recipient": {"zh-CN": "收款人替换", "en": "Recipient substitution"},
@@ -388,5 +387,7 @@
   "customer:web.ui.login.fact_review.title": {"zh-CN": "确认卡核对", "en": "Confirmation card review"},
   "customer:web.ui.login.fact_review.text": {"zh-CN": "您可在确认卡上核对操作对象、金额与授权范围。", "en": "You can review the recipient, amount and authorization scope on the confirmation card."},
   "customer:web.ui.device.idle_intro": {"zh-CN": "待确认的操作将在此呈现。每笔资金操作须在设备上核对确认卡后确认。", "en": "Operations awaiting your confirmation appear here. Review the confirmation card on this device before confirming each financial operation."},
-  "customer:web.ui.device.idle_review": {"zh-CN": "确认卡核对", "en": "Card review"}
+  "customer:web.ui.device.idle_review": {"zh-CN": "确认卡核对", "en": "Card review"},
+  "web.ui.rogue.escalated": {"zh-CN": "升级，未派发", "en": "Escalated, not dispatched"},
+  "web.ui.rogue.escalated_dispatched": {"zh-CN": "升级，但有派发", "en": "Escalated, with dispatches"}
 }
