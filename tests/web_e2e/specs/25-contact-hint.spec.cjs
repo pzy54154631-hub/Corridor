@@ -2,6 +2,7 @@
 // holds, with no card; the composer names the demo contacts, on a phone as well. The same
 // page locally and in public mode.
 const { test, expect } = require('playwright/test');
+const fs = require('node:fs');
 const h = require('../lib/helpers.cjs');
 
 const { T } = h;
@@ -30,6 +31,57 @@ async function hintShown(page) {
 }
 
 test.describe('25-contact-hint', () => {
+  for (const locale of ['zh-CN', 'en']) {
+    test(`recommendations after a message stay single-line ${locale} @scripted @public`, async ({ page }) => {
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      await h.start(page, { locale: locale === 'en' ? locale : undefined });
+      await h.send(page, UNKNOWN);
+      for (const [width, height] of [[1600, 1000], [1366, 768], [390, 844], [360, 740]]) {
+        await test.step(`${width}x${height}`, async () => {
+          await page.setViewportSize({ width, height });
+          await page.evaluate(() => document.fonts.ready);
+          const shortcuts = page.locator('.scr-shortcuts-compact');
+          const title = shortcuts.getByTestId('try-these');
+          await expect(title).toBeVisible();
+          const heading = await title.evaluate(el => ({
+            height: el.getBoundingClientRect().height,
+            lineHeight: parseFloat(getComputedStyle(el).lineHeight),
+          }));
+          expect(heading.height).toBeGreaterThan(0);
+          expect(heading.height).toBeLessThanOrEqual(heading.lineHeight + 0.5);
+          const buttons = shortcuts.locator('.btn');
+          expect(await buttons.count()).toBeGreaterThan(2);
+          for (const button of await buttons.all()) {
+            const box = await button.evaluate(el => ({
+              height: el.getBoundingClientRect().height,
+              fits: el.scrollWidth <= el.clientWidth,
+              singleLine: getComputedStyle(el).whiteSpace === 'nowrap',
+            }));
+            expect(box.height).toBeGreaterThan(0);
+            expect(box.height).toBeLessThanOrEqual(44);
+            expect(box.fits && box.singleLine).toBe(true);
+          }
+          const row = shortcuts.locator('.scr-shortcut-row');
+          await row.evaluate(el => { el.scrollLeft = el.scrollWidth; });
+          expect(await row.evaluate(el => {
+            const last = [...el.querySelectorAll('.btn')].at(-1).getBoundingClientRect();
+            const bounds = el.getBoundingClientRect();
+            return last.left >= bounds.left && last.right <= bounds.right - 32;
+          })).toBe(true);
+          await row.evaluate(el => { el.scrollLeft = 0; });
+          await noSidewaysScroll(page);
+          await page.getByTestId('composer-send').scrollIntoViewIfNeeded();
+          await expect(title).toBeInViewport();
+          await expect(buttons.first()).toBeInViewport();
+          if (h.MODE === 'scripted' && (width === 1600 || width === 390)) {
+            fs.mkdirSync('.tmp/c54', { recursive: true });
+            await page.screenshot({ path: `.tmp/c54/dialogue-${width}x${height}-${locale}.png` });
+          }
+        });
+      }
+    });
+  }
+
   test('an unknown recipient: the hint, no card, then a listed name gets its card @scripted @public', async ({
     page,
   }) => {

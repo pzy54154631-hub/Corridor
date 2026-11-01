@@ -1843,16 +1843,26 @@ class DomesticSession:
 
     def withdraw_pending(self):
         """Retire channel buttons after an explicit Stop in any shared UI channel."""
-        for response in self._responses.values():
+        for identifier, response in self._responses.items():
             # An established scheduled authorization is terminal for its chat response.
-            if response["status"] not in {
+            if response["status"] in {
                 "settled",
                 "refused",
                 "withdrawn",
                 "rejected",
                 "controlled",
+                "interrupted",
+                "no_active_plan",
             }:
-                response.update(status="withdrawn", buttons=[], message=_message("withdrawn"))
+                continue
+            # A plain clarification proposed nothing, so its words stay as they were.
+            if (
+                response["intent"] == "clarify"
+                and not response["payload"].get("schedule_cancel")
+                and not self.suggestions.is_open(self, identifier)
+            ):
+                continue
+            response.update(status="withdrawn", buttons=[], message=_message("withdrawn"))
 
     def _retired(self, identifier):
         response = self._responses[identifier]

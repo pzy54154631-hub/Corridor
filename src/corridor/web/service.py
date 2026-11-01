@@ -752,14 +752,14 @@ def device_cancel(ws, tkey: str) -> None:
     """Cancel is the global withdrawal on every step, as the pages say."""
     task = tasks.find(ws, tkey)
     if task.source != "chat":
-        stop_all(ws)
+        stop_all(ws, marker="cancel")
         return
     _withdraw(ws, "cancel")
     if task.kind == "local":
         ws.local.pop(task.rid, None)
 
 
-def stop_all(ws) -> None:
+def stop_all(ws, marker: str = "stop_all") -> None:
     """``app::stop_all`` (B16); it does not pass through the chat, as on the page."""
     _retire_authorization_lab(ws)
     with live.operation(ws, CHAT, bind=False):
@@ -778,7 +778,7 @@ def stop_all(ws) -> None:
         ws.business.pop(slot, None)
     ws.requests.clear()
     _drop_business(ws)
-    turn = _turn(ws, "system", None, marker="stop_all")
+    turn = _turn(ws, "system", None, marker=marker)
     ws.business.setdefault("stop_results", {})[turn.id] = deepcopy(result)
     ws.business["stop_result"] = deepcopy(result)
 

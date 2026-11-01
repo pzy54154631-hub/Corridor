@@ -22,6 +22,29 @@ async function expectPhraseGate(page, bodies, rkey) {
 }
 
 test.describe('03-phrase-gate', () => {
+  test('cancel another card preserves the scam drill advice @scripted', async ({ page }) => {
+    const bodies = h.collectApiBodies(page);
+    await h.start(page);
+    const warning = await h.shortcut(page, 'scam_drill');
+    await expectPhraseGate(page, bodies, warning);
+    const before = (await h.responseState(bodies, warning)).copy_lines;
+    await h.send(page, '给妈妈转100元');
+    await h.expectStep(page, 'confirm');
+    await h.clickAndWait(
+      page,
+      page.locator(`${T('device-pane')} ${T('device-cancel')}`),
+      '/cancel',
+    );
+    const after = (await h.latestState(bodies)).chat.responses[warning];
+    expect(after.copy_lines).toEqual(before);
+    await expect(page.locator(T('chat-log'))).toContainText('96110');
+    await expect(page.locator(T('chat-log'))).toContainText('这笔付款没有生成');
+    const advice = page.locator(T('chat-log')).getByText('96110', { exact: false }).first();
+    await advice.scrollIntoViewIfNeeded();
+    await expect(advice).toBeVisible();
+    await h.screenshot(page, '03-phrase-gate', 'advice-after-cancel');
+  });
+
   test('HELD: fixed anti-fraud copy, no card, idle device, no dispatch @scripted', async ({
     page,
     request,

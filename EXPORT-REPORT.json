@@ -2,7 +2,7 @@
   "schema": "domestic-source-release-v1",
   "author": "Corridor",
   "scan": "PASS_WITH_DISCLOSED_FROZEN_EXCEPTIONS",
-  "scanned_files": 1055,
+  "scanned_files": 1056,
   "opaque_blind_cases": 24,
   "blind_payload_policy": "byte hash/copy only; not decoded, parsed, inspected or scanned",
   "blind_sha256": {
@@ -68,7 +68,7 @@
     "tests importing undistributed modules (listed in release/TESTS-NOT-DISTRIBUTED.txt)",
     "evidence-min/ recordings (excluded from this public export; included in the submitted source archive under evidence-min/flagship/; sha256 in evidence-min/EXTERNAL-ASSETS.sha256)"
   ],
-  "tests_not_distributed": 19,
+  "tests_not_distributed": 20,
   "evidence": {
     "paths": [
       "evidence/domestic/public-tree/judge.json",

@@ -35,11 +35,7 @@ function shortcutButtons(ctx, chat, compact, onPick) {
       testid: `shortcut-${s.key}`,
       onClick: () => onPick(s.key),
     });
-  return el(
-    ctx,
-    "div",
-    { class: compact ? "scr-shortcuts scr-shortcuts-compact" : "scr-shortcuts" },
-    regular.length ? el(ctx, "h3", { "data-testid": "try-these" }, ctx.t("web.ui.chat.try_these")) : null,
+  const groups = [
     regular.length ? el(ctx, "div", { class: "scr-shortcut-grid" }, regular.map(make), wealth) : null,
     drill
       ? el(
@@ -52,6 +48,13 @@ function shortcutButtons(ctx, chat, compact, onPick) {
           para(ctx, chat.drill_caption, "scr-hint", "drill-caption"),
         )
       : null,
+  ];
+  return el(
+    ctx,
+    "div",
+    { class: compact ? "scr-shortcuts scr-shortcuts-compact" : "scr-shortcuts" },
+    regular.length ? el(ctx, "h3", { "data-testid": "try-these" }, ctx.t("web.ui.chat.try_these")) : null,
+    ...(compact ? [el(ctx, "div", { class: "scr-shortcut-row" }, ...groups)] : groups),
   );
 }
 

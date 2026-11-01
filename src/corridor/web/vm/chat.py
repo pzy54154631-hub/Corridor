@@ -807,7 +807,7 @@ def turn_vm(ws, turn, current_rid: str | None, state: Any) -> dict[str, Any]:
         vm["text"] = wtr(marker) if marker in WEB_MESSAGES else plain(turn.marker)
         stopped = (ws.business.get("stop_results") or {}).get(turn.id)
         shown = result_vm(stopped, controller=ws.controller) if stopped else None
-        if shown and shown.get("banner"):
+        if shown and shown.get("banner") and "nodes" not in shown:
             # The top-bar Stop's own result (P-DIFF-2 style): what stopped, nothing else.
             vm["text"] = f"{vm['text']} {shown['banner']['text']}"
     elif turn.role == "user":
