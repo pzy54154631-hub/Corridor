@@ -122,7 +122,7 @@ test.describe('24-raw-keys', () => {
     expect(box.y).toBeLessThan(5);
     const details = page.locator(T('public-details')).first();
     await details.locator('summary').click();
-    await expect(details).toContainText('整张合成通讯录');
+    await expect(details).toContainText('转账提取只发送本地命中的联系人代号和原话称呼，明确指代时附本地解析的上一联系人代号，未命中则澄清');
     await details.locator('summary').click();
     await h.screenshot(page, '24-raw-keys', 'public-first-screen');
     await h.login(page);

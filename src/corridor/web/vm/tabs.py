@@ -7,9 +7,10 @@ service picks from, so a key the page sends always names what the page showed.
 
 from typing import Any
 
-from corridor.web import compat, tasks
+from corridor.web import compat, service, tasks
 from corridor.web.catalog import bound, wtr
 from corridor.web.compat import (
+    ANSWER_OPTIONS,
     KINDS,
     LABELS,
     STATUSES,
@@ -272,6 +273,25 @@ def accounts_vm(ws, capabilities: dict[str, Any], snapshot: dict[str, Any]) -> d
         billing = bill_vm(reply["payload"], controller=c) if reply else None
     return {
         "balances": balances,
+        "card_controls": {
+            "choices": [
+                {
+                    "key": f"c{index}",
+                    "label": plain(display_names.label(ref, c.state) or tr("Simulated card ID")),
+                    "limit": money(c.state.cards[ref].limit),
+                    "restrictions": list(c.state.cards[ref].restrictions),
+                }
+                for index, ref in enumerate(tasks.cards(ws))
+            ],
+            "list_version": tasks.list_version(ws, "cards", tasks.cards(ws)),
+            "operations": [
+                {"value": kind, "label": plain(tr(KINDS[kind]))} for kind in service.CARD_KINDS
+            ],
+            "categories": [
+                {"value": kind, "label": wtr(f"web.vm.cards.category.{kind}")}
+                for kind in service.CARD_CATEGORIES
+            ],
+        },
         "cards": cards,
         "receipts": receipts,
         "subscriptions": subscriptions,
@@ -457,6 +477,7 @@ def wealth_vm(ws, capabilities: dict[str, Any], snapshot: dict[str, Any]) -> dic
     if shown is not None:
         shown["candidates_version"] = tasks.list_version(ws, "wealth", tasks.wealth_listing(ws))
     vm: dict[str, Any] = {
+        "questionnaire": risk_questionnaire_vm(ws),
         "intro": plain(tr(CATALOGUE)),
         "scope_note": wtr("web.vm.route.wealth_note"),
         "objective": {
@@ -486,6 +507,32 @@ def wealth_vm(ws, capabilities: dict[str, Any], snapshot: dict[str, Any]) -> dic
         # The wealth advisor stays scripted while the banking chat plans live (INV-10.8).
         vm["live_scope_note"] = plain(tr("live.scope.wealth", deployment=c.client.deployment.label))
     return vm
+
+
+def risk_questionnaire_vm(ws):
+    state = ws.controller.state
+    customer = state.customers[ws.controller.device.principal]
+    profile = state.risk_assessments.get(customer.risk_profile_ref or "")
+    questions = state.policy.risk_questions
+    if len(questions) != 5 or any(question not in ANSWER_OPTIONS for question in questions):
+        return None
+    limit_reached = ws.controller.risk_retake_blocked()
+    return {
+        "questions": [
+            {
+                "label": plain(tr(question)),
+                "options": [plain(value) for value in display_value(ANSWER_OPTIONS[question])],
+            }
+            for question in questions
+        ],
+        "list_version": tasks.risk_version(ws),
+        "limit_reached": limit_reached,
+        "retake": not limit_reached and profile is not None and profile.issued_at == state.now,
+        "profile": wtr("web.vm.risk.profile", level=profile.level) if profile else None,
+        "result": result_vm(ws.business["risk_result"], controller=ws.controller)
+        if ws.business.get("risk_result")
+        else None,
+    }
 
 
 TABS = {"accounts": accounts_vm, "wealth": wealth_vm, "plans": plans_vm, "operator": operator_vm}

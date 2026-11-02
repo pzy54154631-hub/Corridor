@@ -413,7 +413,7 @@
     "expected_level": "yellow",
     "request": {
       "task": "爱人生辰快到了，花和蛋糕都帮我安排",
-      "initial_state": "bank",
+      "initial_state": "family",
       "simulated_device_events": [],
       "context": []
     },

@@ -210,6 +210,7 @@ function render(ctx, state, vm) {
       vm.live_scope_note ? para(ctx, vm.live_scope_note, "scr-hint") : null,
     ),
     comparison(ctx, vm),
+    questionnaire(ctx, vm.questionnaire),
     pendingCard(ctx, vm.purchase),
     positions(ctx, vm),
     pendingCard(ctx, vm.redemption),
@@ -229,6 +230,34 @@ function render(ctx, state, vm) {
   ]
     .flat()
     .filter(Boolean);
+}
+
+function questionnaire(ctx, vm) {
+  if (!vm) return null;
+  if (vm.limit_reached) return section(ctx, ctx.t("web.ui.risk.title"), "risk-questionnaire",
+    para(ctx, vm.profile, "scr-hint", "risk-profile"),
+    para(ctx, ctx.t("web.ui.risk.limit_reached"), "scr-hint", "risk-limit-reached"),
+    resultBlock(ctx, vm.result));
+  let submit;
+  const inputs = vm.questions.map((question, index) => {
+    const input = lockable(el(ctx, "select", { "data-testid": `risk-answer-${index}` },
+      el(ctx, "option", { value: "" }, ctx.t("web.ui.risk.choose")),
+      question.options.map((label, value) => el(ctx, "option", { value: String(value) }, label))), false);
+    input.addEventListener("change", () => {
+      const disabled = vm.retake || inputs.some(item => item.input.value === "");
+      submit.dataset.off = String(Number(disabled));
+      submit.disabled = disabled || Boolean(ctx.store.ui?.inFlight);
+    });
+    return { input, node: el(ctx, "label", { class: "scr-field" }, question.label, input) };
+  });
+  submit = button(ctx, { label: ctx.t("web.ui.risk.sign"), testid: "risk-sign", kind: "primary", disabled: true,
+    onClick: () => ctx.actions.riskSubmit(inputs.map(item => Number(item.input.value)), vm.list_version) });
+  return section(ctx, ctx.t("web.ui.risk.title"), "risk-questionnaire",
+    para(ctx, vm.profile, "scr-hint", "risk-profile"), para(ctx, ctx.t("web.ui.risk.note"), "scr-hint"),
+    vm.retake ? para(ctx, ctx.t("web.ui.risk.retake_note"), "scr-hint") : null,
+    vm.retake ? button(ctx, { label: ctx.t("web.ui.risk.retake"), testid: "risk-retake", kind: "secondary",
+      onClick: () => ctx.actions.riskRetake(vm.list_version) }) : null,
+    ...inputs.map(item => item.node), submit, resultBlock(ctx, vm.result));
 }
 
 export function mount(root, ctx) {

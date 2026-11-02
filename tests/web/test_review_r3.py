@@ -472,6 +472,7 @@ COUNTED = ("approve", "confirm_input", "complete_mfa", "request_mfa", "submit_mf
 COUNTED += ("dispatch",)
 # What a route's success may count ("+": at least one); everything else must be zero.
 EXPECTED: dict[str, dict[str, Any]] = {
+    "/api/wealth/risk": {"green": "+", "confirm_input": "+"},
     "/api/device/tasks/{tkey}/confirm": {"approve": 1, "dispatch": 1, "confirm_input": "+"},
     "/api/device/tasks/{tkey}/mfa/request": {"request_mfa": 1},
     "/api/device/tasks/{tkey}/mfa/verify": {"submit_mfa": 1},
@@ -825,7 +826,44 @@ def walk_live_toggle(w):
     w.measure("positive", page, "/api/live/toggle", {"on": True})
 
 
+def walk_aa(w):
+    page = w.page()
+    rkey = page.send("这顿饭300我们3个人AA")
+    path = f"/api/chat/responses/{rkey}/aa"
+    w.measure("negative", page, path, {"choices": ["c0"]})
+    w.measure("positive", page, path, {"choices": ["c0", "c1"]})
+
+
+def walk_cards(w):
+    from tests.web.test_public_completeness import card_body
+
+    page = w.page()
+    body = card_body(page, "lower_card_limit", limit="500")
+    w.measure("negative", page, "/api/cards/preview", {**body, "list_version": "0" * 32})
+    w.measure("positive", page, "/api/cards/preview", body)
+
+
+def walk_risk(w):
+    from tests.web.test_public_completeness import risk_form
+
+    page = w.page()
+    body = {"version": risk_form(page)["list_version"], "answers": [0] * 5}
+    w.measure("negative", page, "/api/wealth/risk", {**body, "version": "0" * 32})
+    w.measure("positive", page, "/api/wealth/risk", body)
+
+
+def walk_risk_retake(w):
+    page = w.page()
+    body = {"version": page.tab("wealth")["questionnaire"]["list_version"]}
+    w.measure("negative", page, "/api/wealth/risk/retake", {"version": "0" * 32})
+    w.measure("positive", page, "/api/wealth/risk/retake", body)
+
+
 WALKS = {
+    "/api/cards/preview": walk_cards,
+    "/api/wealth/risk": walk_risk,
+    "/api/wealth/risk/retake": walk_risk_retake,
+    AA: walk_aa,
     "/api/session": walk_session,
     "/api/session/reset": walk_reset,
     "/api/session/login": walk_login,
@@ -876,7 +914,7 @@ def open_posts():
 
 def test_e14_every_open_post_route_has_a_walk_and_the_closed_ones_are_named():
     assert set(WALKS) == open_posts() | {"/api/session", "/api/session/reset"}
-    assert set(handlers.POSTS) - open_posts() == {AA, *LAB_POSTS}
+    assert set(handlers.POSTS) - open_posts() == set(LAB_POSTS)
 
 
 def refused(code, data):
@@ -913,10 +951,11 @@ def test_e14_each_open_route_succeeds_and_refuses_with_its_counts_kept_apart(
             assert positive[name] == want, (route, name, positive)
 
 
-def test_e14_aa_is_unreachable_in_the_submission_build(web_app, monkeypatch):
-    """AA (P1) is not opened: its route answers 404 in both views with a well-formed body,
+def test_e14_aa_is_unreachable_when_disabled(web_app, monkeypatch):
+    """Disabled AA answers 404 in both views with a well-formed body,
     its service function never runs, and no reply carries an AA control."""
-    assert "aa" not in web_package.FEATURES
+    assert "aa" in web_package.FEATURES
+    web_app.settings["features"] = web_package.FEATURES - {"aa"}
     assert handlers.POSTS[AA].needs == ("aa",)
     called = []
     monkeypatch.setattr(service, "complete_aa", lambda *a, **k: called.append(a))

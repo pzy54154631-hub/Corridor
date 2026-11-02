@@ -32,7 +32,7 @@ from corridor.gateway.runtime import create_gateway
 from corridor.gateway.service import GatewayResult, Proposal
 from corridor.kernel.binding import dependency_hashes
 from corridor.kernel.check import check
-from corridor.kernel.investment import evaluate_investment
+from corridor.kernel.investment import evaluate_investment, risk_retake_errors
 from corridor.schemas.bank import (
     CardChangeRequest,
     InputTerm,
@@ -310,7 +310,7 @@ class DemoController:
             self._closed.add(identity)
         return result
 
-    def set_client(self, client):
+    def set_client(self, client, *, minimize_contacts: bool = False):
         """Replace the planner client for the chat; the gateway, kernel and audit are
         untouched. Refused during a transaction."""
         if client is self.client:
@@ -319,6 +319,7 @@ class DemoController:
             raise ValueError("Planner cannot change during a transaction")
         self.client = client
         self.chat.client = client
+        self.chat.minimize_contacts = minimize_contacts
 
     # --- S6 display-layer gate (product-layer session state only) ---------------------
     #
@@ -1154,6 +1155,35 @@ class DemoController:
         )
         pending["prepared"], pending["verified"] = updated, True
         return {"status": "mfa_verified", "pending_id": pending_id}
+
+    def risk_retake_blocked(self) -> bool:
+        """Read the current assessment limits without signing or recording a verdict."""
+        return bool(risk_retake_errors(self.device.principal, self.state))
+
+    def submit_risk_answers(self, answers):
+        """Sign explicit device answers through the existing assessment gateway."""
+        return self._result(self._submit_risk_answers(answers))
+
+    def _submit_risk_answers(self, answers):
+        self._require_login()
+        builder = _Builder(self, self._id("questionnaire"))
+        signed = self.device.confirm_input(
+            intent_id=builder.intent(),
+            slot="answers",
+            value=answers,
+            now=self.state.now,
+        )
+        result = self.gateway.submit_input(signed)
+        if result.status != "accepted":
+            return result
+        prepared = builder.prepare(
+            "risk_assess",
+            {"answers_input_ref": signed.id},
+            {"answers_input_ref": InputTerm(input_ref=signed.id, slot="answers")},
+            inputs=[signed],
+        )
+        result = self.gateway.query(prepared.action, prepared.cert)
+        return result
 
     def compare_investments(self, objective="net_return"):
         self._require_login()

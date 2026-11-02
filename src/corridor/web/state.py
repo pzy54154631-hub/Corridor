@@ -40,6 +40,8 @@ CONTROLLER_READS: frozenset[str] = frozenset({
     "scam_gate_status",
     # The stored proposal's verdict and a count of its dispatch rows in the audit records.
     "kernel_refusal",
+    # Pure assessment-limit check against the current state; no verdict is recorded.
+    "risk_retake_blocked",
     # ``not open_actions()``: reads the drafts, pendings, results and closed sets.
     "at_transaction_boundary",
     # The controller's own current card(s): reads the pendings, drafts and plans.
@@ -200,7 +202,7 @@ class Turn:
 @dataclass
 class DeviceTask:
     key: str
-    source: Literal["chat", "wealth", "subscriptions", "plans", "compensation"]
+    source: Literal["chat", "wealth", "subscriptions", "plans", "compensation", "cards"]
     rkey: str | None
     rid: str | None
     identity: str | None

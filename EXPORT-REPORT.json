@@ -2,7 +2,7 @@
   "schema": "domestic-source-release-v1",
   "author": "Corridor",
   "scan": "PASS_WITH_DISCLOSED_FROZEN_EXCEPTIONS",
-  "scanned_files": 1056,
+  "scanned_files": 1064,
   "opaque_blind_cases": 24,
   "blind_payload_policy": "byte hash/copy only; not decoded, parsed, inspected or scanned",
   "blind_sha256": {

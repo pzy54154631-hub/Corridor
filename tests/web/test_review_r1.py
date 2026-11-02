@@ -259,15 +259,14 @@ APPROVALS = ("approve", "complete_mfa", "request_mfa", "submit_mfa", "dispatch")
 GREEN_READ_ROUTES = frozenset({
     "/api/billing/analyze",
     "/api/wealth/compare",
+    "/api/wealth/risk",
     # On the preset's own isolated controller (INV-11.5), not the session's.
     "/api/presets/suitability-r4",
 })
-# POST routes the walk below cannot complete, with the reason: "aa" stays closed in this
-# build (404); the live switch needs a hosted deployment and an access code, which
+# POST routes the walk below cannot complete: the live switch needs an access code, which
 # tests/web/test_api_live.py configures and drives to completion (no device or gateway
 # entry point is among its calls).
 UNREACHED = frozenset({
-    "/api/chat/responses/{rkey}/aa",
     "/api/live/challenge",
     "/api/live/unlock",
     "/api/live/select",
@@ -278,6 +277,7 @@ UNREACHED = frozenset({
 INPUT_SIGNED = frozenset({
     "/api/wealth/compare",
     "/api/wealth/purchase",
+    "/api/wealth/risk",
     "/api/presets/suitability-r4",
 })
 
@@ -420,6 +420,19 @@ def test_no_request_but_a_device_gesture_approves_or_dispatches(web_app, monkeyp
         f"/api/chat/responses/{listed_schedule}/schedule-cancel",
         {"choice": "c0", "list_version": schedule_vm["list_version"]},
     )
+    # The added public entries must complete, while signing only explicit answers
+    # and leaving every card's approval and MFA to the existing device gestures.
+    from tests.web.test_public_completeness import card_body
+
+    controls = Browser(web_app)
+    controls.login()
+    aa = controls.send("这顿饭300我们3个人AA")
+    post(controls, f"/api/chat/responses/{aa}/aa", {"choices": ["c0", "c1"]})
+    post(controls, "/api/cards/preview", card_body(controls, "raise_card_limit", limit="3000"))
+    form = controls.tab("wealth")["questionnaire"]
+    post(controls, "/api/wealth/risk/retake", {"version": form["list_version"]})
+    form = controls.tab("wealth")["questionnaire"]
+    post(controls, "/api/wealth/risk", {"version": form["list_version"], "answers": [0] * 5})
     # Lab setup and withdrawal only prepare cards. The saved old request is tried by
     # a separate click and must fail before any approval/MFA/dispatch call.
     experiment = Browser(web_app)
@@ -495,7 +508,11 @@ def test_no_request_but_a_device_gesture_approves_or_dispatches(web_app, monkeyp
     assert sum(seen.get(path, Counter())["approve"] for path in GESTURES) > 0
     signed = {path for path, slots in inputs.items() if slots and path not in GESTURES}
     assert signed == INPUT_SIGNED, (signed, inputs)
-    assert {slot for path in INPUT_SIGNED for slot in inputs[path]} <= {"preference", "amount"}
+    assert inputs["/api/wealth/risk"] == ["answers"]
+    assert {slot for path in INPUT_SIGNED - {"/api/wealth/risk"} for slot in inputs[path]} <= {
+        "preference",
+        "amount",
+    }
     # R2-E14: the exemptions are explicit. Green reads (GREEN) run without a card on
     # these routes only; and every route ran to completion at least once, so its zero
     # counts above are not only those of a refusal branch.
@@ -753,6 +770,11 @@ ALLOWED_HEX = (
     "positions_version",
     "compensate_version",
 )
+# C60 adds two session-keyed form bindings; no other list field gets an exemption.
+FORM_BINDINGS = {
+    "body.tab.vm.card_controls.list_version",
+    "body.tab.vm.questionnaire.list_version",
+}
 
 
 def hex_paths(value, path="body"):
@@ -788,7 +810,7 @@ def test_customer_bodies_carry_hex_only_in_whitelisted_version_fields(web_app):
         if path.startswith("/api/phone/"):
             continue
         for found in hex_paths(json.loads(body)):
-            if not found.rsplit(".", 1)[-1].startswith(ALLOWED_HEX):
+            if found not in FORM_BINDINGS and not found.rsplit(".", 1)[-1].startswith(ALLOWED_HEX):
                 bad.append((path, found))
     assert not bad, bad[:10]
 

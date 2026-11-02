@@ -486,6 +486,7 @@ class AAVM(TypedDict):
     prompt: str
     needed: int
     choices: list[ChoiceVM]
+    locked: NotRequired[bool]
 
 
 class BirthdayChoiceVM(TypedDict):
@@ -633,7 +634,7 @@ class PurchaseReviewVM(TypedDict):
 
 class DeviceTaskVM(TypedDict):
     key: TKey
-    source: Literal["chat", "wealth", "subscriptions", "plans", "compensation"]
+    source: Literal["chat", "wealth", "subscriptions", "plans", "compensation", "cards"]
     source_label: str
     rkey: NotRequired[RKey]
     current: bool
@@ -807,6 +808,7 @@ class SubQueryVM(TypedDict):
 
 
 class AccountsVM(TypedDict):
+    card_controls: NotRequired[Obj]
     balances: list[BalanceVM]
     cards: list[CardRowVM]
     receipts: list[ReceiptVM]
@@ -878,6 +880,7 @@ class RedemptionVM(TypedDict):
 
 
 class WealthVM(TypedDict):
+    questionnaire: NotRequired[Obj | None]
     intro: str
     scope_note: str
     objective: ObjectiveVM

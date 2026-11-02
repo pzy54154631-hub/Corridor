@@ -62,6 +62,28 @@ test.describe('09-birthday', () => {
     for (let index = 2; index < total; index += 1) await toggle(page, reply, index);
     await h.expectStep(page, 'confirm_plan');
     await expect(deviceCards(page)).toHaveCount(total);
+    const cards = (await h.latestState(bodies)).device.tasks[0].cards;
+    const review = page.locator(T('device-batch-review'));
+    await expect(review).toBeVisible();
+    await expect(review.locator('li')).toHaveCount(total);
+    for (const [index, card] of cards.entries()) {
+      const row = review.locator('li').nth(index);
+      await expect(row).toContainText(card.purpose);
+      await expect(row).toContainText(card.amount_text);
+      for (const fact of card.facts.filter((fact) => fact.key.startsWith('objects.'))) {
+        await expect(row).toContainText(fact.value);
+      }
+    }
+    await h.screenshot(page, '09-birthday', 'batch-review');
+    const viewport = page.viewportSize();
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.locator(T('device-open')).first().click();
+    await review.scrollIntoViewIfNeeded();
+    await expect(review).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+    await h.screenshot(page, '09-birthday', 'batch-review-phone', { testOnly: true });
+    await page.keyboard.press('Escape');
+    await page.setViewportSize(viewport);
     const settled = await h.deviceConfirm(page);
     expect(settled.ok).toBe(true);
     await h.expectStep(page, 'done');

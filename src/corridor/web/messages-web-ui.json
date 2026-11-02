@@ -1,4 +1,18 @@
 {
+  "web.ui.risk.retake": {"en": "Advance the simulation by one second to retake", "zh-CN": "推进模拟时钟一秒后重测"},
+  "web.ui.risk.retake_note": {"en": "A new assessment requires a later simulation time. Advancing the clock also processes any scheduled events that become due.", "zh-CN": "重新测评需要晚于上次测评的模拟时间。推进时钟也会处理到期的定时事件。"},
+  "web.ui.risk.title": {"en": "Risk questionnaire on the simulated device", "zh-CN": "模拟设备风险测评"},
+  "web.ui.risk.note": {"en": "Please answer all five questions yourself. Your answers are not sent to the assistant. This synthetic questionnaire is not a professional suitability assessment.", "zh-CN": "请您本人回答全部五道题，答案不会发送给助手。这是合成问卷，不构成专业适当性评估。"},
+  "web.ui.risk.choose": {"en": "Choose an answer", "zh-CN": "请选择答案"},
+  "web.ui.risk.sign": {"en": "Confirm and sign answers on the simulated device", "zh-CN": "在模拟设备上确认并签署答案"},
+  "web.ui.cards.controls": {"en": "Card limits and transaction controls", "zh-CN": "卡片额度与交易限制"},
+  "web.ui.cards.choose": {"en": "Choose a card", "zh-CN": "选择卡片"},
+  "web.ui.cards.operation": {"en": "Choose an operation", "zh-CN": "选择操作"},
+  "web.ui.cards.limit": {"en": "New limit in CNY", "zh-CN": "调整后额度（元）"},
+  "web.ui.cards.restrictions": {"en": "Select all categories to restrict after this change.", "zh-CN": "请选择调整后需要限制的全部交易类别。"},
+  "web.ui.cards.review": {"en": "Review card change", "zh-CN": "核对卡片变更"},
+  "web.ui.cards.note": {"en": "Please review the change on the simulated device. Raising limits, relaxing restrictions and unfreezing require a verification code.", "zh-CN": "请在模拟设备上核对并确认变更。提高额度、放宽限制和解冻需要验证码。"},
+  "web.ui.aa.review": {"en": "Review selected participants", "zh-CN": "核对所选参与人"},
   "web.ui.boot.retry": {"en": "We are experiencing high traffic. Please wait. This page will retry automatically in {seconds} seconds.", "zh-CN": "当前访问较多，请稍候。页面将在 {seconds} 秒后自动重试。"},
   "web.ui.boot.retry_now": {"en": "Retry now", "zh-CN": "立即重试"},
   "web.ui.sms.expand": {"en": "Simulated SMS · Expand", "zh-CN": "模拟短信 · 展开"},
@@ -389,5 +403,13 @@
   "customer:web.ui.device.idle_intro": {"zh-CN": "待确认的操作将在此呈现。每笔资金操作须在设备上核对确认卡后确认。", "en": "Operations awaiting your confirmation appear here. Review the confirmation card on this device before confirming each financial operation."},
   "customer:web.ui.device.idle_review": {"zh-CN": "确认卡核对", "en": "Card review"},
   "web.ui.rogue.escalated": {"zh-CN": "升级，未派发", "en": "Escalated, not dispatched"},
-  "web.ui.rogue.escalated_dispatched": {"zh-CN": "升级，但有派发", "en": "Escalated, with dispatches"}
+  "web.ui.rogue.escalated_dispatched": {"zh-CN": "升级，但有派发", "en": "Escalated, with dispatches"},
+  "web.ui.risk.limit_reached": {
+    "en": "You have reached the assessment limit. Another assessment is not available now.",
+    "zh-CN": "风险测评次数已达上限，暂时无法再次测评。"
+  },
+  "web.ui.cards.not_applicable": {
+    "en": "Complete or cancel the current card request first. Also check that the operation matches the card status and moves the limit or restrictions in the selected direction.",
+    "zh-CN": "请先完成或取消当前卡片操作，并检查所选操作是否符合卡片状态、额度或交易限制的调整方向。"
+  }
 }

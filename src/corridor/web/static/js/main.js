@@ -60,7 +60,8 @@ api.configure({
       startupRetryAfter = retryAfter;
       return;
     }
-    const key = ERROR_KEYS[code];
+    const key = code === "not_applicable" && path === "/api/cards/preview"
+      ? "web.ui.cards.not_applicable" : ERROR_KEYS[code];
     say(() => (key ? t(key) : message || t("web.ui.err.generic")), { level: LEVELS[code] || "warning" });
   },
 });

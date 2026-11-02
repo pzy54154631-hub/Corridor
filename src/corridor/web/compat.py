@@ -74,11 +74,13 @@ from corridor.ui.manual_mfa import _challenge_active
 from corridor.ui.messages import UI_MESSAGES, display_value, prose, source_utterance, tr
 from corridor.ui.phone import MASK, _read_challenge, build_sms, sms_text
 from corridor.ui.phone_outbox import OUTBOX, sms_ref
+from corridor.ui.risk_questions import ANSWER_OPTIONS
 from corridor.ui.scam_gate import REASON_STALE
 from corridor.ui.view_mode import CUSTOMER_HIDDEN_PAGES
 from corridor.ui.wealth_controller import WealthController
 
 __all__ = [
+    "ANSWER_OPTIONS",
     "SITE_DEPLOYMENTS",
     "read_credential",
     "CUSTOMER_HIDDEN_PAGES",

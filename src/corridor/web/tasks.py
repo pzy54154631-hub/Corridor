@@ -177,6 +177,29 @@ def subscription_listing(ws) -> dict | None:
     return None
 
 
+def cards(ws) -> list[str]:
+    return [
+        card["id"]
+        for card in ws.controller.snapshot()["cards"]
+        if card.get("owner") == ws.controller.device.principal
+    ]
+
+
+def risk_version(ws) -> str:
+    state = ws.controller.state
+    customer = state.customers[ws.controller.device.principal]
+    return list_version(
+        ws,
+        "risk",
+        [
+            state.policy.model_dump(mode="json"),
+            customer.model_dump(mode="json"),
+            state.now,
+            ws.business.get("risk_result"),
+        ],
+    )
+
+
 def positions(ws) -> list[str]:
     """The customer's active positions, in snapshot order: the list ``c<i>`` redeems from."""
     c = ws.controller
@@ -611,6 +634,12 @@ def list_facts(ws, source: str, items: list, plans: list | None = None):
     (``service.subscription_choices``, ``service.schedule_cancel_choices``). A caller that
     holds this read's ``plans`` passes them, so the compensation list reads no snapshot."""
     c = ws.controller
+    if source == "cards":
+        state = c.state
+        return {
+            "rows": [_record(state.cards[ref]) for ref in items],
+            "labels": [compat.display_names.label(ref, state) for ref in items],
+        }
     if source == "subscriptions":
         return object_facts(ws, [{"objects": {"authorization_ref": ref}} for ref in items])
     if source == "positions":

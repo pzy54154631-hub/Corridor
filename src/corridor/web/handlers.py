@@ -804,6 +804,30 @@ def _aa_count(call: Call) -> None:
         raise error("invalid_input")
 
 
+def _restrictions(value):
+    if (
+        not isinstance(value, list)
+        or len(value) > 4
+        or any(
+            not isinstance(item, str) or item not in {"online", "overseas", "cash", "entertainment"}
+            for item in value
+        )
+        or len(set(value)) != len(value)
+    ):
+        raise error("invalid_input")
+    return value
+
+
+def _risk_answers(value):
+    if (
+        not isinstance(value, list)
+        or len(value) != 5
+        or any(type(item) is not int or not 0 <= item <= 4 for item in value)
+    ):
+        raise error("invalid_input")
+    return value
+
+
 def _code(call: Call) -> None:
     # Only a six-digit string reaches the controller; never None (INV-2.2).
     code = call.body.get("code")
@@ -1054,6 +1078,36 @@ POSTS: dict[str, Action] = {
     "/api/subscriptions/query": Action(
         lambda c: c.service.subscriptions_query(c.ws), needs=SUBSCRIPTIONS, tab="accounts"
     ),
+    "/api/cards/preview": Action(
+        lambda c: c.service.cards_preview(
+            c.ws,
+            c.body["choice"],
+            c.body["list_version"],
+            c.body["kind"],
+            c.body.get("limit"),
+            c.body.get("restrictions"),
+        ),
+        {
+            **LISTED_CHOICE,
+            "kind": (
+                one_of(
+                    "freeze_card",
+                    "unfreeze_card",
+                    "report_card_lost",
+                    "restore_card",
+                    "lower_card_limit",
+                    "raise_card_limit",
+                    "restrict_card",
+                    "relax_card_restriction",
+                ),
+                True,
+            ),
+            "limit": (string, False),
+            "restrictions": (_restrictions, False),
+        },
+        needs=("tab:accounts",),
+        tab="accounts",
+    ),
     "/api/subscriptions/cancel": Action(
         lambda c: c.service.subscriptions_cancel(c.ws, c.body["choice"], c.body["list_version"]),
         LISTED_CHOICE,
@@ -1069,6 +1123,18 @@ POSTS: dict[str, Action] = {
     "/api/wealth/compare": Action(
         lambda c: c.service.wealth_compare(c.ws, c.body["objective"]),
         {"objective": (one_of("net_return", "total_fee", "liquidity"), True)},
+        needs=("tab:wealth",),
+        tab="wealth",
+    ),
+    "/api/wealth/risk": Action(
+        lambda c: c.service.wealth_risk(c.ws, c.body["answers"], c.body["version"]),
+        {"answers": (_risk_answers, True), "version": (matching(CARD_VERSION), True)},
+        needs=("tab:wealth",),
+        tab="wealth",
+    ),
+    "/api/wealth/risk/retake": Action(
+        lambda c: c.service.wealth_risk_retake(c.ws, c.body["version"]),
+        {"version": (matching(CARD_VERSION), True)},
         needs=("tab:wealth",),
         tab="wealth",
     ),

@@ -1412,9 +1412,8 @@ def test_the_demo_notice_says_what_it_must_in_both_locales():
 
 def test_the_demo_notice_says_what_the_canary_measured():
     """RW-9 item 2, against ``tests/web/test_public_live.py``: only long numbers, emails,
-    codes and keys become tokens, a person's name does not; a transfer sends the whole address
-    book and typed handles. The old wording ("personal details" hidden, only "the contacts
-    it names") claimed less than leaves."""
+    codes and keys become tokens, a person's name does not. Public transfer extraction
+    sends locally matched contacts; planning sends typed handles."""
     from corridor.web.catalog import WEB_MESSAGES
 
     banner = WEB_MESSAGES["web.vm.public.disclosure"]
@@ -1427,7 +1426,8 @@ def test_the_demo_notice_says_what_the_canary_measured():
         "人名",
         "原样发送",
         "意图标签",
-        "整张合成通讯录的代号和别名",
+        "只发送本地命中的联系人代号和原话称呼",
+        "未命中则澄清",
         "类型化句柄",
         "提到的联系人代号和称呼",
         "请求摘要与模型输出",
@@ -1442,13 +1442,16 @@ def test_the_demo_notice_says_what_the_canary_measured():
         "names",
         "as written",
         "intent label",
-        "whole synthetic address book's handles and aliases",
-        "typed handles",
+        "only locally matched contact handles and names used in the message",
+        "no match asks for clarification",
+        "typed account, contact and amount handles",
         "request digests and the model's output",
     ):
         assert word in banner["en"], word
     assert "隐去个人信息" not in banner["zh-CN"]
     assert "personal details replaced" not in banner["en"]
+    assert "整张合成通讯录" not in banner["zh-CN"]
+    assert "whole synthetic address book" not in banner["en"]
 
 
 def test_no_demo_notice_outside_public_mode(st_sentinel):

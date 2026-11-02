@@ -9,6 +9,7 @@ import { suggestionBlock } from "./suggest.js";
 
 // Radio choice made before pressing "review" is a form draft, not state.
 const clarifyDrafts = new Map();
+const aaDrafts = new Map();
 
 function draftKey(state, rkey) {
   return `${state.generation}:${rkey}`;
@@ -16,6 +17,35 @@ function draftKey(state, rkey) {
 
 export function forgetDraft(state, rkey) {
   clarifyDrafts.delete(draftKey(state, rkey));
+  aaDrafts.delete(draftKey(state, rkey));
+}
+
+function aaBlock(ctx, state, rvm) {
+  const vm = rvm.aa;
+  if (!vm) return null;
+  const key = draftKey(state, rvm.rkey);
+  const picked = aaDrafts.get(key) || new Set();
+  aaDrafts.set(key, picked);
+  const locked = !rvm.current || vm.locked;
+  const review = button(ctx, {
+    label: ctx.t("web.ui.aa.review"), kind: "primary", testid: "aa-review",
+    disabled: locked || picked.size !== vm.needed,
+    onClick: () => ctx.actions.aa(rvm.rkey, vm.choices.filter(c => picked.has(c.key)).map(c => c.key)),
+  });
+  const choices = vm.choices.map((choice, index) => {
+    const input = el(ctx, "input", { type: "checkbox", "data-testid": `aa-choice-${index}`,
+      on: { change: () => {
+        if (input.checked) picked.add(choice.key); else picked.delete(choice.key);
+        review.dataset.off = String(Number(locked || picked.size !== vm.needed));
+        review.disabled = locked || picked.size !== vm.needed || Boolean(ctx.store.ui?.inFlight);
+      } },
+    });
+    setFlags(input, { checked: picked.has(choice.key) });
+    lockable(input, locked);
+    return el(ctx, "label", { class: "scr-check" }, input, el(ctx, "span", {}, choice.label));
+  });
+  return el(ctx, "fieldset", { class: "scr-clarify", "data-testid": "aa-select" },
+    el(ctx, "legend", {}, vm.prompt), choices, review);
 }
 
 export function cardWithNotes(ctx, card, opts = {}) {
@@ -225,7 +255,7 @@ function routeHint(ctx, state, rvm, onOperator) {
 
 // An earlier reply's own controls stay inert until it is made current again.
 function backRow(ctx, rvm) {
-  if (rvm.current || rvm.gate || !(rvm.clarify || rvm.birthday || rvm.plan_select)) return null;
+  if (rvm.current || rvm.gate || !(rvm.clarify || rvm.birthday || rvm.plan_select || rvm.aa)) return null;
   return button(ctx, {
     label: ctx.t("web.ui.device.back"),
     kind: "secondary",
@@ -319,6 +349,7 @@ export function renderResponse(ctx, state, rvm, opts = {}) {
     contactHint(ctx, rvm),
     cardsSection(ctx, state, rvm),
     birthdayBlock(ctx, rvm),
+    aaBlock(ctx, state, rvm),
     subscriptionBlock(ctx, rvm),
     scheduleCancelBlock(ctx, rvm),
     suggestionBlock(ctx, rvm),

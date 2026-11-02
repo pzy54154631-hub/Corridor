@@ -71,7 +71,15 @@ def choose(ws, rkey: str, choice: str, list_version: str, client_msg_id: str) ->
 
 def _judge_lines(ws, rid: str) -> list[str]:
     payload = ws.session.response(rid)["payload"].get("suggestions") or {}
-    shown = [plain(compat.tr("suggest.judge.source"))]
+    shown = [
+        plain(
+            compat.tr(
+                "suggest.local.source"
+                if payload.get("source") == "local"
+                else "suggest.judge.source"
+            )
+        )
+    ]
     for item in payload.get("items", []):
         shown.append(
             plain(
@@ -107,7 +115,14 @@ def vm(ws, rid: str, *, current: bool) -> dict[str, Any] | None:
     if not items:
         return None
     shown: dict[str, Any] = {
-        "note": plain(compat.tr("suggest.note")),
+        "note": plain(
+            compat.tr(
+                "suggest.local.note"
+                if ws.session.response(rid)["payload"].get("suggestions", {}).get("source")
+                == "local"
+                else "suggest.note"
+            )
+        ),
         "choices": [
             {
                 "key": f"c{index}",

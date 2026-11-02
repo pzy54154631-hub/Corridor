@@ -348,8 +348,16 @@ def test_an_aa_completion_is_a_new_reply_with_its_own_words():
     assert created != source and harness.ws.current["domestic"] == harness.ws.rkeys[created]
     turn = harness.ws.turn_of(created)
     assert turn.hint and turn.shortcut is None
+    harness.call("make_current", source)
+    assert harness.call("complete_aa", source, ["c0", "c1", "c2"]) == created
     tkey = "T" + created
     assert harness.step(tkey) == "confirm_intent"
     assert harness.confirm(tkey) == {"status": "settled"}
     harness.call("make_current", source)
-    assert harness.call("complete_aa", source, ["c0", "c1", "c2"]) == created
+    before = harness.ws.controller.state.model_dump()
+    turns = len(harness.ws.transcript)
+    with pytest.raises(errors.WebError) as caught:
+        harness.call("complete_aa", source, ["c0", "c1", "c2"])
+    assert caught.value.code == "not_applicable"
+    assert harness.ws.controller.state.model_dump() == before
+    assert len(harness.ws.transcript) == turns

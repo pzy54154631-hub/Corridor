@@ -11,6 +11,7 @@ import re
 from collections.abc import Generator
 from contextlib import contextmanager
 from copy import deepcopy
+from fractions import Fraction
 
 from corridor.web import compat, errors, live, tasks
 from corridor.web.refresh import deliver
@@ -30,6 +31,7 @@ CHAT = "domestic"
 # Business slots Streamlit's top-bar Stop clears (app::stop_all). The single-product
 # comparison stays, as the investments page's own ``comparison`` does (O-S12).
 RETIRED_SLOTS = (
+    "card_pending",
     "subscription_pending",
     "subscription_cancel",
     "investment_pending",
@@ -40,6 +42,7 @@ RETIRED_SLOTS = (
 )
 # The page slots that show a business task's card, by source.
 SLOTS = {
+    "cards": ("card_pending",),
     "subscriptions": ("subscription_pending", "subscription_cancel"),
     "wealth": ("investment_pending", "redemption_pending"),
     "compensation": ("compensation",),
@@ -534,6 +537,19 @@ def choose_schedule_cancel(ws, rkey: str, choice: str, list_version: str) -> str
     return _record_choice(ws, key, created, hint)
 
 
+def aa_selectable(response: dict) -> bool:
+    """The shared precondition for offering and preparing an AA participant choice."""
+    payload = response["payload"]
+    parse = payload.get("aa_parse") or {}
+    return (
+        response["intent"] == "transfer"
+        and response["status"] == "awaiting_device_selection"
+        and isinstance(payload.get("aa"), dict)
+        and parse.get("status") == "unresolved"
+        and parse.get("reason") in {"participants", "ambiguous"}
+    )
+
+
 def complete_aa(ws, rkey: str, choices: list[str]) -> str:
     """``aa_completion_card`` (B12): a new reply for the chosen participants."""
     rid = _current(ws, rkey)
@@ -543,27 +559,21 @@ def complete_aa(ws, rkey: str, choices: list[str]) -> str:
     refs = [_pick(roster, choice) for choice in choices]
     response = ws.session.response(rid)
     split = response["payload"].get("aa")
-    if response["status"] != "awaiting_device_selection" or not isinstance(split, dict):
+    if not aa_selectable(response):
         raise _fail("not_applicable")
     if len(refs) != split.get("participants", 0) - 1:
         raise _fail("invalid_input")
-    try:
-        completed = ws.session.prepare_aa(rid, refs)
-    except Exception:
-        # Every refusal without a side effect was checked above; any exception from inside
-        # the preparer, a ``WebError`` of any status included, has an unknown result
-        # (R2-E3, RW-4''''). AA is closed in the submission build.
-        raise errors.WebOutcomeUnknown() from None
+    key = ("aa", rid)
+    again = _chosen_before(ws, key)
+    if again is not None:
+        return again
+    # The same eligibility check controls the form and precedes the product call.
+    created = _prepare_choice(ws, lambda: ws.session.prepare_aa(rid, refs))
     with _unknown():
-        # The new reply exists: recording it is an unknown result if it fails (RW-5 item 1).
         # The chat page's own separator (U+3001), fixed at sending like every other turn.
         names = "\u3001".join(compat.reference_label(ref, controller=ws.controller) for ref in refs)
-        created = completed["response_id"]
-        rkey_new = _register(ws, created)
-        _turn(ws, "user", created, hint=compat.tr("chat.aa.chosen", names=names))
-        _turn(ws, "assistant", created)
-        ws.current[CHAT] = created
-    return rkey_new
+        hint = compat.tr("chat.aa.chosen", names=names)
+    return _record_choice(ws, key, created, hint)
 
 
 def _withdraw(ws, marker: str) -> str:
@@ -786,6 +796,81 @@ def stop_all(ws, marker: str = "stop_all") -> None:
 # --- business pages (ext) ---------------------------------------------------------------
 
 
+CARD_KINDS = (
+    "freeze_card",
+    "unfreeze_card",
+    "report_card_lost",
+    "restore_card",
+    "lower_card_limit",
+    "raise_card_limit",
+    "restrict_card",
+    "relax_card_restriction",
+)
+CARD_CATEGORIES = ("online", "overseas", "cash", "entertainment")
+
+
+def cards_preview(ws, choice: str, list_version: str, kind: str, limit=None, restrictions=None):
+    """A listed card and explicit resulting facts enter the existing unsigned preview."""
+    _logged_in(ws)
+    card = _pick_listed(ws, "cards", tasks.cards(ws), choice, list_version)
+    if kind not in CARD_KINDS:
+        raise _fail("invalid_input")
+    change = None
+    if kind in {"lower_card_limit", "raise_card_limit"}:
+        if (
+            not isinstance(limit, str)
+            or not re.fullmatch(r"[0-9]{1,9}(?:\.[0-9]{1,2})?", limit)
+            or restrictions is not None
+        ):
+            raise _fail("invalid_input")
+        change = {"limit": limit}
+    elif kind in {"restrict_card", "relax_card_restriction"}:
+        if (
+            limit is not None
+            or not isinstance(restrictions, list)
+            or any(item not in CARD_CATEGORIES for item in restrictions)
+        ):
+            raise _fail("invalid_input")
+        change = {"restrictions": sorted(restrictions)}
+    elif limit is not None or restrictions is not None:
+        raise _fail("invalid_input")
+    current = ws.controller.state.cards[card]
+    allowed_states = {
+        "freeze_card": {"active"},
+        "unfreeze_card": {"frozen"},
+        "report_card_lost": {"active", "frozen"},
+        "restore_card": {"lost"},
+    }
+    if current.status not in allowed_states.get(kind, {"active", "frozen"}):
+        raise _fail("not_applicable")
+    if kind == "lower_card_limit" and Fraction(limit) >= current.limit:
+        raise _fail("not_applicable")
+    if kind == "raise_card_limit" and Fraction(limit) <= current.limit:
+        raise _fail("not_applicable")
+    if kind == "restrict_card" and not set(restrictions) > set(current.restrictions):
+        raise _fail("not_applicable")
+    if kind == "relax_card_restriction" and not set(restrictions) < set(current.restrictions):
+        raise _fail("not_applicable")
+    payload = [card, current.version, kind, change]
+    if f"request:cards:{compat.H(payload)}" not in ws.requests and any(
+        task.source == "cards" and tasks.task_step(ws, task).step not in tasks.CLOSED
+        for task in ws.tasks.values()
+    ):
+        raise _fail("not_applicable")
+    with live.operation(ws, "cards", bind=False):
+        result = _preview(
+            ws,
+            "cards",
+            payload,
+            lambda request: ws.controller.preview_card_operation(
+                kind, card_ref=card, change=change, request_id=request
+            ),
+        )
+    ws.business["card_pending"] = deepcopy(result)
+    if result.get("pending_id") and result.get("card"):
+        _business(ws, "cards", "pending", result["pending_id"])
+
+
 def subscriptions_query(ws) -> None:
     _logged_in(ws)
     with live.operation(ws, "subscriptions", bind=False):
@@ -838,6 +923,38 @@ def wealth_compare(ws, objective: str) -> None:
         result = ws.controller.compare_investments(objective)
     ws.business["wealth_comparison"] = deepcopy(result)
     ws.business["wealth_objective"] = objective
+
+
+def wealth_risk(ws, answers: list[int], version: str) -> None:
+    """The submit gesture signs all five answers on the purchasing controller's device."""
+    _logged_in(ws)
+    if not _same(tasks.risk_version(ws), version):
+        raise _fail("card_changed")
+    if len(answers) != 5 or any(type(item) is not int or not 0 <= item <= 4 for item in answers):
+        raise _fail("invalid_input")
+    if ws.controller.risk_retake_blocked():
+        raise _fail("not_applicable")
+    with live.operation(ws, "wealth", bind=False):
+        result = ws.controller.submit_risk_answers(answers)
+    ws.business["risk_result"] = deepcopy(result)
+    if result.get("status") == "settled":
+        ws.business.pop("wealth_comparison", None)
+
+
+def wealth_risk_retake(ws, version: str) -> None:
+    """An explicit clock gesture, never an automatic delay or an answer submission."""
+    _logged_in(ws)
+    if not _same(tasks.risk_version(ws), version):
+        raise _fail("card_changed")
+    if ws.controller.risk_retake_blocked():
+        raise _fail("not_applicable")
+    state = ws.controller.state
+    customer = state.customers[ws.controller.device.principal]
+    profile = state.risk_assessments.get(customer.risk_profile_ref or "")
+    if profile is None or profile.issued_at != state.now:
+        raise _fail("not_applicable")
+    with live.operation(ws, "wealth", bind=False):
+        ws.controller.advance_clock(1)
 
 
 def wealth_purchase(ws, choice: str | None, list_version: str) -> None:

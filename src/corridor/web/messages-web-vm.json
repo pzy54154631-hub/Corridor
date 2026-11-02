@@ -1,4 +1,20 @@
 {
+  "web.vm.card_change.before.limit": {"en": "Previous transaction limit", "zh-CN": "变更前额度"},
+  "web.vm.card_change.after.limit": {"en": "New transaction limit", "zh-CN": "变更后额度"},
+  "web.vm.card_change.before.restrictions": {"en": "Previously restricted categories", "zh-CN": "变更前限制类别"},
+  "web.vm.card_change.after.restrictions": {"en": "Restricted categories after change", "zh-CN": "变更后限制类别"},
+  "web.vm.card_change.before.status": {"en": "Previous card status", "zh-CN": "变更前卡片状态"},
+  "web.vm.card_change.after.status": {"en": "Target card status", "zh-CN": "变更后卡片状态"},
+  "web.vm.cards.status.active": {"en": "Active", "zh-CN": "正常"},
+  "web.vm.cards.status.frozen": {"en": "Frozen", "zh-CN": "已冻结"},
+  "web.vm.cards.status.lost": {"en": "Reported lost", "zh-CN": "已挂失"},
+  "web.vm.cards.restrictions.none": {"en": "None", "zh-CN": "无"},
+  "web.vm.risk.profile": {"en": "Your recorded risk level is C{level}.", "zh-CN": "您当前的风险测评等级为 C{level}。"},
+  "web.vm.source.cards": {"en": "Card services", "zh-CN": "卡片服务"},
+  "web.vm.cards.category.online": {"en": "Online transactions", "zh-CN": "线上交易"},
+  "web.vm.cards.category.overseas": {"en": "Overseas transactions", "zh-CN": "境外交易"},
+  "web.vm.cards.category.cash": {"en": "Cash transactions", "zh-CN": "现金交易"},
+  "web.vm.cards.category.entertainment": {"en": "Entertainment spending", "zh-CN": "娱乐消费"},
   "customer:web.vm.purchase.notice": {"zh-CN": "以下是将签署的全部偏好，尚未生成申购确认卡。确认后还须查看该卡、完成模拟短信验证并最终确认。", "en": "These are all the preferences to be signed; the purchase confirmation card has not been prepared yet. Card review, simulated SMS verification and final approval follow."},
   "web.vm.purchase.value.net_return": {"zh-CN": "净收益", "en": "Net return"},
   "web.vm.purchase.value.liquidity": {"zh-CN": "流动性", "en": "Liquidity"},
@@ -580,8 +596,8 @@
     "en": "Caps: {calls} calls per session · {cny} CNY cumulative for the whole site (assumed prices, no daily reset, never starts again). This is a budget guard at assumed prices, not a provider's hard billing limit."
   },
   "web.vm.live.public_on": {
-    "zh-CN": "已开启：银行对话请求发给 {deployment}。消息文字里只有 11 位以上的号码、邮箱、验证码和密钥换成代号，人名、地址、金额等其余文字原样发送，并附上一轮的意图标签；转账还会发送整张合成通讯录的代号和别名，以及账户、联系人、金额的类型化句柄。规则听不懂的话也会发给它，连同其中提到的联系人代号和称呼，只用于生成建议问句，这些调用计入本会话的调用上限。",
-    "en": "On: banking chat requests go to {deployment}. In a message only numbers of 11 or more digits, email addresses, verification codes and keys are replaced by tokens; names, addresses, amounts and all other words go as written, with the previous reply's intent label. A transfer also sends the whole synthetic address book's handles and aliases and typed handles for the account, contact and amount. Words the rules cannot read go to it too, with the handles and aliases of the contacts they name, only to suggest questions; those calls count against the session's call cap."
+    "zh-CN": "已开启：银行对话请求发给 {deployment}。消息文字里只有 11 位以上的号码、邮箱、验证码和密钥换成代号，人名、地址、金额等其余文字原样发送，并附上一轮的意图标签；转账提取只发送本地命中的联系人代号和原话称呼，明确指代时附本地解析的上一联系人代号，未命中则澄清；规划步发送账户、联系人、金额的类型化句柄。规则听不懂的话也会发给它，连同其中提到的联系人代号和称呼，只用于生成建议问句，这些调用计入本会话的调用上限。",
+    "en": "On: banking chat requests go to {deployment}. In a message only numbers of 11 or more digits, email addresses, verification codes and keys are replaced by tokens; names, addresses, amounts and all other words go as written, with the previous reply's intent label. Transfer extraction sends only locally matched contact handles and the names used in the message; an explicit pronoun includes only its locally resolved previous contact handle. No match asks for clarification. Planning sends typed account, contact and amount handles. Words the rules cannot read go to it too, with the handles and aliases of the contacts they name, only to suggest questions; those calls count against the session's call cap."
   },
   "web.vm.public.banner": {
     "zh-CN": "演示环境：合成数据、模拟认证，请勿输入真实信息",
@@ -601,8 +617,8 @@
     "en": "shown on that bank page"
   },
   "web.vm.public.disclosure": {
-    "zh-CN": "演示环境：全部为合成数据与模拟银行，不是真实银行；请勿输入任何真实姓名、账号、证件号或密码。默认按固定脚本理解和规划，不调用模型。只有凭评委口令开启真模型后，本会话之后的消息才会发给所选模型 {deployment}（提供商 {provider}）：11 位以上的号码、邮箱、验证码和密钥换成代号，人名、地址、金额等其余文字原样发送，并附上一轮的意图标签；转账还会发送整张合成通讯录的代号和别名，以及账户、联系人、金额的类型化句柄；本地规则读不懂的消息会附上其中提到的联系人代号和称呼。服务器保留请求摘要与模型输出。",
-    "en": "Demo environment: everything here is synthetic data and a simulated bank, not a real bank; do not enter any real name, account number, ID number or password. By default the demo understands and plans from a fixed script and calls no model. Only after the judges' access code opens the live model do this session's later messages go to the selected model {deployment} (provider {provider}): numbers of 11 or more digits, email addresses, verification codes and keys are replaced by tokens, while names, addresses, amounts and all other words go as written, with the previous reply's intent label; a transfer also sends the whole synthetic address book's handles and aliases and typed handles for the account, contact and amount; a message the local rules cannot read also sends the handles and aliases of the contacts it names. The server keeps the request digests and the model's output."
+    "zh-CN": "演示环境：全部为合成数据与模拟银行，不是真实银行；请勿输入任何真实姓名、账号、证件号或密码。默认按固定脚本理解和规划，不调用模型。只有凭评委口令开启真模型后，本会话之后的消息才会发给所选模型 {deployment}（提供商 {provider}）：11 位以上的号码、邮箱、验证码和密钥换成代号，人名、地址、金额等其余文字原样发送，并附上一轮的意图标签；转账提取只发送本地命中的联系人代号和原话称呼，明确指代时附本地解析的上一联系人代号，未命中则澄清；规划步发送账户、联系人、金额的类型化句柄；本地规则读不懂的消息会附上其中提到的联系人代号和称呼。服务器保留请求摘要与模型输出。",
+    "en": "Demo environment: everything here is synthetic data and a simulated bank, not a real bank; do not enter any real name, account number, ID number or password. By default the demo understands and plans from a fixed script and calls no model. Only after the judges' access code opens the live model do this session's later messages go to the selected model {deployment} (provider {provider}): numbers of 11 or more digits, email addresses, verification codes and keys are replaced by tokens, while names, addresses, amounts and all other words go as written, with the previous reply's intent label; transfer extraction sends only locally matched contact handles and names used in the message, or the locally resolved previous contact handle for an explicit pronoun; no match asks for clarification; planning sends typed account, contact and amount handles; a message the local rules cannot read also sends the handles and aliases of the contacts it names. The server keeps the request digests and the model's output."
   },
   "web.vm.public.details_title": {
     "zh-CN": "演示与数据外发说明",

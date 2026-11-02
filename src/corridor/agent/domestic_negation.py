@@ -3,9 +3,10 @@
 A request that would otherwise become a transfer, scheduled-transfer, split-bill or
 birthday-plan card is held at clarification when a negation, cancel or stop word appears
 anywhere in it: before or after the date phrase, in its own clause or at the very end
-(别每月5号给房东转, 每月5号，停止给房东转, 给房东转2000，算了). The gate does not try to
-resolve what the word negates, so a negation about something else (房东说不用了，给他转500)
-also clarifies. It only ever removes a card, never creates one, and by itself it changes
+(别每月5号给房东转, 每月5号，停止给房东转, 给房东转2000，算了). Only a closed third-party
+report followed by a separate affirmative transfer clause is exempt; other negations
+about something else still clarify. It only ever removes a card, never creates one,
+and by itself it changes
 nothing (no draft, no card, no dispatch): interrupting a plan or withdrawing a pending card
 stays with the existing stop handling.
 
@@ -220,6 +221,17 @@ def negation_words(text: str) -> tuple[str, ...]:
     """Every negation, cancel or stop word in the text, outside the closed neutral list and
     the polite tags in their allowed places (R8), decided on the compact folded text."""
     folded = compact(text)
+    # Only a complete, closed third-party report followed by an independent present
+    # transfer clause is exempt. Any extra clause, qualifier, question or action negation
+    # keeps the original scan of the whole utterance.
+    report = re.fullmatch(
+        r"(?:房东|妈妈|老妈|室友|同学|爱人|老婆|他|她)说(?:不用了|不要了|不需要了)"
+        r"[,;。](?P<action>(?:给(?:房东|妈妈|老妈|室友|同学|爱人|老婆|他|她))?"
+        r"转(?:账)?[0-9]+(?:\.[0-9]{1,2})?(?:元|块)?(?:补偿)?)[。.!]?",
+        folded,
+    )
+    if report is not None:
+        return ()
     released = _NEUTRAL.sub(" ", without_polite_tags(folded))
     spaced = _NEUTRAL.sub(" ", _fold(text))
     words = [match.group() for match in _WORDS.finditer(released)]

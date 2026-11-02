@@ -39,12 +39,13 @@ LOCAL_FINAL = frozenset({"settled", "rejected", "failed", "withdrawn"})
 LOCAL_SHOWN = frozenset({"settled", "rejected", "failed", "controlled"})
 ENVELOPE_RESULTS = frozenset({"rejected", "failed", "interrupted", "handed_off", "controlled"})
 ROUTE_TABS = {
+    "cards": "accounts",
     "billing": "accounts",
     "subscriptions": "accounts",
     "wealth": "wealth",
     "birthday": "plans",
 }
-IN_CHAT = frozenset({"conversation", "transfers", "cards"})
+IN_CHAT = frozenset({"conversation", "transfers"})
 TONES = {
     "pending": "neutral",
     "ready": "neutral",
@@ -458,13 +459,7 @@ def aa_vm(ws, response: dict[str, Any]) -> dict[str, Any] | None:
     """``aa_completion_card``: choose the remaining split-bill participants."""
     payload = response["payload"]
     split = payload.get("aa")
-    parse = payload.get("aa_parse") or {}
-    if (
-        response["status"] != "awaiting_device_selection"
-        or not isinstance(split, dict)
-        or parse.get("status") != "unresolved"
-        or parse.get("reason") not in {"participants", "ambiguous"}
-    ):
+    if not service.aa_selectable(response):
         return None
     c = ws.controller
     needed = split["participants"] - 1
@@ -768,6 +763,9 @@ def response_vm(
     if contact_hint is not None:
         vm["contact_hint"] = contact_hint
     if aa is not None:
+        aa["locked"] = (
+            not current or ws.untrusted or ("aa", rid) in ws.business.get(service.CHOSEN, {})
+        )
         vm["aa"] = aa
     if birthday is not None:
         vm["birthday"] = birthday

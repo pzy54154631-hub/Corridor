@@ -209,6 +209,18 @@ export async function wealthCompare(objective) {
   return done(await post("/api/wealth/compare", { objective }));
 }
 
+export async function cardPreview(body) {
+  return done(await post("/api/cards/preview", body));
+}
+
+export async function riskSubmit(answers, version) {
+  return done(await post("/api/wealth/risk", { answers, version }));
+}
+
+export async function riskRetake(version) {
+  return done(await post("/api/wealth/risk/retake", { version }));
+}
+
 export async function wealthPurchase(choice, version) {
   return done(
     await post("/api/wealth/purchase", {

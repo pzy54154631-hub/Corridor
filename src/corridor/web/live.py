@@ -368,7 +368,7 @@ def _apply_on(ws, config: LiveConfig) -> None:
             _slot(ws)["unbuilt"] = True
             return
         if client is not controller.client:
-            controller.set_client(client)
+            controller.set_client(client, minimize_contacts=_public(ws))
             if ws.session.controller is unwrap(controller):
                 ws.session.client = client
     elif _is_live(controller) and boundary and not wanted:

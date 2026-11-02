@@ -83,6 +83,7 @@ READS = {
         "snapshot",
         "scam_gate_status",
         "kernel_refusal",
+        "risk_retake_blocked",
         "at_transaction_boundary",
         "_authoritative_cards",
         "_registered_plan_ids",
@@ -347,7 +348,7 @@ def test_i1_a_refusal_while_a_prepared_choice_is_recorded_is_an_unknown_result(
 
 @pytest.fixture
 def aa_page():
-    # AA (P1) is closed in the submission build; these tests open it explicitly.
+    # Keep the explicit feature setting for both default and opt-in deployments.
     with serve({"features": web_package.FEATURES | {"aa"}}) as app:
         page = Browser(app)
         page.login()
@@ -718,7 +719,31 @@ def r_lab_gesture(page):
 
 
 LAB = frozenset({lab.FEATURE})
+
+
+def r_cards(page):
+    from tests.web.test_public_completeness import card_body
+
+    return "/api/cards/preview", card_body(page, "lower_card_limit", limit="500")
+
+
+def r_risk(page):
+    from tests.web.test_public_completeness import risk_form
+
+    return "/api/wealth/risk", {"answers": [0] * 5, "version": risk_form(page)["list_version"]}
+
+
+def r_risk_retake(page):
+    return "/api/wealth/risk/retake", {
+        "version": page.tab("wealth")["questionnaire"]["list_version"]
+    }
+
+
 ROUTES = {
+    "/api/cards/preview": Route(r_cards, service, "cards_preview", True),
+    # Prepare the repeat-assessment clock before taking the control card's snapshot.
+    "/api/wealth/risk": Route(r_risk, service, "wealth_risk", True, opens="after"),
+    "/api/wealth/risk/retake": Route(r_risk_retake, service, "wealth_risk_retake", True),
     "/api/lab/start": Route(r_lab_start, lab, "start", False, features=LAB),
     "/api/lab/change": Route(r_lab_change, lab, "change", False, features=LAB),
     "/api/lab/try-previous": Route(r_lab_try_previous, lab, "try_previous", False, features=LAB),
@@ -997,7 +1022,13 @@ def test_i2_each_allow_listed_read_leaves_the_product_state_unchanged(browser):
         c.snapshot()
         c.at_transaction_boundary()
         c._registered_plan_ids()
-        called |= {"snapshot", "at_transaction_boundary", "_registered_plan_ids"}
+        c.risk_retake_blocked()
+        called |= {
+            "snapshot",
+            "at_transaction_boundary",
+            "_registered_plan_ids",
+            "risk_retake_blocked",
+        }
         s.response(ws.rkeys[review])
         s.aa_roster()
         s.purchase_review_terms(purchase["product_ref"], purchase["amount"], purchase["objective"])

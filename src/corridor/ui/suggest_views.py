@@ -62,7 +62,9 @@ def adopt(session, response_id, index, prefix, submit, route):
 def judge_lines(session, response):
     """Judge view: what the model named, how the sentence was written, and the events."""
     payload = response["payload"].get("suggestions") or {}
-    shown = [tr("suggest.judge.source")]
+    shown = [
+        tr("suggest.local.source" if payload.get("source") == "local" else "suggest.judge.source")
+    ]
     for item in payload.get("items", []):
         shown.append(
             tr(
@@ -108,7 +110,13 @@ def render_suggestions(session, response, prefix, *, im=False, submit=None, rout
             )
         if item["state"] in FINISHED:
             st.caption(tr("suggest.state." + item["state"]))
-    st.caption(tr("suggest.note"))
+    st.caption(
+        tr(
+            "suggest.local.note"
+            if response["payload"].get("suggestions", {}).get("source") == "local"
+            else "suggest.note"
+        )
+    )
     notice = st.session_state.get(_error_key(prefix))
     if isinstance(notice, tuple) and len(notice) == 2 and notice[0] == identifier:
         st.error(tr(notice[1]))

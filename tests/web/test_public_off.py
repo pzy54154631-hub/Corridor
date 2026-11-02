@@ -52,9 +52,13 @@ def test_the_golden_says_why_it_was_recorded_again():
         ["i18n"],
         ["i18n"],
         ["i18n", "static"],
+        ["i18n", "routes", "capabilities.aa", "tabs.accounts", "tabs.wealth"],
+        ["i18n", "static"],
     ]
-    assert "C50" in later[-2]["reason"] and "RW-9" in later[-2]["reason"]
-    assert "C52" in later[-1]["reason"] and "RW-9" in later[-1]["reason"]
+    assert "C50" in later[-4]["reason"] and "RW-9" in later[-4]["reason"]
+    assert "C52" in later[-3]["reason"] and "RW-9" in later[-3]["reason"]
+    assert "C60" in later[-2]["reason"] and "RW-9" in later[-2]["reason"]
+    assert "C63" in later[-1]["reason"] and "RW-9" in later[-1]["reason"]
     assert all(len(item["commit"]) == 40 and item["reason"] for item in later)
     answer = _by_label(RECORDED["responses"])["i18n"]
     strings = json.loads(answer["body"]["json"])["strings"]

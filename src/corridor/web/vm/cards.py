@@ -56,6 +56,14 @@ SIGNED_OBJECTS = {
     "cancel_subscription": "authorization_ref",
     "redeem_product": "position_ref",
 }
+CARD_CONTROL_KINDS = {
+    "lower_card_limit",
+    "raise_card_limit",
+    "restrict_card",
+    "relax_card_restriction",
+    "freeze_card",
+    "unfreeze_card",
+}
 TAIL_FIELDS = ("net_proceeds", "settlement_date", "available", "total_after")
 STRUCTURED_FIELDS = ("execution_window", "risk", "card_change", "schedule_terms", "spa")
 # Two rule obligations name internal objects; customers read plain words (INV-5.4).
@@ -151,15 +159,39 @@ def fact_rows(rows: list[tuple[str, str, Any]], controller: Any) -> list[dict[st
         {
             "key": path,
             "label": (
-                wtr(f"web.vm.fact.{field}")
-                if field in SIGNED_OBJECTS.values()
-                else plain(display_value(LABELS.get(field, field)))
+                wtr(f"web.vm.{path}")
+                if path.startswith("card_change.")
+                else (
+                    wtr(f"web.vm.fact.{field}")
+                    if field in SIGNED_OBJECTS.values()
+                    else plain(display_value(LABELS.get(field, field)))
+                )
             ),
-            "value": plain(fact_value(field, value, controller)),
+            "value": plain(
+                card_change_value(field, value, controller)
+                if path.startswith("card_change.")
+                else fact_value(field, value, controller)
+            ),
         }
         for path, field, value in rows
         if not _technical_field(field) and not isinstance(value, dict)
     ]
+
+
+def card_change_value(field: str, value: Any, controller: Any) -> str:
+    """Format controls from the approval card, never the form or current controls."""
+    if field == "status" and value in {"active", "frozen", "lost"}:
+        return wtr(f"web.vm.cards.status.{value}")
+    if field == "restrictions" and isinstance(value, list):
+        if not value:
+            return wtr("web.vm.cards.restrictions.none")
+        return " · ".join(
+            wtr(f"web.vm.cards.category.{item}")
+            if item in {"cash", "online", "overseas", "entertainment"}
+            else safe_text(item)
+            for item in value
+        )
+    return fact_value(field, value, controller)
 
 
 def card_rows(card: dict[str, Any], controller: Any) -> list[tuple[str, str, Any]]:
@@ -200,6 +232,16 @@ def card_rows(card: dict[str, Any], controller: Any) -> list[tuple[str, str, Any
         if card.get(field) is not None
         and not (kind == "password_change_request" and field == "total_after")
     )
+    change = card.get("card_change")
+    if kind in CARD_CONTROL_KINDS and isinstance(change, dict):
+        for phase in ("before", "after"):
+            controls = change.get(phase)
+            if isinstance(controls, dict):
+                rows.extend(
+                    (f"card_change.{phase}.{field}", field, controls[field])
+                    for field in ("limit", "restrictions", "status")
+                    if field in controls
+                )
     return rows
 
 

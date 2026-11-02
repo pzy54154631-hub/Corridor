@@ -11,12 +11,12 @@ from corridor.gateway.allocations import (
 )
 from corridor.kernel.check import check
 from corridor.kernel.rules import RULES
-from corridor.schemas.bank import BankAction, BankCertificate, InputTerm
+from corridor.schemas.bank import BankAction, BankCertificate
 from corridor.schemas.money import fraction_string
 from corridor.sim.wealth import allocation_request, make_wealth_state
 from corridor.sim.wealth_device import WealthDevice
 from corridor.stores.bank import available
-from corridor.ui.controller import DemoController, _Builder
+from corridor.ui.controller import DemoController
 
 
 class WealthController(DemoController):
@@ -82,24 +82,7 @@ class WealthController(DemoController):
         return risk.model_dump(mode="json") if risk else None
 
     def submit_risk_answers(self, answers):
-        self._require_login()
-        builder = _Builder(self, self._id("questionnaire"))
-        signed = self.device.confirm_input(
-            intent_id=builder.intent(),
-            slot="answers",
-            value=answers,
-            now=self.state.now,
-        )
-        result = self.gateway.submit_input(signed)
-        if result.status != "accepted":
-            return self._result(result)
-        prepared = builder.prepare(
-            "risk_assess",
-            {"answers_input_ref": signed.id},
-            {"answers_input_ref": InputTerm(input_ref=signed.id, slot="answers")},
-            inputs=[signed],
-        )
-        result = self.gateway.query(prepared.action, prepared.cert)
+        result = self._submit_risk_answers(answers)
         if result.status == "settled":
             self.withdraw_proposal()
             receipt = result.analysis_receipt

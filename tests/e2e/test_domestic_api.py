@@ -80,13 +80,10 @@ def test_chinese_suite_and_intent_corpus_are_complete_and_structurally_checked(t
     from corridor.bench.domestic_runner import evaluate_intents, run_zh_suite
 
     report = run_zh_suite(output=tmp_path)
-    assert report["total"] >= 30
-    # G06: frozen ZH-BD-03 labels a partner plan on a fixture whose only birthday is Chen/mom's.
-    assert report["passed"] == report["total"] - 1
+    assert report["total"] == 33
+    assert report["passed"] == report["total"]
     failed = [row for row in report["results"] if not row["passed"]]
-    assert [row["task_id"] for row in failed] == ["ZH-BD-03"]
-    assert failed[0]["actual"]["final_status"] == "clarify"
-    assert failed[0]["actual"]["dispatch_count"] == 0
+    assert failed == []
     partner = run_task({"task": "爱人生辰快到了，花和蛋糕都帮我安排", "task_id": "ZH-BD-03"})
     candidates = partner["responses"][-1]["payload"]["candidates"]
     assert [item["event_ref"] for item in candidates] == ["BIRTHDAY"]

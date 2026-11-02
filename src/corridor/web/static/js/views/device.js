@@ -232,6 +232,12 @@ function taskScreen(task, state, ctx) {
     task.selection
       ? h("p", { class: "selection", "data-testid": "device-selection" }, task.selection.text)
       : null,
+    task.step === "confirm_plan" && (task.cards || []).length > 1
+      ? h("ol", { "data-testid": "device-batch-review" }, task.cards.map((card) =>
+        h("li", null, [card.purpose, card.amount_text,
+          ...(card.facts || []).filter((fact) => fact.key.startsWith("objects."))
+            .map((fact) => `${fact.label}: ${fact.value}`)].filter(Boolean).join(" · "))))
+      : null,
     task.step_text && !code ? h("p", { class: "step-text" }, task.step_text) : null,
     code,
     gestureButtons(task, ctx)),

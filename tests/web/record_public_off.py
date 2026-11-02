@@ -207,6 +207,26 @@ HISTORY = (
             "responses, routes and server options remain identical."
         ),
     },
+    {
+        "commit": "db4c1d1c33bc7ec9252ee7e391963262339e1bd0",
+        "changed": ["i18n", "routes", "capabilities.aa", "tabs.accounts", "tabs.wealth"],
+        "reason": (
+            "C60 and RW-9 item 7: enable AA participant selection, add card controls and "
+            "the five-question risk form to existing tabs. Record the intentional capability, "
+            "route, tab and bilingual catalogue changes on the C60 working tree. "
+            "Server options, public limits, approval and dispatch checks remain unchanged."
+        ),
+    },
+    {
+        "commit": "c5926f4d16792cce45e44c7ee149e5476e4edb3c",
+        "changed": ["i18n", "static"],
+        "reason": (
+            "C63 and RW-9 item 7: add bilingual assessment-limit and card-request guidance, "
+            "and the card-preview error hint in main.js. Recorded with C63 working-tree "
+            "fixes; only i18n and static change in this journey. Other responses, routes, server "
+            "options and normalization rules remain unchanged."
+        ),
+    },
 )
 
 

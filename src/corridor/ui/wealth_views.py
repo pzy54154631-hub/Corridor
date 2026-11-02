@@ -21,34 +21,8 @@ from corridor.ui.components import (
 )
 from corridor.ui.evaluation import ATTACK_CLASSES, run_attack_class
 from corridor.ui.messages import display_value, prose, tr
+from corridor.ui.risk_questions import ANSWER_OPTIONS, PROFILE_NAMES
 from corridor.ui.wealth_statement import render_biac
-
-PROFILE_NAMES = {1: "Conservative", 2: "Cautious", 3: "Balanced", 4: "Growth", 5: "Aggressive"}
-ANSWER_OPTIONS = {
-    "Investment experience": (
-        "None",
-        "Savings only",
-        "Simple funds",
-        "Several product types",
-        "Complex products",
-    ),
-    "Loss tolerance": (
-        "None",
-        "A small loss",
-        "A moderate loss",
-        "A substantial loss",
-        "A large loss",
-    ),
-    "Income stability": ("No stable income", "Variable", "Mostly stable", "Stable", "Very stable"),
-    "Liquidity needs": (
-        "Immediate access",
-        "Frequent access",
-        "Occasional access",
-        "Rare access",
-        "No near-term need",
-    ),
-    "Investment horizon": ("Immediate", "Short term", "Medium term", "Long term", "Very long term"),
-}
 
 
 def device_action(controller, method, arguments, result_key):

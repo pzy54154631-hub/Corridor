@@ -1,4 +1,6 @@
 {
+  "suggest.local.note": {"zh-CN": "此项为系统查询模板。请选择您要办理的查询，后续仍按页面要求确认。", "en": "This is a system query template. Please choose the query you want and follow its confirmation steps."},
+  "suggest.local.source": {"zh-CN": "评委证据：此项来自本地账单或余额查询模板，未调用模型生成建议；原有上下文与否定检查保持生效。", "en": "Judge evidence: this item comes from a local bill or balance query template, without a model suggestion call. Existing context and negation checks still apply."},
   "suggest.question": {
     "zh-CN": "您是想：{sentence}吗？",
     "en": "Did you mean: “{sentence}”?"

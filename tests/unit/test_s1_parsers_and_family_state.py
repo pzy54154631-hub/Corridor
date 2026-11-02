@@ -131,17 +131,25 @@ def test_family_state_is_the_ui_showcase_state():
 
 
 def test_zh_bd_03_request_reaches_its_frozen_expectation_under_family():
-    # The frozen suite still selects "bank" for ZH-BD-03 (32/33); this separate run only
-    # shows that the same request succeeds when a run-task caller selects "family".
+    # The disclosed fixture mismatch is corrected without changing any expected outcome.
     cases = json.loads((domestic_runner.DATA / "cases.json").read_text(encoding="utf-8"))
     (case,) = [row for row in cases if row["id"] == "ZH-BD-03"]
-    assert case["request"]["initial_state"] == "bank"
+    assert case["request"]["initial_state"] == "family"
     result = run_task({**case["request"], "initial_state": "family", "task_id": case["id"]})
     actual = {key: result[key] for key in case["expected"]}
     assert actual == case["expected"]
     assert result["responses"][-1]["payload"]["event"]["event_ref"] == "BIRTHDAY_SPOUSE"
     suite = domestic_runner.run_zh_suite(task_ids=["ZH-BD-03"])
-    assert suite["passed"] == 0
+    assert suite["passed"] == 1
+
+
+def test_zh_bd_03_bank_fixture_still_requires_birthday_clarification():
+    cases = json.loads((domestic_runner.DATA / "cases.json").read_text(encoding="utf-8"))
+    (case,) = [row for row in cases if row["id"] == "ZH-BD-03"]
+    result = run_task({**case["request"], "initial_state": "bank", "task_id": case["id"]})
+    assert result["final_status"] == "clarify"
+    assert result["needs_clarification"] is True
+    assert result["dispatch_count"] == 0
 
 
 def test_family_state_needs_a_choice_for_an_unnamed_birthday():

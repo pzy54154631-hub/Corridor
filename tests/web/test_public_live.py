@@ -915,12 +915,10 @@ def test_after_the_unlock_each_request_sends_the_message_and_the_journal_keeps_d
     assert CANARY_ERROR not in logs
 
 
-def test_a_transfer_sends_the_whole_address_book_and_then_only_typed_handles(
+def test_a_transfer_sends_only_matching_contact_names_and_then_typed_handles(
     public_app, hosted, canary
 ):
-    """A3, the two steps the first reading missed (RW-9 item 2). ``extract`` sends the message
-    and every contact of the synthetic address book, whoever the message names; ``plan``, on
-    the device's confirm, sends typed handles and no words at all."""
+    """Public extraction sends only locally mentioned names; planning uses typed handles."""
     journal = hosted()
     client = browser(public_app)
     go_live(client)
@@ -929,7 +927,7 @@ def test_a_transfer_sends_the_whole_address_book_and_then_only_typed_handles(
     prompt, state = sent(canary.requests[1])
     assert set(prompt) == {"instruction", "repair", "response_schema", "user_text"}
     assert prompt["user_text"] == BEFORE and prompt["repair"] == 0
-    assert state == {"contacts": ADDRESS_BOOK, "previous_contact": None}
+    assert state == {"contacts": {"CONTACT_CHEN": ["妈妈"]}, "previous_contact": None}
     # Handles and aliases, never the values behind the handles.
     vault = ws_of(public_app, client).controller.gateway.vault
     wire = canary.requests[1]["raw"].decode("utf-8")
@@ -1003,7 +1001,9 @@ def test_the_live_panel_says_what_the_notice_says(public_app, hosted):
     assert 'line(h, state.shell.public_disclosure, "live-disclosure")' in source
     go_live(client)
     text = panel(client)["reason_text"]
-    assert "整张合成通讯录的代号和别名" in text and "类型化句柄" in text and DEEPSEEK in text
+    assert "只发送本地命中的联系人代号和原话称呼" in text
+    assert "未命中则澄清" in text and "类型化句柄" in text and DEEPSEEK in text
+    assert "整张合成通讯录" not in text
     assert "11 位以上的号码" in text and "隐去个人信息" not in text
 
 

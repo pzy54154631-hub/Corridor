@@ -5,6 +5,7 @@ from typing import Any, Literal, TypeVar
 
 from pydantic import Field
 
+from corridor.agent.domestic_suggest import prompt_contacts
 from corridor.agent.extractor import (
     ExtractedIntent,
     amount_candidate,
@@ -81,9 +82,12 @@ class Conversation:
         principal: str,
         session_id: str,
         task_id: str = "CHAT",
+        minimize_contacts: bool = False,
     ) -> None:
         self.gateway, self.client = gateway, client
         self.principal, self.session_id, self.task_id = principal, session_id, task_id
+        # Explicit product opt-in; recorded experiments keep their original prompt bytes.
+        self.minimize_contacts = minimize_contacts
         self._requests: dict[str, tuple[str, Candidate]] = {}
         self._candidates: dict[str, Candidate] = {}
         self._prepared: dict[str, PreparedTransfer] = {}
@@ -178,17 +182,29 @@ class Conversation:
         # External text never enters a prompt or contact index; only this boolean leaves quarantine.
         flag = injection_detected(external_texts or [])
         lexical = extract_intent(safe_text, labels, self._previous_contact)
-        output = self._validated(
-            ExtractedIntent,
-            step=f"extract:{self._counter}",
-            prompt={
-                "instruction": "Classify the request and return candidate contact handles only.",
-                "user_text": safe_text,
-            },
-            tool_state={"contacts": labels, "previous_contact": self._previous_contact},
-            scripted=lambda: extract_intent(safe_text, labels, self._previous_contact).model_dump(
-                mode="json"
-            ),
+        sent_labels, previous = labels, self._previous_contact
+        if self.minimize_contacts:
+            sent_labels = prompt_contacts(labels, safe_text)
+            previous = previous if previous in lexical.contact_refs else None
+            if previous is not None and previous not in sent_labels:
+                sent_labels[previous] = []
+        output = (
+            ExtractedIntent(kind="clarify")
+            if self.minimize_contacts and not sent_labels
+            else self._validated(
+                ExtractedIntent,
+                step=f"extract:{self._counter}",
+                prompt={
+                    "instruction": (
+                        "Classify the request and return candidate contact handles only."
+                    ),
+                    "user_text": safe_text,
+                },
+                tool_state={"contacts": sent_labels, "previous_contact": previous},
+                scripted=lambda: extract_intent(
+                    safe_text, labels, self._previous_contact
+                ).model_dump(mode="json"),
+            )
         )
         if (
             any(ref not in labels for ref in output.contact_refs)

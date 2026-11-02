@@ -79,6 +79,44 @@ function receipts(ctx, vm) {
   );
 }
 
+function cardControls(ctx, vm) {
+  const form = vm.card_controls;
+  if (!form?.choices.length) return null;
+  const select = (options, id) => lockable(el(ctx, "select", { "data-testid": id },
+    options.map(item => el(ctx, "option", { value: item.value || item.key }, item.label))), false);
+  const card = select(form.choices, "card-choice");
+  const kind = select(form.operations, "card-operation");
+  const limit = lockable(el(ctx, "input", { type: "text", inputmode: "decimal", "data-testid": "card-limit" }), false);
+  const limitRow = el(ctx, "label", { class: "scr-field" }, ctx.t("web.ui.cards.limit"), limit);
+  const checks = form.categories.map(item => {
+    const input = lockable(el(ctx, "input", { type: "checkbox", value: item.value, "data-testid": `card-restrict-${item.value}` }), false);
+    return { input, node: el(ctx, "label", { class: "scr-check" }, input, item.label) };
+  });
+  const restrictions = el(ctx, "fieldset", {}, el(ctx, "legend", {}, ctx.t("web.ui.cards.restrictions")), checks.map(c => c.node));
+  const update = () => {
+    limitRow.hidden = !kind.value.endsWith("card_limit");
+    restrictions.hidden = !["restrict_card", "relax_card_restriction"].includes(kind.value);
+  };
+  const selected = () => {
+    const row = form.choices.find(c => c.key === card.value);
+    checks.forEach(c => { c.input.checked = row.restrictions.includes(c.input.value); });
+    update();
+  };
+  card.addEventListener("change", selected);
+  kind.addEventListener("change", update);
+  selected();
+  return section(ctx, ctx.t("web.ui.cards.controls"), "card-controls",
+    el(ctx, "label", { class: "scr-field" }, ctx.t("web.ui.cards.choose"), card),
+    el(ctx, "label", { class: "scr-field" }, ctx.t("web.ui.cards.operation"), kind),
+    limitRow, restrictions, para(ctx, ctx.t("web.ui.cards.note"), "scr-hint"),
+    button(ctx, { label: ctx.t("web.ui.cards.review"), testid: "card-review", kind: "primary", onClick: () => {
+      const body = { choice: card.value, kind: kind.value, list_version: form.list_version };
+      if (!limitRow.hidden) body.limit = limit.value;
+      if (!restrictions.hidden) body.restrictions = checks.filter(c => c.input.checked).map(c => c.input.value);
+      ctx.actions.cardPreview(body);
+    } }));
+}
+
 function subscriptions(ctx, state, vm) {
   const subs = vm.subscriptions;
   const query = vm.sub_query;
@@ -175,6 +213,7 @@ export function update(root, state, ctx) {
         ...[
           balances(ctx, vm),
           cards(ctx, vm),
+          cardControls(ctx, vm),
           receipts(ctx, vm),
           subscriptions(ctx, state, vm),
           vm.billing ? section(ctx, ctx.t("web.ui.accounts.billing"), null, billBlock(ctx, vm.billing)) : null,

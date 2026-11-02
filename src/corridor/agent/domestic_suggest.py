@@ -113,6 +113,27 @@ TEMPLATES = {
     "subscription_cancel": "取消订阅",
     "birthday": "帮我安排生日",
 }
+# Local read-only templates deliberately stay outside the frozen model prompt/schema.
+QUERY_TEMPLATES = {"bill_report": "查看我的账单", "balance_query": "查询余额"}
+QUERY_ALIASES = {
+    "bill_report": re.compile(r"(?:请|帮我|麻烦)?调(?:一下)?单子"),
+    "balance_query": re.compile(r"(?:请|帮我)?(?:看看家底|查查家底|看看还剩多少钱)"),
+}
+
+
+def local_query(text: str):
+    """Only a whole closed query phrase; eligibility and context gates still apply."""
+    for intent, pattern in QUERY_ALIASES.items():
+        if pattern.fullmatch(compact(text)):
+            return {
+                "intent": intent,
+                "sentence": QUERY_TEMPLATES[intent],
+                "contact_ref": None,
+                "amount": None,
+            }
+    return None
+
+
 SLOTS = {"transfer": ("contact_ref", "amount")}
 INSTRUCTION = (
     "The bank's local rules could not read this request. Offer at most two readings of it "
@@ -1129,6 +1150,17 @@ def _offer(session, desk: SuggestionDesk, identifier: str, text: str, response: 
         discard("privacy")
         return unchanged()
     contacts = prompt_contacts(labels, safe)
+    local = local_query(text)
+    if local is not None:
+        if not reads_as(session, local["sentence"], local["intent"], None, None, "clarify"):
+            discard("canonical")
+            return unchanged()
+        item = {
+            "index": 0,
+            **local,
+            "sentence_hash": controller.gateway.utterance_digest(local["sentence"], None),
+        }
+        return _publish(session, desk, identifier, text, [item], events, step, "local", now)
     # Counted once the prompt is built, right before the one call this reply may make.
     desk.asked += 1
     try:
@@ -1162,6 +1194,11 @@ def _offer(session, desk: SuggestionDesk, identifier: str, text: str, response: 
             # live accounting says so ("refused by the page's checks").
             _refused(session.client)
         return unchanged()
+    return _publish(session, desk, identifier, text, items, events, step, source, now)
+
+
+def _publish(session, desk, identifier, text, items, events, step, source, now):
+    controller = session.controller
     logged = ("index", "intent", "contact_ref", "amount", "sentence_hash")
     events.append((
         "suggestion_generated",
@@ -1179,7 +1216,7 @@ def _offer(session, desk: SuggestionDesk, identifier: str, text: str, response: 
     stored = session._responses[identifier]
     payload = deepcopy(stored["payload"])
     payload["suggestions"] = {
-        "source": "model",
+        "source": "local" if source == "local" else "model",
         "items": [{key: item[key] for key in shown} for item in items],
     }
     result = deepcopy({**stored, "payload": payload})
