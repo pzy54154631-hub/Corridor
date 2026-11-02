@@ -68,7 +68,7 @@
     "tests importing undistributed modules (listed in release/TESTS-NOT-DISTRIBUTED.txt)",
     "evidence-min/ recordings (excluded from this public export; included in the submitted source archive under evidence-min/flagship/; sha256 in evidence-min/EXTERNAL-ASSETS.sha256)"
   ],
-  "tests_not_distributed": 20,
+  "tests_not_distributed": 21,
   "evidence": {
     "paths": [
       "evidence/domestic/public-tree/judge.json",

@@ -200,8 +200,8 @@
     "zh-CN": "已达上限：本笔办理完成或取消后自动退回脚本演示；在此之前，新的对话请求会被上限拒绝。"
   },
   "live.reason.revoked_pending": {
-    "en": "The live model has been stopped (switched off, access revoked or credentials changed): new chat requests are not sent to the model and show as failures. Withdraw the current action with Cancel or the Stop button at the top; the scripted demo follows.",
-    "zh-CN": "实时模型已停用（开关已关闭、访问已撤销或凭据已变更）：新的对话请求不会发给模型，会显示为失败；请点「取消」或页面顶部的「中断」撤回当前办理，之后回到脚本演示。"
+    "en": "The live model has been stopped (switched off, access revoked or credentials changed): new chat requests are not sent to the model and show as failures. Withdraw the current action with Cancel or the Stop all button at the top; the scripted demo follows.",
+    "zh-CN": "实时模型已停用（开关已关闭、访问已撤销或凭据已变更）：新的对话请求不会发给模型，会显示为失败；请点「取消」或页面顶部的「全部停止」撤回当前办理，之后回到脚本演示。"
   },
   "live.reason.ready": {
     "en": "Live model ready; switch it on to send the next request to the model.",
@@ -216,8 +216,8 @@
     "zh-CN": "真实 AI 暂不可用（托管方尚未完成配置），当前为脚本演示。"
   },
   "live.boundary_locked": {
-    "en": "An action is still open (awaiting confirmation, verification or a recipient choice): complete it, or withdraw it with Cancel or the Stop button at the top, before the planner can change.",
-    "zh-CN": "有一笔办理尚未完成（待确认、待验证或待选择收款人）：完成它，或点「取消」或页面顶部的「中断」撤回后，才能切换规划来源。"
+    "en": "An action is still open (awaiting confirmation, verification or a recipient choice): complete it, or withdraw it with Cancel or the Stop all button at the top, before the planner can change.",
+    "zh-CN": "有一笔办理尚未完成（待确认、待验证或待选择收款人）：完成它，或点「取消」或页面顶部的「全部停止」撤回后，才能切换规划来源。"
   },
   "live.exhausted_notice": {
     "en": "Live model cap reached ({reason}); returned to the scripted demo.",

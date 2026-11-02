@@ -14,15 +14,15 @@
     {
       "path": "docs/submission-zh/README.md",
       "source_path": "docs/submission-zh/README.md",
-      "original_sha256": "a1cdbb88d14d49cd1832be99ecfd8acd163d529ff15f45a49440d09e1ededf54",
-      "distributed_sha256": "06ed310179bdf7ea3520b56f4b4a44a37c984787785a117632a5407f2b99a221",
+      "original_sha256": "25bee44b052918ecf5fa347a8f2c817af9f1f7c5e099d54d7fae3ef25b82a812",
+      "distributed_sha256": "492e70440c7d90cfbc851b9911bb9c7faccf4c60a8690cf325cbe678e7de6401",
       "change": "Public package scope, install note and portable README links only"
     },
     {
       "path": "README.md",
       "source_path": "docs/submission-zh/README.md",
-      "original_sha256": "a1cdbb88d14d49cd1832be99ecfd8acd163d529ff15f45a49440d09e1ededf54",
-      "distributed_sha256": "11256cf203ec5e76d631e1ad2b44b9bfa58b44018cb461211d06d7f36040ec62",
+      "original_sha256": "25bee44b052918ecf5fa347a8f2c817af9f1f7c5e099d54d7fae3ef25b82a812",
+      "distributed_sha256": "e1e13b742c4d33cead02785770065c3242483a779664f3de1152bfef9c90ae55",
       "change": "Public package scope, install note and portable README links only"
     },
     {
